@@ -1,0 +1,1237 @@
+original,translation
+"X - выбор, Y - инверсия выбора, (+) - меню","X  -  Seç, Y  -  Seçimi tersine çevir, (+)  -  Menüsü"
+"X - выбор, Y - инверсия выбора, (+) - меню, L3 - запуск","X  -  Seç, Y  -  Seçimi tersine çevir, (+)  -  Menü, L3  -  Başlat"
+"X - выбор, Y - инверсия выбора, (+) - меню, R3 - сортировка","X  -  Seç, Y  -  Seçimi tersine çevir, (+)  -  Menü, R3  -  Sırala"
+"X - выбор, Y - инверсия выбора, (+) - меню, R3 - сортировка, L3 - запуск","X  -  Seç, Y  -  Seçimi tersine çevir, (+)  -  Menü, R3  -  Sırala, L3  -  Başlat"
+"X - выбор, Y - инвертирование выбора, A - открыть, (-) - 2ая панель","X  -  Seç, Y  -  Seçimi tersine çevir, A  -  Aç, (-)  -  2. panel"
+"X - выбор, Y - инвертирование выбора, ⬅/➡ - смена панели, (-) - закрыть","X  -  Seç, Y  -  Seçimi tersine çevir, ⬅/➡  -  Paneli değiştir, (-)  -  Kapat"
+"ZL/ZR - смена даты, Y - период, X - сортировка, (+) - выбрать пользователя","ZL/ZR  -  Tarihi değiştir, Y  -  Dönem, X  -  Sırala, (+)  -  Kullanıcı seç"
+. Время игры \x1b[32;1m{:02}:{:02}:{:02}\x1b[37;1m,. Oynatma Süresi \x1b[32;1m {:02} : {:02} : {:02} \x1b[37;1m
+Невозможно смонтировать системный раздел,Sistem bölümü bağlanamıyor
+"DPAD или стики для перемещения, (+) - Настройки","DPAD veya hareket etmek için yapışır, (+)  -  Ayarlar"
+Ошибка создания файла: {},Dosya oluşturulurken hata oluştu: {}
+Подключение к серверу...,Sunucuya bağlanılıyor...
+   Это действие будет нельзя отменить   ,Bu işlem geri alınamaz
+SDK подменён,SDK değiştirildi
+Точка доступа,Erişim noktası
+Традиционный китайский,Geleneksel Çince
+Транзисторов:      {:>3},Transistörler: {:>3}
+Требуется вручную разрешить синхронизацию времени через Интернет в настройках,Ayarlarda İnternet üzerinden zaman senkronizasyonunun manuel olarak etkinleştirilmesi gerekiyor
+Тёмная комната,Karanlık oda
+Убрать из любимых,Favorilerden kaldır
+Увеличить размер (в МБ),Boyutu artır (MB cinsinden)
+"Уверены, что хотите продолжить?",Devam etmek istediğinizden emin misiniz?
+Удаление Wi-Fi профиля,Wi-Fi profili siliniyor
+Удаление Wi-Fi профиля...,Wi-Fi profili siliniyor...
+Удаление {} бекапа,{} yedeklemesi siliniyor
+Удаление {} бекапов,{} yedeklemeyi silme
+Удаление {} сохранений,{} kaydı siliniyor
+Удаление {} сохранения,{} kaydı siliniyor
+Удаление бекапов,Yedeklemeleri silme
+Удаление записи об игре...,Oyun kaydı siliniyor...
+Удаление игр,Oyunları silme
+Удаление игры целиком: [{}],Oyunun tamamını sil: [{}]
+Удаление каталога LFS,LFS dizininin silinmesi
+Удаление контента,İçeriği silme
+Удаление настроек родительского контроля...,Ebeveyn kontrolü ayarları siliniyor...
+Удаление не удалось.\n\nНажмите любую кнопку для продолжения,Silme başarısız oldu. \n \n Devam etmek için herhangi bir düğmeye basın
+Удаление неиспользуемого {}...,Kullanılmayan {} siliniyor...
+Удаление плейсхолдера...,Yer tutucu siliniyor...
+Удаление пользователя,Kullanıcı siliniyor
+Удаление пользователя...,Kullanıcı siliniyor...
+Удаление ранее установленных файлов...,Önceden yüklenmiş dosyalar siliniyor...
+Удаление родительского контроля,Ebeveyn kontrolünün silinmesi
+SaveFS очищена,SaveFS temizlendi
+Удаление связи с Nintendo account...,Nintendo hesap bağlantısı siliniyor...
+Удаление сохранений,Kayıtlar siliniyor
+Удаление сохранения целиком,Tüm kaydetme siliniyor
+Удаление старого     {}...,Eski {} siliniyor...
+Удаление старого файла {}...,Eski {} dosyası siliniyor...
+Удаление старой записи об игре...,Eski oyun kaydı siliniyor...
+Удаление старой папки {}...,Eski {} klasörü siliniyor...
+Удаление тайтла: [{}],Başlık siliniyor: [{}]
+Удаление тикетов ({}),Biletler siliniyor ({})
+Удаление...,Siliniyor...
+Удалить,Silmek
+Удалить LFS,LFS'yi sil
+Удалить сохранения,Kayıtları sil
+Удалить старые бекапы,Eski yedeklemeleri silin
+Удаляется {} из {}...,{} / {} siliniyor...
+Удаляется {}...,{} siliniyor...
+Удаляется запись о контенте...,İçerik kaydı siliniyor...
+Удаляется запись об игре...,Oyun kaydı siliniyor...
+Удаляется игра и весь связанный контент,Oyunun ve ilgili tüm içeriğin silinmesi
+Titlekey не может быть инициализирован,Titlekey başlatılamıyor
+Удаляется папка LFS...,LFS klasörü siliniyor...
+Удаляется пустая папка,Boş klasörün silinmesi
+Удаляется сохранение {}...,{} kaydı siliniyor...
+Удаляется старая запись о контенте...,Eski içerik kaydı siliniyor...
+Удаляется старый cnmt.nca...,Eski cnmt.nca siliniyor...
+Удаляется тикет: {}...,Bilet siliniyor: {} ...
+Удаляются все объекты из альбома для игры,Oyun albümündeki tüm öğelerin silinmesi
+Удаляются все сохранения для игры,Oyunun tüm kayıtları siliniyor
+Удаляются сохранения...,Kayıt verileri siliniyor...
+"UID: {}, Ник: {}","UID: {} , Takma Ad: {}"
+Удалённые,Silindi
+Удачный экспорт,Başarılı ihracat
+Уделение старого тикета...,Eski bilet siliniyor...
+Упаковка каталога в RomFS,Dizini RomFS'ye paketleme
+Упрощенный китайский,Basitleştirilmiş Çince
+Успешно разобран как PFS0 файл,PFS0 dosyası olarak başarıyla ayrıştırıldı
+Устанавливается {},{} yükleniyor
+Установить как аватар...,Avatar olarak ayarla...
+Установка,Kurulum
+Установка анлокера...,Kilit açıcı yükleniyor...
+Установка завершена,Kurulum tamamlandı
+Установка игр (NAND),Oyunları yükleme (NAND)
+Установка игр (SD Card),Oyunları yükleyin (SD Kart)
+Установка игры завершена,Oyunun kurulumu tamamlandı
+Установка обновлений игр,Oyun güncellemelerini yükleyin
+Установка прервана,Kurulum kesintiye uğradı
+Установка тайтлов ({}/{}),Başlıklar yükleniyor ({} / {})
+USB Соединение,USB bağlantısı
+Установка ярлыка...,Kısayol yükleniyor...
+Установлен,Yüklendi
+Установленные,Yüklendi
+Установленные homebrew,Homebrew yüklü
+Установленные homebrew ({}),Homebrew yüklendi ({})
+Установленные игры,Yüklü oyunlar
+Установленные тикеты,Kurulu biletler
+Установленные тикеты ({}),Kurulu biletler ({})
+Файл повреждён и не может быть установлен. Не найдена сигнатура HEAD,Dosya bozuk ve yüklenemiyor. HEAD imzası bulunamadı
+Файл повреждён и не может быть установлен. Не найдена сигнатура HFS0 в разделе root,Dosya bozuk ve yüklenemiyor. HFS0 imzası kök bölümde bulunamadı
+Файл повреждён и не может быть установлен. Не найдена сигнатура HFS0 в разделе secure,Dosya bozuk ve yüklenemiyor. HFS0 imzası güvenli bölümde bulunamadı
+Файл повреждён и не может быть установлен. Не найдена сигнатура PFS0,Dosya bozuk ve yüklenemiyor. PFS0 imzası bulunamadı
+Файл слишком большой для хранилища,Dosya depolama için çok büyük
+Файл: {},Dosya: {}
+Фиксация ФС...,FS taahhüdü...
+Финальный размер: {},Son boyut: {}
+Формирование списка...,Liste oluşturuluyor...
+Форсированный язык    : {},Zorunlu dil : {}
+Форсированный язык    : {} ({}),Zorunlu dil : {} ({})
+Форсировать язык,Dili zorla
+Французский,Fransızca
+"Х:{}, Т:{}, РЦ:{}","Y: {} , T: {} , K: {}"
+Хранилища MTP,MTP depolama
+Хранилище только для чтения,Salt okunur depolama
+Целевая запись о контенте не найдена,Hedef içerik kaydı bulunamadı
+ЧАСТЬ КОНТЕНТА ОТСУТСТВУЕТ. ИГРА НЕ БУДЕТ РАБОТАТЬ,İÇERİĞİN BİR KISMI EKSİKTİR. OYUN ÇALIŞMAYACAK
+Число транзисторов: {:>3},Transistör sayısı: {:>3}
+Число уникальных сыграных игр : {},Oynanan benzersiz oyun sayısı : {}
+Число ходов:        {:>3},Hareket sayısı: {:>3}
+Чтение каталога...,Dizin okunuyor...
+Чтение списка файлов...,Dosya listesi okunuyor...
+Что-то плохое грядёт,Kötü bir şey geliyor
+Что-то пошло не так. Пропускаем оставшийся файл,Bir şeyler ters gitti. Kalan dosyayı atlamak
+"Чтобы вернуться, нажмите B",Geri dönmek için B'ye basın
+Шадок у Гиби,Gibi'de Shadok
+Экспорт SDK,SDK'yı Dışa Aktarma
+Экспортировать,İhracat
+Экспортировать SDK,SDK'yı dışa aktar
+Январь,Ocak
+Японский,Japonca
+Ярлык для DBI,DBI için kısayol
+да,Evet
+не является LFS папкой,bir LFS klasörü değil
+не является LFS папкой игры,bir oyun LFS klasörü değil
+нет,HAYIR
+"ZL/ZR - смена даты, Y - период","ZL/ZR  -  değişiklik tarihi, Y  -  dönemi"
+"Получено: {}, (скорость не определена)","Alındı: {} , (hız tanımsız)"
+Игры добавлены в список исключений,Hariç tutulanlar listesine eklenen oyunlar
+Новых игр в список исключений добавлено не было,Hariç tutulanlar listesine yeni oyun eklenmedi
+Просмотр МТР устройства [{}],MTP cihazı görüntüleniyor [{}]
+Просмотр USB диска [{}],USB sürücüsü görüntüleniyor [{}]
+Заряд батареи (сырое значение) : {},Pil şarjı (ham değer): {}
+ru,tr
+[CRC ОШИБКА ФАЙЛА],[DOSYA CRC HATASI]
+Будет скачана и установлена прошивка системы из файла {}.\n\nНажимте (+) для продолжения\nЛюбую другую кнопку для отмены,Sistem yazılımı {} dosyasından indirilecek ve kurulacaktır. \n \n Devam etmek için (+) tuşuna basın \n İptal etmek için başka herhangi bir tuş
+Распаковка архива не удалась,Arşiv çıkarma işlemi başarısız oldu
+Сканирование архива не удалось,Arşiv taraması başarısız oldu
+Установить все обновления из этой папки,Bu klasördeki tüm güncellemeleri yükleyin
+Япония,Japonya
+Русский,Rusça
+Февраль,Şubat
+Октябрь,Ekim
+[HASH MISMATCH: GC ➡ eShop],[HASH UYUŞMAZLIĞI: GC ➡ eShop]
+Ноябрь,Kasım
+Игрок,Oyuncu
+Время,Zaman
+Контент,İçerik
+[HASH: OK],[kare: tamam]
+Красная,Kırmızı
+[HASH MISMATCH: Неисправимо],[HASH UYUŞMAZLIĞI: Kurtarılamaz]
+[ПРЕД],[ÖNCEKİ]
+Альбом,Albüm
+Выход,Çıkış
+и т.д...,vesaire...
+{} бекап,{} yedekleme
+874,874
+Пишется тело: {}/{}MB \r,Yazma gövdesi: {} / {} MB \r
+Пишется скриншот\n,Ekran görüntüsü yazılıyor \n
+Пишется таблица хешей\n,Karma tablosunu yazma \n
+Пишется подпись видео\n,Video imzası yazma \n
+Операция завершена\n,İşlem tamamlandı \n
+"Будет скачана и установлена прошивка системы из файла {}.\n\nВНИМАНИЕ!!! Похоже, эта версия не поддерживается текущей атмосферой.\n\nНажимте (+) для продолжения\nЛюбую другую кнопку для отмены",Sistem yazılımı {} dosyasından indirilecek ve kurulacaktır. \n \n UYARI!!! Görünüşe göre bu sürüm mevcut Atmosfer tarafından desteklenmiyor. \n \n Devam etmek için (+) tuşuna basın \n İptal etmek için başka bir tuşa basın
+Копирование файла не удалось,Dosya kopyalanamadı
+Daybreak.nro не найден,Daybreak.nro bulunamadı
+Изображение добавлено в альбом,Resim albüme eklendi
+Ошибка добавления изобржения в альбом: {},Albüme resim eklenirken hata oluştu: {}
+Добавить в альбом,Albüme ekle
+Анализ mp4 файла,Mp4 dosyasını analiz etme
+Длительность: {},Süre: {}
+ОШИБКА! Файл не содержит один видео трек,HATA! Dosya tek bir video parçası içermiyor
+ОШИБКА! Файл не содержит один аудио трек,HATA! Dosya tek bir ses parçası içermiyor
+ОШИБКА! У видео трека неподдерживаемый кодек,HATA! Video parçasında desteklenmeyen bir codec bileşeni var
+ОШИБКА! У аудио трека неподдерживаемый кодек,HATA! Ses parçasında desteklenmeyen bir kodlayıcı var
+ОШИБКА! Аудио трек не стерео,HATA! Ses parçası stereo değil
+[{}] Общий тикет для {},[{}] {} için ortak bilet
+ОШИБКА! У аудио трека неподходящая частота дискретизации,HATA! Ses parçasının örnekleme hızı uygun değil
+ОШИБКА! У видео трека неподходящая ширина,HATA! Video parçasının genişliği uygun değil
+ОШИБКА! У видео трека неподходящая высота,HATA! Video parçasının yüksekliği uygun değil
+ВНИМАНИЕ! Возможно видео поток содержит B-Frames. Файл может не воспроизводиться,UYARI! Video akışı B Çerçeveleri içerebilir. Dosya oynatılamayabilir
+"Похоже, это не MP4 файл",Görünüşe göre bu bir MP4 dosyası değil
+Открыть как RomFS,RomFS olarak aç
+\x1b[31;1mГ\x1b[37;1m,\x1b[31;1m ve \x1b[37;1m
+\x1b[32;1mШ\x1b[37;1m,\x1b[32;1m Ç \x1b[37;1m
+Ваша SD карта является подделкой. Рекомендуется заменить SD карту на проверенную.,SD kartınız sahte. SD kartın doğrulanmış bir kartla değiştirilmesi önerilir.
+[{}] Персональный тикет для {},[{}] {} için kişisel bilet
+Кажется ваша SD карта является подделкой.\n\nВозможны проблемы с установкой игр.\nВ этом случае рекомендуется заменить SD карту на проверенную.,SD kartınız sahte görünüyor. \n \n Oyun kurulumunda sorunlar ortaya çıkabilir. \n Bu durumda SD kartın doğrulanmış bir kartla değiştirilmesi önerilir.
+Информация о SD карте,SD kart bilgileri
+[ПОДПИСЬ: DBI],[İMZA: DBI]
+.    Время игры    \x1b[32;1m{:02}:{:02}:{:02}\x1b[37;1m,.  Oynatma süresi \x1b[32;1m {:02} : {:02} : {:02} \x1b[37;1m
+"ZL/ZR смена даты, Y период, X сортировка, (+) выбрать пользователя","ZL/ZR değişiklik tarihi, Y dönemi, X sıralama, (+) kullanıcı seç"
+[{}МБ] {}МБ из {}МБ ({:.2f} МБ/сек)\x1b[0K\r,[{} MB] {} MB / {} MB ({:.2f} MB/sn)\x1b[0K\r
+"X выбор, Y обратить выбор, (+) меню, R3 сортировка, L3 запуск","X seçimi, Y seçimi tersine çevirme, (+) menüsü, R3 sıralama, L3 başlatma"
+Создать все известные ({}),Bilinen tümünü oluştur ({})
+"X выбор, Y обратить выбор, (+) меню, L3 запуск","X seçimi, Y seçimi tersine çevirme, (+) menüsü, L3 başlatma"
+"DPAD или стики для перемещения, (+) Настройки","DPAD veya taşımak için yapışır, (+) Ayarlar"
+Просмотр HTTP/FTP/Github сервера...,HTTP/FTP/Github sunucusuna göz atılıyor...
+"X выбор, Y обратить выбор, (+) меню, R3 сортировка","X seçimi, Y seçimi tersine çevirme, (+) menüsü, R3 sıralaması"
+"X выбор, Y обр. выбор, (+) меню","X seçimi, Y seçimi tersine çevirme, (+) menüsü"
+"X выбор, Y обратить выбор, A открыть, (-) 2ая панель, (+) меню","X seç, Y ters çevir seçimi, A aç, (-) 2. panel, (+) menü"
+"X выбор, Y обр. выбор, ⬅/➡ смена панели, (-) закрыть, (+) меню","X seç, Y seçimi kaldır, ⬅/➡ panel değiştirme, (-) kapat, (+) menü"
+[ДЕЛЬТА ФРАГМЕНТ НЕ НУЖЕН],[DELTA PARÇASI GEREKLİ DEĞİLDİR]
+[КОНТЕНТ ОТСУТСТВУЕТ],[İÇERİK EKSİK]
+[НЕ СОЗДАТЬ ПЛЕЙСХОЛДЕР],[YER TUTUCU OLUŞTURMAYIN]
+[НЕДОСТАТОЧНО МЕСТА],[YETERLİ ALAN YOK]
+[НЕИЗВЕСТНОЕ СЖАТИЕ],[BİLİNMEYEN SIKIŞTIRMA]
+[ОТСУТСТВУЕТ],[EKSİK]
+[ОШБК],[HATA]
+[ОШИБКА NCA MAGIC],[NCA BÜYÜ HATASI]
+[ОШИБКА ЗАПИСИ В ПЛЕЙСХОЛДЕР],[YER TUTUCU YAZMA HATASI]
+[ОШИБКА РАСПАКОВКИ ZSTD: {}],[ZSTD AÇMA HATASI: {}]
+[ОШИБКА РАСПАКОВКИ],[ÇIKARMA HATASI]
+[ОШИБКА],[HATA]
+[ОШИБКА] Отсутствует URL списка обновлений,[HATA] Güncelleme listesi URL'si eksik
+[ПЕРЕДАЧА OK],[AKTARIM TAMAM]
+[ПЕРЕДАЧА ПРЕРВАНА],[AKTARIM KESİLDİ]
+[ПОВРЕЖДЁННЫЙ NCA],[BOZUK NCA]
+[ПОДПИСЬ: OK],[İMZA: Tamam]
+[ПОДПИСЬ: XCI➡NSP],[İMZA: XCI➡NSP]
+[ПОДПИСЬ: Поддельная],[İMZA: Sahte]
+[СТАРАЯ ПРОШИВКА],[ESKİ YAZILIM]
+[ТРЕБУЕТСЯ РЕЖИМ ТАЙТЛА],[BAŞLIK MODU GEREKLİ]
+[ФАЙЛ ПОВРЕЖДЁН],[DOSYA BOZUK]
+[ХЕШ ИСПРАВЛЕН],[HASH DÜZELTİLDİ]
+[ХЕШ НЕ СОВПАДАЕТ],[KARMA UYUŞMAZLIĞI]
+\nНачало обработки dlc {}: {:016X},\n DLC işlemeye başlanıyor {} : {:016X}
+\nНачало обработки программы {},\n Uygulamayı işlemeye başladı {}
+\nНачало создания Data.nca,\n Data.nca oluşturma işlemi başlatılıyor
+\nНачало создания Meta.nca,\n Meta.nca oluşturma işlemi başlatılıyor
+\nОшибка USB обмена,\n USB aktarım hatası
+\nСборка PFS0,\n PFS0 Binası
+\nСборка RomFS,\n RomFS'yi Oluşturmak
+\nСекция 0,\n Bölüm 0
+\nСекция 1,\n Bölüm 1
+\nСекция 2,\n Bölüm 2
+\nСоздан NSP: {},\n NSP oluşturuldu: {}
+\nШифрование NCA,\n NCA şifrelemesi
+{:04d} {} {:02d}. Всего: {} час,{:04d} {} {:02d} . Toplam: {} saat
+{:04d} {} {:02d}. Всего: {} часа,{:04d} {} {:02d} . Toplam: {} saat
+{:04d} {} {:02d}. Всего: {} часов,{:04d} {} {:02d} . Toplam: {} saat
+{:4d} {}. Всего: {} час,{:4d} {} . Toplam: {} saat
+{:4d} {}. Всего: {} часа,{:4d} {} . Toplam: {} saat
+{:4d} {}. Всего: {} часов,{:4d} {} . Toplam: {} saat
+{:4d}. Всего: {} час,{:4d} . Toplam: {} saat
+{:4d}. Всего: {} часа,{:4d} . Toplam: {} saat
+{:4d}. Всего: {} часов,{:4d} . Toplam: {} saat
+{:>3} {}{:<50}\x1b[37;1m {:>10},{:>3} {} {:<50} \x1b[37;1m {:>10}
+{:>6} объектов обработано. {:>5} записей найдено...\r,{:>6} nesne işlendi. {:>5} giriş bulundu...\r
+{:>6}/{}kB уже скачано...\r,{:>6} / {} kB zaten indirildi...\r
+{} cохранение,{} kaydet
+{} cохранений,{} kaydedildi
+{} cохранения,{} verileri kaydet
+{} бекапа,{} yedekleme
+{} бекапов,{} yedekleme
+{} записей ({}),{} girişler ({})
+{} записи ({}),{} girişler ({})
+{} запись ({}),{} girişi ({})
+{} игр ({}),{} oyunlar ({})
+{} игра ({}),{} oyun ({})
+{} игры ({}),{} oyunlar ({})
+{} сохранение,{} kaydet
+{} сохранений,{} kaydeder
+{} сохранения,{} verileri kaydet
+{} тикет,{} bilet
+{} тикета,{} bilet
+{} тикетов,{} bilet
+{}-{} FW:{}{} SDK:{},{} - {} Donanım Yazılımı: {} {} SDK: {}
+"{}/{} MB (Ср: {:.1f} MB/sec, Тек: {:.1f} MB/sec) Ост. {:02d}:{:02d}      \r","{} / {} MB (Ort: {:.1f} MB/sn, Cur: {:.1f} MB/sn) Rem. {:02d} : {:02d} \r"
+"{}/{} МБ, {:.2f} МБ/сек","{} / {} MB, {:.2f} MB/sn"
+{}: {} потерянная запись,{} : {} yetim giriş
+{}: {} потерянных записей,{} : {} kayıp girişler
+{}: {} потерянных записи,{} : {} kayıp girişler
+{}: {}/{} ({:.2f} МБ/сек),{} : {} / {} ({:.2f} MB/sn)
+{}: {}/{} ({}%) ({:.2f} МБ/сек),{} : {} / {} ({} %) ({:.2f} MB/s)
+{}: пропускается {}/{} ({:.2f} МБ/сек),{} : atlanıyor {} / {} ({:.2f} MB/sn)
+"{}\n\nВосстановление бекапа не удалось\n\nНажмите A - прервать, другая кнопка - продолжить","{} \n \n Yedekleme geri yüklemesi başarısız oldu \n \n İptal etmek için A'ya, devam etmek için başka bir düğmeye basın"
+{}МБ из {}МБ ({:.2f} МБ/сек)\x1b[0K\r,{} MB / {} MB ({:.2f} MB/sn)\x1b[0K\r
+АВТО,OTOMATİK
+Аватар установлен,Avatar seti
+Август,Ağustos
+Австралия,Avustralya
+Автозапуск MTP,MTP Otomatik Başlatma
+Автозапуск списка homebrew,Evde bira hazırlama listesini otomatik başlat
+Агрументы для ярлыка,Kısayol bağımsız değişkenleri
+Адрес FTP сервера: {},FTP sunucusu adresi: {}
+Адрес HTTP сервера: {},HTTP sunucusu adresi: {}
+Альбом (0°),Albüm (0°)
+Американский английский,Amerikan İngilizcesi
+Апрель,Nisan
+База этой игры не самодостаточна. Не забудьте установить обновление,Bu oyunun temeli kendi kendine yeterli değildir. Güncellemeyi yüklemeyi unutmayın
+Бекапы,Yedeklemeler
+Бекапы сохранений ({}),Veri yedeklerini kaydet ({})
+Британский английский,İngiliz İngilizcesi
+В альбоме найден {} объект,{} albümde nesne bulundu
+В альбоме найдено {} объекта,Albümde {} nesne bulundu
+В альбоме найдено {} объектов,{} albümde nesne bulundu
+В альбоме отсутствуют объекты,Albümde nesne yok
+В файле /switch/prod.keys отсутствуют необходимые ключи.\n\nЧасть функций программы будет недоступна.\n\nПерегрузитесь в Hekate и используйте Lockpick_RCM.bin пейлоад\nдля дампа ключей из SysNAND.,/switch/prod.keys dosyasında gerekli anahtarlar eksik. \n \n Uygulamanın bazı özellikleri kullanılamayacak. \n \n Hekate'yi yeniden başlatın ve anahtarları SysNAND'dan boşaltmak için Lockpick_RCM.bin yükünü \n kullanın.
+ВНИМАНИЕ! Тайтл {:016X} не установлен,UYARI! Başlık {:016X} yüklü değil
+ВНИМАНИЕ! Установленная версия ({}) не совпадает с желаемой ({}),UYARI! Kurulu sürüm ({}) istenenle ({}) eşleşmiyor
+ВО ВРЕМЯ ПЕРЕДАЧИ ФАЙЛА НАЙДЕНЫ ОШИБКИ. УСТАНОВКА ПРЕРВАНА,DOSYA AKTARIMI SIRASINDA BULUNAN HATALAR. KURULUM İPTAL EDİLDİ
+Введите URL сервера (HTTP или (S)FTP),Sunucu URL'sini girin (HTTP veya (S)FTP)
+Введите агрументы для ярлыка или оставьте пустым,Kısayol için bağımsız değişkenleri girin veya boş bırakın
+Введите желаемый номер страницы,İstediğiniz sayfa numarasını girin
+Введите новое имя,Yeni adı girin
+Введите новое имя каталога,Yeni dizin adını girin
+Введите новое имя файла,Yeni dosya adını girin
+Введите номер DLC,DLC numarasını girin
+Версия {} [v{}],Sürüm {} [v {}]
+Вместо пользователя {} использовать:,{} kullanıcısı yerine şunu kullanın:
+Внимание!\nНекоторые файлы были заблокированы и поэтому пропущены.,Uyarı! \n Bazı dosyalar kilitlendi ve bu nedenle atlandı.
+Во время разбора\n\n{}\n\nвозникла следующая ошибка:\n\n{},\n \n {} \n \n ayrıştırılırken aşağıdaki hata oluştu: \n \n {}
+Во время установки тикетов были ошибки. Проверьте наличие ES сигпатчей,Bilet kurulumu sırasında hatalar oluştu. ES işaret yamalarını kontrol edin
+Во время экспорта были ошибки,Dışa aktarma sırasında hatalar oluştu
+Возраст батареи                : {},Pil yaşı : {}
+Возрастной рейтинг,Yaş derecelendirmesi
+Восстановить,Eski haline getirmek
+Восстановить бекап...,Yedeklemeyi geri yükle...
+Восстановить для...,Şunun için geri yükle:
+Восстановить как бекап сохранения,Kaydetme yedeği olarak geri yükle
+Восстановление бекапа,Yedekleme geri yükleniyor
+Восстановление не удалось,Kurtarma başarısız oldu
+Восстановление успешно,Başarılı bir şekilde geri yükle
+Восстановление: {},Geri yükleniyor: {}
+Время игры: {:02}:{:02}:{:02},Oynatma süresi: {:02} : {:02} : {:02}
+Время передачи {:d}:{:02d}:{:02d},Aktarım süresi {:d} : {:02d} : {:02d}
+Все игровые сессии,Tüm oyun oturumları
+Все игроки,Tüm oyuncular
+Все объекты,Tüm nesneler
+Все файлы в порядке,Tüm dosyalar tamam
+Всего {} байт получен,{} bayt alındı
+Всего {} байт послан,{} bayt gönderildi
+Всего {} байта получено,Toplamda {} bayt alındı
+ Да,Evet
+Всего {} байта послано,{} bayt gönderildi
+Всего {} байтов получено,Toplamda {} bayt alındı
+Всего {} байтов послано,{} bayt gönderildi
+Всего записей: {},Toplam girişler: {}
+Всего отослано: {} ({}/сек),Toplam gönderilen: {} ({} /sn)
+Всего программ: {},Toplam başlıklar: {}
+Вставить,Yapıştır
+Вставка...,Ekleniyor...
+Всё время. Всего: {} час,Tüm zamanlar. Toplam: {} saat
+Всё время. Всего: {} часа,Tüm zamanlar. Toplam: {} saat
+Всё время. Всего: {} часов,Tüm zamanlar. Toplam: {} saat
+Вы собираетесь удалить следующие бекапы:,Aşağıdaki yedeklemeleri silmek üzeresiniz:
+Вы собираетесь удалить следующие игры:,Aşağıdaki oyunları silmek üzeresiniz:
+Вы собираетесь удалить следующие сохранения:,Aşağıdaki kayıtları silmek üzeresiniz:
+Вы собираетесь удалить следующие тикеты:,Aşağıdaki biletleri silmek üzeresiniz:
+Вы уверены в удалении {} записей?\n\n(+) - ДА   B - Отмена,{} girişini silmek istediğinizden emin misiniz? \n \n (+)  -  EVET B  -  İptal
+Вы уверены в удалении {} записи?\n\n(+) - ДА   B - Отмена,{} girişini silmek istediğinizden emin misiniz? \n \n (+)  -  EVET B  -  İptal
+Вы уверены в удалении {} объекта?\n\n(+) - ДА   B - Отмена,{} nesnesini silmek istediğinizden emin misiniz? \n \n (+)  -  EVET B  -  İptal
+Вы уверены в удалении {} объектов?\n\n(+) - ДА   B - Отмена,{} nesnelerini silmek istediğinizden emin misiniz? \n \n (+)  -  EVET B  -  İptal
+"Вы уверены, что хотите удалить {}?\n\n(+) - ДА, другая кнопка - НЕТ","{} öğesini silmek istediğinizden emin misiniz? \n \n (+)  -  EVET, diğer düğme  -  HAYIR"
+"Вы уверены, что хотите удалить\n{}?\n\n(+) - ДА  В - Отмена",\n {}'i silmek istediğinizden emin misiniz? \n \n (+)  -  EVET B  -  İptal
+Выберите пользователя,Kullanıcı seç
+Выберите тип сохранения,Kaydetme türünü seçin
+Выбрать все файлы игры,Tüm oyun dosyalarını seç
+Выбрать того же пользователя,Aynı kullanıcıyı seç
+Выбрать ту же игру,Aynı oyunu seç
+Вырезать,Kesmek
+Вычисление хэша,Karma hesaplanıyor
+Вычисленное время конца : {},Hesaplanan bitiş zamanı : {}
+Вычисленное время начала: {},Hesaplanan başlangıç ​​zamanı: {}
+Генерация DLC [{:016X}][v{}],DLC oluşturuluyor [{:016X}][v {}]
+Генерация DLC анлокера...,DLC kilit açıcı oluşturuluyor...
+Генерируется анлокер для {:016X} с номером {} и версией {}...,{} numarası ve {} sürümüyle {:016X} için kilit açıcı oluşturuluyor...
+Генерируется ярлык для пути '{}' и аргументов '{}'...,' {} ' yolu ve ' {} ' bağımsız değişkenleri için kısayol oluşturuluyor...
+Главное меню,Ana menü
+Голландский,Flemenkçe
+"Да, я уверен",Evet eminim
+Дамп анлокера в '{}'...,Kilit açıcı ' {} ' konumuna aktarılıyor...
+Дамп текущей прошивки,Mevcut ürün yazılımını boşalt
+Дамп ярлыка в '{}'...,' {} ' kısayolu atılıyor...
+Действия с файлами,Dosya işlemleri
+Действия с файлами ({}),Dosya eylemleri ({})
+Декабрь,Aralık
+День,Gün
+Диаграмма активности,Faaliyet Şeması
+Для бекапов,Yedeklemeler için
+Для выхода нажмите любую кнопку,Çıkmak için herhangi bir tuşa basın
+Для дампов,Çöplükler için
+Для логов,Günlükler için
+Добавить в любимые,Favorilere ekle
+Европа,Avrupa
+"Есть несохранёные изменения.\nВы хотите их сохранить?\n\n(+) - Да, сохранить\n\n(-) - Выйти без сохранения\n\nДругая кнопка - Отмена","Kaydedilmemiş değişiklikler var. \n Bunları kaydetmek istiyor musunuz? \n \n (+)  -  Evet, kaydet \n \n (-)  -  Kaydetmeden çık \n \n Diğer düğme  -  İptal"
+Желаемая версия: {},İstenilen sürüm: {}
+Журнал активности,Etkinlik Günlüğü
+Завершено,Tamamlanmış
+Загружается список обновлений...,Güncelleme listesi yükleniyor...
+Загрузка изображения...,Resim yükleniyor...
+Загрузка текста...{}%,Metin yükleniyor... {} %
+Загрузка файла... {}%,Dosya yükleniyor... {} %
+Задать размер файла {} не удалось: {},{} dosya boyutu ayarlanamadı: {}
+Закончено за {:02d}:{:02d}:{:02d},{:02d} : {:02d} : {:02d} yılında tamamlandı
+Закончилась память при посылке ответа,Yanıt gönderilirken bellek yetersiz
+Закончились дополнительные буферы. Скорость записи на носитель слишком низка,Ek arabellekler bitti. Depolamaya yazma hızı çok düşük
+Закрытие соединения,Bağlantı kapatılıyor
+Закрытие соединения к {}:{},{} ile bağlantı kapatılıyor: {}
+Запаковать LFS в romfs.bin,LFS'yi romfs.bin'e paketleyin
+Запаковать в romfs.bin,Romfs.bin'e paketleyin
+Запаковка папки в RomFS,Klasörü RomFS'ye paketleme
+Записанное время конца  : {},Kaydedilen bitiş zamanı : {}
+Записанное время начала : {},Kaydedilen başlangıç ​​zamanı : {}
+Запись в файл...,Dosyaya yazılıyor...
+Запись за пределами файла,Dosyanın ötesine yaz
+Заполнение нулями,Sıfır dolum
+Заполнить свободное место на SD нулями,SD'deki boş alanı sıfırlarla doldurun
+Запрет захвата видео,Video yakalamayı yasakla
+Запрет скриншотов,Ekran görüntüsü yasağı
+Запрещено,Yasaklı
+Запускавшиеся игры,Başlatılan oyunlar
+Запустить FTP сервер...,FTP sunucusunu başlat...
+Запустить HTTP сервер...,HTTP sunucusu başlatılıyor...
+Запустить МТР соединение,MTP bağlantısını başlat
+Запустить случайную игру,Rastgele oyunu başlat
+Заряд батареи                  : {},Pil şarjı : {}
+Здесь пусто,Burada hiçbir şey yok
+Игра анонсирует SDK {},Oyun SDK'sını duyurdu {}
+"Игра анонсирует более новый SDK ({}), чем текущая прошивка ({})","Oyun, mevcut donanım yazılımından ({}) daha yeni SDK'yı ({}) duyurdu"
+Игра использует titleId от дополнения,Oyun DLC'deki titleId'yi kullanıyor
+Игра использует titleId от обновления,Oyun güncellemedeki titleId'yi kullanıyor
+Извлечь в LFS,LFS'ye çıkart
+Изменение размера сохранения на {} [{}]...,{} [{}] dizinine kaydetme yeniden boyutlandırılıyor...
+Изменить версию DLC (десятичную),DLC sürümünü değiştir (ondalık)
+Изменить номер DLC (десятичный),DLC numarasını değiştir (ondalık)
+Изменить номер DLC (шестнадцатеричный),DLC numarasını değiştirin (onaltılı)
+Изменён размер SaveFS,SaveFS boyutu değişti
+Импорт исправленного тикета...,Sabit bilet içe aktarılıyor...
+Импорт тикета...,Bilet içe aktarılıyor...
+"Имя каталога\n'{}'\nсодержит недопустимые символы.\nОн не может быть создан.\n\nНажмите A - прервать, B - пропустить, X - переименовать","Dizin adı \n ' {} ' \n geçersiz karakterler içeriyor. \n Oluşturulamaz. \n \n A'ya basın  -  iptal edin, B  -  atlayın, X  -  yeniden adlandırın"
+"Имя файла\n'{}'\nсодержит недопустимые символы.\nОн не может быть создан.\n\nНажмите A - прервать, B - пропустить, X - переименовать","Dosya adı \n ' {} ' \n geçersiz karakterler içeriyor. \n Oluşturulamaz. \n \n A'ya basın  -  iptal edin, B  -  atlayın, X  -  yeniden adlandırın"
+Инсталлируется romfs.bin,Romfs.bin'i yükleme
+Информация о зарядке батареи,Pil şarj bilgisi
+Информация о контенте,İçerik bilgileri
+Информация о контенте ({}),İçerik bilgisi ({})
+Информация о прошивке,Ürün yazılımı bilgileri
+Информация о системе,Sistem bilgisi
+Информация о сохранении,Veri bilgilerini kaydet
+Информация о сохранении...,Veri bilgilerini kaydet...
+Информация о тикете,Bilet bilgileri
+Информация о тикете...,Bilet bilgileri...
+Информация об NSP,NSP Bilgileri
+Информация об атмосфере,Atmosfer bilgisi
+Информация об игровой активности,Oyun etkinliği bilgileri
+Информация об источние питания,Güç kaynağı bilgileri
+Информация об оборудовании,Donanım bilgileri
+Информация...,Bilgi...
+Испанский,İspanyol
+Использовано дополнительной памяти: {}. Создано буферов: {},Kullanılan ek bellek: {} . Oluşturulan arabellekler: {}
+Использовать папку для...,Klasörü şunun için kullan:
+Используется USB{},USB'yi kullanma {}
+Итальянский,İtalyan
+Ищется control для ProgramId {},ProgramID {} için kontrol aranıyor
+Ищется exefs/romfs для ProgramId {},ProgramID {} için exefs/romfs aranıyor
+Ищется exefs/romfs/logo для ProgramId {},ProgramID {} için exefs/romfs/logo aranıyor
+Ищется {},{} aranıyor
+Июль,Temmuz
+Июнь,Haziran
+Канадский французский,Kanada Fransızcası
+"Когда ваше устройство подключится, нажмите любую кнопку",Cihazınız bağlandığında herhangi bir düğmeye basın
+Код партии батареи    : {} ({}),Pil parti kodu : {} ({})
+Кодировка,Kodlama
+Конец игры            : -,Oyunun sonu: -
+Конец игры            : {},Oyunun sonu : {}
+Контент уже на месте,İçerik zaten mevcut
+Копирование IVFC слой {} в nca: {},IVFC katmanı {} nca'ya kopyalanıyor: {}
+Копирование PFS0 в nca,PFS0'ı nca'ya kopyalama
+Копирование PFS0 хэш таблицы в nca,PFS0 karma tablosunu nca'ya kopyalama
+Копирование SDK {} в файл: {}...,{} SDK'sı şu dosyaya kopyalanıyor: {} ...
+Копировать,Kopyala
+Корейский,Korece
+Корень не найден,Kök bulunamadı
+Корень сохранения не существует,Kaydetme kökü mevcut değil
+Корея,Kore
+Латиноамериканский испанский,Latin Amerika İspanyolcası
+Май,Mayıs
+Март,Mart
+Масштаб: По ширине,Ölçek: Genişliğe Sığdır
+Масштаб: По экрану,Ölçek: Ekrana sığdır
+Масштаб: Точка в точку,Ölçek: Mükemmel Piksel
+Масштаб: Увеличение x2,Ölçek: 2x Büyütme
+Место в  NAND         : {},NAND'daki alan : {}
+Место на SD карте     : {},SD kart alanı : {}
+Место на приставке не занято,Konsolda yer kaplamıyor
+Мета контент отсутствует,Meta içeriği eksik
+Миссия провалена\n\nНажмите А для выхода,Görev başarısız oldu \n \n Çıkmak için A'ya basın
+Миссия успешна\n\nОсталось ходов: {}\n\nНажмите А для выхода,Görev başarılı \n \n Sola hareket eder: {} \n \n Çıkmak için A'ya basın
+Модификация файла не удалась,Dosya değişikliği başarısız oldu
+На выбранном устройстве нет достаточного свободного места для установки,Seçilen cihazda kurulum için yeterli boş alan yok
+На месте нет достаточно свободного места,Yeterli boş alan yok
+Нажмите (+) для перезаписи конфига обновлённым\n\nЛюбую другую кнопку для пропуска,Güncellenen \n \n ile yapılandırmanın üzerine yazmak için (+) tuşuna basın. Atlanacak başka bir düğme
+"Нажмите (+) для удаления, любую другую кнопку для пропуска...\n (-) Удалять все, больше не спрашивая","Silmek için (+), atlamak için başka bir tuşa basın... \n (-) Tekrar sormadan hepsini silin"
+"Нажмите A, чтобы продолжить, другую кнопку, чтобы выйти","Devam etmek için A'ya basın, çıkmak için başka bir düğmeye basın"
+"Нажмите B, чтобы вернуться",Geri dönmek için B'ye basın
+Нажмите любую кнопку,Herhangi bir düğmeye basın
+Найден SDK: {},SDK bulundu: {}
+Найден {} зарегистрированный контент-файл,{} kayıtlı içerik dosyası bulundu
+Найден {} контент-файл,{} içerik dosyası bulundu
+Найден {} пользователь,{} kullanıcı bulundu
+Найден {} потерянный контент-файл,{} artık içerik dosyası bulundu
+Найден {} файл,{} dosya bulundu
+Найден {} файл с ошибками,Hatalı {} dosyası bulundu
+Найден и удалён {} неиспользуемый тикет,Kullanılmayan {} bilet bulundu ve silindi
+Найдена {} запись об игре,{} oyun girişi bulundu
+Найдена {} запись об ошибках,{} hata kaydı bulundu
+Найдена {} установленная игра,{} yüklü oyun bulundu
+Найдено {} записей об играх,{} oyun kaydı bulundu
+Найдено {} записей об ошибках,{} hata raporu bulundu
+Найдено {} записи об играх,{} oyun girişi bulundu
+({}/{}) Устанавливается {},({} / {}) {} Kuruluyor
+Найдено {} записи об ошибках,{} hata raporu bulundu
+Найдено {} зарегистрированных контент-файла,{} kayıtlı içerik dosyası bulundu
+Найдено {} зарегистрированных контент-файлов,{} kayıtlı içerik dosyası bulundu
+Найдено {} контент-файла,{} içerik dosyası bulundu
+Найдено {} контент-файлов,{} içerik dosyası bulundu
+Найдено {} обновление,{} güncelleme bulundu
+Найдено {} обновлений,{} güncelleme bulundu
+Найдено {} обновления,{} güncelleme bulundu
+Найдено {} пользователей,{} kullanıcı bulundu
+Найдено {} пользователя,{} kullanıcı bulundu
+Найдено {} потерянных контент-файла,{} kayıp içerik dosyası bulundu
+Найдено {} потерянных контент-файлов,{} artık içerik dosyası bulundu
+Найдено {} сохранение,{} kaydı bulundu
+Найдено {} сохранение...,{} kaydı bulundu...
+Найдено {} сохранений,{} kayıt bulundu
+Найдено {} сохранений...,{} kayıt bulundu...
+Найдено {} сохранения,{} kayıt bulundu
+Найдено {} сохранения...,{} kayıt bulundu...
+Найдено {} установленные игры,{} yüklü oyun bulundu
+Найдено {} установленных игр,{} yüklü oyun bulundu
+Найдено {} файла,{} dosya bulundu
+Найдено {} файла с ошибками,Hatalı {} dosya bulundu
+Найдено {} файлов,{} dosya bulundu
+Найдено {} файлов с ошибками,Hatalı {} dosya bulundu
+Найдено и удалено {} неиспользуемых тикета,Kullanılmayan {} bilet bulundu ve kaldırıldı
+Найдено и удалено {} неиспользуемых тикетов,Kullanılmayan {} bilet bulundu ve kaldırıldı
+Найдено существующее сохранение. Восстанавливаю бекап в него...,Mevcut kayıt bulundu. Yedekleme buraya geri yükleniyor...
+Настройки,Ayarlar
+Настройки DBI,DBI Ayarları
+Настройки FB2,FB2 Ayarları
+Начало игры           : -,Oyunun başlangıcı: -
+Начало игры           : {},Oyunun başlangıcı: {}
+Начало создания Control.nca,Control.nca oluşturma işlemi başlatılıyor
+Начало создания Program.nca,Program.nca oluşturma işlemi başlatılıyor
+Начать установку,Kurulumu başlat
+Не доступно,Müsait değil
+Не известно,Bilinmiyor
+"Не найден USB диск, который смог бы вместить получившийся дамп. Убедитесь, что он отформатирован в ExFAT.",Ortaya çıkan döküme sığabilecek hiçbir USB sürücüsü bulunamadı. ExFAT olarak biçimlendirildiğinden emin olun.
+Не найдены требуемые тикеты,Gerekli bilet bulunamadı
+. Время простоя \x1b[33;1m{:02}:{:02}:{:02}\x1b[37;1m,. Boşta kalma süresi \x1b[33;1m {:02} : {:02} : {:02} \x1b[37;1m
+Не получилось создать NSP,NSP oluşturulamadı
+Не удалось получить список,Liste alınamadı
+Не удалось установить аватар\n{},Avatar ayarlanamadı \n {}
+Не установлен,Kurulu değil
+Невозможно найти путь,Yol bulunamıyor
+Невозможно открыть папку журналов ошибок,Hata günlüğü klasörü açılamıyor
+Невозможно переименовать '{}' в '{}':,"' {} ', ' {} ' olarak yeniden adlandırılamıyor:"
+Невозможно получить список LFS,LFS listesi alınamıyor
+Невозможно получить список пользователей,Kullanıcı listesi alınamıyor
+Невозможно получить статус связи с Nintendo Account,Nintendo Hesabı bağlantı durumu alınamıyor
+...готово,...Tamamlandı
+Невозможно получить число записей об ошибках,Hata kaydı sayısı alınamıyor
+Невозможно прочитать общие тикеты,Ortak biletler okunamıyor
+Невозможно прочитать персонализированные тикеты,Kişiselleştirilmiş biletler okunamıyor
+Невозможно разобрать content meta,İçerik metası ayrıştırılamıyor
+Невозможно разобрать content meta. Неожиданная ошибка,İçerik metası ayrıştırılamıyor. Beklenmeyen hata
+Невозможно разобрать content meta. УСТАРЕВШАЯ ПРОШИВКА. Требуется обновление HOS,İçerik metası ayrıştırılamıyor. ESKİ YAZILIM. HOS güncellemesi gerekli
+Невозможно разобрать nca. УСТАРЕВШАЯ ПРОШИВКА. Требуется обновление HOS,nca ayrıştırılamıyor. ESKİ YAZILIM. HOS güncellemesi gerekli
+Невозможно разобрать индекс кеша,Önbellek dizini ayrıştırılamıyor
+Невозможно распаковать '{}':,' {} ' paketi açılamıyor:
+Невозможно скопировать файл\n   '{}'\n➡ '{}'\n,\n ' {} ' \n ➡ ' {} ' \n dosyası kopyalanamıyor
+Невозможно смонтировать сохранение,Kaydetme eklenemiyor
+Невозможно смонтировать устройство сохраниения,Kaydetme cihazı bağlanamıyor
+Невозможно создать каталог,Dizin oluşturulamıyor
+Невозможно создать каталог '{}':,' {} ' dizini oluşturulamıyor:
+Невозможно создать файл,Dosya oluşturulamıyor
+Невозможно создать файл '{}':,' {} ' dosyası oluşturulamıyor:
+Недопустимый идентификатор,Geçersiz tanımlayıcı
+Неизвестная игра [{:016x}],Bilinmeyen oyun [{:016x}]
+: {:>4} сохранение,: {:>4} kaydet
+Неизвестно,Bilinmiyor
+Неизвестный тайтл,Bilinmeyen başlık
+Немецкий,Almanca
+Неправильное хранилище,Geçersiz depolama
+Неправильный родительский объект,Geçersiz üst nesne
+Нет,HAYIR
+Нет VFS. Прекращение работы,VFS yok. Fesih
+Нет exefs VFS. Прекращение работы,Exef VFS yok. Fesih
+: {:>4} сохранений,: {:>4} kaydeder
+Нет logo VFS. Прекращение работы,Logo VFS'si yok. Fesih
+Нет romfs VFS. Прекращение работы,Romf VFS yok. Fesih
+Нет лого,Logo yok
+Нечего устанавливать,Yüklenecek bir şey yok
+Новое имя для '{}',' {} ' için yeni ad
+Новый каталог,Yeni dizin
+Новый размер сохранения в МБ,MB cinsinden yeni kaydetme boyutu
+Новый рейтинг (-1 для удаления),Yeni derecelendirme (kaldırılacak -1)
+: {:>4} сохранения,: {:>4} kaydeder
+Номер страницы,Sayfa numarası
+Ночь,Gece
+Нужен связанный аккаунт,Bağlı hesap gerekli
+ОШИБКА ПОЛУЧЕНИЯ ЭКСТРА ДАННЫХ,EKSTRA VERİ ALINIRKEN HATA
+Обнаружены недопустимые символы,Geçersiz karakterler algılandı
+Обновить DBI,DBI'yi güncelle
+Обновить DBI из этого файла,Bu dosyadan DBI'yi güncelleyin
+Обновить TitleDB,TitleDB'yi Güncelle
+Обновление TitleDB,TitleDB güncelleniyor
+Обновление базы данных...,Veritabanı güncelleniyor...
+Обновление версии до {} {}\n\nНажмите (+) для продолжения\nЛюбую другую кнопку для отмены,Sürüm {} olarak güncelleniyor {} \n \n Devam etmek için (+) tuşuna basın \n İptal etmek için başka herhangi bir tuş
+Обновление времени...,Güncelleme zamanı...
+Обновление закончено\n\nНажмите любую кнопку\nдля перезапуска DBI,Güncelleme tamamlandı \n \n DBI'yi yeniden başlatmak için herhangi bir düğmeye \n basın
+Обновление фейковой записи {} ➡ [v{}],Sahte kayıt güncelleniyor {} ➡ [v {}]
+Обновление. Пожалуйста подождите...,Güncelleniyor. Lütfen bekleyin...
+Обновляется запись об игре...,Oyun kaydı güncelleniyor...
+Обрабатывается запись {:016X},{:016X} kaydı işleniyor
+Обратный альбом (180°),Ters albüm (180°)
+Обратный портрет (270°),Ters Dikey (270°)
+Общее время активной игры     : {} часов,Toplam aktif oynatma süresi : {} saat
+Общее время дампа {:d}:{:02d}:{:02d},Toplam boşaltma süresi {:d} : {:02d} : {:02d}
+Общее время запущенных игр    : {} часов,Toplam oynatma süresi : {} saat
+Общее время игры      : -,Toplam oyun süresi : -
+Общее время игры      : {:d} часов {:02d} минут,Toplam oynatma süresi : {:d} saat {:02d} dakika
+Общее время установки: {:d}:{:02d}:{:02d},Toplam kurulum süresi: {:d} : {:02d} : {:02d}
+Общее время: {:02}:{:02}:{:02},Toplam süre: {:02} : {:02} : {:02}
+Общее занимаемое место: N:{} + S:{} = {},Kullanılan toplam alan: N: {} + S: {} = {}
+Общее число запусков  : -,Toplam lansman sayısı : -
+Общие,Genel
+Общий размер установки: {},Toplam kurulum boyutu: {}
+Объединение списков,Listeleri birleştir
+Объект {} не допустим,{} nesnesine izin verilmiyor
+Объект {} не может быть создан,{} nesnesi oluşturulamıyor
+Объект не открыт для редактирования,Nesne düzenlemeye açık değil
+Объект удалён,Nesne silindi
+Объект уже открыт для редактирования,Nesne zaten düzenlemeye açık
+Огибка получения адреса сокета: {} {},Soket adresi alınırken hata oluştu: {} {}
+Ожидаемый размер: {},Beklenen boyut: {}
+Ожидается большой (>4GB) файл,Büyük (>4 GB) dosya bekleniyor
+Ожидается запуск dbibackend на стороне ПК...,PC tarafında dbibackend'in başlaması bekleniyor...
+Ожидание: {} секунд,Bekleme: {} saniye
+Ожидание: {} секунда,Bekleme: {} saniye
+Ожидание: {} секунды,Bekleme: {} saniye
+Ориентация,Oryantasyon
+Ориентация...,Oryantasyon...
+Основной SDK не найден. Пробуем мультипрограмный вариант,Ana SDK bulunamadı. Çoklu program varyantı deneniyor
+Оставить сохранения,Verileri kaydetmeye devam et
+Осталось ходов:    {:>3},Sola hareket eder: {:>3}
+Остаток файла пропускается,Dosyanın geri kalanı atlandı
+Отключение связи с мобильным приложением...,Mobil uygulamayla bağlantı kesiliyor...
+Открываем папку прошивки...,Ürün yazılımı klasörü açılıyor...
+Открыть,Açık
+Открыть вторую панель,İkinci paneli aç
+Открыть как 7Z,7Z olarak aç
+Открыть как RAR,RAR olarak aç
+Открыть как ZIP,ZIP olarak aç
+Открыть как hex,Onaltılı olarak aç
+Открыть как текст,Metin olarak aç
+Открыть контент по MTP,İçeriği MTP aracılığıyla aç
+Открыть папку LFS,LFS klasörünü aç
+Content meta не найден. Установка прервана,İçerik metası bulunamadı. Kurulum iptal edildi
+Отослано {}/{} байт,{} / {} bayt gönderildi
+Отсутствуют ES сигпатчи!,ES sig yamaları eksik!
+Очистка /atmosphere/contents,Temizlik /atmosfer/içerik
+Очистка кеша rightsId...,RightsId önbelleği temizleniyor...
+Очистка папки...,Klasör temizleniyor...
+Очистка плейсхолдеров...,Yer tutucular temizleniyor...
+Очистка системы от мусора,Çöpten temizleme sistemi
+Очистка сохранений,Kayıt verileri temizleniyor
+Очистка...,Temizlik...
+Ошибка FTP сервера,FTP sunucusu hatası
+DBI Просмотр альбома,DBI Albüm Görünümü
+Ошибка во время копирования файла,Dosya kopyalanırken hata oluştu
+Ошибка во время обновления тайтла,Başlık güncellemesi sırasında hata
+Ошибка выделения сокета: {},Soket ayırma hatası: {}
+Ошибка завершения соединения: {},Bağlantı sonlandırma hatası: {}
+Ошибка загрузки картинки,Resim yükleme hatası
+Ошибка загрузки файла из альбома: {},Albümden dosya yüklenirken hata oluştu: {}
+Ошибка закрытия сокета: {},Soket kapatma hatası: {}
+Ошибка записи файла: {},Dosya yazma hatası: {}
+Ошибка изменения размера файла,Dosya yeniden boyutlandırılırken hata oluştu
+Ошибка инициализации {}: {},Başlatma hatası {} : {}
+"DPAD и стики - прокрутка, L - стр. вверх, R - стр. вниз","DPAD ve çubuklar  -  kaydırma, L  -  sayfa yukarı, R  -  sayfa aşağı"
+Ошибка опроса сокета: {},Soket yoklama hatası: {}
+Ошибка открытия каталога: {},Dizin açılırken hata oluştu: {}
+Ошибка открытия сокета: {},Soket açık hatası: {}
+Ошибка открытия файла,Dosya açılırken hata oluştu
+Ошибка открытия файла '{}': {},' {} ' dosyası açılırken hata oluştu: {}
+Ошибка открытия файла: {},Dosya açılırken hata oluştu: {}
+Ошибка отсылки: {},Gönderim hatası: {}
+Ошибка переименования: {},Yeniden adlandırma hatası: {}
+Ошибка подключения: {},Bağlantı hatası: {}
+Ошибка подмены SDK: {},SDK değiştirme hatası: {}
+"DPAD и стики - прокрутка, L - стр. вверх, R - стр. вниз, R3 - Текст/Hex","DPAD ve çubuklar  -  kaydırma, L  -  sayfa yukarı, R  -  sayfa aşağı, R3  -  Metin/Hex"
+Ошибка получения адреса узла: {},Düğüm adresi alınırken hata oluştu: {}
+Ошибка получения внеочередных данных: {},Bant dışı veriler alınırken hata oluştu: {}
+Ошибка получения имени сокета: {} {},Soket adı alınırken hata oluştu: {} {}
+Ошибка получения информаци о файле: {},Dosya bilgileri alınırken hata oluştu: {}
+Ошибка получения размера файла: {},Dosya boyutu alınırken hata oluştu: {}
+Ошибка получения флагов сокета: {},Soket bayrakları alınırken hata oluştu: {}
+Ошибка получения хранилища {},Depolama alanı alınırken hata oluştu {}
+Ошибка получения: {},Alma hatası: {}
+Ошибка получения: {} {},Alma hatası: {} {}
+Ошибка посылки файла: {},Dosya gönderme hatası: {}
+Ошибка привязки сокета к порту {}: {},Soket {} bağlantı noktasına bağlanırken hata oluştu: {}
+Ошибка привязки: {},Bağlama hatası: {}
+Ошибка принятия соединения: {} {},Bağlantı kabul hatası: {} {}
+Ошибка приёма соединения: {},Bağlantı alma hatası: {}
+Ошибка проверси метки сокета: {},Soket etiketi doğrulama hatası: {}
+Ошибка прослушивания: {},Dinleme hatası: {}
+Ошибка прослушки сокета: {},Soket dinleme hatası: {}
+Ошибка сжатия,Sıkıştırma hatası
+Ошибка создания каталога: {},Dizin oluşturulurken hata oluştu: {}
+Ошибка создания сокета: {},Soket oluşturma hatası: {}
+Ошибка создания сохранения,Kaydetme oluşturulurken hata oluştu
+Ошибка удаления каталога: {},Dizin silinirken hata oluştu: {}
+Ошибка удаления файла: {},Dosya silme hatası: {}
+Ошибка установки флагов сокета: {},Soket bayrakları ayarlanırken hata oluştu: {}
+Ошибка чтения записи об игре: {},Oyun kaydı okunurken hata oluştu: {}
+Ошибка чтения каталога: {},Dizin okuma hatası: {}
+Ошибка чтения файла: {},Dosya okuma hatası: {}
+Ошибок не найдено,Hata bulunamadı
+Ошибочный номер DLC (Должен быть в диапазоне 0x001-0x7FF),Geçersiz DLC numarası (0x001-0x7FF aralığında olmalıdır)
+Ошибочный номер DLC (Должен быть в диапазоне 1-2047),Geçersiz DLC numarası (1-2047 aralığında olmalıdır)
+"Ошибочный тикет {0}: kg {1:02X}, pm {2:02X}","Geçersiz bilet {0} : kg {1:02X} , pm {2:02X}"
+Папка LFS не найдена,LFS klasörü bulunamadı
+Папка обновления очищена,Güncelleme klasörü temizlendi
+Параметры FTP,FTP Ayarları
+Параметры MTP,MTP Ayarları
+Параметры установки,Kurulum seçenekleri
+Передача окончена,Aktarım tamamlandı
+Переименование объекта,Nesneyi yeniden adlandırma
+Переименовать,Yeniden isimlendirmek
+Перейти к первой странице,İlk sayfaya git
+Перейти к последней странице,Son sayfaya git
+Перейти к странице...,Sayfaya git...
+Переместить,Taşınmak
+Переместить в NAND,NAND'a taşın
+Переместить на SD карту,SD karta taşı
+"Перемещение {} ({}, {}) в {}","{} ({} , {}) {}'e taşınıyor"
+Перемещение {} записей,{} girişini taşıma
+Перемещение {} записи,{} girişi taşınıyor
+Перемещение {} игр,{} oyunu taşıma
+Перемещение {} игры,{} taşıma oyunu
+FTP сервер (нажмите B для остановки),FTP sunucusu (durdurmak için B'ye basın)
+Перемещение контента,İçerik taşıma
+Перенос строк,Satır sonu
+Переоткрытие ФС сохранения: {},FS kaydı yeniden açılıyor: {}
+Пишется новая запись о контенте...,Yeni içerik kaydı yazılıyor...
+Пишется новый cnmt.nca...,Yeni cnmt.nca yazılıyor...
+Подготовка...,Hazırlanıyor...
+Подключаемся к {}...,{}'a bağlanılıyor...
+Подключено к {}:{},{}'a bağlanıldı: {}
+Подмена SDK,SDK'nın Değiştirilmesi
+Подменить SDK,SDK'yı değiştirin
+Подсчитывается размер установки...,Kurulum boyutu hesaplanıyor...
+Подсчитывается размер установки...{}%,Yükleme boyutu hesaplanıyor... {} %
+Подсчитываются объекты в альбоме в NAND,NAND'da albümdeki nesneleri sayma
+Подсчитываются объекты в альбоме на SD карте,SD karttaki albümdeki nesneleri sayma
+Подсчёт метаданных...,Meta veriler sayılıyor...
+Подсчёт основного хэша,Ana karma hesaplanıyor
+Подсчёт хэша секции,Bölüm karması hesaplanıyor
+"Пожалуйста, подключите вашу консоль к ПК кабелем USB Type-C или нажмите B",Lütfen konsolunuzu bir USB Type-C kablosuyla PC'ye bağlayın veya B tuşuna basın
+"Пожалуйста, подождите...",Lütfen bekleyin...
+Поиск записей об ошибках,Hata günlüklerini arama
+Поиск неиспользуемых тикетов,Kullanılmayan biletlerin aranması
+Поиск подготовленного системного обновления,Hazırlanan sistem güncellemesi aranıyor
+Поиск потерянных тайтлов,Kayıp başlıkların aranması
+Поиск потерянных файлов в NAND,NAND'da kayıp dosyaları arama
+Поиск потерянных файлов на SD,SD'de kayıp dosyaları arama
+Поиск сохранений удалённых пользователей...,Silinen kullanıcıların kayıtlı verileri aranıyor...
+Get chargeInfoFields : {},chargeInfoFields'ı alın: {}
+Получен список из {} записей,{} girişin listesi alındı
+Получен список из {} записи,{} girişin listesi alındı
+Получение версий установленных игр,Yüklü oyun sürümlerini alma
+Получение информации из hac_versionlist...,hac_versionlist'ten bilgi alınıyor...
+Получение информации из системы...,Sistem bilgileri alınıyor...
+Получение информации об играх...,Oyun bilgileri alınıyor...
+Получение списка тикетов...,Bilet listesi alınıyor...
+Получение файла: {} МБ ({:.2f} МБ/сек),Alma dosyası: {} MB ({:.2f} MB/s)
+Получение файла: {}/\x1b[36;1m{}\x1b[37;1m МБ (\x1b[32;1m{}%\x1b[37;1m) (\x1b[33;1m{:.2f}\x1b[37;1m МБ/сек),Alma dosyası: {} / \x1b[36;1m {} \x1b[37;1m MB (\x1b[32;1m {} % \x1b[37;1m) (\x1b[33;1m {:.2f} \x1b[37;1m MB/sn)
+Полученное время: {},Alınma zamanı: {}
+Полученный размер: {},Alınan boyut: {}
+"Получено: {}, ({:.2f} МБ/сек)","Alınan: {} , ({:.2f} MB/sn)"
+Пользователь {} не найден. Создание сохранения невозможно,Kullanıcı {} bulunamadı. Yaratılışı kurtarmak imkansız
+Пользователь не найден,Kullanıcı bulunamadı
+Попытаться разобрать,Ayrıştırmayı deneyin
+Попытка исправить,Tamir etmeye çalışıyorum
+Портрет (90°),Dikey (90°)
+Португальский,Portekizce
+"L+⬅-Начало, L+➡-Конец, ZL-Регистр, ZR-Ввод, Y-Пробел, X-Забой, R3-Язык","L+⬅-Home, L+➡-End, ZL-Case, ZR-Enter, Y-Space, X-Backspace, R3-Dil"
+После удаления игры не будут запускаться,Oyunlar silindikten sonra başlamayacak
+Посылается файл: {},Dosya gönderiliyor: {}
+Посылается файл: {}/\x1b[36;1m{}\x1b[37;1m МБ (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m МБ/сек),Dosya gönderiliyor: {} / \x1b[36;1m {} \x1b[37;1m MB (\x1b[32;1m {} \x1b[37;1m %) (\x1b[33;1m {:.2f} \x1b[37;1m MB/s)
+Превышен размер командного буфера,Komut arabellek boyutu aşıldı
+LFS мод.: -,LFS modu: -
+Предоставить по FTP,FTP yoluyla sağlayın
+Прекращение прослушивания на {}:{},{} üzerinde dinleme durduruluyor: {}
+Прервано пользователем,Kullanıcı tarafından iptal edildi
+Привязка к {}:{},{}'a bağlanma : {}
+Принято соединение от {}:{},{} tarafından kabul edilen bağlantı: {}
+Проверить целостность,Bütünlüğü doğrulayın
+Проверка magic...,Büyü kontrol ediliyor...
+"Проверка {} ({}, {}), {}","Doğrulama {} ({} , {}), {}"
+Проверка картриджа...,Kartuş kontrol ediliyor...
+Проверка на наличие  {}...,{} kontrol ediliyor...
+Проверка обновлений,Güncellemeler kontrol ediliyor
+Проверка обновлений игр,Oyun güncellemelerini kontrol etme
+Проверка сохранений,Kayıt verileri kontrol ediliyor
+Проверка целостности ({}),Bütünlük kontrolü ({})
+Проверяется: {},Kontrol ediliyor: {}
+"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","LFS modu: Mevcut, Boyut: ayarlarda hesaplama devre dışı bırakıldı"
+Проверяются бекапы...,Yedeklemeler kontrol ediliyor...
+Проверяются сохранения,Kayıtlar kontrol ediliyor
+Программа {}. Control не найдена,Uygulama {} . Denetim bulunamadı
+Программа {}. Exefs не найдена,Program {} . Exef bulunamadı
+Программа {}. Romfs не найдена,Uygulama {} . Romf bulunamadı
+Произошла неизвестная ошибка,Bilinmeyen bir hata oluştu
+Произошла ошибка:,Bir hata oluştu:
+Произошла ошибка: {},Bir hata oluştu: {}
+LFS папка игры,LFS oyun klasörü
+Пропускается: {}          \r,Atlanıyor: {} \r
+Прослушивание на {}:{},{}'da dinleniyor: {}
+Просмотр альбома по HTTP,Albümü HTTP aracılığıyla görüntüle
+MTP Респондер (нажмите B для остановки),MTP Yanıtlayıcısı (durdurmak için B'ye basın)
+Просмотреть игры,Oyunları görüntüle
+Просто запуск,Sadece başlat
+Разбор,Ayrıştırma
+Раздел secure не найден,Güvenli bölüm bulunamadı
+"Размер  : {}, {} файл","Boyut : {} , {} dosya"
+"Размер  : {}, {} файла","Boyut : {} , {} dosya"
+"Размер  : {}, {} файлов","Boyut : {} , {} dosyalar"
+Размер посылаемого файла   : {},Gönderilen dosyanın boyutu: {}
+Размер сохранений     : {},Veri boyutunu kaydet : {}
+Размер: {},Boyut: {}
+Разрешено,İzin verilmiş
+Распаковать в подкаталог,Alt dizine çıkart
+Распаковать сюда,Buraya çıkart
+Распаковка файла,Dosya paketini açma
+Растущие цветы:     {},Büyüyen çiçekler: {}
+Nintendo Account задан и связан,Nintendo Hesabı ayarlandı ve bağlandı
+Регистрация контента {}...,İçerik kaydediliyor {} ...
+Регистрация файла {}...,{} dosyası kaydediliyor...
+Регистры котроллера MAX17050,MAX17050 denetleyici kayıtları
+Редактирование возрастного рейтинга...,Yaş derecelendirmesi düzenleniyor...
+Редактирование запретов,Kısıtlamaları düzenle
+Рендеринг FB2,FB2 oluşturuluyor
+"Nintendo Account задан, но не связан",Nintendo Hesabı ayarlandı ancak bağlanmadı
+Сброс требуемой версии,Gerekli sürümü sıfırla
+Сбросить требуемую версию,Gerekli sürümü sıfırla
+Сведения,Bilgi
+Сведения...,Bilgi...
+Свободное место в хранилище: {},Boş depolama alanı: {}
+Свободное место: {},Boş alan: {}
+Сгенерировать и установить,Oluşturun ve yükleyin
+Nintendo Account не задан,Nintendo Hesabı ayarlanmadı
+Сдампить на SD карту,SD karta aktar
+Сдампить на внешний USB,Harici USB'ye aktar
+Сдампить текущую прошивку,Mevcut ürün yazılımını boşalt
+Сдамплено: {}/{} ({}%) ({:.2f} МБ/сек),Boşaltıldı: {} / {} ({} %) ({:.2f} MB/sn)
+Сделать бекап,Yedek oluştur
+"Сделать бекап, если новее",Daha yeniyse yedekle
+Северная Америка,Kuzey Amerika
+Сентябрь,Eylül
+Сепия,Sepya
+Сервер запущен,Sunucu başlatıldı
+Сервер предлагает выполнить обновление DBI\n\nНажите (+) для согласия\nЛюбую другую кнопку для отмены,Sunucu bir DBI güncellemesi gerçekleştirmeyi teklif ediyor \n \n Onaylamak için (+) tuşuna basın \n İptal etmek için başka herhangi bir tuş
+Сессии,Oturumlar
+Сессия закрыта,Oturum kapatıldı
+Сессия открыта,Oturum açıldı
+Синхронизация времени по NTP,NTP zaman senkronizasyonu
+Системные приложения,Sistem uygulamaları
+Системный по умолчанию,Sistem varsayılanı
+Сканирование директорий...,Dizinler taranıyor...
+Сканирование игр...,Oyunlar taranıyor...
+Скачано {}/{},İndirildi {} / {}
+Скачивание файла не удалось,Dosya indirme işlemi başarısız oldu
+Скорость передачи: {:.2f} МБ/сек,Aktarım hızı: {:.2f} MB/sn
+Собираются сведения...,Bilgi toplanıyor...
+Соединение сброшено,Bağlantı sıfırlama
+Создание DLC анлокера,DLC kilit açıcı oluşturma
+Создание NSP,NSP oluşturma
+Создание sdmc:/versions.txt,Sdmc:/versions.txt oluşturma
+Создание дампа ({}),Döküm oluşturuluyor ({})
+Создание дампа: {},Döküm oluşturuluyor: {}
+Создание единого репака,Birleşik bir yeniden paketleme oluşturma
+Создание записи об игре...,Oyun kaydı oluşturuluyor...
+Создание новой записи об игре...,Yeni oyun girişi oluşturuluyor...
+Создание плейсхолдера: {}...,Yer tutucu oluşturuluyor: {} ...
+"Создание репака Id: {:016X}, Версия: {}, Тип: {}","Yeniden paketleme kimliği oluşturuluyor: {:016X} , Sürüm: {} , Tür: {}"
+Создание строк... {}%,Dizeler oluşturuluyor... {} %
+Создание таблицы имён,Ad tablosu oluşturma
+Создание тела файла,Dosya gövdesi oluşturma
+Создание точки доступа...,Erişim noktası oluşturuluyor...
+Создание хэш таблицы,Hash tablosu oluşturma
+Создание ярлыка,Kısayol oluşturma
+Создано новое сохранение. Восстанавливаю бекап в него...,Yeni kayıt oluşturuldu. Yedekleme ona geri yükleniyor...
+Создать sdmc:/versions.txt,Sdmc:/versions.txt oluşturun
+Создать единый репак,Tek yeniden paketleme oluştur
+Создать новое сохранение...,Yeni kayıt oluştur...
+Создать новый каталог...,Yeni dizin oluştur...
+Создать новый файл...,Yeni dosya oluştur...
+Создать ярлык,Kısayol oluştur
+Создать ярлык для hbmenu,Hbmenu için kısayol oluştur
+Создать ярлык на рабочий стол для DBI...,DBI için masaüstü kısayolu oluştur...
+Создать ярлык с аргументами...,Bağımsız değişkenlerle kısayol oluştur...
+Создаётся обновлённая запись об игре...,Güncellenmiş oyun kaydı oluşturuluyor...
+Сохранение для {} уже существует,{} için veri kaydetme zaten mevcut
+Сохранения,Verileri Kaydet
+Сохранения будут удалены!,Kayıt verileri silinecek!
+Сохранения удалённых игр ({}),Silinen oyunların kayıtları ({})
+Сохранения установленных игр ({}),Yüklü oyunların kayıtları ({})
+Сохранёные в системе параметры котроллера батареи,Sisteme kaydedilen pil kontrol cihazı parametreleri
+Существующая запись об игре не найдена,Mevcut oyun kaydı bulunamadı
+Существующее сохранение не найдено и новое не может быть создано,Mevcut kayıt bulunamadı ve yeni kayıt oluşturulamıyor
+SDK {} уже был экспортирован: {},SDK {} zaten dışa aktarıldı: {}
+Тайтл не установлен,Başlık yüklenmedi
+Тайтл установлен,Başlık yüklendi
+Тайтлы с ошибками:,Hatalı başlıklar:
+Текущее время: {},Güncel saat: {}
+SDK на подмену не найдены,Değiştirilecek SDK bulunamadı
+Тема,Tema
+Тикет исправлен,Bilet düzeltildi
+Тикеты,Biletler
+Тикеты не найдены,Bilet bulunamadı
+864,864
+881,881
+"больше шансов, что оно заработает». Их","işe yarama şansı daha fazla""."
+быстро проникли в планы шадоков и,bahçeler. Türkiye'den bir gönüllü gönderildi
+"всякий раз, когда растение расцветает",gizli plan ve iyi bir plan yapmaya karar verdim
+"выражениях: «Чем больше неудач, тем","ifadeler: ""Ne kadar çok başarısızlık, o kadar çok"
+"вычислили, что у них есть по крайней",sonunda her şeyin işe yarayacağını
+заработает… И они торопятся поскорее,"tekerlekler, ama buna kesinlikle inanıyorlar"
+"и дает транзистор, они мчатся, чтобы",gülmek. Misafirin tırmanmasına izin verdiler
+"и не кончилось успехом». Или, в других",bu sadece bir talihsizlik olmayacak
+"мере один шанс из миллиона, что она",dışarı.' Taktikleri dönüyor
+миллионная заработает».,ilk 999.999'u hızlı bir şekilde taahhüt edin
+"ничего, что бы непрерывно продолжалось",sonsuza kadar devam edecek hiçbir şey yok
+"но окружили его со всех сторон, и","internet, hızlı bir şekilde çözdü"
+"опытов, чтобы быть уверенными, что",sonunda işe yarayacak... Ve acele ediyorlar
+осуществить 999999 первых неудачных,her şey milyonda bir ihtimal
+"очень умные благодаря своим шляпам,",doğrudan içinde bulunan ekipmandan
+"планету гиби искать транзисторы. Гиби,",Komşular güya cips çıkarıyor
+постоянно кончаясь неудачами.,Sıfırlama sadakatle devam ediyor
+принципов шадокской логики: «Нет,Shadok mantığının ilkeleri: «Hayır
+"ракета еще несовершенна, но они",fedakarlık ne kadar yüksek olursa olasılık o kadar yüksek olur
+"растений, произрастающих на огородах.",rehberlikte de yeterli fiş yok
+решили позабавиться. Они позволили,bataklıklar doğrudan komşulara
+собрать урожай прежде шадока.,"ekipman depolarından birine,"
+"терпят неудачу потому, что не хватает",'Bakmanın Yoluyla' yayınevi
+транзисторов в системах безопасности.,Bardak.' Baş stratejist açıkladı
+"шадоку забраться в один из их огородов,","parçalar. Onlar, kurnaz oldukları için"
+«У шадоков ситуация удовлетворительна.,"""Bataklık sakinleri arasında her şey"
+"Испытания ракет продолжаются,",plana göre gider. süreci
+Но у гиби транзисторы собирают с,roketler düşüyor çünkü orada
+Решено послать одного из шадоков на,sistemlerde veya tuvaletlerde. Ve
+original,orijinal
+"SSID: {}, Пароль: {}","SSID: {} , Şifre: {}"
+Тип оборудования        : {},Ekipman türü : {}
+TempC0               : {:04x},SıcaklıkC0 : {:04x}
+Уровень заряда батареи         : {},Pil şarj düzeyi : {}
+URL для проверки обновлений,Güncelleme kontrolü için URL
+Установка с картриджа,Kartuştan yükleme
+Установка через DBIbackend,DBIbackend aracılığıyla yükleyin
+Форсировать UTF-8,UTF-8'i zorla
+Хэш версии              : {},Sürüm karması : {}
+Читать дату файлов,Dosya tarihini oku
+Экзосфера очищает CAL0      : {},Exosfer CAL0'ı temizler: {}
+Экран                 : ({:08X}) {},Ekran : ({:08X}) {}
+Язык                    : {},Dil : {}
+"Интервал автобекапа сейвов, дни",Otomatik yedekleme aralığını (günleri) kaydet
+Конфигурация зарядки            : {},Şarj yapılandırması : {}
+Режим Hi-Z включён              : {},Hi-Z modu etkin : {}
+Зарядка батареи включена        : {},Pil şarjı etkin : {}
+Маршрут электропитания          : {},Güç kaynağı yolu : {}
+Напряжение источника            : {} mV,Kaynak voltajı : {} mV
+Ток источника                   : {} mA,Kaynak akımı : {} mA
+Быстрая зарядка разрешена       : {},Hızlı şarja izin verilir : {}
+Целевая прошивка            : {}.{}.{},Hedef donanım yazılımı : {} . {} . {}
+Поддерживаемая версия HOS   : {},Desteklenen HOS sürümü : {}
+Предел входного тока (буст)     : {} mA,Giriş akımı limiti (yükseltme): {} mA
+Предел тока быстрой зарядки     : {} mA,Hızlı şarj akım limiti : {} mA
+Напряжение батареи              : {} mV,Akü voltajı : {} mV
+Контроллер источника получен    : {},Kaynak denetleyicisi elde edildi: {}
+OTG Запрошен                    : {},OTG Talep Edildi : {}
+Производитель    : {:s} ({:02X}),Üretici : {:s} ({:02X})
+OEM ID           : {:s} ({:s}),OEM Kimliği : {:s} ({:s})
+Имя продукта     : {:s},Ürün adı : {:s}
+Ревизия продукта : {:s},Ürün revizyonu : {:s}
+Серийный номер   : {:s},Seri numarası : {:s}
+Ёмкость с завода   : {} mAh,Fabrika kapasitesi : {} mAh
+Автоповтор кнопок при удержании,Düğme basılı tutulduğunda otomatik olarak tekrarlanır
+Версия атмосферы            : {}.{}.{},Atmosfer sürümü : {} . {} . {}
+Версия прошивки         : {}.{}.{}-{}.{},Aygıt yazılımı sürümü : {} . {} . {} - {} . {}
+Возраст батареи                : {}%,Pil yaşı : {} %
+Время гашения экрана в секундах,Saniye cinsinden ekran karartma süresi
+Выключать экран,Ekranı kapat
+Выход на рабочий стол,Ana Sayfaya Çıkış
+Дата первого игрового события : {},İlk oynanış etkinliği tarihi : {}
+Добавлять суффикс к имени файла,Dosya adına sonek ekleyin
+Достаточное питание            : {},Yeterli güç : {}
+Есть исправление RCM бага   : {},RCM hata düzeltmesi var: {}
+Журналирование действий,Eylem günlüğü
+Закладки на SD,SD Yer İmleri
+Запись в CAL0 разрешена     : {},CAL0 yazmaya izin verildi : {}
+Запускать точку доступа,Erişim noktasını başlat
+Запустить FTP сервер,FTP sunucusunu başlat
+Запустить HTTP сервер,HTTP sunucusunu başlat
+Заряд батареи                  : {}%,Pil şarjı : {} %
+Заряд батареи (сырое значение) : {}%,Pil şarjı (ham değer): {} %
+Зарядка батареи                : {},Pil şarjı : {}
+Инструменты,Aletler
+Использовать 5 GHz,5 GHz kullanın
+Использовать MSG_WAITALL в recv,Alıntıda MSG_WAITALL kullanın
+Использовать для неё TitleID,Bunun için TitleID'yi kullanın
+Использовать разгон,Hız aşırtmayı kullanın
+Использовать скрытый SSID,Gizli SSID'yi kullan
+Источник питания                : {},Güç kaynağı : {}
+Курсор на обеих панелях,Her iki paneldeki imleç
+%% заряд-разряд    : {},%% şarj-deşarj : {}
+Никнейм консоли         : {},Konsol takma adı : {}
+Общее число игровых сессий    : {},Toplam oyun oturumu sayısı : {}
+Bluetooth MAC адрес   : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Bluetooth MAC adresi : {:02X} : {:02X} : {:02X} : {:02X} : {:02X} : {:02X}
+CDIR в листинге,Listelemede CDIR
+Configuration Id1     : {},Yapılandırma Kimliği1 : {}
+DeviceId                : {0:} ({0:016X}),Cihaz Kimliği : {0:} ({0:016X})
+Папка для бекапа сохранений,Veri yedekleme klasörünü kaydet
+Папка для дампа игр,Oyun dökümü klasörü
+Папка журналов,Günlük klasörü
+DramId                  : {} ({}),Dramı Kimliği : {} ({})
+Пароль,Şifre
+Перевернуть джойконы,Joy-Eksilerini Çevir
+Перевернуть экран,Ekranı döndür
+Emummc включён              : {},Emummc etkinleştirildi : {}
+Переносить слова,Kelimeleri kaydır
+Платформа               : {},Platform : {}
+FullCap              : {:04x} ({} mAh),Tam Kapasite : {:04x} ({} mAh)
+Подсвечивать файлы обновлений,Güncelleme dosyalarını vurgula
+FullCapNom           : {:04x} ({} mAh),FullCapNom : {:04x} ({} mAh)
+Показываемая версия     : {},Görüntülenen sürüm : {}
+Показываемое название   : {},Görünen ad : {}
+Показывать 'Обновить отсюда','Buradan güncelle'yi göster
+Показывать объединённый NSP,Birleştirilmiş NSP'yi göster
+Показывать папку 'Mods&Cheats','Modlar ve Hileler' klasörünü göster
+Показывать прогрев кеша,Önbellek ısınmasını göster
+Показывать размер LFS (долго),LFS boyutunu göster (yavaş)
+Показывать секунды,Saniyeleri göster
+Показывать часы в статусе,Saati durum olarak göster
+Поколение ключа             : {},Anahtar oluşturma : {}
+Git commit hash             : {:016X},Git taahhüt karması : {:016X}
+Полная ёмкость     : {} mAh,Tam kapasite : {} mAh
+IavgEmpty            : {:04x},OrtalamaBoş : {:04x}
+Пользовательские хранилища,Kullanıcı depoları
+Предел входного тока            : {} mA,Giriş akımı limiti : {} mA
+Предназначение          : {},Amaç : {}
+Проверять хэш при установке,Yükleme sırasında karmayı doğrulayın
+Просмотр SD карты,SD karta göz atın
+Просмотр USB носителей,USB sürücülerine göz atın
+Просмотр раздела SYSTEM,SİSTEM bölümüne göz atın
+Просмотр раздела USER,USER bölümüne göz atın
+Просмотр сети,Ağa göz at
+Просмотр сохранений,Kayıtları görüntüle
+Просмотр тикетов,Biletleri görüntüle
+Просмотр установленных игр,Yüklü oyunları görüntüle
+Регион                  : {},Bölge : {}
+Режим HiZ зарядки       : {},HiZ şarj modu : {}
+Режим киоска            : {},Kiosk modu : {}
+Родительский PIN        : {},Ebeveyn PIN'i : {}
+Серийный # прочитанный  : {},Seri numarası okundu: {}
+Серийный # угаданный    : {},Tahmin edilen seri numarası : {}
+Серийный номер        : {},Seri numarası : {}
+Силовая роль                    : {},Güç rolü : {}
+QrTable00            : {:04x},QrTable00 : {:04x}
+Смещать курсор после выделения,Seçimden sonra imleci hareket ettir
+QrTable10            : {:04x},QrTable10 : {:04x}
+Сожжено предохранителей : {},Sigortalar yandı : {}
+Создавать LFS папку,LFS klasörü oluştur
+QrTable20            : {:04x},QrTable20 : {:04x}
+QrTable30            : {:04x},QrTable30 : {:04x}
+RCOMP0               : {:04x},RCOMP0 : {:04x}
+Сохранения только в RO режиме,Yalnızca RO modunda kaydeder
+RTC запущены (приблизительно) : {},RTC başlatıldı (yaklaşık olarak): {}
+Текущая ёмкость                 : {}%,Mevcut kapasite : {} %
+Текущая ёмкость    : {} mAh,Mevcut kapasite : {} mAh
+Текущее напряжение : {} mV,Akım voltajı : {} mV
+Текущий заряд      : {}%,Mevcut şarj : {} %
+Текущий ток        : {} mA,Akım çekişi : {} mA
+Тема отображения,Ekran teması
+Температура        : {}°C,Sıcaklık : {} °C
+Температура батареи             : {}°C,Pil sıcaklığı : {} °C
+Тип SoC                 : {},SoC Türü : {}
+Тип источника питания          : {},Güç kaynağı türü : {}
+Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Kablosuz LAN MAC adresi : {:02X} : {:02X} : {:02X} : {:02X} : {:02X} : {:02X}
+Форсировано вклчение USB 3.0: {},Zorla etkinleştirilen USB 3.0 : {}
+Возраст батареи                 : {}%,Pil yaşı : {} %
+Предел напряжения заряда батареи: {} mV,Akü şarj voltajı limiti : {} mV
+Средняя температура: {}°C,Ortalama sıcaklık : {} °C
+Сумма %% заряд-разряд: {} (~{} 0-100 циклов),Toplam %% şarj-deşarj : {} (~ {} 0-100 döngü)
+"          Париж, издательство Грассе.",onları takip edin.» I. I. Pizdobolo
+      Название: {}\n      Издатель: {}\n      Версия: ,Ad: {} \n Yayıncı: {} \n Sürüm:
+Удаление игры ,Oyun siliniyor
+Удаляется бекап ,Yedekleme siliniyor
+Удалять после установки: ,Kurulumdan sonra sil:
+  Автоопределение,Otomatik algılama
+Шифрование секции ,Bölüm şifreleme
+Ярлык   : ,Kısayol:
+ {} минут,{} dakika
+Язык    : ,Dil :
+Путь    : ,Yol  :
+  Жак Руксель. Великолепие навыворот.,Zaferin gerçekleşmesi için ölümcül hatalar
+  Кодировка...,Kodlanıyor...
+  Применить,Uygula
+  Редактирование,Düzenleme
+ (по времени игры),(oynama süresine göre)
+ (по названию игры),(oyun adına göre)
+ (по числу запусков),(başlatma sayısına göre)
+     {:<10} Шифрование: {} Размер установки: {}{:>10},{:<10} Şifreleme: {} Kurulum boyutu: {} {:>10}
+ [НЕ МОГУ ОТКРЫТЬ ФАЙЛ],[DOSYA AÇILAMIYOR]
+Автозапуск FTP: ,FTP Otomatik Başlatma:
+Автор   : ,Yazar  :
+ {:>5} часа,{:>5} saat
+Базовое хранилище: ,Temel depolama:
+ {:>5} часов,{:>5} saat
+ВНИМАНИЕ ,UYARI
+ВНИМАНИЕ! ,UYARI!
+ {} в чёрном списке.,{} kara listede.
+Версия  : ,Sürüm:
+Внимание! ,Uyarı!
+ {} минута,{} dakika
+ {} минуты,{} dakika
+Всего освобождено места : ,Boşaltılan toplam alan:
+    {:>2} сек,{:>2} sn
+ Закрытие игры,Kapanış oyunu
+Выйти из DBI           : ,DBI'dan çık:
+Выключить экран        : ,Ekranı kapat:
+ Запуск игры,Oyunu başlat
+ Логаут пользователя \x1b[36;1m{}\x1b[37;1m,Kullanıcı \x1b[36;1m {} \x1b[37;1m oturumunu kapatıyor
+ Логин пользователя \x1b[36;1m{}\x1b[37;1m,Kullanıcı adı \x1b[36;1m {} \x1b[37;1m
+ Переключение на игру,Oyuna geçiş
+Загружено ,Yüklendi
+ Режим работы изменился: {},Çalışma modu değiştirildi: {}
+ Сброс системных часов,Sistem saatini sıfırla
+ Сворачивание игры,Oyunu simge durumuna küçült
+Запрос на удаление ,İsteği sil
+ Состояние электропитания изменилось: {},Güç kaynağı durumu değişti: {}
+" и {} новое DLC,","ve {} yeni DLC,"
+"    Великий колдун сказал, что ракеты","Atılım'ın. Bunker, eyalet"
+" и {} новых DLC,","ve {} yeni DLC'ler,"
+Имя     : ,İsim   :
+ сортировка по дате создания,oluşturulma tarihine göre sırala
+ сортировка по имени,isme göre sırala
+ сортировка по имени игры,oyun adına göre sırala
+Используется ,Kullanılmış
+ сортировка по месту установки,yükleme konumuna göre sırala
+Конвертация в фейковые ,Sahteye dönüştürme
+ сортировка по общему размеру,toplam boyuta göre sırala
+ сортировка по пользователю,kullanıcıya göre sırala
+ сортировка по порядку игры,oyun sırasına göre sırala
+Место установки        : ,Kurulum yeri:
+ сортировка по размеру,boyuta göre sırala
+Название: ,İsim:
+    Дело здесь в одном из основных,negatif büyüme sağlıyor. DSÖ
+Начало установки. Место установки: ,Kurulum başladı. Kurulum yeri:
+Невозможно создать выходной zip-файл: ,Çıktı zip dosyası oluşturulamıyor:
+Неиспользуемый тикет: ,Kullanılmayan bilet:
+   {:>3} мин,{:>3} dk
+Общий размер передачи  : ,Toplam aktarım boyutu :
+Общий размер установки : ,Toplam kurulum boyutu:
+Ожидается ,Beklenen
+Ожидание включения интерфейса: ,Arayüzün gelmesini bekliyorum:
+Освобождено места в NAND: ,NAND alanı serbest bırakıldı:
+Освобождено места на SD : ,Boş SD alanı:
+   Получение списка бекапов...   ,Yedekleme listesi alınıyor...
+DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - Переход к странице... \n\n       L/R - Навигация по главам   \n\n       (-) - Эта подсказка         \n\n       (+) - Меню                  ,DPAD/Sticks  -  Sayfada gezinme \n \n ZR+ZL  -  Sayfaya atla... \n \n L/R  -  Bölümde gezinme \n \n (-)  -  Bu ipucu \n \n (+)  -  Menü
+Ошибка чтения регистров max17050: ,max17050 kayıtları okunurken hata oluştu:
+Ошибка чтения сохранённых параметров контроллера: ,Kaydedilen kontrol cihazı parametreleri okunurken hata oluştu:
+   Получение списка бекапов...{}/{}    ,Yedekleme listesi alınıyor... {} / {}
+Предупреждения: ,Uyarılar:
+"LFS мод.: Присутствует, Размер: ","LFS modu. : Mevcut, Boyut:"
+Пропускаем файл до начала secure раздела ,Dosya güvenli bölümün başlangıcına atlanıyor
+Размер  : ,Boyut :
+Сброс требуемой версии к ,Gerekli sürümü şuna sıfırla:
+   Получение списка сохранений...   ,Kaydetme listesi alınıyor...
+Скорость USB интерфейса: ,USB arayüz hızı:
+Создан zip-файл: ,Zip dosyası oluşturuldu:
+Создание бекапа сохранения ,Kaydetme yedeği oluşturuluyor
+Создание каталога: ,Dizin oluşturma:
+Создание объекта: ,Nesne oluşturma:
+Создание фейковой записи... ,Sahte giriş oluşturuluyor...
+Создаётся MTP хранилище: ,MTP depolama alanı oluşturma:
+Статистика игры ,Oyun istatistikleri
+Строка поиска: ,Arama dizesi:
+Не проверять место     : ,Alanı kontrol etmeyin:
+Проверять хеш-сумму NCA: ,NCA karmasını doğrulayın:
+Патчить имена (HOS 21+): ,Yama adları (HOS 21+):
+Занулять мастерключ    : ,Ana anahtarı sıfırla:
+Патчить запись видео   : ,Yama video çekimi:
+Патчить скриншоты      : ,Yama ekran görüntüleri:
+Игра использует SDK {},Oyun SDK'yı kullanıyor {}
+Удалить старые обновления игр,Eski oyun güncellemelerini silin
+Удалить потерянный контент с SD,Artık içeriği SD'den silin
+Удалить потерянный контент из NAND,Artık içeriği NAND'dan silin
+Удалить плейсхолдеры с SD,Yer tutucuları SD'den silin
+Удалить плейсхолдеры из NAND,NAND'dan yer tutucuları silin
+Удалить неиспользуемые тикеты,Kullanılmayan biletleri silin
+Починить тикеты с ошибками дампа,Döküm hatası olan biletleri onarın
+Удалить скачанное обновление системы,İndirilen sistem güncellemesini silin
+Очистить папку erpt_reports,erpt_reports klasörünü temizle
+Очистить кеш тикетов,Bilet önbelleğini temizle
+Очистить /atmosphere/contents,/atmosferi/içerikleri temizle
+Удалить сохранения удалённых пользователей,Silinen kullanıcıların kayıtlarını silin
+Дата производства: {:s},Üretim tarihi : {:s}
+Ник: {},Takma ad: {}
+Установить обновления из текущей папки,Güncelleştirmeleri geçerli klasörden yükle
+Патчить требование NNID: ,Yama NNID gereksinimi:
+Выполнить выбранные действия,Seçilen eylemleri yürüt
+CID: {:s},Müşteri Kimliği : {:s}
+TitleId : {} BID: {},Başlık Kimliği : {} TEKLİF: {}
+"Meta SDK: {},  Program SDK: {}","Meta SDK : {} , Program SDK'sı: {}"
+"Внимание!!! Включение следующих опций приведет к тому,",Uyarı!!! Aşağıdaki seçeneklerin etkinleştirilmesi aşağıdaki sonuçlara yol açacaktır:
+что установленные NCA файлы будут отличаться от исходных:,yüklü NCA dosyalarının orijinallerinden farklı olacağı:
+Включение синхронизации времени по сети...,Ağ zaman senkronizasyonu etkinleştiriliyor…
+ Да ,Evet
+Нет ,HAYIR
+Это действие будет нельзя отменить,Bu işlem geri alınamaz
+Да,Evet
+Произошла ошибка: ,Bir hata oluştu:
