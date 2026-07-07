@@ -3,6 +3,8 @@
 *.pyc
 *.pyo
 output/
+dist/
+.venv/
 __pycache__/
 .vscode/
 *.code-workspace

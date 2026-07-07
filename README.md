@@ -1,5 +1,7 @@
 # 💎 DBI Patcher: Universal Localization
 
+[English](README.md) | [Español](README_ES.md)
+
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/rashevskyv/DBIPatcher)](https://github.com/rashevskyv/DBIPatcher/releases)
 [![GitHub downloads](https://img.shields.io/github/downloads/rashevskyv/DBIPatcher/total)](https://github.com/rashevskyv/DBIPatcher/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -58,6 +60,26 @@ If you want to run the patcher locally:
 - GitHub CLI (`gh`) for deployment
 - Access to Claude 3.5 API (via proxy)
 
+### Local setup
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+### Translation quality checks
+```powershell
+# Validate the Spanish (Latin America) CSV and its binary output
+python -m unittest discover -s tests -v
+
+# Build only the ES-419 translation
+python scripts/build_translation_bin.py translations/es419.csv -o output/translation_es419.bin
+
+# Synchronize reviewed ES-419 strings with the master dictionary
+python scripts/import_translation_csv.py es419
+```
+
 ### Commands
 ```powershell
 # Run the full test cycle (sync, translate, align, validate, build)
@@ -91,6 +113,9 @@ Translations are stored in the `translations/` directory as CSV files. To improv
 1. Fork the repo.
 2. Edit the `.csv` for your language.
 3. Submit a Pull Request!
+
+Spanish (Latin America) contributions should follow the
+[ES-419 style guide](docs/es419-style-guide.md).
 
 ---
 
