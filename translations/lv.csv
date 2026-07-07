@@ -1235,3 +1235,10 @@ TitleId : {} BID: {},TitleId    : {} BID: {}
 Это действие будет нельзя отменить,Šo darbību nevar atsaukt
 Да,Jā
 Произошла ошибка: ,Radās kļūda: 
+В файле /switch/prod.keys отсутствуют необходимые ключи.,Failā /switch/prod.keys trūkst nepieciešamo atslēgu.
+Часть функций программы будет недоступна.,Daļa programmas funkciju nebūs pieejamas.
+Перегрузитесь в Hekate и используйте Lockpick_RCM.bin пейлоад,Pārstartējiet uz Hekate un izmantojiet Lockpick_RCM.bin payload
+для дампа ключей из SysNAND.,lai izgūtu atslēgas no SysNAND.
+Проверять хэш при установке    : ,Pārbaudīt jaucējkodu instalējot    : 
+Просмотр раздела USER          : ,Pārlūkot USER nodalījumu          : 
+Тема отображения               : ,Displeja tēma                : 

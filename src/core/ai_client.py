@@ -33,8 +33,8 @@ def _log_interaction(payload: dict, response_text: str, row_id: Optional[int] = 
 
 # ── Configuration ────────────────────────────────────────────────────
 
-# Providers: "GEMINI_PROXY" or "OMNIROAD"
-PROVIDER               = "OMNIROAD"
+# Providers: "GEMINI_PROXY", "OMNIROAD" or "WEB2API"
+PROVIDER               = "WEB2API"
 
 # Gemini Proxy Config
 API_URL                = "http://127.0.0.1:2048/v1/chat/completions"
@@ -47,8 +47,17 @@ MODEL_GEMINI           = "gemini-flash-lite-latest"
 OMNIROAD_URL           = "http://localhost:20128/v1/chat/completions"
 MODEL_OMNI             = "kr/claude-sonnet-4.5"
 
+# Gemini Web2API Config
+WEB2API_URL            = "http://localhost:8081/v1/chat/completions"
+MODEL_WEB2API          = "gemini-3.5-flash"
+
 # Active Model (will be chosen based on PROVIDER)
-MODEL = MODEL_OMNI if PROVIDER == "OMNIROAD" else MODEL_GEMINI
+if PROVIDER == "OMNIROAD":
+    MODEL = MODEL_OMNI
+elif PROVIDER == "WEB2API":
+    MODEL = MODEL_WEB2API
+else:
+    MODEL = MODEL_GEMINI
 
 TIMEOUT                = 180
 
@@ -75,8 +84,8 @@ def init_session() -> None:
     with open(LOG_FILE, "w", encoding="utf-8") as f:
         f.write(f"--- NEW SESSION STARTED AT {datetime.now().isoformat()} | PROVIDER: {PROVIDER} ---\n")
 
-    if PROVIDER == "OMNIROAD":
-        print(f"  [INIT] OmniRoad ({MODEL}) selected. Ready!")
+    if PROVIDER in ("OMNIROAD", "WEB2API"):
+        print(f"  [INIT] {PROVIDER} ({MODEL}) selected. Ready!")
         return
 
     # Gemini Proxy initialization
@@ -117,8 +126,8 @@ def init_session() -> None:
 
 def init_session_shadok() -> None:
     """Initialize a NEW chat session with shadok-specific system instructions."""
-    if PROVIDER == "OMNIROAD":
-        print(f"  [SHADOK-INIT] OmniRoad ({MODEL}) selected. Ready!")
+    if PROVIDER in ("OMNIROAD", "WEB2API"):
+        print(f"  [SHADOK-INIT] {PROVIDER} ({MODEL}) selected. Ready!")
         return
 
     print("  [SHADOK-INIT] Creating new chat for Shadok block...")
@@ -242,12 +251,12 @@ def translate_shadok_block(full_text: str, target_langs: list[str], max_line_len
         ensure_ascii=True
     )
 
-    if PROVIDER == "OMNIROAD":
+    if PROVIDER in ("OMNIROAD", "WEB2API"):
         messages = [
             {"role": "system", "content": SHADOK_SYSTEM_PROMPT},
             {"role": "user", "content": user_content}
         ]
-        url = OMNIROAD_URL
+        url = OMNIROAD_URL if PROVIDER == "OMNIROAD" else WEB2API_URL
     else:
         messages = [{"role": "user", "content": user_content}]
         url = API_URL
@@ -273,12 +282,12 @@ def translate_batch(text: str, target_langs: list[str], row_id: Optional[int] = 
         ensure_ascii=True
     )
 
-    if PROVIDER == "OMNIROAD":
+    if PROVIDER in ("OMNIROAD", "WEB2API"):
         messages = [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": user_content}
         ]
-        url = OMNIROAD_URL
+        url = OMNIROAD_URL if PROVIDER == "OMNIROAD" else WEB2API_URL
     else:
         messages = [{"role": "user", "content": user_content}]
         url = API_URL
@@ -304,17 +313,12 @@ def refine(correction: str, target_langs: list[str], row_id: Optional[int] = Non
         f"{', '.join(target_langs)}."
     )
 
-    if PROVIDER == "OMNIROAD":
-        # For OmniRoad, we'd ideally want to keep history, but since we're simulating 
-        # stateless calls here, we'll just send it as a follow-up.
-        # However, without session management in OMNIROAD_URL, we'll just send it as user message.
-        # Actually, OmniRoad should support chat history if we manage it. 
-        # For now, let's keep it simple and send common SYSTEM_PROMPT.
+    if PROVIDER in ("OMNIROAD", "WEB2API"):
         messages = [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": user_content}
         ]
-        url = OMNIROAD_URL
+        url = OMNIROAD_URL if PROVIDER == "OMNIROAD" else WEB2API_URL
     else:
         messages = [{"role": "user", "content": user_content}]
         url = API_URL

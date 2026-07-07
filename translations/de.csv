@@ -1235,3 +1235,10 @@ TitleId : {} BID: {},TitleId   : {} BID: {}
 Это действие будет нельзя отменить,Diese Aktion kann nicht rückgängig gemacht werden
 Да,Ja
 Произошла ошибка: ,Ein Fehler ist aufgetreten: 
+В файле /switch/prod.keys отсутствуют необходимые ключи.,In der Datei /switch/prod.keys fehlen die erforderlichen Schlüssel.
+Часть функций программы будет недоступна.,Ein Teil der Programmfunktionen wird nicht verfügbar sein.
+Перегрузитесь в Hekate и используйте Lockpick_RCM.bin пейлоад,Starten Sie in Hekate neu und verwenden Sie die Lockpick_RCM.bin Payload
+для дампа ключей из SysNAND.,um Schlüssel aus SysNAND zu dumpen.
+Проверять хэш при установке    : ,Hash bei Installation prüfen    : 
+Просмотр раздела USER          : ,USER-Partition anzeigen          : 
+Тема отображения               : ,Anzeigedesign                : 

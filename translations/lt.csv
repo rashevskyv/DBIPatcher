@@ -1235,3 +1235,10 @@ TitleId : {} BID: {},TitleId     : {} BID: {}
 Это действие будет нельзя отменить,Šio veiksmo negalima atšaukti
 Да,Taip
 Произошла ошибка: ,Įvyko klaida: 
+В файле /switch/prod.keys отсутствуют необходимые ключи.,Faile /switch/prod.keys trūksta reikiamų raktų.
+Часть функций программы будет недоступна.,Kai kurios programos funkcijos bus neprieinamos.
+Перегрузитесь в Hekate и используйте Lockpick_RCM.bin пейлоад,Perkraukite į Hekate ir naudokite Lockpick_RCM.bin payload
+для дампа ключей из SysNAND.,išgauti raktus iš SysNAND.
+Проверять хэш при установке    : ,Tikrinti maišą diegiant    : 
+Просмотр раздела USER          : ,Naršyti USER skaidinį          : 
+Тема отображения               : ,Ekrano tema                  : 

@@ -122,3 +122,25 @@ dbi_patcher/
 
 ### Комміти:
 - `docs: clarify hardcoded strings (Yes/No, Shadoks, LangNames) and bump version to v0.0.79`
+
+## [2026-07-07] Інтеграція нових мов та налаштування Gemini 3.5 Flash
+
+### Виконані дії:
+1.  **Інтеграція PR #14 (Turkish)**:
+    - Витягнуто файл `translations/tr.csv`.
+    - Додано турецьку мову `"tr": "Turkish"` в конфігурацію `data/languages.json` з виправленням JSON-синтаксису (пропущена кома).
+2.  **Інтеграція PR #16 (Spanish LA)**:
+    - Витягнуто файли `translations/es419.csv`, `README_ES.md` та `docs/es419-style-guide.md`.
+    - Збережено стабільність коду — зміни коду з PR #16 не імпортувалися, оскільки вони конфліктували з поточною логікою blocks та містили невикористовуваний код.
+3.  **Оновлення blocks.json**:
+    - Вилучено застарілі рядки `"NAND"` та `" SD "` з блоку `NSP_INSTALL_ANSWERS` у `data/blocks.json`, що усунуло помилки валідації.
+4.  **ai_client.py**:
+    - Додано підтримку провайдера `WEB2API` (модель `gemini-3.5-flash` на порті `8081`).
+    - Провайдер `WEB2API` встановлено за замовчуванням.
+5.  **Запуск Pipeline**:
+    - Запущено `sync`, `translate`, `validate`, `export`, `build`.
+    - Усі 26620 перекладів для 23 мов успішно провалідовано з 0 помилок.
+    - Успішно згенеровано бінарні файли `.bin` для всіх мов, включаючи `translation_tr.bin` та `translation_es419.bin`.
+
+### Комміти:
+- `feat: integrate Turkish and Latin American Spanish localizations, configure Gemini 3.5 Flash support (v0.0.83)`
