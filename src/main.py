@@ -1145,7 +1145,8 @@ def cmd_deploy() -> None:
 *   **PTBR** — Portuguese (Brazil)
 *   **UA** — Ukrainian
 *   **ZHCN** — Chinese (Simplified)
-*   **ZHTW** — Chinese (Traditional)"""
+*   **ZHTW** — Chinese (Traditional)
+*   **TR** — Turkish"""
 
     release_body = f"""### 🌍 DBI Multilingual Localization (v{patcher_ver})
 ![GitHub release (tag)](https://img.shields.io/github/downloads/rashevskyv/DBIPatcher/{dbi_ver}/total)
