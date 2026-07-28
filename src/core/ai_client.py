@@ -49,7 +49,7 @@ MODEL_OMNI             = "kr/claude-sonnet-4.5"
 
 # Gemini Web2API Config
 WEB2API_URL            = "http://localhost:8081/v1/chat/completions"
-MODEL_WEB2API          = "gemini-3.5-flash"
+MODEL_WEB2API          = "gemini-3.6-flash"
 
 # Active Model (will be chosen based on PROVIDER)
 if PROVIDER == "OMNIROAD":
