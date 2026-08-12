@@ -5,6 +5,8 @@
 output/
 dist/
 .venv/
+.venv-wsl/
+graphify-out/
 __pycache__/
 .vscode/
 *.code-workspace
