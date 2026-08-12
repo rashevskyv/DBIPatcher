@@ -1,3 +1,8 @@
+- [x] Active: pin and run BohdanBuinich/dbi-i18n as the external DBI 898 patching stage.
+  - [x] Add a reproducible wrapper pinned to f1f8bebec2b423694e8f058f2d3540a35382b1fd.
+  - [x] Document the WSL/devkitA64 command and upstream attribution.
+  - [x] Add a focused regression check and bump the workbook version.
+
 - [x] Фаза 1: Аналіз структури CSV та Excel.
 - [x] Фаза 2: Синхронізація ua.csv -> dictionary.xlsx.
 - [x] Фаза 3: Переклад через AI (Gemini Proxy).

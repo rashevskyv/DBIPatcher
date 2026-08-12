@@ -80,6 +80,16 @@ python scripts/build_translation_bin.py translations/es419.csv -o output/transla
 python scripts/import_translation_csv.py es419
 ```
 
+### DBI 898 NRO Patching (WSL)
+To patch a pristine `DBI.898.ru.nro` binary to support external runtime translations:
+- Requires **WSL / Linux**, **Python 3.12+** with `zstandard>=0.23,<1`, and **devkitA64** installed at `/opt/devkitpro`.
+- Uses the pinned upstream patcher from [BohdanBuinich/dbi-i18n](https://github.com/BohdanBuinich/dbi-i18n) (see [UPSTREAM.md](UPSTREAM.md)).
+
+```bash
+# In WSL:
+python3 scripts/patch_dbi.py --nro /path/to/DBI.898.ru.nro --output DBI.898.ru_patched.nro --debug none
+```
+
 ### Commands
 ```powershell
 # Run the full test cycle (sync, translate, align, validate, build)
@@ -123,6 +133,7 @@ Spanish (Latin America) contributions should follow the
 
 - **DBI Creator**: [duckbill](https://github.com/rashevskyv/dbi)
 - **Localization Engine**: [tg:@buinich_bohdan](https://github.com/rashevskyv)
+- **Assembly Patcher**: [BohdanBuinich/dbi-i18n](https://github.com/BohdanBuinich/dbi-i18n)
 - **Special Thanks**: Claude 3.5 Sonnet for the heavy lifting.
 
 > *Created with ❤️ for the Switch community.*
