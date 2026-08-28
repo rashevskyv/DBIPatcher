@@ -144,3 +144,14 @@ dbi_patcher/
 
 ### Комміти:
 - `feat: integrate Turkish and Latin American Spanish localizations, configure Gemini 3.5 Flash support (v0.0.83)`
+
+## [2026-08-14] Оновлення тексту сповіщення про оновлення релізу
+
+### Виконані дії:
+1.  **src/main.py (`cmd_deploy`)**: Змінено логіку генерації плашки оновлення релізу (`update_notice`). Тепер вона завжди вказує користувачам повторно завантажувати обидва файли: `DBI.nro` та файли перекладу (`translation files`).
+2.  **Очищення застарілої логіки**: Вилучено ненадійну перевірку розміру віддаленого NRO (`nro_changed`), оскільки при оновленні релізу завжди обов'язково оновлювати як бінарник, так і переклади.
+3.  **Версіонування**: Ітеровано версію до `v0.0.85`.
+
+### Комміти:
+- `fix: always prompt to redownload both DBI.nro and translation files on release update (v0.0.85)`
+

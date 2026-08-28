@@ -1202,30 +1202,13 @@ This release provides high-quality translations for **DBI version {dbi_ver}**.
         # Release exists - update assets and notes
         print(f"  [GH] Release {dbi_ver} exists, updating assets and notes...")
 
-        # Detect if NRO changed by comparing local file size with release asset
-        nro_changed = False
-        if patched_nro and patched_nro.exists():
-            local_nro_size = patched_nro.stat().st_size
-            asset_info = subprocess.run(
-                ["gh", "release", "view", dbi_ver, "--json", "assets", "-q", ".assets[] | select(.name==\"DBI.nro\") | .size"],
-                capture_output=True, text=True, encoding="utf-8"
-            )
-            remote_nro_size = int(asset_info.stdout.strip()) if asset_info.stdout.strip().isdigit() else 0
-            if remote_nro_size != local_nro_size:
-                nro_changed = True
-                print(f"  [GH] NRO changed: remote={remote_nro_size} vs local={local_nro_size}")
-
         # Add update notice to release body
         from datetime import datetime, timezone, timedelta
         kyiv_tz = timezone(timedelta(hours=3))
         kyiv_time = datetime.now(kyiv_tz).strftime("%Y-%m-%d %H:%M")
 
-        redownload_items = "**translation files**"
-        if nro_changed:
-            redownload_items = "**DBI.nro** and **translation files**"
-
         update_notice = f"""> [!WARNING]
-> 🔄 **Release updated on {kyiv_time} (Kyiv time).** Please re-download {redownload_items} to get the latest version.
+> 🔄 **Release updated on {kyiv_time} (Kyiv time).** Please re-download both **DBI.nro** and **translation files** to get the latest version.
 """
         # Insert update notice after the badge line
         badge_line = f"![GitHub release (tag)](https://img.shields.io/github/downloads/rashevskyv/DBIPatcher/{dbi_ver}/total)"

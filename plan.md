@@ -1,4 +1,4 @@
-# Active plan: upstream DBI patcher
+# Active plan: upstream DBI patcher & release updates
 
 1. [x] Add a small script that clones `BohdanBuinich/dbi-i18n` into a temporary
    directory, checks out commit `f1f8bebec2b423694e8f058f2d3540a35382b1fd`,
@@ -8,7 +8,10 @@
    requirements.
 3. [x] Verify the focused test and the existing unit suite, bump the workbook
    patch version, then review and commit the focused change.
+4. [x] Оновити шаблон оновлення релізу в `cmd_deploy` (`src/main.py`), щоб завжди вказувати на необхідність завантаження як `DBI.nro`, так і файлів перекладу (`translation files`). Ітерувати версію до `v0.0.85`.
 
 ## Verification Outcome
 - `scripts/patch_dbi.py` offline tests (`tests/test_patch_dbi.py`) and `--help` CLI verified and passed.
 - The full test suite ran in WSL; all core component and patch wrapper tests passed, with one pre-existing ES-419 terminology-baseline failure unrelated to this task.
+- Шаблон тексту `update_notice` в `src/main.py` оновлено та перевірено.
+- Версію словника ітеровано до 0.0.85.
