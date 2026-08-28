@@ -1242,3 +1242,27 @@ TitleId : {} BID: {},TitleId  : {} BID: {}
 Проверять хэш при установке    : ,Verify hash on install    : 
 Просмотр раздела USER          : ,Browse USER partition          : 
 Тема отображения               : ,Display theme                : 
+Температура    : {}$°$C,Temperature         : {}°C
+Температура     : {}$°$C,Temperature         : {}°C
+Температура      : {}$°$C,Temperature         : {}°C
+Температура       : {}$°$C,Temperature         : {}°C
+Температура        : {}$°$C,Temperature         : {}°C
+Температура         : {}$°$C,Temperature         : {}°C
+Температура          : {}$°$C,Temperature         : {}°C
+Температура           : {}$°$C,Temperature         : {}°C
+Температура            : {}$°$C,Temperature         : {}°C
+Температура             : {}$°$C,Temperature         : {}°C
+Температура              : {}$°$C,Temperature         : {}°C
+Срепняя температура: {}$°$C,Average temperature : {}°C
+Средняя температура: {}$°$C,Average temperature : {}°C
+Температура батареи        : {}$°$C,Battery temperature          : {}°C
+Температура батареи         : {}$°$C,Battery temperature          : {}°C
+Температура батареи          : {}$°$C,Battery temperature          : {}°C
+Температура батареи           : {}$°$C,Battery temperature          : {}°C
+Температура батареи            : {}$°$C,Battery temperature          : {}°C
+Температура батареи             : {}$°$C,Battery temperature          : {}°C
+Температура батареи              : {}$°$C,Battery temperature          : {}°C
+Температура батареи               : {}$°$C,Battery temperature          : {}°C
+Температура батареи                : {}$°$C,Battery temperature          : {}°C
+Температура батареи                 : {}$°$C,Battery temperature          : {}°C
+Температура батареи                  : {}$°$C,Battery temperature          : {}°C
