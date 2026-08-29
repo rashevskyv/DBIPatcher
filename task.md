@@ -1,4 +1,9 @@
-- [x] Active: migrate the external patching stage to pinned `0xroast/dbi-translate` for DBI 905, resolve PR #23's temperature aliases durably in the workbook/CSV pipeline, and make only Web2API row translation bounded-parallel.
+- [ ] Active: remediate workbook data-loss paths found in the DBI 905 / Web2API review.
+  - [ ] Keep an existing translation until an accepted replacement is ready; a failed row must not persist an empty cell.
+  - [ ] Deduplicate `cmd_sync` rows without stale row indices and without discarding complementary non-empty language cells.
+  - [ ] Add focused regression tests, bump the workbook patch version once, and do not run `translate`, `sync`, `export`, `build`, or `deploy`.
+
+- [x] Previous active: migrate the external patching stage to pinned `0xroast/dbi-translate` for DBI 905, resolve PR #23's temperature aliases durably in the workbook/CSV pipeline, and make only Web2API row translation bounded-parallel.
   - [x] Preserve the union of PR #22's literal `$°$` DBI 898 aliases, PR #23's clean-`°` DBI 905 aliases, and the three canonical temperature rows in every language column.
   - [x] Replace the DBI 898 `dbi-i18n` wrapper with the pinned DBI 905 `dbi-translate` CLI; retain reproducible download and digest verification.
   - [x] Repair the duplicated `cmd_sync` definition and seed Turkish values before adding the missing rows, so later export cannot erase PR aliases or Turkish translations.

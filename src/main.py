@@ -432,7 +432,6 @@ def cmd_translate() -> None:
                 ok, msg = validate(str(original), str(cell_val), lc)
                 if not ok and "English preservation" not in msg:
                     print(f"  [Row {row}][{lc}] Invalid existing translation, scheduling re-translation: {msg}")
-                    ws.cell(row, col_map[lc], "")
                     missing.append(lc)
         if missing:
             rows_to_translate.append((row, original, missing))
@@ -740,13 +739,24 @@ def cmd_sync() -> None:
 
     # 4. Remove duplicates only (keep first occurrence)
     duplicates_removed = 0
+    all_duplicate_rows: list[int] = []
     for orig, row_indices in excel_keys.items():
         if len(row_indices) > 1:
-            print(f"  [SYNC] Removing {len(row_indices)-1} duplicate(s) for: {repr(orig[:30])}...")
-            # Delete all duplicates except the first one
-            for row_idx in sorted(row_indices[1:], reverse=True):
-                ws.delete_rows(row_idx)
-                duplicates_removed += 1
+            print(f"  [SYNC] Merging and removing {len(row_indices)-1} duplicate(s) for: {repr(orig[:30])}...")
+            first_row = row_indices[0]
+            for dup_row in row_indices[1:]:
+                for col in range(1, ws.max_column + 1):
+                    first_val = ws.cell(first_row, col).value
+                    dup_val = ws.cell(dup_row, col).value
+                    first_empty = first_val is None or not str(first_val).strip()
+                    dup_has_val = dup_val is not None and str(dup_val).strip() != ""
+                    if first_empty and dup_has_val:
+                        ws.cell(first_row, col, dup_val)
+                all_duplicate_rows.append(dup_row)
+
+    for row_idx in sorted(all_duplicate_rows, reverse=True):
+        ws.delete_rows(row_idx)
+        duplicates_removed += 1
 
     # Bump version or just update status
     ver = get_version(wb)

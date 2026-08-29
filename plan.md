@@ -1,5 +1,36 @@
 # Active plan: upstream DBI patcher & release updates
 
+## Active remediation: workbook data integrity
+
+### Scope
+
+- Fix only the two confirmed data-loss paths in `cmd_translate` and `cmd_sync`.
+- Preserve the existing `ThreadPoolExecutor` design: workers remain workbook-free and
+  the main thread remains the only workbook mutator/checkpointer.
+- Do not run data-mutating pipeline commands. Tests must use in-memory workbooks or
+  temporary paths.
+
+### Implementation and verification
+
+1. When an existing translation fails validation during scan, schedule it for
+   replacement without clearing its worksheet cell. Apply an accepted replacement
+   only in the main-thread result path. Add a regression test where one row fails
+   and another checkpoints; the failed row must retain its old value.
+2. In `cmd_sync`, merge non-empty cells from duplicate rows into the first row, then
+   delete every duplicate index in one global descending pass. Add a regression test
+   for `A, B, A, B, C` that retains `A, B, C` and complementary translations.
+3. Follow the established workbook-version convention: bump `data/dictionary.xlsx`
+   once from `0.0.86` to `0.0.87`; run focused tests in WSL and report actual output.
+
+### Acceptance criteria
+
+- A failed translation never erases a pre-existing cell, including after a later
+  successful row checkpoint and final version save.
+- Sync removes every duplicate deterministically, preserves unrelated rows and
+  retains non-empty translations from duplicate rows.
+- No translation CSV/workbook data is regenerated or otherwise changed except the
+  workbook metadata version bump.
+
 ## Active implementation plan: DBI 905 / durable aliases / Web2API concurrency
 
 ### Scope and non-goals

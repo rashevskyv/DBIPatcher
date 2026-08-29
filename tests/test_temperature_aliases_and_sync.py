@@ -1,4 +1,4 @@
-﻿"""Regression tests for PR #22 and PR #23 temperature aliases, cmd_sync deduplication, and workbook/CSV consistency."""
+"""Regression tests for PR #22 and PR #23 temperature aliases, cmd_sync deduplication, and workbook/CSV consistency."""
 
 from __future__ import annotations
 
@@ -8,6 +8,7 @@ import json
 import sys
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 import openpyxl
 
@@ -15,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from src.core.text_utils import tokenize  # noqa: E402
+from src.main import cmd_sync
 
 
 class TemperatureAliasesAndSyncTests(unittest.TestCase):
@@ -57,12 +59,12 @@ class TemperatureAliasesAndSyncTests(unittest.TestCase):
         )
 
     def test_workbook_structure_and_version(self) -> None:
-        """Verify workbook contains 1,288 unique Original keys, 'tr' column, and version 0.0.86."""
+        """Verify workbook contains 1,288 unique Original keys, 'tr' column, and version 0.0.87."""
         self.assertIn("tr", self.headers, "Translations sheet missing 'tr' column")
 
         meta_ws = self.wb["Metadata"]
         version = str(meta_ws["B1"].value or "")
-        self.assertEqual(version, "0.0.86", f"Expected version 0.0.86, got {version}")
+        self.assertEqual(version, "0.0.87", f"Expected version 0.0.87, got {version}")
 
         original_col = self.col_map["Original"]
         originals = []
@@ -218,6 +220,72 @@ class TemperatureAliasesAndSyncTests(unittest.TestCase):
                 wb_tokenized_keys,
                 f"Mismatch in source keys for {lc}.csv (diff size: {len(csv_keys ^ wb_tokenized_keys)})",
             )
+
+    def test_cmd_sync_deduplication_and_cell_merging(self) -> None:
+        """Verify cmd_sync applied to A, B, A, B, C retains exactly A, B, C and merges complementary cells."""
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = "Translations"
+        meta = wb.create_sheet("Metadata")
+        meta["A1"] = "version"
+        meta["B1"] = "0.0.87"
+        meta["A2"] = "updated"
+        meta["B2"] = ""
+
+        # Columns: Original, ru, ua, en, de
+        headers = ["Original", "ru", "ua", "en", "de"]
+        for col_idx, h in enumerate(headers, 1):
+            ws.cell(1, col_idx, h)
+
+        # Initial rows:
+        # Row 2: A, ru='A_ru', ua='A_ua', en='A_en_first', de=None
+        # Row 3: B, ru='B_ru', ua=None, en=None, de='B_de_first'
+        # Row 4: A, ru=None, ua=None, en='A_en_second', de='A_de_second'
+        # Row 5: B, ru=None, ua='B_ua_second', en='B_en_second', de=None
+        # Row 6: C, ru='C_ru', ua='C_ua', en='C_en', de='C_de'
+        rows_data = [
+            ["A", "A_ru", "A_ua", "A_en_first", None],
+            ["B", "B_ru", None, None, "B_de_first"],
+            ["A", None, None, "A_en_second", "A_de_second"],
+            ["B", None, "B_ua_second", "B_en_second", None],
+            ["C", "C_ru", "C_ua", "C_en", "C_de"],
+        ]
+        for r_idx, row in enumerate(rows_data, 2):
+            for c_idx, val in enumerate(row, 1):
+                if val is not None:
+                    ws.cell(r_idx, c_idx, val)
+
+        with patch("src.main.open_or_create_workbook", return_value=wb), \
+             patch("src.main.save_workbook") as mock_save, \
+             patch("src.main.load_languages", return_value={"ru": "Russian", "ua": "Ukrainian", "en": "English", "de": "German"}), \
+             patch("src.main.DATA_DIR", ROOT / "non_existent_data_dir"):
+            cmd_sync()
+
+        mock_save.assert_called_once_with(wb)
+
+        # Header (row 1) + 3 retained data rows (A, B, C) -> max_row == 4
+        self.assertEqual(ws.max_row, 4)
+
+        # Verify Row 2 (A)
+        self.assertEqual(ws.cell(2, 1).value, "A")
+        self.assertEqual(ws.cell(2, 2).value, "A_ru")
+        self.assertEqual(ws.cell(2, 3).value, "A_ua")
+        self.assertEqual(ws.cell(2, 4).value, "A_en_first")  # First row value retained when both non-empty and differ
+        self.assertEqual(ws.cell(2, 5).value, "A_de_second") # Empty cell merged from duplicate row
+
+        # Verify Row 3 (B)
+        self.assertEqual(ws.cell(3, 1).value, "B")
+        self.assertEqual(ws.cell(3, 2).value, "B_ru")
+        self.assertEqual(ws.cell(3, 3).value, "B_ua_second") # Merged from duplicate row
+        self.assertEqual(ws.cell(3, 4).value, "B_en_second") # Merged from duplicate row
+        self.assertEqual(ws.cell(3, 5).value, "B_de_first")  # Retained from first row
+
+        # Verify Row 4 (C) - Unrelated unique row was not deleted
+        self.assertEqual(ws.cell(4, 1).value, "C")
+        self.assertEqual(ws.cell(4, 2).value, "C_ru")
+        self.assertEqual(ws.cell(4, 3).value, "C_ua")
+        self.assertEqual(ws.cell(4, 4).value, "C_en")
+        self.assertEqual(ws.cell(4, 5).value, "C_de")
 
 
 if __name__ == "__main__":

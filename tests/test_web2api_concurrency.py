@@ -11,6 +11,8 @@ import unittest
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
+import openpyxl
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
@@ -304,7 +306,7 @@ class Web2APIConcurrencyTests(unittest.TestCase):
         mock_process_row.side_effect = concurrent_worker
 
         with patch("src.main.load_languages", return_value={"en": "English", "de": "German"}):
-            with patch("src.main.bump_version", return_value="0.0.86"):
+            with patch("src.main.bump_version", return_value="0.0.87"):
                 with patch("sys.argv", ["main.py", "translate"]):
                     cmd_translate()
 
@@ -364,7 +366,7 @@ class Web2APIConcurrencyTests(unittest.TestCase):
                 mock_process_row.side_effect = serial_worker
 
                 with patch("src.main.load_languages", return_value={"en": "English"}):
-                    with patch("src.main.bump_version", return_value="0.0.86"):
+                    with patch("src.main.bump_version", return_value="0.0.87"):
                         with patch("sys.argv", ["main.py", "translate"]):
                             cmd_translate()
 
@@ -405,6 +407,94 @@ class Web2APIConcurrencyTests(unittest.TestCase):
                         f"Expected exactly one 'response_{i}' entry in log",
                     )
                     self.assertIn(f'"worker_id": {i}', content)
+
+    @patch("src.main.save_workbook")
+    @patch("src.main.init_session")
+    @patch("src.main.open_or_create_workbook")
+    @patch("src.main.translate_batch")
+    def test_cmd_translate_retains_invalid_value_on_failure_and_checkpoints(
+        self,
+        mock_translate_batch: MagicMock,
+        mock_open_wb: MagicMock,
+        mock_init_session: MagicMock,
+        mock_save_wb: MagicMock,
+    ) -> None:
+        """Verify pre-existing invalid translation is kept on failure and preserved across all checkpoints."""
+        ai_client.PROVIDER = "WEB2API"
+        os.environ["DBI_TRANSLATE_WORKERS"] = "2"
+
+        # Create in-memory workbook
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = "Translations"
+        meta = wb.create_sheet("Metadata")
+        meta["A1"] = "version"
+        meta["B1"] = "0.0.87"
+        meta["A2"] = "updated"
+        meta["B2"] = ""
+
+        # Columns: Original, en, de
+        ws.cell(1, 1, "Original")
+        ws.cell(1, 2, "en")
+        ws.cell(1, 3, "de")
+
+        # Row 2: Failed translation row (has pre-existing invalid translation in 'en')
+        ws.cell(2, 1, "Строка {} с ошибкой:")
+        ws.cell(2, 2, "Old Invalid without colon or placeholder")
+        ws.cell(2, 3, "Gültig {} Deutsch:")
+
+        # Row 3: Successful translation row (has pre-existing invalid translation in 'en')
+        ws.cell(3, 1, "Успешная {} строка:")
+        ws.cell(3, 2, "Another Bad without colon or placeholder")
+        ws.cell(3, 3, "Auch {} Deutsch:")
+
+        mock_open_wb.return_value = wb
+
+        expected_row3_en = "Valid Успешная {} строка:"
+
+        # Mock translate_batch:
+        # Row 2 raises Exception to simulate complete translation failure
+        # Row 3 returns valid translation
+        def mock_batch(original, missing, row_id=None):
+            if "ошибкой" in original:
+                raise RuntimeError("AI service unavailable for Row 2")
+            return {lc: f"Valid {original}" for lc in missing}
+
+        mock_translate_batch.side_effect = mock_batch
+
+        # Track cell values at each save_workbook checkpoint
+        checkpoints = []
+        def record_checkpoint(saved_wb):
+            ws_check = saved_wb["Translations"]
+            checkpoints.append({
+                "row2_en": ws_check.cell(2, 2).value,
+                "row3_en": ws_check.cell(3, 2).value,
+            })
+        mock_save_wb.side_effect = record_checkpoint
+
+        with patch("src.main.load_languages", return_value={"en": "English", "de": "German"}), \
+             patch("src.main.bump_version", return_value="0.0.87"), \
+             patch("sys.argv", ["main.py", "translate"]):
+            cmd_translate()
+
+        # Exactly two checkpoints: one after Row 3 successfully applies and one final save
+        self.assertEqual(len(checkpoints), 2)
+        self.assertEqual(checkpoints[0]["row3_en"], expected_row3_en)
+        self.assertEqual(checkpoints[1]["row3_en"], expected_row3_en)
+
+        # In EVERY checkpoint, row 2 must retain its old invalid translation "Old Invalid without colon or placeholder"
+        for cp in checkpoints:
+            self.assertEqual(
+                cp["row2_en"],
+                "Old Invalid without colon or placeholder",
+                f"Row 2 lost its pre-existing value in checkpoint: {cp}",
+            )
+
+        # Final state in workbook:
+        # Row 2 failed -> retained pre-existing translation
+        self.assertEqual(ws.cell(2, 2).value, "Old Invalid without colon or placeholder")
+        # Row 3 succeeded -> replaced with new valid translation
+        self.assertEqual(ws.cell(3, 2).value, expected_row3_en)
 
 
 if __name__ == "__main__":
