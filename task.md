@@ -6,6 +6,8 @@
   - [x] Screen reflow contract: literary localize then word-wrap into N lines ≤ max (words may cross lines).
   - [x] Per-lang retries (×3) with escalating stricter prompts + JSON `\n` fallback fix.
   - [x] Screen budget: height<=35, width<=39; fewer OK; 34–35 packed into last slot via [[LF]]; model 3.7; war allegory in prompt.
+  - [x] Blank trailing slots + export no RU fallback; prompt: blanks/format, Пиздоболов puns, русня naming; `--pad-only`.
+  - [ ] Dictionary-wide Shadok/Шадок → русня (and per-lang analogues) — separate step.
   - [x] Offline tests in `tests/test_shadok_localization.py` (mock AI; no live pipeline).
 
 - [x] Завершене: заходи підвищення надійності релізу (Release Hardening) та синхронізація документації.

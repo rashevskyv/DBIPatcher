@@ -116,6 +116,11 @@ def resolve_shadok_mapping_rows(
     return resolved
 
 
+# Intentional blank Shadok cell: shows empty on screen but is a real translation
+# entry so export/bin do not fall back to Russian Original.
+SHADOK_BLANK_CELL = " "
+
+
 def parse_and_validate_shadok_block(
     translated_text: str,
     max_lines: int,
@@ -125,24 +130,27 @@ def parse_and_validate_shadok_block(
 
     Screen height budget is ``max_lines`` (default 35). Fewer lines is OK.
     More than ``max_lines`` is a hard fail (overflow).
-    Each line must be non-empty and visual_length <= ``max_line_length`` (width, 39).
+    Non-blank lines must have visual_length <= ``max_line_length`` (width, 39).
+    Blank lines are allowed (e.g. spacer after the author attribution).
     No truncation/repair here.
     """
     if translated_text is None:
         raise ValueError("translated_text is None")
     lines = [ln.rstrip("\r") for ln in str(translated_text).split("\n")]
-    # Drop a single trailing empty from a final \\n, but not intentional blanks mid-block
+    # Drop a single trailing empty from a final \\n only (keep interior blank rows)
     if len(lines) > 1 and lines[-1] == "":
         lines = lines[:-1]
     if len(lines) < 1:
-        raise ValueError("Expected at least 1 non-empty line, got 0")
+        raise ValueError("Expected at least 1 line, got 0")
     if len(lines) > max_lines:
         raise ValueError(
             f"Expected at most {max_lines} lines (screen height budget), got {len(lines)}"
         )
+    if not any(line.strip() for line in lines):
+        raise ValueError("Shadok block has no non-empty content lines")
     for i, line in enumerate(lines):
         if not line.strip():
-            raise ValueError(f"Line {i + 1} is empty/whitespace-only")
+            continue  # intentional blank screen row
         vl = visual_length(line)
         if vl > max_line_length:
             raise ValueError(
@@ -151,16 +159,23 @@ def parse_and_validate_shadok_block(
     return lines
 
 
+def normalize_shadok_cell(line: str) -> str:
+    """Store blank visual rows as SHADOK_BLANK_CELL so RU original cannot leak."""
+    if line is None or not str(line).strip():
+        return SHADOK_BLANK_CELL
+    return str(line)
+
+
 def pad_shadok_lines_to_mapping(lines: list[str], mapping_count: int) -> list[str]:
-    """Pad a short block to mapping_count slots with a single space (suppresses RU fallback)."""
-    if len(lines) > mapping_count:
+    """Pad a short block to mapping_count slots with blank cells (no RU fallback)."""
+    normalized = [normalize_shadok_cell(line) for line in lines]
+    if len(normalized) > mapping_count:
         raise ValueError(
-            f"Cannot pad: {len(lines)} lines exceeds mapping size {mapping_count}"
+            f"Cannot pad: {len(normalized)} lines exceeds mapping size {mapping_count}"
         )
-    if len(lines) == mapping_count:
-        return list(lines)
-    # One space keeps a non-null translation.bin entry so Original RU does not show
-    return list(lines) + [" "] * (mapping_count - len(lines))
+    if len(normalized) == mapping_count:
+        return normalized
+    return normalized + [SHADOK_BLANK_CELL] * (mapping_count - len(normalized))
 
 
 def expand_shadok_visual_lines(text: str) -> list[str]:
@@ -189,8 +204,8 @@ def fit_shadok_lines_to_slots(
     del max_line_length  # width already enforced per visual line before fit
     if len(lines) <= slot_count:
         return pad_shadok_lines_to_mapping(lines, slot_count)
-    head = list(lines[: slot_count - 1])
-    tail = list(lines[slot_count - 1 :])
+    head = [normalize_shadok_cell(line) for line in lines[: slot_count - 1]]
+    tail = [normalize_shadok_cell(line) for line in lines[slot_count - 1 :]]
     # Workbook stores [[LF]]; export detokenize → \n for the bin builder
     last = "[[LF]]".join(tail)
     return head + [last]
@@ -802,12 +817,15 @@ def cmd_validate() -> None:
                 for slot_i, text in enumerate(content_slots):
                     row_idx = shadok_resolved[slot_i][0]
                     parts = expand_shadok_visual_lines(text)
-                    if not parts or any(not p.strip() for p in parts):
-                        shadok_errors += 1
-                        print(f"  [SHADOK][Row {row_idx}][{lc}] empty hole in block")
+                    if not parts:
+                        if text is None or str(text) == "":
+                            shadok_errors += 1
+                            print(f"  [SHADOK][Row {row_idx}][{lc}] missing cell")
                         continue
                     visual_lines.extend(parts)
                     for part in parts:
+                        if not part.strip():
+                            continue  # intentional blank visual row
                         vl = visual_length(part)
                         if vl > max_line_len:
                             shadok_errors += 1
@@ -839,6 +857,13 @@ def cmd_export() -> None:
     header = [ws.cell(1, c).value for c in range(1, ws.max_column + 1)]
     col_map = {h: i + 1 for i, h in enumerate(header) if h}
 
+    shadok_rows: set[int] = set()
+    shadok_config = load_shadok_config()
+    if shadok_config:
+        shadok_rows = build_shadok_exclusion_rows(
+            ws, col_map, shadok_config.get("mapping", [])
+        )
+
     TRANSLATIONS_DIR.mkdir(parents=True, exist_ok=True)
 
     missing_total = 0
@@ -858,8 +883,14 @@ def cmd_export() -> None:
                     continue
                     
                 translation = ws.cell(row, col_map[lc]).value
-                
-                if not translation or not str(translation).strip():
+
+                # Shadok blanks must stay blank — never fall back to EN/RU originals
+                if row in shadok_rows:
+                    if translation is None or str(translation) == "":
+                        translation = SHADOK_BLANK_CELL
+                    elif not str(translation).strip():
+                        translation = SHADOK_BLANK_CELL
+                elif not translation or not str(translation).strip():
                     english_fallback = ws.cell(row, col_map["en"]).value if "en" in col_map else None
                     translation = english_fallback if english_fallback and str(english_fallback).strip() else original
                     missing_count += 1
@@ -1206,11 +1237,53 @@ def cmd_align() -> None:
 SHADOK_MAX_ATTEMPTS = 3  # attempt 0..2; each retry uses a stricter prompt
 
 
+def repad_shadok_language_slots(
+    ws,
+    col_map: dict,
+    resolved: list[tuple[int, str, str]],
+    lang_code: str,
+) -> int:
+    """Blank out trailing Shadok slots that are empty or still equal to Russian orig.
+
+    Returns how many cells were changed to SHADOK_BLANK_CELL.
+    """
+    if lang_code not in col_map:
+        return 0
+    col = col_map[lang_code]
+    values: list[str | None] = []
+    for row_idx, orig, _new in resolved:
+        raw = ws.cell(row_idx, col).value
+        values.append(None if raw is None else str(raw))
+
+    last_content = -1
+    for i, (val, (_row, orig, _new)) in enumerate(zip(values, resolved)):
+        if val is None:
+            continue
+        if not str(val).strip():
+            continue
+        if str(val).strip() == str(orig).strip():
+            continue  # still Russian — treat as non-content for trailing cut
+        last_content = i
+
+    changed = 0
+    for i, (row_idx, orig, _new) in enumerate(resolved):
+        if i <= last_content:
+            continue
+        cur = values[i]
+        if cur == SHADOK_BLANK_CELL:
+            continue
+        ws.cell(row_idx, col, SHADOK_BLANK_CELL)
+        changed += 1
+    return changed
+
+
 def cmd_shadok() -> None:
     """Localize Shadok parody texts (mapping.new) into rows identified by mapping.orig.
 
     Per language: up to SHADOK_MAX_ATTEMPTS AI calls with escalating prompt strictness.
     Malformed attempts never write cells for that language.
+
+    ``--pad-only``: do not call AI; only blank trailing slots that still leak Russian.
     """
     config = load_shadok_config()
     if not config:
@@ -1225,6 +1298,7 @@ def cmd_shadok() -> None:
     max_line_length = int(config.get("max_line_length", 39))
     max_lines = int(config.get("max_lines", 35))
     target_langs = get_shadok_target_langs()
+    pad_only = "--pad-only" in sys.argv
 
     wb = open_or_create_workbook()
     ws = wb[SHEET_NAME]
@@ -1236,6 +1310,24 @@ def cmd_shadok() -> None:
     except ValueError as e:
         print(f"  [ERROR] {e}")
         print("  No cells written.")
+        return
+
+    if pad_only:
+        print()
+        print("=" * 60)
+        print("  DBI SHADOK PAD-ONLY (no AI)")
+        print("=" * 60)
+        total = 0
+        for lc in target_langs:
+            if lc not in col_map:
+                continue
+            n = repad_shadok_language_slots(ws, col_map, resolved, lc)
+            if n:
+                print(f"  [PAD][{lc}] blanked {n} trailing slots")
+            total += n
+        if total:
+            save_workbook(wb)
+        print(f"  DONE! Blanked {total} cells total. Re-run export/build/dist.")
         return
 
     source = "\n".join(new for _, _, new in resolved)
@@ -1672,7 +1764,8 @@ def cmd_help() -> None:
     print("  sync        - Sync ua.csv into dictionary.xlsx")
     print("  translate   - Translate missing cells via AI")
     print("  shadok      - Localize Shadok parody block via AI (manual)")
-    print("                Up to 3 attempts/lang; each retry uses a stricter prompt")
+    print("                Up to 3 attempts/lang; stricter prompt each retry")
+    print("                --pad-only  blank trailing slots (no AI) if RU still leaks")
     print("  validate    - Validate all translations")
     print("  align       - Align colons in blocks by longest line")
     print("  export      - Export per-language CSVs")

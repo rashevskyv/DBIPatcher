@@ -20,7 +20,9 @@ from src.core.ai_client import (  # noqa: E402
 )
 from src.main import (  # noqa: E402
     COMMANDS,
+    SHADOK_BLANK_CELL,
     cmd_align,
+    cmd_export,
     cmd_shadok,
     cmd_translate,
     cmd_validate,
@@ -117,7 +119,9 @@ class ShadokLocalizationTests(unittest.TestCase):
         self.assertIn("max_line_length", prompt)
         self.assertIn("expected_lines", prompt)
         self.assertIn("Russian-Ukrainian war", prompt)
-        self.assertIn("swamp", prompt.lower())
+        self.assertIn("Пиздоболов", prompt)
+        self.assertIn("русня", prompt)
+        self.assertIn("Blank lines", prompt)
         self.assertNotIn("Do NOT merge or split lines", prompt)
         self.assertNotIn("Do NOT care about line breaks", prompt)
 
@@ -131,16 +135,21 @@ class ShadokLocalizationTests(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             parse_and_validate_shadok_block(_valid_block("L", 36), 35, 39)  # height overflow
+        # Intentional blank spacer line is OK
+        spaced = parse_and_validate_shadok_block("a\n\nb", 35, 39)
+        self.assertEqual(spaced, ["a", "", "b"])
         with self.assertRaises(ValueError):
-            bad_empty = "\n".join(["ok"] * 20 + ["   "])
-            parse_and_validate_shadok_block(bad_empty, 35, 39)
+            parse_and_validate_shadok_block("\n\n", 35, 39)  # no content
         with self.assertRaises(ValueError):
             too_long = "\n".join(["x" * 40] + ["ok"] * 20)
             parse_and_validate_shadok_block(too_long, 35, 39)
 
-    def test_pad_shadok_lines_uses_space_tail(self) -> None:
+    def test_pad_shadok_lines_uses_blank_tail(self) -> None:
         padded = pad_shadok_lines_to_mapping(["a", "b"], 5)
-        self.assertEqual(padded, ["a", "b", " ", " ", " "])
+        self.assertEqual(
+            padded,
+            ["a", "b", SHADOK_BLANK_CELL, SHADOK_BLANK_CELL, SHADOK_BLANK_CELL],
+        )
 
     def test_fit_packs_overflow_into_last_slot_with_lf(self) -> None:
         # 35 visual lines, 33 dict slots → last slot holds lines 33..35 via [[LF]]
@@ -279,7 +288,7 @@ class ShadokLocalizationTests(unittest.TestCase):
             if lc == "en":
                 return {"en": _valid_block("BAD", 36)}  # height overflow every attempt
             if lc == "tr":
-                return {"tr": "\n".join(["ok"] * 20 + [" "])}  # whitespace-only hole
+                return {"tr": "\n".join(["x" * 40] + ["ok"] * 20)}  # overlength
             return {lc: _valid_block(lc.upper())}
 
         mock_translate.side_effect = fake_block
@@ -516,9 +525,41 @@ class ShadokLocalizationTests(unittest.TestCase):
         ws = wb["Translations"]
         col_map = _col_map(ws)
         self.assertEqual(ws.cell(2, col_map["en"]).value, "Z00 ok line")
-        # Tail slots padded with a single space
-        self.assertEqual(ws.cell(2 + 28, col_map["en"]).value, " ")
+        # Tail slots padded with intentional blank cell
+        self.assertEqual(ws.cell(2 + 28, col_map["en"]).value, SHADOK_BLANK_CELL)
         mock_save.assert_called()
+
+    @patch("src.main.open_or_create_workbook")
+    def test_export_keeps_shadok_blank_without_ru_fallback(
+        self,
+        mock_open_wb: MagicMock,
+    ) -> None:
+        import csv
+        import tempfile
+        from pathlib import Path
+
+        mapping = self.mapping
+        wb = _make_workbook(mapping, ["en"], seed_lang_values={"en": "KEEP"})
+        ws = wb["Translations"]
+        col_map = _col_map(ws)
+        for i, _item in enumerate(mapping):
+            row = i + 2
+            ws.cell(row, col_map["en"], "line" if i < 30 else SHADOK_BLANK_CELL)
+
+        mock_open_wb.return_value = wb
+        with tempfile.TemporaryDirectory() as td:
+            out = Path(td)
+            with patch("src.main.TRANSLATIONS_DIR", out), \
+                 patch("src.main.load_languages", return_value={"en": "English"}):
+                cmd_export()
+            with (out / "en.csv").open("r", encoding="utf-8", newline="") as f:
+                rows = list(csv.reader(f))
+        by_orig = {r[0]: r[1] for r in rows[1:]}
+        last_orig = mapping[-1]["orig"]
+        self.assertIn(last_orig, by_orig)
+        # Must stay blank (space), NOT fall back to the Russian Original
+        self.assertEqual(by_orig[last_orig], SHADOK_BLANK_CELL)
+        self.assertNotEqual(by_orig[last_orig], last_orig)
 
     def test_translate_shadok_uses_gemini_37(self) -> None:
         captured = {}
