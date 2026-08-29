@@ -176,6 +176,29 @@ class PatchDbiWrapperTests(unittest.TestCase):
 
     @patch("scripts.patch_dbi.compute_sha256")
     @patch("scripts.patch_dbi.subprocess.run")
+    @patch("pathlib.Path.is_file")
+    def test_same_input_and_output_path_raises_value_error_before_clone(
+        self,
+        mock_is_file: MagicMock,
+        mock_subproc_run: MagicMock,
+        mock_compute_sha256: MagicMock,
+    ) -> None:
+        """Verify identical input and output paths raise ValueError before cloning or patching."""
+        mock_is_file.return_value = True
+        mock_compute_sha256.return_value = EXPECTED_DBI_SHA256
+
+        with tempfile.TemporaryDirectory() as td:
+            dummy_nro = Path(td) / "DBI.905.ru.nro"
+            dummy_output = Path(td) / "DBI.905.ru.nro"
+
+            with self.assertRaises(ValueError) as ctx:
+                patch_dbi(dummy_nro, dummy_output)
+
+            self.assertIn("Output path cannot be identical to input NRO path", str(ctx.exception))
+            mock_subproc_run.assert_not_called()
+
+    @patch("scripts.patch_dbi.compute_sha256")
+    @patch("scripts.patch_dbi.subprocess.run")
     @patch("scripts.patch_dbi.tempfile.TemporaryDirectory")
     @patch("pathlib.Path.is_file")
     def test_sha_mismatch_raises_runtime_error(

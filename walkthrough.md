@@ -82,3 +82,20 @@
 3. **Версіонування та регресійне покриття**:
    - Версію метаданих `data/dictionary.xlsx` ітеровано з `0.0.86` до `0.0.87` без зміни даних перекладів.
    - Додано регресійні тести в `tests/test_web2api_concurrency.py` та `tests/test_temperature_aliases_and_sync.py`.
+
+## [2026-08-29] Підвищення надійності релізу (Release Hardening)
+
+### Виконані заходи
+
+1. **Запобігання перезапису вхідного NRO (`scripts/patch_dbi.py`)**:
+   - Додано валідацію `resolved_nro == resolved_output`, яка викидає `ValueError` до створення вихідної директорії, клонування репозиторію upstream чи виклику CLI.
+   - Додано регресійний тест `test_same_input_and_output_path_raises_value_error_before_clone` у `tests/test_patch_dbi.py`.
+
+2. **Усунення дублювання логування HTTP-помилок (`src/core/ai_client.py`)**:
+   - Вилучено надлишковий виклик `_log_interaction` перед `raise requests.HTTPError` у гілці non-200. Кожна спроба тепер логується рівно один раз у спільному обробнику винятків.
+   - Додано регресійний тест `test_web2api_failed_http_attempts_log_exactly_once_per_attempt` у `tests/test_web2api_concurrency.py`, що перевіряє створення рівно 2 записів логу при 2 невдалих HTTP 500 спробах.
+
+3. **Синхронізація документації та часового поясу**:
+   - У `src/main.py` замінено фіксоване зміщення `timezone(timedelta(hours=3))` на стандартну бібліотеку `ZoneInfo("Europe/Kyiv")`.
+   - У `README.md` оновлено посилання на активну модель Web2API (`gemini-3.6-flash`).
+   - У `plan.md` виправлено опис розподілу обов'язків: валідацію рядків виконують потоки-воркери, тоді як головний потік лишається єдиним мутатором workbook.

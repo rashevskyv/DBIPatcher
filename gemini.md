@@ -180,3 +180,11 @@ dbi_patcher/
 3. **Регресійні тести**: Додано тести для збереження значень при збоях перекладу в `test_web2api_concurrency.py` та тест злиття/видалення дублікатів у `test_temperature_aliases_and_sync.py`.
 4. **Версіонування**: Ітеровано версію метаданих `data/dictionary.xlsx` до `0.0.87`.
 
+## [2026-08-29] Release Hardening & Documentation Parity
+
+### Виконані дії:
+1. **scripts/patch_dbi.py**: Додано перевірку на ідентичність вхідного та вихідного шляхів NRO (`resolved_nro == resolved_output`), що викидає `ValueError` до клонування чи виклику інструментів. Додано регресійний тест у `tests/test_patch_dbi.py`.
+2. **src/core/ai_client.py**: Усунено подвійний виклик `_log_interaction` при невдалих HTTP-запитах. Додано регресійний тест у `tests/test_web2api_concurrency.py`.
+3. **src/main.py**: Переведено розрахунок київського часу на `ZoneInfo("Europe/Kyiv")`.
+4. **Документація**: Оновлено назву моделі Web2API до `gemini-3.6-flash` у `README.md`, виправлено опис валідації у воркерах у `plan.md` та актуалізовано `task.md`.
+

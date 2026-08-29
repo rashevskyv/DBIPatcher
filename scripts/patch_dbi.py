@@ -54,6 +54,11 @@ def patch_dbi(
     verify_nro_sha256(resolved_nro)
 
     resolved_output = output_path.resolve()
+    if resolved_nro == resolved_output:
+        raise ValueError(
+            f"Output path cannot be identical to input NRO path: {resolved_output}"
+        )
+
     resolved_output.parent.mkdir(parents=True, exist_ok=True)
 
     with tempfile.TemporaryDirectory(prefix="dbi_patch_") as temp_dir:

@@ -1,6 +1,6 @@
 # Active plan: upstream DBI patcher & release updates
 
-## Active remediation: workbook data integrity
+## Completed remediation: workbook data integrity
 
 ### Scope
 
@@ -69,10 +69,10 @@
    CLI through temporary `PYTHONPATH`, and has focused mocked contract tests.
 3. **Web2API concurrency.** Make the Web2API client stateless per request,
    serialize shared logfile writes, probe `/v1/models` once, and add bounded
-   `DBI_TRANSLATE_WORKERS` (default 4, valid 1–8). Worker threads return results;
-   the main thread alone validates, updates and checkpoints the workbook. Keep
-   GEMINI_PROXY serial, and do not change OmniRoad behavior without separate
-   validation.
+   `DBI_TRANSLATE_WORKERS` (default 4, valid 1–8). Worker threads validate candidate
+   translations and return results; the main thread is the only workbook
+   mutator/checkpointer. Keep GEMINI_PROXY serial, and do not change OmniRoad
+   behavior without separate validation.
    **Completed:** `DBI_TRANSLATE_WORKERS` defaults to 4 and is constrained to
    1–8; only Web2API uses row-level `ThreadPoolExecutor`; workbook writes stay
    on the main thread; request logs are locked; `/v1/models` validates the

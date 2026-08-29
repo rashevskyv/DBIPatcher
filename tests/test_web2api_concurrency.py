@@ -127,6 +127,43 @@ class Web2APIConcurrencyTests(unittest.TestCase):
         # Must NEVER re-initialize session / clear logs for WEB2API during worker execution
         mock_init_session.assert_not_called()
 
+    @patch("src.core.ai_client._log_interaction")
+    @patch("src.core.ai_client.requests.post")
+    def test_web2api_failed_http_attempts_log_exactly_once_per_attempt(
+        self,
+        mock_post: MagicMock,
+        mock_log: MagicMock,
+    ) -> None:
+        """Verify two failed HTTP 500 Web2API attempts produce exactly two log entries (not four)."""
+        ai_client.PROVIDER = "WEB2API"
+
+        mock_resp = MagicMock()
+        mock_resp.status_code = 500
+        mock_resp.text = "Internal Server Error"
+        mock_post.return_value = mock_resp
+
+        payload = {"model": MODEL_WEB2API, "messages": []}
+        safe_data = json.dumps(payload).encode("utf-8")
+
+        with patch("time.sleep"):
+            with self.assertRaises(RuntimeError):
+                _make_request_with_retry(
+                    "http://localhost:8081/v1/chat/completions",
+                    safe_data,
+                    payload,
+                    row_id=7,
+                )
+
+        # 1 initial attempt + 1 retry = 2 HTTP requests
+        self.assertEqual(mock_post.call_count, 2)
+        # Exactly 2 log entries (one per actual attempt), not duplicate 4
+        self.assertEqual(mock_log.call_count, 2)
+        for c in mock_log.call_args_list:
+            args, kwargs = c
+            self.assertEqual(args[0], payload)
+            self.assertEqual(args[1], "Internal Server Error")
+            self.assertEqual(kwargs.get("row_id"), 7)
+
     @patch("src.core.ai_client.init_session")
     @patch("src.core.ai_client.requests.post")
     def test_omniroad_retry_performs_session_recovery(

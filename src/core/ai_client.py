@@ -209,7 +209,6 @@ def _make_request_with_retry(
             if resp.status_code != 200:
                 if not is_shadok:
                     print(f"  [{tag}] Proxy error {resp.status_code} (attempt {attempt + 1})")
-                _log_interaction(payload, resp_text, row_id=log_id)
                 raise requests.HTTPError(f"Status {resp.status_code}")
 
             # For Shadok blocks, fix invalid \' in the raw response text BEFORE parsing JSON

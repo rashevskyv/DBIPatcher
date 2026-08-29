@@ -1186,8 +1186,9 @@ This release provides high-quality translations for **DBI version {dbi_ver}**.
         print(f"  [GH] Release {dbi_ver} exists, updating assets and notes...")
 
         # Add update notice to release body
-        from datetime import datetime, timezone, timedelta
-        kyiv_tz = timezone(timedelta(hours=3))
+        from datetime import datetime
+        from zoneinfo import ZoneInfo
+        kyiv_tz = ZoneInfo("Europe/Kyiv")
         kyiv_time = datetime.now(kyiv_tz).strftime("%Y-%m-%d %H:%M")
 
         update_notice = f"""> [!WARNING]

@@ -12,7 +12,7 @@ An advanced, AI-powered localization engine for [DBI](https://github.com/rashevs
 
 ## 🌟 Features
 
-- **🤖 AI-Powered Precision**: Uses **Claude 3.5 Sonnet** (via OmniRoad) or **Gemini 3.5 Flash** (via Web2API) to provide context-aware, literary-grade translations.
+- **🤖 AI-Powered Precision**: Uses **Claude 3.5 Sonnet** (via OmniRoad) or **gemini-3.6-flash** (via Web2API) to provide context-aware, literary-grade translations.
 - **🌍 23+ Languages**: Comprehensive support from Ukrainian to Japanese, with automatic English fallbacks.
 - **📏 Visual Perfection**: Smart alignment engine that ensures colons and brackets match the original UI layout.
 - **✅ Strict Validation**: Automated checks for token preservation (`[[LF]]`, `[[TAB]]`), bracket balance, and placeholder integrity.

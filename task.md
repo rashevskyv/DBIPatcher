@@ -1,7 +1,14 @@
-- [ ] Active: remediate workbook data-loss paths found in the DBI 905 / Web2API review.
-  - [ ] Keep an existing translation until an accepted replacement is ready; a failed row must not persist an empty cell.
-  - [ ] Deduplicate `cmd_sync` rows without stale row indices and without discarding complementary non-empty language cells.
-  - [ ] Add focused regression tests, bump the workbook patch version once, and do not run `translate`, `sync`, `export`, `build`, or `deploy`.
+- [x] Завершене: заходи підвищення надійності релізу (Release Hardening) та синхронізація документації.
+  - [x] Запобігти деструктивному патчингу NRO при однакових шляхах входу та виходу (`scripts/patch_dbi.py`) до клонування чи виклику CLI.
+  - [x] Усунути дублювання логування помилок HTTP-запитів у `src/core/ai_client.py` (рівно один запис логу на одну спробу).
+  - [x] Оновити розрахунок київського часу в `src/main.py` на стандартну бібліотеку `ZoneInfo("Europe/Kyiv")`.
+  - [x] Оновити посилання на модель Web2API (`gemini-3.6-flash`) у `README.md` та уточнити розподіл ролей валідації у `plan.md`.
+  - [x] Додати точкові регресійні тести та перевірити всі тестові набори у WSL без зміни даних словника.
+
+- [x] Попереднє активне: усунення шляхів втрати даних у словнику після DBI 905 / Web2API рев'ю (закомічено в 12a4bf9).
+  - [x] Збереження існуючого перекладу до моменту прийняття валідної заміни; помилка рядка не стирає дані.
+  - [x] Дедуплікація рядків у `cmd_sync` без застарілих індексів та з об'єднанням непорожніх мовних колонок.
+  - [x] Додавання точкових регресійних тестів, одноразова ітерація версії словника до 0.0.87.
 
 - [x] Previous active: migrate the external patching stage to pinned `0xroast/dbi-translate` for DBI 905, resolve PR #23's temperature aliases durably in the workbook/CSV pipeline, and make only Web2API row translation bounded-parallel.
   - [x] Preserve the union of PR #22's literal `$°$` DBI 898 aliases, PR #23's clean-`°` DBI 905 aliases, and the three canonical temperature rows in every language column.
