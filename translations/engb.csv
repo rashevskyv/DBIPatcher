@@ -124,7 +124,7 @@ USB Соединение,USB connection
 Что-то плохое грядёт,Something bad is coming
 Что-то пошло не так. Пропускаем оставшийся файл,Something went wrong. Skipping the remaining file
 "Чтобы вернуться, нажмите B",Press B to go back
-Шадок у Гиби,Shadok at Gibi
+Шадок у Гиби,Swampfolk at the Neighbours
 Экспорт SDK,SDK Export
 Экспортировать,Export
 Экспортировать SDK,Export SDK
@@ -935,35 +935,35 @@ SDK на подмену не найдены,No SDK found for replacement
 Тикеты не найдены,No tickets found
 864,864
 881,881
-"больше шансов, что оно заработает». Их","more chances it will work"". Their"
-быстро проникли в планы шадоков и,gardens. A volunteer was sent from the
-"всякий раз, когда растение расцветает",secret plan and decided to have a
-"выражениях: «Чем больше неудач, тем","expressions: ""The more failures, the"
-"вычислили, что у них есть по крайней",that in the end everything will work
-заработает… И они торопятся поскорее,they firmly believe in that one-in-a-
-"и дает транзистор, они мчатся, чтобы",proper laugh. They allowed the guest to
-"и не кончилось успехом». Или, в других",misfortune that would not be merely a
-"мере один шанс из миллиона, что она","out.' Their tactics are stalling, but"
-миллионная заработает».,"those very first 999,999 fatal mistakes"
-"ничего, что бы непрерывно продолжалось",nothing that would continue indefinitely
-"но окружили его со всех сторон, и","internets, quickly figured out the"
-"опытов, чтобы быть уверенными, что",finally work... And they hasten to make
-осуществить 999999 первых неудачных,million chance when everything will
-"очень умные благодаря своим шляпам,",directly from equipment standing in
-"планету гиби искать транзисторы. Гиби,",neighbours supposedly extract chips
-постоянно кончаясь неудачами.,"zeroing out continues, dutifully"
-принципов шадокской логики: «Нет,principles of Shadok logic: «No
-"ракета еще несовершенна, но они","sacrifices, the higher the probability"
-"растений, произрастающих на огородах.",aren't enough chips either in guidance
-решили позабавиться. Они позволили,swamps straight to the neighbours for
-собрать урожай прежде шадока.,climb into one of their equipment
-"терпят неудачу потому, что не хватает",publisher 'Through the Looking Glass'.
-транзисторов в системах безопасности.,The chief strategist announced that
-"шадоку забраться в один из их огородов,","parts. They, being cunning due to"
-«У шадоков ситуация удовлетворительна.,"«Among the swamp dwellers, everything"
-"Испытания ракет продолжаются,",goes according to plan. The process of
-Но у гиби транзисторы собирают с,rockets are falling because there
-Решено послать одного из шадоков на,systems or in toilets. And the
+"больше шансов, что оно заработает». Их",works out in the end.«
+быстро проникли в планы шадоков и,through it and mocked him. They
+"всякий раз, когда растение расцветает", 
+"выражениях: «Чем больше неудач, тем","losses, the higher the chance it all"
+"вычислили, что у них есть по крайней","Their tactics stall, yet they trust"
+заработает… И они торопятся поскорее,"it. So they rush through 999,999"
+"и дает транзистор, они мчатся, чтобы", 
+"и не кончилось успехом». Или, в других",pledge of greatness.« Or: »The more
+"мере один шанс из миллиона, что она",the one-in-a-million shot to fix
+миллионная заработает».,I. I. Bullshitter.
+"ничего, что бы непрерывно продолжалось",disaster that is not a temporary
+"но окружили его со всех сторон, и",every single chip he found.»
+"опытов, чтобы быть уверенными, что", 
+осуществить 999999 первых неудачных,fatal mistakes to reach victory.»
+"очень умные благодаря своим шляпам,",The cunning neighbours saw right
+"планету гиби искать транзисторы. Гиби,", 
+постоянно кончаясь неудачами.,yielding steady negative growth.
+принципов шадокской логики: «Нет,The logic is simple: »There is no
+"ракета еще несовершенна, но они", 
+"растений, произрастающих на огородах.",So a swamp volunteer was sent to
+решили позабавиться. Они позволили,"let him into a storehouse, then"
+собрать урожай прежде шадока., 
+"терпят неудачу потому, что не хватает",«The Supreme Strategist declared
+транзисторов в системах безопасности.,missiles fall due to missing chips
+"шадоку забраться в один из их огородов,",surrounded him to confiscate
+«У шадоков ситуация удовлетворительна.,«Everything goes to plan for orcs
+"Испытания ракет продолжаются,","in the bogs. Zeroing out continues,"
+Но у гиби транзисторы собирают с,in guidance systems and toilets.
+Решено послать одного из шадоков на,neighbours for spare parts.
 original,original
 "SSID: {}, Пароль: {}","SSID: {}, Password: {}"
 Тип оборудования        : {},Equipment type    : {}
@@ -1106,7 +1106,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
 Предел напряжения заряда батареи: {} mV,Battery charge voltage limit : {} mV
 Средняя температура: {}°C,Average temperature : {}°C
 Сумма %% заряд-разряд: {} (~{} 0-100 циклов),Sum %% charge-discharge : {} (~{} 0-100 cycles)
-"          Париж, издательство Грассе.",          will follow.» I. I. Pizdobolo
+"          Париж, издательство Грассе.","Bunker, State Mirror Pub."
       Название: {}\n      Издатель: {}\n      Версия: ,      Name: {}\n      Publisher: {}\n      Version: 
 Удаление игры ,Deleting game 
 Удаляется бекап ,Deleting backup 
@@ -1117,7 +1117,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
  {} минут, {} minutes
 Язык    : ,Language :
 Путь    : ,Path    : 
-  Жак Руксель. Великолепие навыворот.,"  as quickly as possible, so that victo"
+  Жак Руксель. Великолепие навыворот.,Rhythms of Breakthrough.
   Кодировка...,  Encoding...
   Применить,  Apply
   Редактирование,  Editing
@@ -1154,7 +1154,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
 Запрос на удаление ,Delete request 
  Состояние электропитания изменилось: {}, Power supply state changed: {}
 " и {} новое DLC,"," and {} new DLC,"
-"    Великий колдун сказал, что ракеты","    of Breakthrough. Bunker, state"
+"    Великий колдун сказал, что ракеты", 
 " и {} новых DLC,"," and {} new DLCs,"
 Имя     : ,Name     :
  сортировка по дате создания, sort by creation date
@@ -1169,7 +1169,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
 Место установки        : ,Install location        :
  сортировка по размеру, sort by size
 Название: ,Name: 
-    Дело здесь в одном из основных,    delivering negative growth. The who
+    Дело здесь в одном из основных, 
 Начало установки. Место установки: ,Installation started. Installation location: 
 Невозможно создать выходной zip-файл: ,Unable to create output zip file: 
 Неиспользуемый тикет: ,Unused ticket: 

@@ -124,7 +124,7 @@ USB Соединение,USB-verbinding
 Что-то плохое грядёт,Er komt iets ergs aan
 Что-то пошло не так. Пропускаем оставшийся файл,Er is iets misgegaan. Het resterende bestand wordt overgeslagen
 "Чтобы вернуться, нажмите B",Druk op B om terug te keren
-Шадок у Гиби,Shadok bij Gibi
+Шадок у Гиби,Moerasvolk bij de buren
 Экспорт SDK,SDK-export
 Экспортировать,Exporteren
 Экспортировать SDK,SDK exporteren
@@ -935,35 +935,35 @@ SDK на подмену не найдены,Geen SDK gevonden voor vervanging
 Тикеты не найдены,Geen tickets gevonden
 864,864
 881,881
-"больше шансов, что оно заработает». Их","meer kans dat het werkt"". Hun"
-быстро проникли в планы шадоков и,werd een vrijwilliger rechtstreeks naar
-"всякий раз, когда растение расцветает",plan en besloten er lekker de draak mee
-"выражениях: «Чем больше неудач, тем","uitdrukkingen: ""Hoe meer mislukkingen, hoe"
-"вычислили, что у них есть по крайней",uiteindelijk allemaal goed komt.' Hun
-заработает… И они торопятся поскорее,rotsvast in die ene kans op een miljoen
-"и дает транзистор, они мчатся, чтобы",te steken. Ze lieten de gast in een van
-"и не кончилось успехом». Или, в других",'Er bestaat geen ramp die niet slechts
-"мере один шанс из миллиона, что она","tactiek hapert, maar ze geloven"
-миллионная заработает».,"eerste 999.999 fatale fouten te maken,"
-"ничего, что бы непрерывно продолжалось",niets dat ononderbroken zou doorgaan
-"но окружили его со всех сторон, и","internet, doorzagen al snel het geheime"
-"опытов, чтобы быть уверенными, что",haasten zich om zo snel mogelijk die
-осуществить 999999 первых неудачных,waarbij alles zal werken... En ze
-"очень умные благодаря своим шляпам,",in tuinen staat. Vanuit de moerassen
-"планету гиби искать транзисторы. Гиби,",rechtstreeks uit apparatuur halen die
-постоянно кончаясь неудачами.,"van nulstelling gaat door, en levert"
-принципов шадокской логики: «Нет,principes van Shadok-logica: «Nee
-"ракета еще несовершенна, но они","meer offers, hoe groter de kans dat het"
-"растений, произрастающих на огородах.",geleidingssystemen als in de toiletten.
-решили позабавиться. Они позволили,"de buren gestuurd voor onderdelen. Die,"
-собрать урожай прежде шадока.,hun opslagplaatsen met apparatuur
-"терпят неудачу потому, что не хватает",De hoofdstrateeg verklaarde dat de
-транзисторов в системах безопасности.,raketten neerstorten omdat er een
-"шадоку забраться в один из их огородов,",doordat ze slim waren geworden door het
-«У шадоков ситуация удовлетворительна.,«Bij de bewoners van de moerassen
-"Испытания ракет продолжаются,",verloopt alles volgens plan. Het proces
-Но у гиби транзисторы собирают с,"tekort is aan chips, zowel in de"
-Решено послать одного из шадоков на,En bij de buren zouden ze chips
+"больше шансов, что оно заработает». Их","Of: 'Hoe meer slachtoffers, hoe"
+быстро проникли в планы шадоков и, 
+"всякий раз, когда растение расцветает",hij er een ziet.»
+"выражениях: «Чем больше неудач, тем", 
+"вычислили, что у них есть по крайней", 
+заработает… И они торопятся поскорее,in die ene kans op de miljoen. Ze
+"и дает транзистор, они мчатся, чтобы", 
+"и не кончилось успехом». Или, в других",het borg staat voor grootheid.'
+"мере один шанс из миллиона, что она","Tactiek loopt vast, maar ze geloven"
+миллионная заработает»., 
+"ничего, что бы непрерывно продолжалось",logica: 'Geen ramp is er zonder dat
+"но окружили его со всех сторон, и",hem. Nu pakken ze elke chip af zodra
+"опытов, чтобы быть уверенными, что",fouten snel te maken voor de zege.
+осуществить 999999 первых неудачных,haasten zich om die 999.999 fatale
+"очень умные благодаря своим шляпам,",pad om onderdelen te jatten.
+"планету гиби искать транзисторы. Гиби,",Dus ging een moerasvrijwilliger op
+постоянно кончаясь неудачами.,gestaag door met negatieve groei.
+принципов шадокской логики: «Нет,Geheim is de dogma van hun diepe
+"ракета еще несовершенна, но они",groter de kans dat het lukt.'
+"растений, произрастающих на огородах.",komen zogenaamd uit tuintuig.
+решили позабавиться. Они позволили,"De buren doorzagen het plan, lieten"
+собрать урожай прежде шадока., 
+"терпят неудачу потому, что не хватает",De hoofdstrateeg meldt dat raketten
+транзисторов в системах безопасности.,neerstorten door chiptekort in
+"шадоку забраться в один из их огородов,",hem een schuur in en omsingelden
+«У шадоков ситуация удовлетворительна.,«Bij de moerasorken verloopt alles
+"Испытания ракет продолжаются,",volgens plan. Het nulstellen gaat
+Но у гиби транзисторы собирают с,sturing én wc's. Burenhulp-chips
+Решено послать одного из шадоков на, 
 original,original
 "SSID: {}, Пароль: {}","SSID: {}, Wachtwoord: {}"
 Тип оборудования        : {},Apparaattype          : {}
@@ -1106,7 +1106,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
 Предел напряжения заряда батареи: {} mV,Batterij laadspanningslimiet  : {} mV
 Средняя температура: {}°C,Gemiddelde temperatuur : {}°C
 Сумма %% заряд-разряд: {} (~{} 0-100 циклов),Som %% opladen-ontladen : {} (~{} 0-100 cycli)
-"          Париж, издательство Грассе.",          I. Pizdobolov. Ritmes van de 
+"          Париж, издательство Грассе.","Doorbraak. Bunkervloot, 'Spiegelglas'"
       Название: {}\n      Издатель: {}\n      Версия: ,      Naam: {}\n      Uitgever: {}\n      Versie: 
 Удаление игры ,Game verwijderen 
 Удаляется бекап ,Back-up verwijderen 
@@ -1117,7 +1117,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
  {} минут, {} minuten
 Язык    : ,Taal      :
 Путь    : ,Pad     : 
-  Жак Руксель. Великолепие навыворот.,  zodat daarna de overwinning komt.» I.
+  Жак Руксель. Великолепие навыворот.,I. I. Luldebehanger. Ritmes van de
   Кодировка...,  Coderen...
   Применить,  Toepassen
   Редактирование,  Bewerken
@@ -1154,7 +1154,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
 Запрос на удаление ,Verwijderverzoek 
  Состояние электропитания изменилось: {}, Voedingsstatus gewijzigd: {}
 " и {} новое DLC,"," en {} nieuwe DLC,"
-"    Великий колдун сказал, что ракеты","    Bunker, staatsuitgeverij 'Spiegella"
+"    Великий колдун сказал, что ракеты", 
 " и {} новых DLC,"," en {} nieuwe DLC's,"
 Имя     : ,Naam      :
  сортировка по дате создания, sorteren op aanmaakdatum
@@ -1169,7 +1169,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
 Место установки        : ,Installatielocatie         :
  сортировка по размеру, sorteren op grootte
 Название: ,Naam: 
-    Дело здесь в одном из основных,    gestaag negatieve groei op. Het hel
+    Дело здесь в одном из основных, 
 Начало установки. Место установки: ,Installatie gestart. Installatielocatie: 
 Невозможно создать выходной zip-файл: ,Kan uitvoer-zipbestand niet maken: 
 Неиспользуемый тикет: ,Ongebruikt ticket: 

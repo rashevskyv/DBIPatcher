@@ -107,8 +107,8 @@ USB Соединение,USB bağlantısı
 Фиксация ФС...,FS taahhüdü...
 Финальный размер: {},Son boyut: {}
 Формирование списка...,Liste oluşturuluyor...
-Форсированный язык    : {},Zorunlu dil : {}
-Форсированный язык    : {} ({}),Zorunlu dil : {} ({})
+Форсированный язык    : {},Zorunlu dil           : {}
+Форсированный язык    : {} ({}),Zorunlu dil           : {} ({})
 Форсировать язык,Dili zorla
 Французский,Fransızca
 "Х:{}, Т:{}, РЦ:{}","Y: {} , T: {} , K: {}"
@@ -117,14 +117,14 @@ USB Соединение,USB bağlantısı
 Целевая запись о контенте не найдена,Hedef içerik kaydı bulunamadı
 ЧАСТЬ КОНТЕНТА ОТСУТСТВУЕТ. ИГРА НЕ БУДЕТ РАБОТАТЬ,İÇERİĞİN BİR KISMI EKSİKTİR. OYUN ÇALIŞMAYACAK
 Число транзисторов: {:>3},Transistör sayısı: {:>3}
-Число уникальных сыграных игр : {},Oynanan benzersiz oyun sayısı : {}
+Число уникальных сыграных игр : {},Oynanan benzersiz oyun sayısı    : {}
 Число ходов:        {:>3},Hareket sayısı: {:>3}
 Чтение каталога...,Dizin okunuyor...
 Чтение списка файлов...,Dosya listesi okunuyor...
 Что-то плохое грядёт,Kötü bir şey geliyor
 Что-то пошло не так. Пропускаем оставшийся файл,Bir şeyler ters gitti. Kalan dosyayı atlamak
 "Чтобы вернуться, нажмите B",Geri dönmek için B'ye basın
-Шадок у Гиби,Gibi'de Shadok
+Шадок у Гиби,Bataklık halkı komşularda
 Экспорт SDK,SDK'yı Dışa Aktarma
 Экспортировать,İhracat
 Экспортировать SDK,SDK'yı dışa aktar
@@ -327,7 +327,7 @@ Daybreak.nro не найден,Daybreak.nro bulunamadı
 Возрастной рейтинг,Yaş derecelendirmesi
 Восстановить,Eski haline getirmek
 Восстановить бекап...,Yedeklemeyi geri yükle...
-Восстановить для...,Şunun için geri yükle:
+Восстановить для...,Şunun için geri yükle...
 Восстановить как бекап сохранения,Kaydetme yedeği olarak geri yükle
 Восстановление бекапа,Yedekleme geri yükleniyor
 Восстановление не удалось,Kurtarma başarısız oldu
@@ -459,7 +459,7 @@ Daybreak.nro не найден,Daybreak.nro bulunamadı
 Информация...,Bilgi...
 Испанский,İspanyol
 Использовано дополнительной памяти: {}. Создано буферов: {},Kullanılan ek bellek: {} . Oluşturulan arabellekler: {}
-Использовать папку для...,Klasörü şunun için kullan:
+Использовать папку для...,Klasörü aşağıdakiler için kullan...
 Используется USB{},USB'yi kullanma {}
 Итальянский,İtalyan
 Ищется control для ProgramId {},ProgramID {} için kontrol aranıyor
@@ -470,10 +470,10 @@ Daybreak.nro не найден,Daybreak.nro bulunamadı
 Июнь,Haziran
 Канадский французский,Kanada Fransızcası
 "Когда ваше устройство подключится, нажмите любую кнопку",Cihazınız bağlandığında herhangi bir düğmeye basın
-Код партии батареи    : {} ({}),Pil parti kodu : {} ({})
+Код партии батареи    : {} ({}),Pil parti kodu          : {} ({})
 Кодировка,Kodlama
-Конец игры            : -,Oyunun sonu: -
-Конец игры            : {},Oyunun sonu : {}
+Конец игры            : -,Oyunun sonu           : -
+Конец игры            : {},Oyunun sonu           : {}
 Контент уже на месте,İçerik zaten mevcut
 Копирование IVFC слой {} в nca: {},IVFC katmanı {} nca'ya kopyalanıyor: {}
 Копирование PFS0 в nca,PFS0'ı nca'ya kopyalama
@@ -492,7 +492,7 @@ Daybreak.nro не найден,Daybreak.nro bulunamadı
 Масштаб: Точка в точку,Ölçek: Mükemmel Piksel
 Масштаб: Увеличение x2,Ölçek: 2x Büyütme
 Место в  NAND         : {},NAND'daki alan : {}
-Место на SD карте     : {},SD kart alanı : {}
+Место на SD карте     : {},SD kart alanı         : {}
 Место на приставке не занято,Konsolda yer kaplamıyor
 Мета контент отсутствует,Meta içeriği eksik
 Миссия провалена\n\nНажмите А для выхода,Görev başarısız oldu \n \n Çıkmak için A'ya basın
@@ -550,8 +550,8 @@ Daybreak.nro не найден,Daybreak.nro bulunamadı
 Настройки,Ayarlar
 Настройки DBI,DBI Ayarları
 Настройки FB2,FB2 Ayarları
-Начало игры           : -,Oyunun başlangıcı: -
-Начало игры           : {},Oyunun başlangıcı: {}
+Начало игры           : -,Oyunun başlangıcı     : -
+Начало игры           : {},Oyunun başlangıcı     : {}
 Начало создания Control.nca,Control.nca oluşturma işlemi başlatılıyor
 Начало создания Program.nca,Program.nca oluşturma işlemi başlatılıyor
 Начать установку,Kurulumu başlat
@@ -627,10 +627,10 @@ Daybreak.nro не найден,Daybreak.nro bulunamadı
 Обрабатывается запись {:016X},{:016X} kaydı işleniyor
 Обратный альбом (180°),Ters albüm (180°)
 Обратный портрет (270°),Ters Dikey (270°)
-Общее время активной игры     : {} часов,Toplam aktif oynatma süresi : {} saat
+Общее время активной игры     : {} часов,Toplam aktif oynatma süresi      : {} saat
 Общее время дампа {:d}:{:02d}:{:02d},Toplam boşaltma süresi {:d} : {:02d} : {:02d}
-Общее время запущенных игр    : {} часов,Toplam oynatma süresi : {} saat
-Общее время игры      : -,Toplam oyun süresi : -
+Общее время запущенных игр    : {} часов,Toplam oynatma süresi            : {} saat
+Общее время игры      : -,Toplam oyun süresi    : -
 Общее время игры      : {:d} часов {:02d} минут,Toplam oynatma süresi : {:d} saat {:02d} dakika
 Общее время установки: {:d}:{:02d}:{:02d},Toplam kurulum süresi: {:d} : {:02d} : {:02d}
 Общее время: {:02}:{:02}:{:02},Toplam süre: {:02} : {:02} : {:02}
@@ -803,7 +803,7 @@ Get chargeInfoFields : {},chargeInfoFields'ı alın: {}
 Посылается файл: {},Dosya gönderiliyor: {}
 Посылается файл: {}/\x1b[36;1m{}\x1b[37;1m МБ (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m МБ/сек),Dosya gönderiliyor: {} / \x1b[36;1m {} \x1b[37;1m MB (\x1b[32;1m {} \x1b[37;1m %) (\x1b[33;1m {:.2f} \x1b[37;1m MB/s)
 Превышен размер командного буфера,Komut arabellek boyutu aşıldı
-LFS мод.: -,LFS modu: -
+LFS мод.: -,LFS modu       : -
 Предоставить по FTP,FTP yoluyla sağlayın
 Прекращение прослушивания на {}:{},{} üzerinde dinleme durduruluyor: {}
 Прервано пользователем,Kullanıcı tarafından iptal edildi
@@ -819,7 +819,7 @@ LFS мод.: -,LFS modu: -
 Проверка сохранений,Kayıt verileri kontrol ediliyor
 Проверка целостности ({}),Bütünlük kontrolü ({})
 Проверяется: {},Kontrol ediliyor: {}
-"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","LFS modu: Mevcut, Boyut: ayarlarda hesaplama devre dışı bırakıldı"
+"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","LFS modu       : Mevcut, Boyut: ayarlarda hesaplama devre dışı bırakıldı"
 Проверяются бекапы...,Yedeklemeler kontrol ediliyor...
 Проверяются сохранения,Kayıtlar kontrol ediliyor
 Программа {}. Control не найдена,Uygulama {} . Denetim bulunamadı
@@ -841,7 +841,7 @@ MTP Респондер (нажмите B для остановки),MTP Yanıtla
 "Размер  : {}, {} файла","Boyut : {} , {} dosya"
 "Размер  : {}, {} файлов","Boyut : {} , {} dosyalar"
 Размер посылаемого файла   : {},Gönderilen dosyanın boyutu: {}
-Размер сохранений     : {},Veri boyutunu kaydet : {}
+Размер сохранений     : {},Veri boyutunu kaydet  : {}
 Размер: {},Boyut: {}
 Разрешено,İzin verilmiş
 Распаковать в подкаталог,Alt dizine çıkart
@@ -935,120 +935,120 @@ SDK на подмену не найдены,Değiştirilecek SDK bulunamadı
 Тикеты не найдены,Bilet bulunamadı
 864,864
 881,881
-"больше шансов, что оно заработает». Их","işe yarama şansı daha fazla""."
-быстро проникли в планы шадоков и,bahçeler. Türkiye'den bir gönüllü gönderildi
-"всякий раз, когда растение расцветает",gizli plan ve iyi bir plan yapmaya karar verdim
-"выражениях: «Чем больше неудач, тем","ifadeler: ""Ne kadar çok başarısızlık, o kadar çok"
-"вычислили, что у них есть по крайней",sonunda her şeyin işe yarayacağını
-заработает… И они торопятся поскорее,"tekerlekler, ama buna kesinlikle inanıyorlar"
-"и дает транзистор, они мчатся, чтобы",gülmek. Misafirin tırmanmasına izin verdiler
-"и не кончилось успехом». Или, в других",bu sadece bir talihsizlik olmayacak
-"мере один шанс из миллиона, что она",dışarı.' Taktikleri dönüyor
-миллионная заработает».,ilk 999.999'u hızlı bir şekilde taahhüt edin
-"ничего, что бы непрерывно продолжалось",sonsuza kadar devam edecek hiçbir şey yok
-"но окружили его со всех сторон, и","internet, hızlı bir şekilde çözdü"
-"опытов, чтобы быть уверенными, что",sonunda işe yarayacak... Ve acele ediyorlar
-осуществить 999999 первых неудачных,her şey milyonda bir ihtimal
-"очень умные благодаря своим шляпам,",doğrudan içinde bulunan ekipmandan
-"планету гиби искать транзисторы. Гиби,",Komşular güya cips çıkarıyor
-постоянно кончаясь неудачами.,Sıfırlama sadakatle devam ediyor
-принципов шадокской логики: «Нет,Shadok mantığının ilkeleri: «Hayır
-"ракета еще несовершенна, но они",fedakarlık ne kadar yüksek olursa olasılık o kadar yüksek olur
-"растений, произрастающих на огородах.",rehberlikte de yeterli fiş yok
-решили позабавиться. Они позволили,bataklıklar doğrudan komşulara
-собрать урожай прежде шадока.,"ekipman depolarından birine,"
-"терпят неудачу потому, что не хватает",'Bakmanın Yoluyla' yayınevi
-транзисторов в системах безопасности.,Bardak.' Baş stratejist açıkladı
-"шадоку забраться в один из их огородов,","parçalar. Onlar, kurnaz oldukları için"
-«У шадоков ситуация удовлетворительна.,"""Bataklık sakinleri arasında her şey"
-"Испытания ракет продолжаются,",plana göre gider. süreci
-Но у гиби транзисторы собирают с,roketler düşüyor çünkü orada
-Решено послать одного из шадоков на,sistemlerde veya tuvaletlerde. Ve
+"больше шансов, что оно заработает». Их",sonunda başarma olasılığı o kadar
+быстро проникли в планы шадоков и,oldukları için planı çözdüler ve
+"всякий раз, когда растение расцветает",komşular elinden kapıyor.»
+"выражениях: «Чем больше неудач, тем","Veya: «Ne kadar çok kayıp verilirse,"
+"вычислили, что у них есть по крайней",ama o milyonda bir şansa inanıyorlar…
+заработает… И они торопятся поскорее,ölümcül hatayı yapmaya acele
+"и дает транзистор, они мчатся, чтобы", 
+"и не кончилось успехом». Или, в других",olmayan hiçbir felaket yoktur».
+"мере один шанс из миллиона, что она",Ve zafer gelsin diye o ilk 999999
+миллионная заработает».,İ. İ. Zırvalayan. Atılım Ritmleri.
+"ничего, что бы непрерывно продолжалось",«Gelecekteki büyüklüğün teminatı
+"но окружили его со всех сторон, и","adam ne zaman bir çip görse,"
+"опытов, чтобы быть уверенными, что", 
+осуществить 999999 первых неудачных,ediyorlar».
+"очень умные благодаря своим шляпам,",Komşular ise internet yüzünden kurnaz
+"планету гиби искать транзисторы. Гиби,",doğruca komşulara gönderildi.
+постоянно кончаясь неудачами.,süreci tıkır tıkır olumsuz büyüme
+принципов шадокской логики: «Нет,mantıklarının temel dogmasında:
+"ракета еще несовершенна, но они",yüksek». Taktikleri patinaj çekiyor
+"растений, произрастающих на огородах.",makinelerinden topladığı söyleniyor.
+решили позабавиться. Они позволили,alay etmeye karar verdiler. Misafiri
+собрать урожай прежде шадока., 
+"терпят неудачу потому, что не хватает",çünkü ne hedefleme sisteminde ne de
+транзисторов в системах безопасности.,klozetlerde çip kalmadığını söyledi.
+"шадоку забраться в один из их огородов,",depoya alıp etrafını sardılar. Şimdi
+«У шадоков ситуация удовлетворительна.,«Vatniklerin bataklığında her şey
+"Испытания ракет продолжаются,",plana göre gidiyor. Sıfırlanma
+Но у гиби транзисторы собирают с,Komşuların ise çipleri çim biçme
+Решено послать одного из шадоков на,"Bataklıktan bir gönüllü, parça için"
 original,orijinal
 "SSID: {}, Пароль: {}","SSID: {} , Şifre: {}"
-Тип оборудования        : {},Ekipman türü : {}
-TempC0               : {:04x},SıcaklıkC0 : {:04x}
-Уровень заряда батареи         : {},Pil şarj düzeyi : {}
+Тип оборудования        : {},Ekipman türü                : {}
+TempC0               : {:04x},SıcaklıkC0            : {:04x}
+Уровень заряда батареи         : {},Pil şarj düzeyi       : {}
 URL для проверки обновлений,Güncelleme kontrolü için URL
 Установка с картриджа,Kartuştan yükleme
 Установка через DBIbackend,DBIbackend aracılığıyla yükleyin
 Форсировать UTF-8,UTF-8'i zorla
-Хэш версии              : {},Sürüm karması : {}
+Хэш версии              : {},Sürüm karması               : {}
 Читать дату файлов,Dosya tarihini oku
-Экзосфера очищает CAL0      : {},Exosfer CAL0'ı temizler: {}
-Экран                 : ({:08X}) {},Ekran : ({:08X}) {}
-Язык                    : {},Dil : {}
+Экзосфера очищает CAL0      : {},Exosfer CAL0'ı temizler       : {}
+Экран                 : ({:08X}) {},Ekran                   : ({:08X}) {}
+Язык                    : {},Dil                         : {}
 "Интервал автобекапа сейвов, дни",Otomatik yedekleme aralığını (günleri) kaydet
-Конфигурация зарядки            : {},Şarj yapılandırması : {}
-Режим Hi-Z включён              : {},Hi-Z modu etkin : {}
-Зарядка батареи включена        : {},Pil şarjı etkin : {}
-Маршрут электропитания          : {},Güç kaynağı yolu : {}
-Напряжение источника            : {} mV,Kaynak voltajı : {} mV
-Ток источника                   : {} mA,Kaynak akımı : {} mA
-Быстрая зарядка разрешена       : {},Hızlı şarja izin verilir : {}
-Целевая прошивка            : {}.{}.{},Hedef donanım yazılımı : {} . {} . {}
-Поддерживаемая версия HOS   : {},Desteklenen HOS sürümü : {}
-Предел входного тока (буст)     : {} mA,Giriş akımı limiti (yükseltme): {} mA
-Предел тока быстрой зарядки     : {} mA,Hızlı şarj akım limiti : {} mA
-Напряжение батареи              : {} mV,Akü voltajı : {} mV
-Контроллер источника получен    : {},Kaynak denetleyicisi elde edildi: {}
-OTG Запрошен                    : {},OTG Talep Edildi : {}
-Производитель    : {:s} ({:02X}),Üretici : {:s} ({:02X})
-OEM ID           : {:s} ({:s}),OEM Kimliği : {:s} ({:s})
-Имя продукта     : {:s},Ürün adı : {:s}
-Ревизия продукта : {:s},Ürün revizyonu : {:s}
-Серийный номер   : {:s},Seri numarası : {:s}
+Конфигурация зарядки            : {},Şarj yapılandırması              : {}
+Режим Hi-Z включён              : {},Hi-Z modu etkin                  : {}
+Зарядка батареи включена        : {},Pil şarjı etkin                  : {}
+Маршрут электропитания          : {},Güç kaynağı yolu                 : {}
+Напряжение источника            : {} mV,Kaynak voltajı                   : {} mV
+Ток источника                   : {} mA,Kaynak akımı                     : {} mA
+Быстрая зарядка разрешена       : {},Hızlı şarja izin verilir         : {}
+Целевая прошивка            : {}.{}.{},Hedef donanım yazılımı        : {} . {} . {}
+Поддерживаемая версия HOS   : {},Desteklenen HOS sürümü        : {}
+Предел входного тока (буст)     : {} mA,Giriş akımı limiti (yükseltme)   : {} mA
+Предел тока быстрой зарядки     : {} mA,Hızlı şarj akım limiti           : {} mA
+Напряжение батареи              : {} mV,Akü voltajı                      : {} mV
+Контроллер источника получен    : {},Kaynak denetleyicisi elde edildi : {}
+OTG Запрошен                    : {},OTG Talep Edildi                 : {}
+Производитель    : {:s} ({:02X}),Üretici         : {:s} ({:02X})
+OEM ID           : {:s} ({:s}),OEM Kimliği     : {:s} ({:s})
+Имя продукта     : {:s},Ürün adı        : {:s}
+Ревизия продукта : {:s},Ürün revizyonu  : {:s}
+Серийный номер   : {:s},Seri numarası   : {:s}
 Ёмкость с завода   : {} mAh,Fabrika kapasitesi : {} mAh
 Автоповтор кнопок при удержании,Düğme basılı tutulduğunda otomatik olarak tekrarlanır
-Версия атмосферы            : {}.{}.{},Atmosfer sürümü : {} . {} . {}
-Версия прошивки         : {}.{}.{}-{}.{},Aygıt yazılımı sürümü : {} . {} . {} - {} . {}
-Возраст батареи                : {}%,Pil yaşı : {} %
+Версия атмосферы            : {}.{}.{},Atmosfer sürümü               : {} . {} . {}
+Версия прошивки         : {}.{}.{}-{}.{},Aygıt yazılımı sürümü       : {} . {} . {} - {} . {}
+Возраст батареи                : {}%,Pil yaşı              : {} %
 Время гашения экрана в секундах,Saniye cinsinden ekran karartma süresi
 Выключать экран,Ekranı kapat
 Выход на рабочий стол,Ana Sayfaya Çıkış
-Дата первого игрового события : {},İlk oynanış etkinliği tarihi : {}
+Дата первого игрового события : {},İlk oynanış etkinliği tarihi     : {}
 Добавлять суффикс к имени файла,Dosya adına sonek ekleyin
-Достаточное питание            : {},Yeterli güç : {}
-Есть исправление RCM бага   : {},RCM hata düzeltmesi var: {}
+Достаточное питание            : {},Yeterli güç           : {}
+Есть исправление RCM бага   : {},RCM hata düzeltmesi var       : {}
 Журналирование действий,Eylem günlüğü
 Закладки на SD,SD Yer İmleri
-Запись в CAL0 разрешена     : {},CAL0 yazmaya izin verildi : {}
+Запись в CAL0 разрешена     : {},CAL0 yazmaya izin verildi     : {}
 Запускать точку доступа,Erişim noktasını başlat
 Запустить FTP сервер,FTP sunucusunu başlat
 Запустить HTTP сервер,HTTP sunucusunu başlat
-Заряд батареи                  : {}%,Pil şarjı : {} %
-Заряд батареи (сырое значение) : {}%,Pil şarjı (ham değer): {} %
-Зарядка батареи                : {},Pil şarjı : {}
+Заряд батареи                  : {}%,Pil şarjı             : {} %
+Заряд батареи (сырое значение) : {}%,Pil şarjı (ham değer) : {} %
+Зарядка батареи                : {},Pil şarjı             : {}
 Инструменты,Aletler
 Использовать 5 GHz,5 GHz kullanın
 Использовать MSG_WAITALL в recv,Alıntıda MSG_WAITALL kullanın
 Использовать для неё TitleID,Bunun için TitleID'yi kullanın
 Использовать разгон,Hız aşırtmayı kullanın
 Использовать скрытый SSID,Gizli SSID'yi kullan
-Источник питания                : {},Güç kaynağı : {}
+Источник питания                : {},Güç kaynağı                      : {}
 Курсор на обеих панелях,Her iki paneldeki imleç
-%% заряд-разряд    : {},%% şarj-deşarj : {}
-Никнейм консоли         : {},Konsol takma adı : {}
-Общее число игровых сессий    : {},Toplam oyun oturumu sayısı : {}
-Bluetooth MAC адрес   : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Bluetooth MAC adresi : {:02X} : {:02X} : {:02X} : {:02X} : {:02X} : {:02X}
+%% заряд-разряд    : {},%% şarj-deşarj     : {}
+Никнейм консоли         : {},Konsol takma adı            : {}
+Общее число игровых сессий    : {},Toplam oyun oturumu sayısı       : {}
+Bluetooth MAC адрес   : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Bluetooth MAC adresi    : {:02X} : {:02X} : {:02X} : {:02X} : {:02X} : {:02X}
 CDIR в листинге,Listelemede CDIR
-Configuration Id1     : {},Yapılandırma Kimliği1 : {}
-DeviceId                : {0:} ({0:016X}),Cihaz Kimliği : {0:} ({0:016X})
+Configuration Id1     : {},Yapılandırma Kimliği1   : {}
+DeviceId                : {0:} ({0:016X}),Cihaz Kimliği               : {0:} ({0:016X})
 Папка для бекапа сохранений,Veri yedekleme klasörünü kaydet
 Папка для дампа игр,Oyun dökümü klasörü
 Папка журналов,Günlük klasörü
-DramId                  : {} ({}),Dramı Kimliği : {} ({})
+DramId                  : {} ({}),Dramı Kimliği               : {} ({})
 Пароль,Şifre
 Перевернуть джойконы,Joy-Eksilerini Çevir
 Перевернуть экран,Ekranı döndür
-Emummc включён              : {},Emummc etkinleştirildi : {}
+Emummc включён              : {},Emummc etkinleştirildi        : {}
 Переносить слова,Kelimeleri kaydır
-Платформа               : {},Platform : {}
-FullCap              : {:04x} ({} mAh),Tam Kapasite : {:04x} ({} mAh)
+Платформа               : {},Platform                    : {}
+FullCap              : {:04x} ({} mAh),Tam Kapasite          : {:04x} ({} mAh)
 Подсвечивать файлы обновлений,Güncelleme dosyalarını vurgula
-FullCapNom           : {:04x} ({} mAh),FullCapNom : {:04x} ({} mAh)
-Показываемая версия     : {},Görüntülenen sürüm : {}
-Показываемое название   : {},Görünen ad : {}
+FullCapNom           : {:04x} ({} mAh),FullCapNom            : {:04x} ({} mAh)
+Показываемая версия     : {},Görüntülenen sürüm          : {}
+Показываемое название   : {},Görünen ad                  : {}
 Показывать 'Обновить отсюда','Buradan güncelle'yi göster
 Показывать объединённый NSP,Birleştirilmiş NSP'yi göster
 Показывать папку 'Mods&Cheats','Modlar ve Hileler' klasörünü göster
@@ -1056,13 +1056,13 @@ FullCapNom           : {:04x} ({} mAh),FullCapNom : {:04x} ({} mAh)
 Показывать размер LFS (долго),LFS boyutunu göster (yavaş)
 Показывать секунды,Saniyeleri göster
 Показывать часы в статусе,Saati durum olarak göster
-Поколение ключа             : {},Anahtar oluşturma : {}
-Git commit hash             : {:016X},Git taahhüt karması : {:016X}
-Полная ёмкость     : {} mAh,Tam kapasite : {} mAh
-IavgEmpty            : {:04x},OrtalamaBoş : {:04x}
+Поколение ключа             : {},Anahtar oluşturma             : {}
+Git commit hash             : {:016X},Git taahhüt karması           : {:016X}
+Полная ёмкость     : {} mAh,Tam kapasite       : {} mAh
+IavgEmpty            : {:04x},OrtalamaBoş           : {:04x}
 Пользовательские хранилища,Kullanıcı depoları
-Предел входного тока            : {} mA,Giriş akımı limiti : {} mA
-Предназначение          : {},Amaç : {}
+Предел входного тока            : {} mA,Giriş akımı limiti               : {} mA
+Предназначение          : {},Amaç                        : {}
 Проверять хэш при установке,Yükleme sırasında karmayı doğrulayın
 Просмотр SD карты,SD karta göz atın
 Просмотр USB носителей,USB sürücülerine göz atın
@@ -1072,52 +1072,52 @@ IavgEmpty            : {:04x},OrtalamaBoş : {:04x}
 Просмотр сохранений,Kayıtları görüntüle
 Просмотр тикетов,Biletleri görüntüle
 Просмотр установленных игр,Yüklü oyunları görüntüle
-Регион                  : {},Bölge : {}
-Режим HiZ зарядки       : {},HiZ şarj modu : {}
-Режим киоска            : {},Kiosk modu : {}
-Родительский PIN        : {},Ebeveyn PIN'i : {}
-Серийный # прочитанный  : {},Seri numarası okundu: {}
+Регион                  : {},Bölge                       : {}
+Режим HiZ зарядки       : {},HiZ şarj modu               : {}
+Режим киоска            : {},Kiosk modu                  : {}
+Родительский PIN        : {},Ebeveyn PIN'i               : {}
+Серийный # прочитанный  : {},Seri numarası okundu        : {}
 Серийный # угаданный    : {},Tahmin edilen seri numarası : {}
-Серийный номер        : {},Seri numarası : {}
-Силовая роль                    : {},Güç rolü : {}
-QrTable00            : {:04x},QrTable00 : {:04x}
+Серийный номер        : {},Seri numarası           : {}
+Силовая роль                    : {},Güç rolü                         : {}
+QrTable00            : {:04x},QrTable00             : {:04x}
 Смещать курсор после выделения,Seçimden sonra imleci hareket ettir
-QrTable10            : {:04x},QrTable10 : {:04x}
-Сожжено предохранителей : {},Sigortalar yandı : {}
+QrTable10            : {:04x},QrTable10             : {:04x}
+Сожжено предохранителей : {},Sigortalar yandı            : {}
 Создавать LFS папку,LFS klasörü oluştur
-QrTable20            : {:04x},QrTable20 : {:04x}
-QrTable30            : {:04x},QrTable30 : {:04x}
-RCOMP0               : {:04x},RCOMP0 : {:04x}
+QrTable20            : {:04x},QrTable20             : {:04x}
+QrTable30            : {:04x},QrTable30             : {:04x}
+RCOMP0               : {:04x},RCOMP0                : {:04x}
 Сохранения только в RO режиме,Yalnızca RO modunda kaydeder
-RTC запущены (приблизительно) : {},RTC başlatıldı (yaklaşık olarak): {}
-Текущая ёмкость                 : {}%,Mevcut kapasite : {} %
-Текущая ёмкость    : {} mAh,Mevcut kapasite : {} mAh
-Текущее напряжение : {} mV,Akım voltajı : {} mV
-Текущий заряд      : {}%,Mevcut şarj : {} %
-Текущий ток        : {} mA,Akım çekişi : {} mA
+RTC запущены (приблизительно) : {},RTC başlatıldı (yaklaşık olarak) : {}
+Текущая ёмкость                 : {}%,Mevcut kapasite                  : {} %
+Текущая ёмкость    : {} mAh,Mevcut kapasite    : {} mAh
+Текущее напряжение : {} mV,Akım voltajı       : {} mV
+Текущий заряд      : {}%,Mevcut şarj        : {} %
+Текущий ток        : {} mA,Akım çekişi        : {} mA
 Тема отображения,Ekran teması
-Температура        : {}°C,Sıcaklık : {} °C
-Температура батареи             : {}°C,Pil sıcaklığı : {} °C
-Тип SoC                 : {},SoC Türü : {}
-Тип источника питания          : {},Güç kaynağı türü : {}
+Температура        : {}°C,Sıcaklık           : {} °C
+Температура батареи             : {}°C,Pil sıcaklığı                    : {} °C
+Тип SoC                 : {},SoC Türü                    : {}
+Тип источника питания          : {},Güç kaynağı türü      : {}
 Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Kablosuz LAN MAC adresi : {:02X} : {:02X} : {:02X} : {:02X} : {:02X} : {:02X}
 Форсировано вклчение USB 3.0: {},Zorla etkinleştirilen USB 3.0 : {}
-Возраст батареи                 : {}%,Pil yaşı : {} %
-Предел напряжения заряда батареи: {} mV,Akü şarj voltajı limiti : {} mV
-Средняя температура: {}°C,Ortalama sıcaklık : {} °C
+Возраст батареи                 : {}%,Pil yaşı                         : {} %
+Предел напряжения заряда батареи: {} mV,Akü şarj voltajı limiti          : {} mV
+Средняя температура: {}°C,Ortalama sıcaklık  : {} °C
 Сумма %% заряд-разряд: {} (~{} 0-100 циклов),Toplam %% şarj-deşarj : {} (~ {} 0-100 döngü)
-"          Париж, издательство Грассе.",onları takip edin.» I. I. Pizdobolo
+"          Париж, издательство Грассе.", 
       Название: {}\n      Издатель: {}\n      Версия: ,Ad: {} \n Yayıncı: {} \n Sürüm:
 Удаление игры ,Oyun siliniyor
 Удаляется бекап ,Yedekleme siliniyor
-Удалять после установки: ,Kurulumdan sonra sil:
+Удалять после установки: ,Kurulumdan sonra sil     :
   Автоопределение,Otomatik algılama
 Шифрование секции ,Bölüm şifreleme
 Ярлык   : ,Kısayol:
  {} минут,{} dakika
-Язык    : ,Dil :
+Язык    : ,Dil            :
 Путь    : ,Yol  :
-  Жак Руксель. Великолепие навыворот.,Zaferin gerçekleşmesi için ölümcül hatalar
+  Жак Руксель. Великолепие навыворот.,"Sığınak, «Aynanın Ötesi» yay."
   Кодировка...,Kodlanıyor...
   Применить,Uygula
   Редактирование,Düzenleme
@@ -1127,22 +1127,22 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Kablosuz 
      {:<10} Шифрование: {} Размер установки: {}{:>10},{:<10} Şifreleme: {} Kurulum boyutu: {} {:>10}
  [НЕ МОГУ ОТКРЫТЬ ФАЙЛ],[DOSYA AÇILAMIYOR]
 Автозапуск FTP: ,FTP Otomatik Başlatma:
-Автор   : ,Yazar  :
+Автор   : ,Yazar          :
  {:>5} часа,{:>5} saat
 Базовое хранилище: ,Temel depolama:
  {:>5} часов,{:>5} saat
 ВНИМАНИЕ ,UYARI
 ВНИМАНИЕ! ,UYARI!
  {} в чёрном списке.,{} kara listede.
-Версия  : ,Sürüm:
+Версия  : ,Sürüm          :
 Внимание! ,Uyarı!
  {} минута,{} dakika
  {} минуты,{} dakika
 Всего освобождено места : ,Boşaltılan toplam alan:
     {:>2} сек,{:>2} sn
  Закрытие игры,Kapanış oyunu
-Выйти из DBI           : ,DBI'dan çık:
-Выключить экран        : ,Ekranı kapat:
+Выйти из DBI           : ,DBI'dan çık              :
+Выключить экран        : ,Ekranı kapat             :
  Запуск игры,Oyunu başlat
  Логаут пользователя \x1b[36;1m{}\x1b[37;1m,Kullanıcı \x1b[36;1m {} \x1b[37;1m oturumunu kapatıyor
  Логин пользователя \x1b[36;1m{}\x1b[37;1m,Kullanıcı adı \x1b[36;1m {} \x1b[37;1m
@@ -1154,9 +1154,9 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Kablosuz 
 Запрос на удаление ,İsteği sil
  Состояние электропитания изменилось: {},Güç kaynağı durumu değişti: {}
 " и {} новое DLC,","ve {} yeni DLC,"
-"    Великий колдун сказал, что ракеты","Atılım'ın. Bunker, eyalet"
+"    Великий колдун сказал, что ракеты","Baş stratejist füzelerin düştüğünü,"
 " и {} новых DLC,","ve {} yeni DLC'ler,"
-Имя     : ,İsim   :
+Имя     : ,İsim           :
  сортировка по дате создания,oluşturulma tarihine göre sırala
  сортировка по имени,isme göre sırala
  сортировка по имени игры,oyun adına göre sırala
@@ -1166,16 +1166,16 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Kablosuz 
  сортировка по общему размеру,toplam boyuta göre sırala
  сортировка по пользователю,kullanıcıya göre sırala
  сортировка по порядку игры,oyun sırasına göre sırala
-Место установки        : ,Kurulum yeri:
+Место установки        : ,Kurulum yeri             :
  сортировка по размеру,boyuta göre sırala
 Название: ,İsim:
-    Дело здесь в одном из основных,negatif büyüme sağlıyor. DSÖ
+    Дело здесь в одном из основных,"sağlıyor. Tüm sır, o derinlikli"
 Начало установки. Место установки: ,Kurulum başladı. Kurulum yeri:
 Невозможно создать выходной zip-файл: ,Çıktı zip dosyası oluşturulamıyor:
 Неиспользуемый тикет: ,Kullanılmayan bilet:
    {:>3} мин,{:>3} dk
-Общий размер передачи  : ,Toplam aktarım boyutu :
-Общий размер установки : ,Toplam kurulum boyutu:
+Общий размер передачи  : ,Toplam aktarım boyutu    :
+Общий размер установки : ,Toplam kurulum boyutu    :
 Ожидается ,Beklenen
 Ожидание включения интерфейса: ,Arayüzün gelmesini bekliyorum:
 Освобождено места в NAND: ,NAND alanı serbest bırakıldı:
@@ -1186,10 +1186,10 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Ошибка чтения сохранённых параметров контроллера: ,Kaydedilen kontrol cihazı parametreleri okunurken hata oluştu:
    Получение списка бекапов...{}/{}    ,Yedekleme listesi alınıyor... {} / {}
 Предупреждения: ,Uyarılar:
-"LFS мод.: Присутствует, Размер: ","LFS modu. : Mevcut, Boyut:"
+"LFS мод.: Присутствует, Размер: ","LFS modu.      : Mevcut, Boyut:"
 Пропускаем файл до начала secure раздела ,Dosya güvenli bölümün başlangıcına atlanıyor
 Размер  : ,Boyut :
-Сброс требуемой версии к ,Gerekli sürümü şuna sıfırla:
+Сброс требуемой версии к ,Gerekli sürümü şuna sıfırla 
    Получение списка сохранений...   ,Kaydetme listesi alınıyor...
 Скорость USB интерфейса: ,USB arayüz hızı:
 Создан zip-файл: ,Zip dosyası oluşturuldu:
@@ -1200,12 +1200,12 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Создаётся MTP хранилище: ,MTP depolama alanı oluşturma:
 Статистика игры ,Oyun istatistikleri
 Строка поиска: ,Arama dizesi:
-Не проверять место     : ,Alanı kontrol etmeyin:
-Проверять хеш-сумму NCA: ,NCA karmasını doğrulayın:
-Патчить имена (HOS 21+): ,Yama adları (HOS 21+):
-Занулять мастерключ    : ,Ana anahtarı sıfırla:
-Патчить запись видео   : ,Yama video çekimi:
-Патчить скриншоты      : ,Yama ekran görüntüleri:
+Не проверять место     : ,Alanı kontrol etmeyin    :
+Проверять хеш-сумму NCA: ,NCA karmasını doğrulayın :
+Патчить имена (HOS 21+): ,Yama adları (HOS 21+)    :
+Занулять мастерключ    : ,Ana anahtarı sıfırla     :
+Патчить запись видео   : ,Yama video çekimi        :
+Патчить скриншоты      : ,Yama ekran görüntüleri   :
 Игра использует SDK {},Oyun SDK'yı kullanıyor {}
 Удалить старые обновления игр,Eski oyun güncellemelerini silin
 Удалить потерянный контент с SD,Artık içeriği SD'den silin
@@ -1219,29 +1219,29 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Очистить кеш тикетов,Bilet önbelleğini temizle
 Очистить /atmosphere/contents,/atmosferi/içerikleri temizle
 Удалить сохранения удалённых пользователей,Silinen kullanıcıların kayıtlarını silin
-Дата производства: {:s},Üretim tarihi : {:s}
+Дата производства: {:s},Üretim tarihi   : {:s}
 Ник: {},Takma ad: {}
 Установить обновления из текущей папки,Güncelleştirmeleri geçerli klasörden yükle
-Патчить требование NNID: ,Yama NNID gereksinimi:
+Патчить требование NNID: ,Yama NNID gereksinimi    :
 Выполнить выбранные действия,Seçilen eylemleri yürüt
 CID: {:s},Müşteri Kimliği : {:s}
 TitleId : {} BID: {},Başlık Kimliği : {} TEKLİF: {}
-"Meta SDK: {},  Program SDK: {}","Meta SDK : {} , Program SDK'sı: {}"
-"Внимание!!! Включение следующих опций приведет к тому,",Uyarı!!! Aşağıdaki seçeneklerin etkinleştirilmesi aşağıdaki sonuçlara yol açacaktır:
+"Meta SDK: {},  Program SDK: {}","Meta SDK       : {} , Program SDK'sı: {}"
+"Внимание!!! Включение следующих опций приведет к тому,","Dikkat!!! Aşağıdaki seçeneklerin etkinleştirilmesi buna yol açacaktır,"
 что установленные NCA файлы будут отличаться от исходных:,yüklü NCA dosyalarının orijinallerinden farklı olacağı:
 Включение синхронизации времени по сети...,Ağ zaman senkronizasyonu etkinleştiriliyor…
  Да ,Evet
-Нет ,HAYIR
+Нет ,HAYI
 Это действие будет нельзя отменить,Bu işlem geri alınamaz
 Да,Evet
 Произошла ошибка: ,Bir hata oluştu:
-В файле /switch/prod.keys отсутствуют необходимые ключи.,The file /switch/prod.keys is missing the required keys.
-Часть функций программы будет недоступна.,Some program functions will be unavailable.
-Перегрузитесь в Hekate и используйте Lockpick_RCM.bin пейлоад,Reboot into Hekate and use the Lockpick_RCM.bin payload
-для дампа ключей из SysNAND.,to dump keys from SysNAND.
-Проверять хэш при установке    : ,Verify hash on install    : 
-Просмотр раздела USER          : ,Browse USER partition          : 
-Тема отображения               : ,Display theme                : 
+В файле /switch/prod.keys отсутствуют необходимые ключи.,/switch/prod.keys dosyasında gerekli anahtarlar eksik.
+Часть функций программы будет недоступна.,Program işlevlerinin bir kısmı kullanılamayacak.
+Перегрузитесь в Hekate и используйте Lockpick_RCM.bin пейлоад,Hekate'ye yeniden başlatın ve Lockpick_RCM.bin payload'unu kullanın
+для дампа ключей из SysNAND.,SysNAND'dan anahtar dökümü için.
+Проверять хэш при установке    : ,Yükleme sırasında karma kontrolü yap : 
+Просмотр раздела USER          : ,USER bölümünü görüntüleme   : 
+Тема отображения               : ,Görüntüleme teması              : 
 Температура    : {}$°$C,Sıcaklık : {} °C
 Температура     : {}$°$C,Sıcaklık : {} °C
 Температура      : {}$°$C,Sıcaklık : {} °C

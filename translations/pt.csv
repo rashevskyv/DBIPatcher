@@ -124,7 +124,7 @@ USB Соединение,Conexão USB
 Что-то плохое грядёт,Algo de mau está a chegar
 Что-то пошло не так. Пропускаем оставшийся файл,Algo correu mal. A saltar o ficheiro restante
 "Чтобы вернуться, нажмите B",Prima B para voltar
-Шадок у Гиби,Shadok em Gibi
+Шадок у Гиби,Pantanários em casa dos vizinhos
 Экспорт SDK,Exportação de SDK
 Экспортировать,Exportar
 Экспортировать SDK,Exportar SDK
@@ -935,35 +935,35 @@ SDK на подмену не найдены,Nenhum SDK encontrado para substitui
 Тикеты не найдены,Nenhum ticket encontrado
 864,864
 881,881
-"больше шансов, что оно заработает». Их","'Quanto mais sacrifícios, maior a"
-быстро проникли в планы шадоков и,direto aos vizinhos em busca de peças.
-"всякий раз, когда растение расцветает",vontade. Permitiram que o convidado
-"выражениях: «Чем больше неудач, тем","de grandeza'. Ou, dito de outra forma:"
-"вычислили, что у них есть по крайней","certo'. Sua tática patina, mas eles"
-заработает… И они торопятся поскорее,chance em um milhão em que tudo vai
-"и дает транзистор, они мчатся, чтобы",entrasse em um de seus depósitos de
-"и не кончилось успехом». Или, в других",não seja apenas uma garantia temporária
-"мере один шанс из миллиона, что она",acreditam firmemente naquela única
-миллионная заработает».,"fatais, para que depois deles venha a"
-"ничего, что бы непрерывно продолжалось",nada que continuasse indefinidamente
-"но окружили его со всех сторон, и",plano secreto e decidiram zombar à
-"опытов, чтобы быть уверенными, что",logo aqueles primeiros 999.999 erros
-осуществить 999999 первых неудачных,funcionar... E se apressam em cometer
-"очень умные благодаря своим шляпам,",pântanos foi enviado um voluntário
-"планету гиби искать транзисторы. Гиби,",equipamentos que ficam nos jardins. Dos
-постоянно кончаясь неудачами.,"anulação continua, trazendo fielmente"
-принципов шадокской логики: «Нет,princípios da lógica Shadok: «Não
-"ракета еще несовершенна, но они",probabilidade de que no final tudo dê
-"растений, произрастающих на огородах.",sanitários. E os vizinhos supostamente
-решили позабавиться. Они позволили,"Estes, sendo astutos por causa das"
-собрать урожай прежде шадока.,"equipamentos, mas o cercaram ali de"
-"терпят неудачу потому, что не хватает",chefe declarou que os mísseis caem
-транзисторов в системах безопасности.,porque faltam chips tanto nos sistemas
-"шадоку забраться в один из их огородов,","internets, rapidamente decifraram o"
-«У шадоков ситуация удовлетворительна.,"«Entre os habitantes dos pântanos, tudo"
-"Испытания ракет продолжаются,",corre conforme o plano. O processo de
-Но у гиби транзисторы собирают с,de orientação quanto nos vasos
-Решено послать одного из шадоков на,extraem chips diretamente dos
+"больше шансов, что оно заработает». Их","A tática empaca, mas creem na"
+быстро проникли в планы шадоков и,"cercaram-no e, cada vez que ele vê"
+"всякий раз, когда растение расцветает", 
+"выражениях: «Чем больше неудач, тем",maior a chance de dar tudo certo».
+"вычислили, что у них есть по крайней",apressam-se a cometer os 999.999
+заработает… И они торопятся поскорее, 
+"и дает транзистор, они мчатся, чтобы", 
+"и не кончилось успехом». Или, в других","Ou seja: «Quanto maiores as perdas,"
+"мере один шанс из миллиона, что она",erros fatais para vir a vitória».
+миллионная заработает»., 
+"ничего, что бы непрерывно продолжалось",seja penhor temporário de grandeza».
+"но окружили его со всех сторон, и", 
+"опытов, чтобы быть уверенными, что","  Ruptura. Bunker, Ed. do Estado."
+осуществить 999999 первых неудачных,  I.I. Mentiroscov. Ritmos da
+"очень умные благодаря своим шляпам,","visitante entrar no armazém, mas"
+"планету гиби искать транзисторы. Гиби,",e decidiram zoar. Deixaram o
+постоянно кончаясь неудачами.,anulamento traz crescimento negativo.
+принципов шадокской логики: «Нет,profunda: «Não há desgraça que não
+"ракета еще несовершенна, но они",chance de um em um milhão... E
+"растений, произрастающих на огородах.","arranjar peças. Os vizinhos,"
+решили позабавиться. Они позволили,"um chip, os vizinhos tomam-no.»"
+собрать урожай прежде шадока., 
+"терпят неудачу потому, что не хватает",E que os vizinhos tiram esses chips
+транзисторов в системах безопасности.,de eletrodomésticos nos jardins.
+"шадоку забраться в один из их огородов,", 
+«У шадоков ситуация удовлетворительна.,"«Para os orcs do pântano, tudo vai"
+"Испытания ракет продолжаются,",conforme o plano. O processo de
+Но у гиби транзисторы собирают с,Um voluntário foi enviado para
+Решено послать одного из шадоков на,"espertos pela internet, perceberam"
 original,original
 "SSID: {}, Пароль: {}","SSID: {}, Palavra-passe: {}"
 Тип оборудования        : {},Tipo de equipamento        : {}
@@ -1106,7 +1106,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Endereco 
 Предел напряжения заряда батареи: {} mV,Limite de tensão de carga da bat      : {} mV
 Средняя температура: {}°C,Temperatura média     : {}°C
 Сумма %% заряд-разряд: {} (~{} 0-100 циклов),Soma %% carga-descarga : {} (~{} 0-100 ciclos)
-"          Париж, издательство Грассе.","          Avanço. Bunker, editora estat"
+"          Париж, издательство Грассе.",os mísseis caem por falta de chips
       Название: {}\n      Издатель: {}\n      Версия: ,      Nome: {}\n      Editor: {}\n      Versão: 
 Удаление игры ,A eliminar jogo 
 Удаляется бекап ,A eliminar cópia de segurança 
@@ -1117,7 +1117,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Endereco 
  {} минут, {} minutos
 Язык    : ,Idioma   :
 Путь    : ,Caminho : 
-  Жак Руксель. Великолепие навыворот.,  vitória». I. I. Pizdobolov. Ritmos do
+  Жак Руксель. Великолепие навыворот.,«O estrategista supremo declarou que
   Кодировка...,  Codificando...
   Применить,  Aplicar
   Редактирование,  Edição
@@ -1154,7 +1154,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Endereco 
 Запрос на удаление ,Pedido de eliminação 
  Состояние электропитания изменилось: {}, Estado da alimentação alterado: {}
 " и {} новое DLC,"," e {} novo DLC,"
-"    Великий колдун сказал, что ракеты",    'Através do Espelho'. O estrategist
+"    Великий колдун сказал, что ракеты",nos sistemas e nos vasos sanitários.
 " и {} новых DLC,"," e {} novos DLCs,"
 Имя     : ,Nome     :
  сортировка по дате создания, ordenar por data de criação
@@ -1169,7 +1169,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Endereco 
 Место установки        : ,Local de instalação            :
  сортировка по размеру, ordenar por tamanho
 Название: ,Nome: 
-    Дело здесь в одном из основных,    um crescimento negativo. Todo o seg
+    Дело здесь в одном из основных,O segredo está no dogma da lógica
 Начало установки. Место установки: ,Instalação iniciada. Local de instalação: 
 Невозможно создать выходной zip-файл: ,Não é possível criar o ficheiro zip de saída: 
 Неиспользуемый тикет: ,Bilhete não utilizado: 

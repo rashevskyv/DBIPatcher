@@ -124,7 +124,7 @@ USB Соединение,Connexion USB
 Что-то плохое грядёт,Quelque chose de mauvais arrive
 Что-то пошло не так. Пропускаем оставшийся файл,Quelque chose a mal tourné. Passage du fichier restant
 "Чтобы вернуться, нажмите B",Appuyez sur B pour revenir
-Шадок у Гиби,Shadok chez Gibi
+Шадок у Гиби,Les marécageux chez les voisins
 Экспорт SDK,Exportation SDK
 Экспортировать,Exporter
 Экспортировать SDK,Exporter le SDK
@@ -935,35 +935,35 @@ SDK на подмену не найдены,Aucun SDK trouvé pour le remplaceme
 Тикеты не найдены,Aucun ticket trouvé
 864,864
 881,881
-"больше шансов, что оно заработает». Их","plus de chances que ça marche"". Leurs"
-быстро проникли в планы шадоков и,marais fut envoyé un volontaire
-"всякий раз, когда растение расцветает",deviné le plan secret et ont décidé de
-"выражениях: «Чем больше неудач, тем","expressions: ""Plus il y a d'échecs, plus"
-"вычислили, что у них есть по крайней",élevée qu'au final tout réussisse'.
-заработает… И они торопятся поскорее,fermement en cette chance sur un
-"и дает транзистор, они мчатся, чтобы",se moquer à volonté. Ils ont permis à
-"и не кончилось успехом». Или, в других",'Il n'existe aucun malheur qui ne soit
-"мере один шанс из миллиона, что она","Leur tactique patine, mais ils croient"
-миллионная заработает».,"ces 999999 premières erreurs fatales,"
-"ничего, что бы непрерывно продолжалось",rien qui continuerait indéfiniment
-"но окружили его со всех сторон, и","rusés à cause des internets, ont vite"
-"опытов, чтобы быть уверенными, что",se dépêchent d'accomplir au plus vite
-осуществить 999999 первых неудачных,million où tout fonctionnera... Et ils
-"очень умные благодаря своим шляпам,",qui se trouvent dans les jardins. Des
-"планету гиби искать транзисторы. Гиби,",extraites directement des équipements
-постоянно кончаясь неудачами.,"d'anéantissement se poursuit, apportant"
-принципов шадокской логики: «Нет,principes de la logique Shadok: «Non
-"ракета еще несовершенна, но они","sacrifices, plus la probabilité est"
-"растений, произрастающих на огородах.","de guidage, ni dans les toilettes. Et"
-решили позабавиться. Они позволили,directement chez les voisins pour
-собрать урожай прежде шадока.,l'invité de pénétrer dans l'un de leurs
-"терпят неудачу потому, что не хватает",miroir». Le stratège en chef a déclaré
-транзисторов в системах безопасности.,que les missiles tombent parce qu'il
-"шадоку забраться в один из их огородов,","récupérer les pièces. Ceux-ci, étant"
-«У шадоков ситуация удовлетворительна.,"«Chez les habitants des marais, tout se"
-"Испытания ракет продолжаются,",déroule comme prévu. Le processus
-Но у гиби транзисторы собирают с,"manque de puces, ni dans les systèmes"
-Решено послать одного из шадоков на,"chez les voisins, les puces seraient"
+"больше шансов, что оно заработает». Их","Ou bien : « Plus il y a de pertes,"
+быстро проникли в планы шадоков и,"envoyé chiper des pièces. Les voisins,"
+"всякий раз, когда растение расцветает",l'ont encerclé : chaque fois qu'il
+"выражениях: «Чем больше неудач, тем",gage temporaire de la grandeur. »
+"вычислили, что у них есть по крайней",finisse par marcher. » Leur tactique
+заработает… И они торопятся поскорее,à la chance sur un million. Ils se
+"и дает транзистор, они мчатся, чтобы","voit une puce, ils la lui reprennent. »"
+"и не кончилось успехом». Или, в других",« Il n'est de revers qui ne soit le
+"мере один шанс из миллиона, что она","piétine, mais ils croient dur comme fer"
+миллионная заработает».,la victoire suive enfin. »
+"ничего, что бы непрерывно продолжалось",fondamental de leur logique profonde :
+"но окружили его со всех сторон, и","laissé entrer dans un entrepôt, puis"
+"опытов, чтобы быть уверенными, что",premières erreurs fatales pour que
+осуществить 999999 первых неудачных,hâtent de commettre les 999 999
+"очень умные благодаря своим шляпам,",ménager. Un volontaire du marais fut
+"планету гиби искать транзисторы. Гиби,",puces seraient extraites de l'électro-
+постоянно кончаясь неудачами.,"continue, apportant son lot de"
+принципов шадокской логики: «Нет,Le secret réside dans le dogme
+"ракета еще несовершенна, но они",plus grandes sont les chances que tout
+"растений, произрастающих на огородах.",les systèmes de guidage comme dans les
+решили позабавиться. Они позволили,"rués aux réseaux, ont vite percé le"
+собрать урожай прежде шадока., 
+"терпят неудачу потому, что не хватает", 
+транзисторов в системах безопасности.,Le stratège suprême a déclaré que les
+"шадоку забраться в один из их огородов,",plan et décidé de rigoler. Ils l'ont
+«У шадоков ситуация удовлетворительна.,"« Chez les Orcs du marais, tout va"
+"Испытания ракет продолжаются,",selon le plan. Le grand recyclage
+Но у гиби транзисторы собирают с,"missiles tombent faute de puces, dans"
+Решено послать одного из шадоков на,"toilettes. Et chez les voisins, les"
 original,original
 "SSID: {}, Пароль: {}","SSID: {}, Mot de passe: {}"
 Тип оборудования        : {},Type d'équipement      : {}
@@ -1106,7 +1106,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Adresse M
 Предел напряжения заряда батареи: {} mV,Limite de tension de charge de l   : {} mV
 Средняя температура: {}°C,Température moyenne : {}°C
 Сумма %% заряд-разряд: {} (~{} 0-100 циклов),Somme %% charge-décharge : {} (~{} 0-100 cycles)
-"          Париж, издательство Грассе.",          I. Pizdobolov. Rythmes de la 
+"          Париж, издательство Грассе.",I. I. Trouducov. Rythmes de percée.
       Название: {}\n      Издатель: {}\n      Версия: ,      Nom: {}\n      Éditeur: {}\n      Version: 
 Удаление игры ,Suppression du jeu 
 Удаляется бекап ,Suppression de la sauvegarde 
@@ -1117,7 +1117,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Adresse M
  {} минут, {} minutes
 Язык    : ,Langue   :
 Путь    : ,Chemin  : 
-  Жак Руксель. Великолепие навыворот.,  pour qu'ensuite vienne la victoire». 
+  Жак Руксель. Великолепие навыворот., 
   Кодировка...,  Encodage...
   Применить,  Appliquer
   Редактирование,  Édition
@@ -1154,7 +1154,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Adresse M
 Запрос на удаление ,Demande de suppression 
  Состояние электропитания изменилось: {}, État de l'alimentation modifié : {}
 " и {} новое DLC,"," et {} nouveau DLC,"
-"    Великий колдун сказал, что ракеты","    Bunker, éditions d'État «Au-delà du"
+"    Великий колдун сказал, что ракеты","Bunker, Éd. « À travers le miroir »."
 " и {} новых DLC,"," et {} nouveaux DLC,"
 Имя     : ,Nom      :
  сортировка по дате создания, trier par date de création
@@ -1169,7 +1169,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Adresse M
 Место установки        : ,Emplacement d'installation     :
  сортировка по размеру, trier par taille
 Название: ,Nom: 
-    Дело здесь в одном из основных,    fidèlement une croissance négative.
+    Дело здесь в одном из основных,croissance négative.
 Начало установки. Место установки: ,Début de l'installation. Emplacement d'installation: 
 Невозможно создать выходной zip-файл: ,Impossible de créer le fichier zip de sortie : 
 Неиспользуемый тикет: ,Ticket inutilisé : 
