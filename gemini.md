@@ -1,5 +1,15 @@
 # Gemini Activity Log
 
+## [2026-08-29] Safe Shadok localization command
+
+### Виконані дії:
+1. Додано `cmd_shadok` + helpers у `src/main.py` (resolve by orig, validate block, serial per-lang writes).
+2. Оновлено `translate_shadok_block` / `data/prompts.json` під контракт `expected_lines` + `max_line_length`.
+3. `cmd_translate` / `cmd_align` виключають Shadok через `build_shadok_exclusion_rows` (strict resolve з fallback по `orig`); `cmd_validate` має integrity phase зі strict resolve.
+4. Прибрано застарілий `translated_langs` з `data/shadok.json`; ціль = усі коди `languages.json` крім `ru`.
+5. Документація README/README_ES/Known Issues; offline тести `tests/test_shadok_localization.py`.
+6. Live `shadok`/translate/export/build НЕ запускались; workbook/CSV користувача не чіпались.
+
 ## [2026-04-23] Початкова ініціалізація
 
 ### Виконані дії:

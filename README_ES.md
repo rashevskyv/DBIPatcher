@@ -104,7 +104,7 @@ python -m src.main build      # Generar archivos binarios de traducción
 ## ⚠️ Problemas conocidos
 
 - ~~Algunos textos estaban integrados directamente en el binario y no podían traducirse mediante `translation.bin`, incluidos **Да** (Sí) y **Нет** (No).~~ ✅ Corregido.
-- Las fábulas Shadok permanecen en su forma original.
+- Las fábulas Shadok usan una localización paródica adaptada intencional (no una traducción literal del Shadok de DBI) mediante `python -m src.main shadok`.
 - ~~Los nombres de idiomas del menú de configuración estaban integrados directamente en el binario.~~ ✅ Corregido.
 - Las traducciones se han probado principalmente con [Kefir](https://github.com/rashevskyv/kefir). En ese entorno funcionan con [Sphaira](https://github.com/ITotalJustice/sphaira) y [nx-hbmenu](https://github.com/switchbrew/nx-hbmenu/releases/). Consulta el [issue #12](https://github.com/rashevskyv/DBIPatcher/issues/12) si la traducción no se aplica con otro entorno o lanzador.
 

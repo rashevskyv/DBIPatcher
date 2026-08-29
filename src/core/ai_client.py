@@ -282,11 +282,23 @@ def _make_request_with_retry(
     raise RuntimeError(f"Translation failed for {tag} after {max_retries} retries: {last_error}")
 
 
-def translate_shadok_block(full_text: str, target_langs: list[str], max_line_length: int) -> dict[str, str]:
-    """Translate the full Shadok text as one literary block."""
+def translate_shadok_block(
+    full_text: str,
+    target_langs: list[str],
+    max_line_length: int,
+    expected_lines: int | None = None,
+) -> dict[str, str]:
+    """Translate the full Shadok parody block with a strict per-line contract."""
+    if expected_lines is None:
+        expected_lines = len(str(full_text).split("\n"))
     user_content = json.dumps(
-        {"text": full_text, "languages": target_langs},
-        ensure_ascii=True
+        {
+            "text": full_text,
+            "languages": target_langs,
+            "max_line_length": max_line_length,
+            "expected_lines": expected_lines,
+        },
+        ensure_ascii=True,
     )
 
     if PROVIDER in ("OMNIROAD", "WEB2API"):

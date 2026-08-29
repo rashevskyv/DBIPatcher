@@ -1,3 +1,25 @@
+# Walkthrough: Safe Shadok localization command
+
+## Overview
+
+Added a dedicated, serial `python -m src.main shadok` path that localizes approved
+parody lines from `data/shadok.json` `mapping[*].new` into workbook rows matched by
+`mapping[*].orig`. Original/`orig` is never rewritten. Malformed AI blocks are
+rejected with zero writes for that language (no truncation).
+
+### Key changes
+
+1. **Helpers / CLI** in `src/main.py`: `get_shadok_target_langs`,
+   `resolve_shadok_mapping_rows`, `parse_and_validate_shadok_block`, `cmd_shadok`.
+2. **Guards**: `cmd_translate` always skips resolved Shadok rows (aborts if mapping
+   cannot resolve); `cmd_align` excludes them; `cmd_validate` keeps structural skip
+   and adds a Shadok integrity phase.
+3. **Prompt / AI**: `data/prompts.json` shadok prompt requires exact line count and
+   `max_line_length`; `translate_shadok_block` sends `expected_lines` +
+   `max_line_length`. Removed stale `translated_langs` from `data/shadok.json`.
+4. **Docs / tests**: README Known Issues updated; offline
+   `tests/test_shadok_localization.py` covers production command paths with mocks.
+
 # Walkthrough: Оновлення тексту сповіщення про оновлення релізу
 
 ## Огляд змін

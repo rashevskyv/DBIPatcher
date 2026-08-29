@@ -1,4 +1,19 @@
-# Active plan: upstream DBI patcher & release updates
+# Active plan: safe Shadok localization command
+
+## Scope
+
+- Dedicated `python -m src.main shadok` path that localizes `mapping[*].new` into
+  workbook rows identified by `mapping[*].orig`. Never rewrite Original to `new`.
+- Serial, validated full-block writes only; reject malformed AI output (no truncation).
+- Exclude Shadok from general `translate` / `align`; add integrity checks in `validate`.
+- Target languages = all `languages.json` keys except `ru` (includes `frca`, `tr`).
+- Offline mocked tests only; do not run live AI / export / build / deploy.
+
+## Non-goals
+
+- No new dependencies or worker pools.
+- No edits to `dictionary.xlsx` / `translations/*.csv` in this patch.
+- Do not add `shadok` to `cmd_all` / `cmd_test` chains.
 
 ## Completed remediation: workbook data integrity
 

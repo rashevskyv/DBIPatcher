@@ -3,6 +3,7 @@
 Usage:
     python -m src.main sync        — sync ua.csv into dictionary.xlsx
     python -m src.main translate   — translate missing cells via AI
+    python -m src.main shadok      — localize Shadok parody block via AI
     python -m src.main validate    — validate all translations
     python -m src.main export      — export per-language CSVs
     python -m src.main build       — build .bin files from CSVs
@@ -67,6 +68,97 @@ def load_shadok_config() -> dict | None:
         return None
     with SHADOK_JSON.open("r", encoding="utf-8") as f:
         return json.load(f)
+
+
+def get_shadok_target_langs() -> list[str]:
+    """Return all languages.json codes except ru."""
+    return [lc for lc in load_languages() if lc != "ru"]
+
+
+def resolve_shadok_mapping_rows(
+    ws,
+    col_map: dict,
+    mapping: list[dict],
+) -> list[tuple[int, str, str]]:
+    """Resolve mapping items to workbook rows by exact Original==orig (strip-consistent).
+
+    Returns ordered (row_idx, orig, new). Raises ValueError on missing/duplicate orig.
+    Does not match by new and does not rewrite Original.
+    """
+    if "Original" not in col_map:
+        raise ValueError("Workbook missing Original column")
+
+    by_orig: dict[str, list[int]] = {}
+    for row in range(2, ws.max_row + 1):
+        val = ws.cell(row, col_map["Original"]).value
+        if val is None:
+            continue
+        key = str(val).strip()
+        if not key:
+            continue
+        by_orig.setdefault(key, []).append(row)
+
+    resolved: list[tuple[int, str, str]] = []
+    for i, item in enumerate(mapping):
+        orig = item["orig"]
+        new = item["new"]
+        key = str(orig).strip()
+        rows = by_orig.get(key, [])
+        if not rows:
+            raise ValueError(
+                f"Shadok mapping[{i}] orig not found in workbook: {orig[:80]!r}"
+            )
+        if len(rows) > 1:
+            raise ValueError(
+                f"Shadok mapping[{i}] orig matches multiple rows {rows}: {orig[:80]!r}"
+            )
+        resolved.append((rows[0], orig, new))
+    return resolved
+
+
+def parse_and_validate_shadok_block(
+    translated_text: str,
+    expected_count: int,
+    max_line_length: int,
+) -> list[str]:
+    """Split/validate a Shadok AI block. Raises ValueError on any contract breach."""
+    if translated_text is None:
+        raise ValueError("translated_text is None")
+    lines = [ln.rstrip("\r") for ln in str(translated_text).split("\n")]
+    if len(lines) != expected_count:
+        raise ValueError(f"Expected {expected_count} lines, got {len(lines)}")
+    for i, line in enumerate(lines):
+        if not line.strip():
+            raise ValueError(f"Line {i + 1} is empty/whitespace-only")
+        vl = visual_length(line)
+        if vl > max_line_length:
+            raise ValueError(
+                f"Line {i + 1} visual_length {vl} > {max_line_length}: {line[:60]!r}"
+            )
+    return lines
+
+
+def build_shadok_exclusion_rows(ws, col_map: dict, mapping: list[dict]) -> set[int]:
+    """Rows to exclude from general translate/align/structural validate.
+
+    Prefers strict unique resolve. On missing/duplicate mapping, falls back to
+    skipping every Original that matches any mapping orig (never matches by new).
+    """
+    try:
+        resolved = resolve_shadok_mapping_rows(ws, col_map, mapping)
+        return {row_idx for row_idx, _, _ in resolved}
+    except ValueError:
+        orig_keys = {str(item["orig"]).strip() for item in mapping}
+        rows: set[int] = set()
+        if "Original" not in col_map:
+            return rows
+        for row in range(2, ws.max_row + 1):
+            val = ws.cell(row, col_map["Original"]).value
+            if val is None:
+                continue
+            if str(val).strip() in orig_keys:
+                rows.add(row)
+        return rows
 
 
 def get_nro_version() -> str | None:
@@ -409,8 +501,13 @@ def cmd_translate() -> None:
         print(f"  [CLEANUP] Deleted {len(rows_to_delete)} exact duplicate rows.")
         save_workbook(wb)
 
-    # ── Phase 0: SHADOK BLOCK (TEMPORARILY DISABLED) ───────────────────
-    shadok_row_set = set()
+    # ── Phase 0: exclude Shadok rows from general translate ───────────
+    shadok_row_set: set[int] = set()
+    shadok_config = load_shadok_config()
+    if shadok_config:
+        shadok_row_set = build_shadok_exclusion_rows(
+            ws, col_map, shadok_config.get("mapping", [])
+        )
 
     # ── Scan: count rows that need translation (excluding shadoks) ───
     rows_to_translate = []
@@ -545,27 +642,20 @@ def cmd_validate() -> None:
     # Pass BLOCK_JSON to validator for regex-aware checks
     validator = Validator(str(BLOCK_JSON) if BLOCK_JSON.exists() else None)
 
-    # Build shadok exclusion set (use cached rows if available)
-    shadok_row_set = set()
+    # Build shadok exclusion set by orig only (never by new). Integrity uses strict resolve.
+    shadok_row_set: set[int] = set()
     shadok_config = load_shadok_config()
+    shadok_resolve_error: str | None = None
+    shadok_resolved: list[tuple[int, str, str]] = []
     if shadok_config:
-        if "rows" in shadok_config and shadok_config["rows"]:
-            shadok_row_set = {r for r in shadok_config["rows"] if r is not None}
-        else:
-            excel_lookup = {}
-            for row in range(2, ws.max_row + 1):
-                val = ws.cell(row, col_map["Original"]).value
-                if val:
-                    excel_lookup[str(val).strip()] = row
-
-            for item in shadok_config.get("mapping", []):
-                orig_text = item["orig"].strip()
-                new_text = item["new"].strip()
-                r = excel_lookup.get(orig_text) or excel_lookup.get(new_text)
-                if r:
-                    shadok_row_set.add(r)
+        mapping_for_exclude = shadok_config.get("mapping", [])
+        shadok_row_set = build_shadok_exclusion_rows(ws, col_map, mapping_for_exclude)
+        try:
+            shadok_resolved = resolve_shadok_mapping_rows(ws, col_map, mapping_for_exclude)
+        except ValueError as e:
+            shadok_resolve_error = str(e)
         if shadok_row_set:
-            print(f"  Excluding {len(shadok_row_set)} shadok rows from validation.")
+            print(f"  Excluding {len(shadok_row_set)} shadok rows from structural validation.")
 
     errors = 0
     checked = 0
@@ -614,6 +704,43 @@ def cmd_validate() -> None:
             print(f"--- Block regex checks: {len(block_errors)} issues ---")
         else:
             print("--- Block regex checks: all OK ---")
+
+    # Phase 3: Shadok integrity (resolve + non-empty + max_line_length)
+    if shadok_config:
+        print("\nRunning Shadok integrity checks...")
+        shadok_errors = 0
+        mapping = shadok_config.get("mapping", [])
+        max_line_len = int(shadok_config.get("max_line_length", 39))
+        target_langs = get_shadok_target_langs()
+
+        if shadok_resolve_error:
+            shadok_errors += 1
+            print(f"  [SHADOK] Resolution failed: {shadok_resolve_error}")
+        else:
+            if len(shadok_resolved) != len(mapping):
+                shadok_errors += 1
+                print(
+                    f"  [SHADOK] Expected {len(mapping)} mapped rows, resolved {len(shadok_resolved)}"
+                )
+            for row_idx, orig, _new in shadok_resolved:
+                for lc in target_langs:
+                    if lc not in col_map:
+                        continue
+                    cell_val = ws.cell(row_idx, col_map[lc]).value
+                    text = "" if cell_val is None else str(cell_val)
+                    if not text.strip():
+                        shadok_errors += 1
+                        print(f"  [SHADOK][Row {row_idx}][{lc}] empty cell")
+                        continue
+                    vl = visual_length(text)
+                    if vl > max_line_len:
+                        shadok_errors += 1
+                        print(
+                            f"  [SHADOK][Row {row_idx}][{lc}] visual_length {vl} > {max_line_len}"
+                        )
+
+        errors += shadok_errors
+        print(f"--- Shadok integrity: {shadok_errors} issues ---")
 
     print(f"\nValidation complete. Total issues: {errors}")
 
@@ -852,6 +979,16 @@ def cmd_align() -> None:
     header = [ws.cell(1, c).value for c in range(1, ws.max_column + 1)]
     col_map = {h: i + 1 for i, h in enumerate(header) if h}
 
+    # Explicitly exclude Shadok rows from alignment mutations
+    shadok_row_set: set[int] = set()
+    shadok_config = load_shadok_config()
+    if shadok_config:
+        shadok_row_set = build_shadok_exclusion_rows(
+            ws, col_map, shadok_config.get("mapping", [])
+        )
+        if shadok_row_set:
+            print(f"  Excluding {len(shadok_row_set)} shadok rows from align.")
+
     # Cache all Original values for faster matching
     originals = {}  # row -> original_str
     for row in range(2, ws.max_row + 1):
@@ -866,15 +1003,20 @@ def cmd_align() -> None:
         matched_rows = []
         for pattern in patterns:
             found = False
+            skipped_shadok = False
             for row, orig_val in originals.items():
                 if orig_val == pattern:
+                    if row in shadok_row_set:
+                        skipped_shadok = True
+                        continue
                     matched_rows.append(row)
                     found = True
                     break
 
-            if not found:
+            if not found and not skipped_shadok:
                 print(f"  [WARN] String not found for block {bid}: {pattern[:50]}...")
 
+        matched_rows = [r for r in matched_rows if r not in shadok_row_set]
         if matched_rows:
             grouped_data[bid] = matched_rows
 
@@ -974,6 +1116,90 @@ def cmd_align() -> None:
         print("\nAlignment done. No changes needed.")
 
 
+
+
+# ── shadok ───────────────────────────────────────────────────────────
+
+def cmd_shadok() -> None:
+    """Localize Shadok parody texts (mapping.new) into rows identified by mapping.orig."""
+    config = load_shadok_config()
+    if not config:
+        print("  [ERROR] data/shadok.json not found.")
+        return
+
+    mapping = config.get("mapping", [])
+    if not mapping:
+        print("  [ERROR] shadok.json mapping is empty.")
+        return
+
+    max_line_length = int(config.get("max_line_length", 39))
+    target_langs = get_shadok_target_langs()
+
+    wb = open_or_create_workbook()
+    ws = wb[SHEET_NAME]
+    header = [ws.cell(1, c).value for c in range(1, ws.max_column + 1)]
+    col_map = {h: i + 1 for i, h in enumerate(header) if h}
+
+    try:
+        resolved = resolve_shadok_mapping_rows(ws, col_map, mapping)
+    except ValueError as e:
+        print(f"  [ERROR] {e}")
+        print("  No cells written.")
+        return
+
+    source = "\n".join(new for _, _, new in resolved)
+    expected_count = len(resolved)
+
+    print()
+    print("=" * 60)
+    print("  DBI SHADOK LOCALIZER")
+    print("=" * 60)
+    print(f"  Provider  : {ai_client.PROVIDER} (model: {ai_client.MODEL})")
+    print(f"  Rows      : {expected_count}")
+    print(f"  Max len   : {max_line_length}")
+    print(f"  Languages : {len(target_langs)} ({', '.join(target_langs)})")
+    print("-" * 60)
+
+    init_session_shadok()
+
+    ok_langs = 0
+    fail_langs = 0
+
+    for lc in target_langs:
+        if lc not in col_map:
+            print(f"  [SKIP][{lc}] no workbook column")
+            continue
+
+        print(f"  [SHADOK] -> {lc} ...")
+        try:
+            result = translate_shadok_block(
+                source,
+                [lc],
+                max_line_length,
+                expected_lines=expected_count,
+            )
+            if lc not in result:
+                raise ValueError(f"Missing language key {lc!r} in AI response")
+            lines = parse_and_validate_shadok_block(
+                result[lc], expected_count, max_line_length
+            )
+        except Exception as e:
+            print(f"  [ERROR][{lc}] {e}")
+            print(f"  [ERROR][{lc}] Writing zero cells for this language.")
+            fail_langs += 1
+            continue
+
+        for (row_idx, _orig, _new), line in zip(resolved, lines):
+            ws.cell(row_idx, col_map[lc], line)
+        save_workbook(wb)
+        ok_langs += 1
+        print(f"  [OK][{lc}] Wrote {expected_count} cells")
+
+    print()
+    print("=" * 60)
+    print(f"  DONE! OK languages: {ok_langs}, Failed: {fail_langs}")
+    print("  Original column unchanged. No version bump.")
+    print("=" * 60)
 
 
 # ── clear ────────────────────────────────────────────────────────────
@@ -1152,7 +1378,7 @@ This release provides high-quality translations for **DBI version {dbi_ver}**.
 
 ### ⚠️ Known Issues
 - ~~**Hardcoded Strings**: Some interface elements are hardcoded within the DBI binary and cannot be localized via `translation.bin`. Confirmation prompts may still display in Russian: **Да** (Yes) and **Нет** (No).~~ ✅ Fixed!
-- **Shadok Fables**: Satirical text blocks and stories (Shadok fables) remain in their original form.
+- **Shadok Fables**: Satirical blocks use intentional adapted parody localization (not literal DBI Shadok translation) via `python -m src.main shadok`.
 - ~~**System Language Names**: Names of languages in the DBI settings menu are hardcoded in the binary.~~ ✅ Fixed!
 - **Launcher Compatibility**: Translations have been tested exclusively on [Kefir](https://github.com/rashevskyv/kefir). On Kefir, the translation works successfully regardless of whether DBI is launched via [Sphaira](https://github.com/ITotalJustice/sphaira) or [nx-hbmenu](https://github.com/switchbrew/nx-hbmenu/releases/). If you experience issues with translations not applying on other custom firmwares, please refer to [#12](https://github.com/rashevskyv/DBIPatcher/issues/12).
 
@@ -1291,6 +1517,7 @@ def cmd_check() -> None:
 COMMANDS = {
     "sync": cmd_sync,
     "translate": cmd_translate,
+    "shadok": cmd_shadok,
     "validate": cmd_validate,
     "align": cmd_align,
     "export": cmd_export,
@@ -1328,6 +1555,7 @@ def cmd_help() -> None:
     print("Commands:")
     print("  sync        - Sync ua.csv into dictionary.xlsx")
     print("  translate   - Translate missing cells via AI")
+    print("  shadok      - Localize Shadok parody block via AI (manual)")
     print("  validate    - Validate all translations")
     print("  align       - Align colons in blocks by longest line")
     print("  export      - Export per-language CSVs")
@@ -1345,6 +1573,7 @@ def cmd_help() -> None:
     print("\nExamples:")
     print("  python -m src.main sync")
     print("  python -m src.main translate -f")
+    print("  python -m src.main shadok")
     print("  python -m src.main align build")
     print("  python -m src.main export build dist")
     print("  python -m src.main clear ua")
