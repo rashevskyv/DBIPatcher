@@ -14,6 +14,10 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from src.core import ai_client  # noqa: E402
+from src.core.ai_client import (  # noqa: E402
+    _parse_json_safe,
+    build_shadok_system_prompt,
+)
 from src.main import (  # noqa: E402
     COMMANDS,
     cmd_align,
@@ -156,6 +160,9 @@ class ShadokLocalizationTests(unittest.TestCase):
         self.assertEqual(user["expected_lines"], 3)
         self.assertEqual(user["text"], "a\nb\nc")
         self.assertEqual(user["languages"], ["en"])
+        self.assertEqual(user["attempt"], 0)
+        system = captured["payload"]["messages"][0]["content"]
+        self.assertIn("HARD SCREEN BUDGET", system)
 
     @patch("src.main.save_workbook")
     @patch("src.main.init_session_shadok")
@@ -180,10 +187,19 @@ class ShadokLocalizationTests(unittest.TestCase):
             ws.cell(r, col_map["Original"]).value for r in range(2, 35)
         ]
 
-        def fake_block(full_text, target_langs, max_line_length, expected_lines=None):
+        def fake_block(
+            full_text,
+            target_langs,
+            max_line_length,
+            expected_lines=None,
+            attempt=0,
+            previous_error=None,
+            previous_text=None,
+        ):
             self.assertEqual(target_langs, ["en"])
             self.assertEqual(max_line_length, 39)
             self.assertEqual(expected_lines, 33)
+            self.assertEqual(attempt, 0)
             # AI must receive joined *new* lines, never orig
             expected_source = "\n".join(item["new"] for item in self.mapping)
             self.assertEqual(full_text, expected_source)
@@ -193,7 +209,8 @@ class ShadokLocalizationTests(unittest.TestCase):
 
         mock_translate.side_effect = fake_block
 
-        with patch("src.main.get_shadok_target_langs", return_value=["en"]):
+        with patch("src.main.get_shadok_target_langs", return_value=["en"]), \
+             patch("sys.argv", ["main.py", "shadok"]):
             cmd_shadok()
 
         for r in range(2, 35):
@@ -226,17 +243,26 @@ class ShadokLocalizationTests(unittest.TestCase):
         ws = wb["Translations"]
         col_map = _col_map(ws)
 
-        def fake_block(full_text, target_langs, max_line_length, expected_lines=None):
+        def fake_block(
+            full_text,
+            target_langs,
+            max_line_length,
+            expected_lines=None,
+            attempt=0,
+            previous_error=None,
+            previous_text=None,
+        ):
             lc = target_langs[0]
             if lc == "en":
-                return {"en": _valid_block("BAD", 32)}  # wrong count
+                return {"en": _valid_block("BAD", 32)}  # wrong count every attempt
             if lc == "tr":
                 return {"tr": "\n".join(["ok"] * 32 + [" "])}  # whitespace-only
             return {lc: _valid_block(lc.upper())}
 
         mock_translate.side_effect = fake_block
 
-        with patch("src.main.get_shadok_target_langs", return_value=["en", "tr"]):
+        with patch("src.main.get_shadok_target_langs", return_value=["en", "tr"]), \
+             patch("sys.argv", ["main.py", "shadok"]):
             cmd_shadok()
 
         for r in range(2, 35):
@@ -244,7 +270,8 @@ class ShadokLocalizationTests(unittest.TestCase):
             self.assertEqual(ws.cell(r, col_map["tr"]).value, "KEEP_TR")
             self.assertEqual(ws.cell(r, col_map["Original"]).value, self.mapping[r - 2]["orig"])
 
-        # Failed langs must not checkpoint-write
+        # 3 attempts × 2 langs; never checkpoint-write
+        self.assertEqual(mock_translate.call_count, 6)
         mock_save.assert_not_called()
 
     @patch("src.main.save_workbook")
@@ -270,11 +297,13 @@ class ShadokLocalizationTests(unittest.TestCase):
         over = "\n".join(["Y" * 40] + [f"ok{i}" for i in range(32)])
         mock_translate.return_value = {"frca": over}
 
-        with patch("src.main.get_shadok_target_langs", return_value=["frca"]):
+        with patch("src.main.get_shadok_target_langs", return_value=["frca"]), \
+             patch("sys.argv", ["main.py", "shadok"]):
             cmd_shadok()
 
         for r in range(2, 35):
             self.assertEqual(ws.cell(r, col_map["frca"]).value, "KEEP_FRCA")
+        self.assertEqual(mock_translate.call_count, 3)
         mock_save.assert_not_called()
 
     @patch("src.main.save_workbook")
@@ -395,6 +424,83 @@ class ShadokLocalizationTests(unittest.TestCase):
         col_map = _col_map(ws)
         resolved = resolve_shadok_mapping_rows(ws, col_map, self.mapping)
         self.assertEqual(len(resolved), 33)
+
+    def test_shadok_prompt_strictness_escalates_per_attempt(self) -> None:
+        p0 = build_shadok_system_prompt(0, 33, 39)
+        p1 = build_shadok_system_prompt(
+            1, 33, 39, previous_error="Expected 33 lines, got 29", previous_text="short"
+        )
+        p2 = build_shadok_system_prompt(
+            2, 33, 39, previous_error="Line 1 visual_length 40 > 39", previous_text="bad"
+        )
+        self.assertIn("HARD SCREEN BUDGET", p0)
+        self.assertNotIn("RETRY STRICTNESS LEVEL 1", p0)
+        self.assertIn("RETRY STRICTNESS LEVEL 1", p1)
+        self.assertIn("Expected 33 lines, got 29", p1)
+        self.assertIn("RETRY STRICTNESS LEVEL 2 (FINAL)", p2)
+        self.assertIn("visual_length 40", p2)
+        self.assertGreater(len(p2), len(p1))
+        self.assertGreater(len(p1), len(p0))
+
+    @patch("src.main.save_workbook")
+    @patch("src.main.init_session_shadok")
+    @patch("src.main.translate_shadok_block")
+    @patch("src.main.open_or_create_workbook")
+    def test_cmd_shadok_retries_then_succeeds(
+        self,
+        mock_open_wb: MagicMock,
+        mock_translate: MagicMock,
+        mock_init: MagicMock,
+        mock_save: MagicMock,
+    ) -> None:
+        wb = _make_workbook(
+            self.mapping,
+            self.lang_codes,
+            seed_lang_values={"en": "OLD"},
+        )
+        mock_open_wb.return_value = wb
+        calls: list[int] = []
+
+        def fake_block(
+            full_text,
+            target_langs,
+            max_line_length,
+            expected_lines=None,
+            attempt=0,
+            previous_error=None,
+            previous_text=None,
+        ):
+            calls.append(attempt)
+            if attempt == 0:
+                self.assertIsNone(previous_error)
+                return {"en": _valid_block("X", 30)}
+            if attempt == 1:
+                self.assertIn("Expected 33", previous_error or "")
+                self.assertIsNotNone(previous_text)
+                return {"en": _valid_block("Y", 32)}
+            self.assertEqual(attempt, 2)
+            return {"en": _valid_block("Z", 33)}
+
+        mock_translate.side_effect = fake_block
+
+        with patch("src.main.get_shadok_target_langs", return_value=["en"]), \
+             patch("sys.argv", ["main.py", "shadok"]):
+            cmd_shadok()
+
+        self.assertEqual(calls, [0, 1, 2])
+        ws = wb["Translations"]
+        col_map = _col_map(ws)
+        self.assertEqual(ws.cell(2, col_map["en"]).value, "Z00 ok line")
+        mock_save.assert_called()
+
+    def test_parse_json_safe_unescapes_newlines_in_fallback(self) -> None:
+        # Unescaped interior " breaks json.loads; fallback must still decode \\n
+        raw = '{"frca": "line one\\nline two"oops\\nline three"}'
+        parsed = _parse_json_safe(raw)
+        self.assertIn("frca", parsed)
+        lines = parsed["frca"].split("\n")
+        self.assertEqual(len(lines), 3)
+        self.assertIn("oops", lines[1])
 
 
 if __name__ == "__main__":

@@ -1124,8 +1124,15 @@ def cmd_align() -> None:
 
 # ── shadok ───────────────────────────────────────────────────────────
 
+SHADOK_MAX_ATTEMPTS = 3  # attempt 0..2; each retry uses a stricter prompt
+
+
 def cmd_shadok() -> None:
-    """Localize Shadok parody texts (mapping.new) into rows identified by mapping.orig."""
+    """Localize Shadok parody texts (mapping.new) into rows identified by mapping.orig.
+
+    Per language: up to SHADOK_MAX_ATTEMPTS AI calls with escalating prompt strictness.
+    Malformed attempts never write cells for that language.
+    """
     config = load_shadok_config()
     if not config:
         print("  [ERROR] data/shadok.json not found.")
@@ -1161,6 +1168,7 @@ def cmd_shadok() -> None:
     print(f"  Provider  : {ai_client.PROVIDER} (model: {ai_client.MODEL})")
     print(f"  Rows      : {expected_count} (screen line budget)")
     print(f"  Max len   : {max_line_length} (per screen row; word-wrap/reflow)")
+    print(f"  Attempts  : {SHADOK_MAX_ATTEMPTS} (stricter prompt each retry)")
     print(f"  Languages : {len(target_langs)} ({', '.join(target_langs)})")
     print("-" * 60)
 
@@ -1175,20 +1183,37 @@ def cmd_shadok() -> None:
             continue
 
         print(f"  [SHADOK] -> {lc} ...")
-        try:
-            result = translate_shadok_block(
-                source,
-                [lc],
-                max_line_length,
-                expected_lines=expected_count,
-            )
-            if lc not in result:
-                raise ValueError(f"Missing language key {lc!r} in AI response")
-            lines = parse_and_validate_shadok_block(
-                result[lc], expected_count, max_line_length
-            )
-        except Exception as e:
-            print(f"  [ERROR][{lc}] {e}")
+        prev_error: str | None = None
+        prev_text: str | None = None
+        lines: list[str] | None = None
+
+        for attempt in range(SHADOK_MAX_ATTEMPTS):
+            level = f"attempt {attempt + 1}/{SHADOK_MAX_ATTEMPTS}"
+            if attempt > 0:
+                print(f"  [SHADOK][{lc}] retry with stricter prompt ({level})")
+            try:
+                result = translate_shadok_block(
+                    source,
+                    [lc],
+                    max_line_length,
+                    expected_lines=expected_count,
+                    attempt=attempt,
+                    previous_error=prev_error,
+                    previous_text=prev_text,
+                )
+                if lc not in result:
+                    raise ValueError(f"Missing language key {lc!r} in AI response")
+                prev_text = result[lc]
+                lines = parse_and_validate_shadok_block(
+                    result[lc], expected_count, max_line_length
+                )
+                break
+            except Exception as e:
+                prev_error = str(e)
+                print(f"  [ERROR][{lc}] ({level}) {e}")
+                lines = None
+
+        if lines is None:
             print(f"  [ERROR][{lc}] Writing zero cells for this language.")
             fail_langs += 1
             continue
@@ -1201,7 +1226,7 @@ def cmd_shadok() -> None:
 
     print()
     print("=" * 60)
-    print(f"  DONE! OK languages: {ok_langs}, Failed: {fail_langs}")
+    print(f"  DONE! OK: {ok_langs}, Failed: {fail_langs}")
     print("  Original column unchanged. No version bump.")
     print("=" * 60)
 
@@ -1560,6 +1585,7 @@ def cmd_help() -> None:
     print("  sync        - Sync ua.csv into dictionary.xlsx")
     print("  translate   - Translate missing cells via AI")
     print("  shadok      - Localize Shadok parody block via AI (manual)")
+    print("                Up to 3 attempts/lang; each retry uses a stricter prompt")
     print("  validate    - Validate all translations")
     print("  align       - Align colons in blocks by longest line")
     print("  export      - Export per-language CSVs")

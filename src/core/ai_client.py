@@ -282,33 +282,113 @@ def _make_request_with_retry(
     raise RuntimeError(f"Translation failed for {tag} after {max_retries} retries: {last_error}")
 
 
+def build_shadok_system_prompt(
+    attempt: int,
+    expected_lines: int,
+    max_line_length: int,
+    previous_error: str | None = None,
+    previous_text: str | None = None,
+) -> str:
+    """Base Shadok prompt plus escalating strictness for each retry attempt (0-based)."""
+    prompt = SHADOK_SYSTEM_PROMPT
+    prompt += (
+        f"\n\nHARD SCREEN BUDGET (always): expected_lines={expected_lines}, "
+        f"max_line_length={max_line_length}. "
+        f"Before you answer, COUNT the \\n separators in your value: there must be "
+        f"exactly {expected_lines - 1} of them (yielding {expected_lines} lines)."
+    )
+
+    if attempt <= 0:
+        return prompt
+
+    prev = previous_text or ""
+    err = previous_error or "unknown validation error"
+    # Keep correction payload bounded so retries stay focused
+    if len(prev) > 2500:
+        prev = prev[:2500] + "\n…[truncated]"
+
+    if attempt == 1:
+        prompt += (
+            "\n\n=== RETRY STRICTNESS LEVEL 1 ===\n"
+            f"Your previous answer FAILED validation: {err}\n"
+            "Previous output (fix it; do not repeat the same shape):\n"
+            f"{prev}\n\n"
+            f"Return ONLY a JSON object. The language value MUST be exactly "
+            f"{expected_lines} non-empty lines joined by \\n, each visual length "
+            f"1..{max_line_length}. No markdown fences. No commentary. "
+            "Prefer guillemets or single quotes inside the text; never raw "
+            'unescaped " inside JSON string values.'
+        )
+        return prompt
+
+    # attempt >= 2 — final / most rigid
+    prompt += (
+        "\n\n=== RETRY STRICTNESS LEVEL 2 (FINAL) ===\n"
+        f"FAILED again: {err}\n"
+        "This is the last attempt. Mechanical checklist — all must hold:\n"
+        f"1) Exactly {expected_lines} lines (not {expected_lines - 1}, not "
+        f"{expected_lines + 1}).\n"
+        f"2) Every line length in 1..{max_line_length} visible characters.\n"
+        "3) No blank lines, no markdown, no ``` fences, no prose outside JSON.\n"
+        "4) Inside JSON strings use \\n for line breaks only; never a raw newline.\n"
+        '5) Never put unescaped " or \\\' inside values — use «» or \'.\n'
+        "6) Reflow/rephrase until the checklist passes; do not truncate words.\n"
+        "Previous bad output:\n"
+        f"{prev}"
+    )
+    return prompt
+
+
 def translate_shadok_block(
     full_text: str,
     target_langs: list[str],
     max_line_length: int,
     expected_lines: int | None = None,
+    attempt: int = 0,
+    previous_error: str | None = None,
+    previous_text: str | None = None,
 ) -> dict[str, str]:
-    """Translate the full Shadok parody block with a strict per-line contract."""
+    """Translate the full Shadok parody block with a strict per-line contract.
+
+    ``attempt`` (0-based) escalates system-prompt strictness on retries.
+    """
     if expected_lines is None:
         expected_lines = len(str(full_text).split("\n"))
-    user_content = json.dumps(
-        {
-            "text": full_text,
-            "languages": target_langs,
-            "max_line_length": max_line_length,
-            "expected_lines": expected_lines,
-        },
-        ensure_ascii=True,
+
+    system_prompt = build_shadok_system_prompt(
+        attempt=attempt,
+        expected_lines=expected_lines,
+        max_line_length=max_line_length,
+        previous_error=previous_error,
+        previous_text=previous_text,
     )
+
+    user_payload: dict = {
+        "text": full_text,
+        "languages": target_langs,
+        "max_line_length": max_line_length,
+        "expected_lines": expected_lines,
+        "attempt": attempt,
+    }
+    if attempt > 0:
+        user_payload["previous_error"] = previous_error or ""
+        user_payload["previous_text"] = previous_text or ""
+        user_payload["instruction"] = (
+            f"Fix previous_text so it has exactly {expected_lines} lines, "
+            f"each <= {max_line_length}. Output JSON only."
+        )
+
+    user_content = json.dumps(user_payload, ensure_ascii=True)
 
     if PROVIDER in ("OMNIROAD", "WEB2API"):
         messages = [
-            {"role": "system", "content": SHADOK_SYSTEM_PROMPT},
-            {"role": "user", "content": user_content}
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_content},
         ]
         url = OMNIROAD_URL if PROVIDER == "OMNIROAD" else WEB2API_URL
     else:
-        messages = [{"role": "user", "content": user_content}]
+        # Gemini proxy: fold system into user message (proxy uses separate init)
+        messages = [{"role": "user", "content": system_prompt + "\n\n" + user_content}]
         url = API_URL
 
     payload = {
@@ -317,9 +397,9 @@ def translate_shadok_block(
         "stream": False,
     }
 
-    # SAFE ENCODING: We manually dump and encode to ensure non-ASCII characters 
+    # SAFE ENCODING: We manually dump and encode to ensure non-ASCII characters
     # are escaped as \uXXXX. This prevents proxy-level encoding corruption.
-    safe_data = json.dumps(payload, ensure_ascii=True).encode('utf-8')
+    safe_data = json.dumps(payload, ensure_ascii=True).encode("utf-8")
     return _make_request_with_retry(url, safe_data, payload, row_id=None, is_shadok=True)
 
 
@@ -478,6 +558,52 @@ def _find_outer_brace(text: str) -> str | None:
     return None
 
 
+def _unescape_json_string_value(value: str) -> str:
+    """Decode common JSON string escapes from a manually extracted value."""
+    out: list[str] = []
+    i = 0
+    n = len(value)
+    while i < n:
+        ch = value[i]
+        if ch == "\\" and i + 1 < n:
+            nxt = value[i + 1]
+            if nxt == "n":
+                out.append("\n")
+                i += 2
+                continue
+            if nxt == "r":
+                out.append("\r")
+                i += 2
+                continue
+            if nxt == "t":
+                out.append("\t")
+                i += 2
+                continue
+            if nxt == '"':
+                out.append('"')
+                i += 2
+                continue
+            if nxt == "'":
+                out.append("'")
+                i += 2
+                continue
+            if nxt == "\\":
+                out.append("\\")
+                i += 2
+                continue
+            if nxt == "u" and i + 5 < n:
+                hexpart = value[i + 2 : i + 6]
+                try:
+                    out.append(chr(int(hexpart, 16)))
+                    i += 6
+                    continue
+                except ValueError:
+                    pass
+        out.append(ch)
+        i += 1
+    return "".join(out)
+
+
 def _parse_json_safe(json_str: str) -> dict[str, str]:
     """Parse JSON string with common AI mistake fixes.
 
@@ -485,13 +611,14 @@ def _parse_json_safe(json_str: str) -> dict[str, str]:
     - Trailing commas
     - Unescaped double quotes inside values
     - Invalid escape sequences
+    - Fallback extraction where \\n must become real newlines
     """
     # Fix trailing commas
     json_str = re.sub(r",\s*}", "}", json_str)
     json_str = re.sub(r",\s*]", "]", json_str)
 
-    # Convert literal newlines to spaces
-    json_str = json_str.replace('\n', ' ')
+    # Convert literal newlines to spaces (pretty-printed JSON between tokens)
+    json_str = json_str.replace("\n", " ")
 
     try:
         return json.loads(json_str)
@@ -500,44 +627,48 @@ def _parse_json_safe(json_str: str) -> dict[str, str]:
         print(f"  [DEBUG] json_str dump: {repr(json_str)}")
 
         # Try to extract the actual error position and show context
-        if hasattr(decode_err, 'pos'):
+        if hasattr(decode_err, "pos"):
             pos = decode_err.pos
             start = max(0, pos - 50)
             end = min(len(json_str), pos + 50)
             context = json_str[start:end]
             print(f"  [DEBUG] Error context: ...{repr(context)}...")
-        pass
-    
+
     # Fallback: manually extract "key": "value" pairs
     # This handles cases where AI puts unescaped " inside values
     result = {}
     # Match: "lang_code" : "...text..." followed by , or }
     # [a-z0-9] supports codes like es419, ptbr, zhcn, zhtw, frca, engb
     pairs = re.finditer(r'"([a-z0-9]{2,6})"\s*:\s*"', json_str)
-    
+
     for match in pairs:
         key = match.group(1)
         val_start = match.end()  # position right after the opening quote of value
-        
+
         # Find the closing quote of this value:
-        # Look for " followed by , or } or end of string
-        # This handles unescaped " inside the value
+        # Prefer a quote that is not escaped and is followed by , or }
         val_end = None
-        for end_match in re.finditer(r'"(?:\s*[,}]|\s*$)', json_str[val_start:]):
-            candidate = val_start + end_match.start()
-            # Make sure this isn't the start of the next key
-            remaining = json_str[candidate + 1:].lstrip()
-            if remaining.startswith(',') or remaining.startswith('}') or not remaining:
-                val_end = candidate
-                break
-        
+        i = val_start
+        while i < len(json_str):
+            c = json_str[i]
+            if c == "\\" and i + 1 < len(json_str):
+                i += 2
+                continue
+            if c == '"':
+                remaining = json_str[i + 1 :].lstrip()
+                if remaining.startswith(",") or remaining.startswith("}") or not remaining:
+                    val_end = i
+                    break
+                # Unescaped " inside value — treat as content, keep scanning
+            i += 1
+
         if val_end is not None:
             value = json_str[val_start:val_end]
-            # Replace any unescaped double quotes with single quotes in the value
+            # Unescaped interior quotes → single quotes, then decode \\n etc.
             value = value.replace('"', "'")
-            result[key] = value
-    
+            result[key] = _unescape_json_string_value(value)
+
     if result:
         return result
-    
+
     raise json.JSONDecodeError("Failed to parse JSON even with fallback", json_str, 0)

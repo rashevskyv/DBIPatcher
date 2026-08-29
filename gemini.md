@@ -16,6 +16,13 @@
 1. Уточнено `data/prompts.json` shadok: це один екранний текстовий блок — літературна локалізація + word-wrap/reflow у рівно N рядків ≤ max_line_length (слова можуть переходити між рядками).
 2. Прибрано суперечливе «Do NOT merge or split lines»; валідація лишається: рівно N непорожніх рядків, кожен ≤ ліміту, без автообрізання.
 
+## [2026-08-29] Shadok retries with escalating strictness
+
+### Виконані дії:
+1. До 3 спроб на мову: кожен retry додає строгіший system prompt (LEVEL 1 / LEVEL 2 FINAL) з previous_error + previous_text.
+2. Harden JSON fallback: unescape `\\n` після ручного витягу значення (фікс «got 1 line»).
+3. Offline тести на escalation і успіх на 3-й спробі.
+
 ## [2026-04-23] Початкова ініціалізація
 
 ### Виконані дії:

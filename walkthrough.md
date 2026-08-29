@@ -20,6 +20,8 @@ rejected with zero writes for that language (no truncation).
    `translate_shadok_block` sends those limits. Removed stale `translated_langs`.
 4. **Docs / tests**: README Known Issues updated; offline
    `tests/test_shadok_localization.py` covers production command paths with mocks.
+5. **Retries**: each language gets up to 3 AI attempts; attempt 2/3 append stricter
+   correction prompts with the previous error and output. JSON fallback unescapes `\n`.
 
 # Walkthrough: Оновлення тексту сповіщення про оновлення релізу
 
