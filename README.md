@@ -80,14 +80,13 @@ python scripts/build_translation_bin.py translations/es419.csv -o output/transla
 python scripts/import_translation_csv.py es419
 ```
 
-### DBI 898 NRO Patching (WSL)
-To patch a pristine `DBI.898.ru.nro` binary to support external runtime translations:
-- Requires **WSL / Linux**, **Python 3.12+** with `zstandard>=0.23,<1`, and **devkitA64** installed at `/opt/devkitpro`.
-- Uses the pinned upstream patcher from [BohdanBuinich/dbi-i18n](https://github.com/BohdanBuinich/dbi-i18n) (see [UPSTREAM.md](UPSTREAM.md)).
+### DBI 905 NRO Patching
+To patch a pristine `DBI.905.ru.nro` binary to support external runtime translations:
+- Requires **Python 3.10+** with `keystone-engine==0.9.2` and `capstone==5.0.9`.
+- Uses the pinned upstream patcher from [0xroast/dbi-translate](https://github.com/0xroast/dbi-translate) (see [UPSTREAM.md](UPSTREAM.md)).
 
-```bash
-# In WSL:
-python3 scripts/patch_dbi.py --nro /path/to/DBI.898.ru.nro --output DBI.898.ru_patched.nro --debug none
+```powershell
+python scripts/patch_dbi.py --nro /path/to/DBI.905.ru.nro --output DBI.905.ru_patched.nro
 ```
 
 ### Commands
@@ -100,7 +99,8 @@ python -m src.main deploy
 
 # Individual steps
 python -m src.main sync       # Update dictionary from source CSVs
-python -m src.main translate  # Run AI translation for new strings
+# Web2API translates independent rows concurrently; default is 4 workers (1..8).
+$env:DBI_TRANSLATE_WORKERS=4; python -m src.main translate
 python -m src.main align      # Fix UI alignment for specific blocks
 python -m src.main validate   # Verify data integrity
 python -m src.main build      # Generate binary .bin files
@@ -133,7 +133,7 @@ Spanish (Latin America) contributions should follow the
 
 - **DBI Creator**: [duckbill](https://github.com/rashevskyv/dbi)
 - **Localization Engine**: [tg:@buinich_bohdan](https://github.com/rashevskyv)
-- **Assembly Patcher**: [BohdanBuinich/dbi-i18n](https://github.com/BohdanBuinich/dbi-i18n)
+- **Assembly Patcher**: [0xroast/dbi-translate](https://github.com/0xroast/dbi-translate)
 - **Special Thanks**: Claude 3.5 Sonnet for the heavy lifting.
 
 > *Created with ❤️ for the Switch community.*

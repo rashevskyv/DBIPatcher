@@ -14,11 +14,14 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import re
 import subprocess
 import shutil
 import sys
 import time
+from dataclasses import dataclass, field
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 # Force stdout to UTF-8 on Windows
@@ -29,6 +32,7 @@ import openpyxl
 
 from src.core.text_utils import tokenize, detokenize, normalize_tokens_out, visual_length, normalize_fullwidth
 from src.core.validator import validate
+from src.core import ai_client
 from src.core.ai_client import translate_batch, refine, init_session, init_session_shadok, translate_shadok_block
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -165,109 +169,6 @@ def sanitize_string(s: str | None) -> str:
     # Remove control characters except \n, \r, \t
     return re.sub(r'[\x00-\x08\x0b-\x0c\x0e-\x1f]', '', s)
 
-
-# ── sync ─────────────────────────────────────────────────────────────
-
-def cmd_sync() -> None:
-    """Read ua.csv, tokenize, add missing rows to dictionary.xlsx."""
-    langs = load_languages()
-    wb = open_or_create_workbook()
-    ws = wb[SHEET_NAME]
-
-    # Ensure header row
-    expected_cols = ["Original"] + list(langs.keys())
-    if ws.max_row == 0 or ws.cell(1, 1).value is None:
-        for ci, col in enumerate(expected_cols, 1):
-            ws.cell(1, ci, col)
-
-    # Read current header to build col map
-    header = [ws.cell(1, c).value for c in range(1, ws.max_column + 1)]
-
-    # Remove columns not in languages.json (except 'Original')
-    valid_cols = {"Original"} | set(langs.keys())
-    cols_to_remove = []
-    for ci, col_name in enumerate(header):
-        if col_name and col_name not in valid_cols:
-            cols_to_remove.append((ci + 1, col_name))  # 1-indexed
-    
-    if cols_to_remove:
-        # Delete in reverse order to preserve indices
-        for col_idx, col_name in sorted(cols_to_remove, reverse=True):
-            ws.delete_cols(col_idx)
-            print(f"  Removed column '{col_name}' (not in languages.json)")
-        # Re-read header after deletion
-        header = [ws.cell(1, c).value for c in range(1, ws.max_column + 1)]
-
-    # Add missing language columns
-    for lang_code in langs:
-        if lang_code not in header:
-            idx = len(header) + 1
-            ws.cell(1, idx, lang_code)
-            header.append(lang_code)
-
-    col_map = {h: i + 1 for i, h in enumerate(header) if h}
-
-    # Collect existing originals
-    existing: set[str] = set()
-    for row in range(2, ws.max_row + 1):
-        val = ws.cell(row, col_map["Original"]).value
-        if val:
-            existing.add(val)
-            
-    # CRITICAL: Since Shadok translations replace 'Original' with their satellite text,
-    # the original text from ua.csv will falsely appear as missing.
-    # We must explicitly track original Shadok texts and match them dynamically.
-    shadok_origs_stripped = set()
-    shadok_config = load_shadok_config()
-    if shadok_config:
-        for item in shadok_config.get("mapping", []):
-            if item["new"] in existing:
-                # Keep track of the original Shadok texts (stripped)
-                shadok_origs_stripped.add(item["orig"].strip())
-
-    # Read ua.csv and insert missing
-    added = 0
-    with UA_CSV.open("r", encoding="utf-8", newline="") as f:
-        reader = csv.DictReader(f)
-        for rec in reader:
-            ru_raw = rec.get("original", "") or ""
-            if not ru_raw:
-                continue
-            ru_tok = tokenize(ru_raw)
-            if ru_tok in existing:
-                continue
-            
-            # Formatting-agnostic check for Shadok strings (which often have leading spaces)
-            if ru_tok.strip() in shadok_origs_stripped:
-                continue
-
-            next_row = ws.max_row + 1
-            ws.cell(next_row, col_map["Original"], ru_tok)
-            existing.add(ru_tok)
-            added += 1
-
-    # Update DBI version from patched NRO filename
-    patched_nro = get_patched_nro_path()
-    if patched_nro:
-        nro_ver = get_nro_version()
-        print(f"  Using patched NRO: {patched_nro.name} (version {nro_ver})")
-        version_row = find_dbi_version_row(ws, col_map)
-        current_ver = ws.cell(version_row, col_map["Original"]).value
-        if str(current_ver) != nro_ver:
-            print(f"  Updating DBI version at row {version_row}: {current_ver} -> {nro_ver}")
-            # Write version to Original and ALL language columns
-            for col_idx in col_map.values():
-                ws.cell(version_row, col_idx, nro_ver)
-        else:
-            print(f"  DBI version already current: {nro_ver}")
-    else:
-        print("  WARNING: No DBI.*_patched.nro file found, version not updated.")
-
-    ver = bump_version(wb)
-    save_workbook(wb)
-    print(f"Sync done. Added: {added}, Version: {ver}")
-
-
 # ── translate ────────────────────────────────────────────────────────
 
 def wrap_text(text: str, max_chars: int, lang_code: str) -> list[str]:
@@ -278,16 +179,193 @@ def wrap_text(text: str, max_chars: int, lang_code: str) -> list[str]:
     if lang_code.lower() in ["zhcn", "zhtw", "jp", "kr", "zh"]:
         # "1.5 times smaller"
         effective_max = int(max_chars / 1.5)
-        
+
     import textwrap
     # replace_whitespace=True converts all tabs/newlines into spaces before wrapping
     lines = textwrap.wrap(text, width=effective_max, break_long_words=True, replace_whitespace=True)
     return lines
 
+
+def get_translate_workers() -> int:
+    """Parse and validate DBI_TRANSLATE_WORKERS environment variable."""
+    raw_val = os.environ.get("DBI_TRANSLATE_WORKERS", "4").strip()
+    try:
+        workers = int(raw_val)
+    except ValueError:
+        raise ValueError(
+            f"Invalid DBI_TRANSLATE_WORKERS value: {raw_val!r}. Expected an integer between 1 and 8."
+        )
+    if not (1 <= workers <= 8):
+        raise ValueError(
+            f"Invalid DBI_TRANSLATE_WORKERS value: {workers}. Must be between 1 and 8 (inclusive)."
+        )
+    return workers
+
+
+@dataclass
+class RowTranslationResult:
+    row_id: int
+    original: str
+    missing: list[str]
+    accepted_translations: dict[str, str] = field(default_factory=dict)
+    failed_langs: list[str] = field(default_factory=list)
+    cyrillic_count: int = 0
+    is_skipped_cyrillic: bool = False
+    refine_attempts: int = 0
+    error_message: Optional[str] = None
+
+
+def _process_row_translation(row_id: int, original: str, missing: list[str]) -> RowTranslationResult:
+    """Pure worker function: performs AI translation, validation, and refine loops for a single row.
+
+    Does NOT touch worksheet or save workbook.
+    """
+    result = RowTranslationResult(row_id=row_id, original=original, missing=list(missing))
+
+    # Check Cyrillic characters count
+    cyrillic_count = len(re.findall(r'[а-яА-ЯёЁіІїЇєЄґҐ]', original))
+    result.cyrillic_count = cyrillic_count
+
+    if cyrillic_count < 2:
+        result.is_skipped_cyrillic = True
+        for lc in missing:
+            translation = original
+            if re.search(r'\bru\b', original, re.IGNORECASE):
+                translation = re.sub(r'\bru\b', lc, original, flags=re.IGNORECASE)
+            result.accepted_translations[lc] = translation
+        return result
+
+    # Call AI batch translation
+    try:
+        translations = translate_batch(original, missing, row_id=row_id)
+    except Exception as e:
+        result.error_message = str(e)
+        result.failed_langs = list(missing)
+        return result
+
+    # Normalize tokens and full-width chars
+    for lc in list(translations.keys()):
+        translations[lc] = normalize_fullwidth(normalize_tokens_out(translations.get(lc, "")))
+
+    # Validate + Refine loop
+    MAX_REFINE_ATTEMPTS = 3
+    for attempt in range(MAX_REFINE_ATTEMPTS):
+        errors = []
+        for lc in missing:
+            translation = translations.get(lc, "")
+            if not translation:
+                errors.append((lc, "Translation is empty"))
+                continue
+            ok, msg = validate(original, translation, lc)
+            if not ok:
+                errors.append((lc, msg))
+
+        if not errors:
+            break
+
+        result.refine_attempts = attempt + 1
+        if attempt < MAX_REFINE_ATTEMPTS - 1:
+            error_lines = "\n".join(f"- {lc}: {msg}" for lc, msg in errors)
+            correction = (
+                f"The following translations have errors:\n"
+                f"{error_lines}\n\n"
+                f"Please fix them. Source text: \"{original}\""
+            )
+            try:
+                refined = refine(
+                    correction=correction,
+                    target_langs=missing,
+                    row_id=row_id,
+                    original=original,
+                    current_translations=translations,
+                    validation_errors=errors,
+                )
+                for lc in list(refined.keys()):
+                    refined[lc] = normalize_fullwidth(normalize_tokens_out(refined.get(lc, "")))
+                translations.update(refined)
+            except Exception:
+                break
+
+    # Categorize accepted vs failed
+    failed_langs = []
+    for lc in missing:
+        translation = translations.get(lc, "")
+        if not translation or not translation.strip():
+            failed_langs.append(lc)
+            continue
+
+        if re.search(r'\bru\b', original, re.IGNORECASE):
+            translation = re.sub(r'\bru\b', lc, translation, flags=re.IGNORECASE)
+
+        ok, msg = validate(original, translation, lc)
+        if ok:
+            result.accepted_translations[lc] = translation
+        elif "English preservation" in msg:
+            result.accepted_translations[lc] = original
+        else:
+            failed_langs.append(lc)
+
+    # Retry failed languages with error context
+    MAX_RETRY_ROUNDS = 3
+    for retry_round in range(MAX_RETRY_ROUNDS):
+        if not failed_langs:
+            break
+
+        error_details = []
+        for lc in failed_langs:
+            translation = translations.get(lc, "")
+            _, msg = validate(original, translation, lc) if translation else (False, "empty")
+            error_details.append(f"- {lc}: {msg}")
+
+        error_context = (
+            f"Retry round {retry_round + 1}. The following translations for "
+            f"\"{original}\" have validation errors:\n"
+            + "\n".join(error_details)
+            + "\n\nPlease fix these issues. "
+            f"Source text: \"{original}\""
+        )
+
+        try:
+            retry_results = refine(
+                correction=error_context,
+                target_langs=failed_langs,
+                row_id=row_id,
+                original=original,
+                current_translations={lc: translations.get(lc, "") for lc in failed_langs},
+                validation_errors=error_details,
+            )
+            still_failed = []
+            for lc in failed_langs:
+                translation = normalize_fullwidth(normalize_tokens_out(retry_results.get(lc, "")))
+                if not translation or not translation.strip():
+                    still_failed.append(lc)
+                    continue
+
+                if re.search(r'\bru\b', original, re.IGNORECASE):
+                    translation = re.sub(r'\bru\b', lc, translation, flags=re.IGNORECASE)
+
+                ok, msg = validate(original, translation, lc)
+                if ok:
+                    result.accepted_translations[lc] = translation
+                else:
+                    translations[lc] = translation
+                    still_failed.append(lc)
+            failed_langs = still_failed
+        except Exception:
+            break
+
+    result.failed_langs = failed_langs
+    return result
+
+
 def cmd_translate() -> None:
     """Find empty cells and translate via AI with continuous chat."""
-    import re
-    MAX_REFINE_ATTEMPTS = 3
+    # Determine workers limit before starting tasks
+    requested_workers = get_translate_workers()
+    if ai_client.PROVIDER == "WEB2API" and requested_workers > 1:
+        effective_workers = requested_workers
+    else:
+        effective_workers = 1
 
     langs = load_languages()
     wb = open_or_create_workbook()
@@ -301,17 +379,15 @@ def cmd_translate() -> None:
     lang_codes = [lc for lc in langs if lc in col_map and lc != "ru"]
 
     # ── Phase -1: CLEANUP DUPLICATE ROWS ───────────────────────────────
-    # Rows are considered duplicates if their "Original" column is exactly the same
     best_rows = {}
     rows_to_delete = []
     
     for row in range(2, ws.max_row + 1):
         original_val = str(ws.cell(row, col_map["Original"]).value or "")
-        key = original_val  # Use exact string — spaces are significant
+        key = original_val
         if not key.strip():
             continue
             
-        # Count translated languages
         non_empty = 0
         for lc in lang_codes:
             if str(ws.cell(row, col_map[lc]).value or "").strip():
@@ -320,48 +396,28 @@ def cmd_translate() -> None:
         if key in best_rows:
             best_idx, best_count = best_rows[key]
             if non_empty > best_count:
-                # The current row is better (more translations)
                 rows_to_delete.append(best_idx)
                 best_rows[key] = (row, non_empty)
             else:
-                # The previous row was better or equal, so we delete the current row
                 rows_to_delete.append(row)
         else:
             best_rows[key] = (row, non_empty)
             
     if rows_to_delete:
-        # Sort in reverse to delete from bottom to top so indices don't shift
         for row in sorted(rows_to_delete, reverse=True):
             ws.delete_rows(row)
         print(f"  [CLEANUP] Deleted {len(rows_to_delete)} exact duplicate rows.")
         save_workbook(wb)
 
-    # ── Phase 0: SHADOK BLOCK ────────────────────────────────────────
-    # TEMPORARILY DISABLED - will fix later
-    shadok_row_set = set()  # rows to exclude from regular translation
-    shadok_config = {}
-    shadok_all_strings = set()
-
-    # shadok_config = load_shadok_config()
-    # shadok_row_set = set()  # rows to exclude from regular translation
-    #
-    # if shadok_config:
-    #     ... (all shadok code commented out)
-
+    # ── Phase 0: SHADOK BLOCK (TEMPORARILY DISABLED) ───────────────────
+    shadok_row_set = set()
 
     # ── Scan: count rows that need translation (excluding shadoks) ───
     rows_to_translate = []
 
-    # Safety net: collect all known Shadok strings to ensure no duplicates slip into the general loop
-    # TEMPORARILY DISABLED
-    # shadok_all_strings = set()
-    # for item in shadok_config.get("mapping", []):
-    #     shadok_all_strings.add(item["orig"].strip())
-    #     shadok_all_strings.add(item["new"].strip())
-
     for row in range(2, ws.max_row + 1):
         if row in shadok_row_set:
-            continue  # skip strictly mapped shadok rows
+            continue
             
         original = ws.cell(row, col_map["Original"]).value
         if not original or not str(original).strip():
@@ -382,7 +438,7 @@ def cmd_translate() -> None:
             rows_to_translate.append((row, original, missing))
 
     total_rows = len(rows_to_translate)
-    total_all = ws.max_row - 1  # excluding header
+    total_all = ws.max_row - 1
 
     if total_rows == 0:
         print(f"  Nothing to translate. All {total_all} rows are complete.")
@@ -393,6 +449,8 @@ def cmd_translate() -> None:
     print("=" * 60)
     print("  DBI TRANSLATOR")
     print("=" * 60)
+    print(f"  Provider  : {ai_client.PROVIDER} (model: {ai_client.MODEL})")
+    print(f"  Workers   : {effective_workers} (configured: {requested_workers})")
     print(f"  Languages : {len(lang_codes)} ({', '.join(lang_codes)})")
     print(f"  Total rows: {total_all}")
     print(f"  To translate: {total_rows} (excl. {len(shadok_row_set)} shadok rows)")
@@ -405,162 +463,61 @@ def cmd_translate() -> None:
     print("=" * 60)
     print()
 
-
     # ── Phase 2: TRANSLATE ───────────────────────────────────────────
     total_translated = 0
     total_failed = 0
 
-    for idx, (row, original, missing) in enumerate(rows_to_translate, 1):
-        print(f"  [Row {row} | {idx}/{total_rows}] {original[:50]}  -> {len(missing)} langs")
+    def apply_row_result(idx: int, res: RowTranslationResult) -> None:
+        nonlocal total_translated, total_failed
+        row = res.row_id
 
-        # Skip AI translation if string has no Cyrillic characters — copy as-is
-        cyrillic_count = len(re.findall(r'[а-яА-ЯёЁіІїЇєЄґҐ]', original))
-        if cyrillic_count < 2:
-            for lc in missing:
-                # Auto-fix: replace 'ru' language code with target language code
-                translation = original
-                if re.search(r'\bru\b', original, re.IGNORECASE):
-                    translation = re.sub(r'\bru\b', lc, original, flags=re.IGNORECASE)
+        if res.is_skipped_cyrillic:
+            for lc, translation in res.accepted_translations.items():
                 ws.cell(row, col_map[lc], translation)
                 total_translated += 1
             save_workbook(wb)
-            print(f"    [Row {row} | {idx}/{total_rows}] Cyrillic count {cyrillic_count} <= 3 — copied as-is.")
-            continue
+            print(f"    [Row {row} | {idx}/{total_rows}] Cyrillic count {res.cyrillic_count} < 2 — copied as-is.")
+            return
 
-        try:
-            results = translate_batch(original, missing, row_id=row)
-        except Exception as e:
-            print(f"  [Row {row} | {idx}/{total_rows}] ERROR: {e}")
-            total_failed += len(missing)
-            time.sleep(2)
-            continue
+        if res.error_message and not res.accepted_translations:
+            print(f"  [Row {row} | {idx}/{total_rows}] ERROR: {res.error_message}")
+            total_failed += len(res.missing)
+            return
 
-        # Normalize tokens and full-width chars in AI output
-        for lc in list(results.keys()):
-            results[lc] = normalize_fullwidth(normalize_tokens_out(results.get(lc, "")))
+        for lc, translation in res.accepted_translations.items():
+            ws.cell(row, col_map[lc], translation)
+            total_translated += 1
 
-        # ── Validate + Refine loop ───────────────────────────────────
-        for attempt in range(MAX_REFINE_ATTEMPTS):
-            errors = []
-            for lc in missing:
-                translation = results.get(lc, "")
-                if not translation:
-                    errors.append((lc, "Translation is empty"))
-                    continue
-                ok, msg = validate(original, translation, lc)
-                if not ok:
-                    errors.append((lc, msg))
-
-            if not errors:
-                break
-
-            if attempt < MAX_REFINE_ATTEMPTS - 1:
-                error_lines = "\n".join(f"- {lc}: {msg}" for lc, msg in errors)
-                correction = (
-                    f"The following translations have errors:\n"
-                    f"{error_lines}\n\n"
-                    f"Please fix them. Source text: \"{original}\""
-                )
-                print(f"    [Row {row} | {idx}/{total_rows}] Refine #{attempt + 2}: {len(errors)} errors")
-                try:
-                    refined = refine(correction, missing, row_id=row)
-                    for lc in list(refined.keys()):
-                        refined[lc] = normalize_fullwidth(normalize_tokens_out(refined.get(lc, "")))
-                    results.update(refined)
-                except Exception as e:
-                    print(f"    [Row {row} | {idx}/{total_rows}] Refine error: {e}")
-                    break
-                time.sleep(0.3)
-
-        # ── Write results ────────────────────────────────────────────
-        row_ok = 0
-        row_fail = 0
-        failed_langs = []
-        for lc in missing:
-            translation = results.get(lc, "")
-            if not translation or not translation.strip():
-                failed_langs.append(lc)
-                continue
-
-            # Auto-fix: replace 'ru' language code with target language code
-            if re.search(r'\bru\b', original, re.IGNORECASE):
-                translation = re.sub(r'\bru\b', lc, translation, flags=re.IGNORECASE)
-
-            ok, msg = validate(original, translation, lc)
-            if ok:
-                ws.cell(row, col_map[lc], translation)
-                total_translated += 1
-                row_ok += 1
-            elif "English preservation" in msg:
-                ws.cell(row, col_map[lc], original)
-                total_translated += 1
-                row_ok += 1
-            else:
-                failed_langs.append(lc)
-
-        # ── Retry failed languages with error context ─────────────────
-        MAX_RETRY_ROUNDS = 3
-        for retry_round in range(MAX_RETRY_ROUNDS):
-            if not failed_langs:
-                break
-
-            # Build error context for the AI
-            error_details = []
-            for lc in failed_langs:
-                translation = results.get(lc, "")
-                _, msg = validate(original, translation, lc) if translation else (False, "empty")
-                error_details.append(f"- {lc}: {msg}")
-
-            error_context = (
-                f"Retry round {retry_round + 1}. The following translations for "
-                f"\"{original}\" have validation errors:\n"
-                + "\n".join(error_details)
-                + "\n\nPlease fix these issues. "
-                f"Source text: \"{original}\""
-            )
-
-            print(f"    [Row {row}] Retry {retry_round + 1}/{MAX_RETRY_ROUNDS}: {len(failed_langs)} langs ({', '.join(failed_langs)})")
-
-            try:
-                retry_results = refine(error_context, failed_langs, row_id=row)
-                still_failed = []
-                for lc in failed_langs:
-                    translation = normalize_fullwidth(normalize_tokens_out(retry_results.get(lc, "")))
-                    if not translation or not translation.strip():
-                        still_failed.append(lc)
-                        continue
-
-                    # Auto-fix: replace 'ru' language code with target language code
-                    import re
-                    if re.search(r'\bru\b', original, re.IGNORECASE):
-                        translation = re.sub(r'\bru\b', lc, translation, flags=re.IGNORECASE)
-
-                    ok, msg = validate(original, translation, lc)
-                    if ok:
-                        ws.cell(row, col_map[lc], translation)
-                        total_translated += 1
-                        row_ok += 1
-                    else:
-                        results[lc] = translation  # update for next round's error context
-                        still_failed.append(lc)
-                failed_langs = still_failed
-            except Exception as e:
-                print(f"    [Row {row}] Retry error: {e}")
-                break
-            time.sleep(0.3)
-
-        # Mark remaining failed langs
-        for lc in failed_langs:
-            print(f"    [Row {row}][{lc}] SKIPPED (invalid after {MAX_RETRY_ROUNDS} retries)")
+        for lc in res.failed_langs:
+            print(f"    [Row {row}][{lc}] SKIPPED (validation failed)")
             total_failed += 1
-            row_fail += 1
 
         save_workbook(wb)
 
+        row_ok = len(res.accepted_translations)
+        row_fail = len(res.failed_langs)
         status = "OK" if row_fail == 0 else f"OK:{row_ok} FAIL:{row_fail}"
         print(f"    [Row {row} | {idx}/{total_rows}] Saved. {status}")
 
-        time.sleep(0.5)
+    if effective_workers > 1:
+        with ThreadPoolExecutor(max_workers=effective_workers) as executor:
+            future_to_idx = {
+                executor.submit(_process_row_translation, row, original, missing): (idx, row, original, missing)
+                for idx, (row, original, missing) in enumerate(rows_to_translate, 1)
+            }
+            for future in as_completed(future_to_idx):
+                idx, row, orig, miss = future_to_idx[future]
+                try:
+                    res = future.result()
+                    apply_row_result(idx, res)
+                except Exception as exc:
+                    print(f"  [Worker Error at row {row} | {idx}/{total_rows}]: {exc}")
+                    total_failed += len(miss)
+    else:
+        for idx, (row, original, missing) in enumerate(rows_to_translate, 1):
+            print(f"  [Row {row} | {idx}/{total_rows}] {original[:50]}  -> {len(missing)} langs")
+            res = _process_row_translation(row, original, missing)
+            apply_row_result(idx, res)
 
     # ── Phase 3: SUMMARY ─────────────────────────────────────────────
     print()
@@ -717,9 +674,25 @@ def cmd_export() -> None:
 
 def cmd_sync() -> None:
     """Sync Excel dictionary with translations/ua.csv and ru.csv."""
+    langs = load_languages()
     wb = open_or_create_workbook()
     ws = wb[SHEET_NAME]
+
+    # Ensure header row
+    expected_cols = ["Original"] + list(langs.keys())
+    if ws.max_row == 0 or ws.cell(1, 1).value is None:
+        for ci, col in enumerate(expected_cols, 1):
+            ws.cell(1, ci, col)
+
     header = [ws.cell(1, c).value for c in range(1, ws.max_column + 1)]
+
+    # Add missing language columns
+    for lang_code in langs:
+        if lang_code not in header:
+            idx = len(header) + 1
+            ws.cell(1, idx, lang_code)
+            header.append(lang_code)
+
     col_map = {h: i + 1 for i, h in enumerate(header) if h}
 
     # 1. Collect all current keys from Excel

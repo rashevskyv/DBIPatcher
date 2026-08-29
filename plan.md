@@ -1,5 +1,75 @@
 # Active plan: upstream DBI patcher & release updates
 
+## Active implementation plan: DBI 905 / durable aliases / Web2API concurrency
+
+### Scope and non-goals
+
+- Target exactly official DBI `905ru`; pin `0xroast/dbi-translate` to the tested
+  commit rather than chasing an unsupported future DBI release.
+- Preserve the current workbook as the source of truth. `cmd_export` regenerates
+  `translations/*.csv`, so no alias may live only in a generated CSV.
+- Resolve PR #23 by semantic union, not a blind merge: retain PR #22's 24 literal
+  `$°$` aliases, PR #23's 21 clean-degree aliases, and the 3 canonical temperature
+  strings. Copy translations from their canonical row; do not call AI for aliases.
+- Use Python's standard-library `ThreadPoolExecutor`; do not add a queue library,
+  database, service, or generic worker framework. Concurrency is Web2API-only and
+  applies to independent source rows, never to individual language values.
+- Do not run `deploy`, push, create GitHub releases, or update to Gemini 3.7 in
+  this task.
+
+### Execution order
+
+1. **Data compatibility and PR #23.** Inspect base, PR #22 and PR #23 exact keys;
+   add the complete union to `dictionary.xlsx` and fill every language from the
+   matching canonical row. Reconcile the existing Turkish CSV before new rows are
+   created. Remove the duplicate `cmd_sync` definition so source synchronization
+   and language-column handling have one durable path. Export CSV files and assert
+   exact key-set equality with the workbook.
+   **Completed:** 1,288 unique workbook keys; 24 literal and 21 clean-degree
+   aliases; `tr` is seeded and exported; one `cmd_sync` remains; regression test
+   covers key parity and canonical-value copying.
+2. **DBI 905 wrapper.** Replace the DBI 898 `dbi-i18n` wrapper with a minimal,
+   pinned `dbi-translate` invocation. Download only release `905ru`, verify its
+   SHA-256, run `python -m dbi_translate.cli patch` through the temporary clone,
+   and add only Keystone/Capstone dependencies required by upstream. Update the
+   focused wrapper test and DBI-facing documentation.
+   **Completed:** wrapper is pinned to `1320e138fd017db70c1436b537aef7be030f0668`,
+   validates the official DBI 905 SHA-256 before cloning, invokes the upstream
+   CLI through temporary `PYTHONPATH`, and has focused mocked contract tests.
+3. **Web2API concurrency.** Make the Web2API client stateless per request,
+   serialize shared logfile writes, probe `/v1/models` once, and add bounded
+   `DBI_TRANSLATE_WORKERS` (default 4, valid 1–8). Worker threads return results;
+   the main thread alone validates, updates and checkpoints the workbook. Keep
+   GEMINI_PROXY serial, and do not change OmniRoad behavior without separate
+   validation.
+   **Completed:** `DBI_TRANSLATE_WORKERS` defaults to 4 and is constrained to
+   1–8; only Web2API uses row-level `ThreadPoolExecutor`; workbook writes stay
+   on the main thread; request logs are locked; `/v1/models` validates the
+   configured model; Web2API retries once without session reset; OmniRoad and
+   Gemini Proxy keep serial execution and legacy recovery behavior.
+4. **Verification and release hygiene.** Run focused alias/key-set, patch-wrapper
+   and concurrency tests, then the existing relevant suite. Bump the dictionary
+   version once from `0.0.85`, refresh `README.md`, `README_ES.md`, `UPSTREAM.md`
+   and task documents, review the complete diff, and create one focused local
+   commit. A real Web2API smoke test requires the user-provided proxy to be up;
+   no external release is published.
+   **Completed locally:** 80 focused/relevant tests passed in Gemini's verified
+   run; the live Web2API model-list preflight returned HTTP 200 and includes
+   `gemini-3.6-flash`. The official NRO smoke test remains a separate manual
+   check because its pristine binary is not stored in this repository.
+
+### Acceptance criteria
+
+- A clean DBI 905 `DBI.nro` produces a deterministic patched output with the
+  pinned wrapper, and the wrapper rejects the wrong version or digest.
+- Regenerating all CSV files preserves all temperature aliases and produces the
+  same source-key set as `dictionary.xlsx` for every configured language,
+  including Turkish.
+- Web2API translates multiple independent rows concurrently without concurrent
+  `openpyxl` access, while serial providers retain their existing session model.
+- The configured worker count is bounded, failures are row-specific and logged
+  safely, and focused automated checks prove multiple requests can be in flight.
+
 1. [x] Add a small script that clones `BohdanBuinich/dbi-i18n` into a temporary
    directory, checks out commit `f1f8bebec2b423694e8f058f2d3540a35382b1fd`,
    and invokes its patch CLI for a user-supplied DBI 898 NRO.

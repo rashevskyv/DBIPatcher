@@ -1,4 +1,11 @@
-- [x] Active: pin and run BohdanBuinich/dbi-i18n as the external DBI 898 patching stage.
+- [x] Active: migrate the external patching stage to pinned `0xroast/dbi-translate` for DBI 905, resolve PR #23's temperature aliases durably in the workbook/CSV pipeline, and make only Web2API row translation bounded-parallel.
+  - [x] Preserve the union of PR #22's literal `$°$` DBI 898 aliases, PR #23's clean-`°` DBI 905 aliases, and the three canonical temperature rows in every language column.
+  - [x] Replace the DBI 898 `dbi-i18n` wrapper with the pinned DBI 905 `dbi-translate` CLI; retain reproducible download and digest verification.
+  - [x] Repair the duplicated `cmd_sync` definition and seed Turkish values before adding the missing rows, so later export cannot erase PR aliases or Turkish translations.
+  - [x] Add bounded row-level concurrency only for the stateless Web2API provider; only the main thread may mutate or save `dictionary.xlsx`.
+  - [x] Add focused regression checks, update user/developer documentation, bump the workbook version once, and create a focused commit. Do not run `deploy`.
+
+- [x] Previous: pin and run BohdanBuinich/dbi-i18n as the external DBI 898 patching stage.
   - [x] Add a reproducible wrapper pinned to f1f8bebec2b423694e8f058f2d3540a35382b1fd.
   - [x] Document the WSL/devkitA64 command and upstream attribution.
   - [x] Add a focused regression check and bump the workbook version.

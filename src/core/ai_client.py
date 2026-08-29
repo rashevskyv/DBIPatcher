@@ -1,7 +1,6 @@
-"""Gemini Proxy AI Client with Continuous Chat support."""
-
 import json
 import re
+import threading
 import requests
 from pathlib import Path
 from datetime import datetime
@@ -12,9 +11,10 @@ from typing import Optional
 LOG_DIR = Path(__file__).resolve().parent.parent.parent / "logs"
 LOG_DIR.mkdir(exist_ok=True)
 LOG_FILE = LOG_DIR / "ai_proxy.log"
+_LOG_LOCK = threading.Lock()
 
-def _log_interaction(payload: dict, response_text: str, row_id: Optional[int] = None) -> None:
-    """Append request/response pair to the log file."""
+def _log_interaction(payload: dict, response_text: str, row_id: Optional[int | str] = None) -> None:
+    """Append request/response pair to the log file under a lock."""
     timestamp = datetime.now().isoformat()
     row_label = f"ROW: {row_id}" if row_id is not None else "GENERAL"
     try:
@@ -26,8 +26,9 @@ def _log_interaction(payload: dict, response_text: str, row_id: Optional[int] = 
             f"RESPONSE TEXT:\n{response_text}\n"
             f"{'='*80}\n"
         )
-        with open(LOG_FILE, "a", encoding="utf-8") as f:
-            f.write(log_entry)
+        with _LOG_LOCK:
+            with open(LOG_FILE, "a", encoding="utf-8") as f:
+                f.write(log_entry)
     except Exception as e:
         print(f"  [!] Failed to write to log: {e}")
 
@@ -49,6 +50,7 @@ MODEL_OMNI             = "kr/claude-sonnet-4.5"
 
 # Gemini Web2API Config
 WEB2API_URL            = "http://localhost:8081/v1/chat/completions"
+WEB2API_MODELS_URL     = "http://localhost:8081/v1/models"
 MODEL_WEB2API          = "gemini-3.6-flash"
 
 # Active Model (will be chosen based on PROVIDER)
@@ -77,14 +79,37 @@ SHADOK_SYSTEM_PROMPT = _PROMPTS.get("shadok", "")
 
 # ── Public API ───────────────────────────────────────────────────────
 
+def check_web2api_preflight(models_url: str = WEB2API_MODELS_URL, model: str = MODEL_WEB2API) -> None:
+    """Preflight check for Web2API: verifies endpoint is reachable and model exists."""
+    try:
+        resp = requests.get(models_url, timeout=10)
+        if resp.status_code != 200:
+            raise RuntimeError(f"Web2API preflight failed: endpoint returned HTTP status {resp.status_code}")
+        data = resp.json()
+        models = [item.get("id") for item in data.get("data", []) if isinstance(item, dict)]
+        if model not in models:
+            raise RuntimeError(
+                f"Web2API preflight failed: configured model '{model}' not found in available models: {models}"
+            )
+    except requests.RequestException as e:
+        raise RuntimeError(f"Web2API preflight failed: cannot reach endpoint at {models_url}: {e}") from e
+
+
 def init_session() -> None:
     """Initialize session based on provider."""
     # Clear log
     print("  [INIT] Clearing log file...")
-    with open(LOG_FILE, "w", encoding="utf-8") as f:
-        f.write(f"--- NEW SESSION STARTED AT {datetime.now().isoformat()} | PROVIDER: {PROVIDER} ---\n")
+    with _LOG_LOCK:
+        with open(LOG_FILE, "w", encoding="utf-8") as f:
+            f.write(f"--- NEW SESSION STARTED AT {datetime.now().isoformat()} | PROVIDER: {PROVIDER} ---\n")
 
-    if PROVIDER in ("OMNIROAD", "WEB2API"):
+    if PROVIDER == "WEB2API":
+        print(f"  [INIT] Running preflight check for {PROVIDER} at {WEB2API_MODELS_URL}...")
+        check_web2api_preflight()
+        print(f"  [INIT] {PROVIDER} ({MODEL}) verified and ready!")
+        return
+
+    if PROVIDER == "OMNIROAD":
         print(f"  [INIT] {PROVIDER} ({MODEL}) selected. Ready!")
         return
 
@@ -156,16 +181,26 @@ def init_session_shadok() -> None:
 
 
 
-def _make_request_with_retry(url: str, safe_data: bytes, payload: dict, row_id: Optional[int] = None, is_shadok: bool = False, is_refine: bool = False) -> dict[str, str]:
+def _make_request_with_retry(
+    url: str,
+    safe_data: bytes,
+    payload: dict,
+    row_id: Optional[int | str] = None,
+    is_shadok: bool = False,
+    is_refine: bool = False,
+) -> dict[str, str]:
     import time
-    MAX_RETRIES = 2
+    import random
+
+    is_web2api = (PROVIDER == "WEB2API")
+    max_retries = 1 if is_web2api else 2
     last_error = None
     headers = {"Content-Type": "application/json"}
     
     tag = "SHADOK" if is_shadok else f"Row {row_id}"
     log_id = "SHADOK" if is_shadok else row_id
 
-    for attempt in range(MAX_RETRIES + 1):
+    for attempt in range(max_retries + 1):
         resp_text = "N/A"
         try:
             resp = requests.post(url, data=safe_data, headers=headers, timeout=300 if is_shadok else TIMEOUT)
@@ -179,8 +214,6 @@ def _make_request_with_retry(url: str, safe_data: bytes, payload: dict, row_id: 
 
             # For Shadok blocks, fix invalid \' in the raw response text BEFORE parsing JSON
             if is_shadok:
-                # Replace backslash-apostrophe with just apostrophe
-                # In the raw text, this is literally the two characters: \ and '
                 resp_text = resp_text.replace("\\'", "'")
 
             # Parse JSON manually to handle the response
@@ -205,12 +238,20 @@ def _make_request_with_retry(url: str, safe_data: bytes, payload: dict, row_id: 
             if is_shadok and attempt == 0:
                 print(f"  [DEBUG] Raw response bytes (first 300): {resp_text[:300].encode('utf-8')}")
 
-            if attempt < MAX_RETRIES:
-                wait = 3 * (attempt + 1) if is_shadok else 2 * (attempt + 1)
+            if attempt < max_retries:
+                if is_web2api:
+                    wait = random.uniform(0.5, 1.5)
+                else:
+                    wait = 3 * (attempt + 1) if is_shadok else 2 * (attempt + 1)
                 action = "Refine retry" if is_refine else "Retry"
-                print(f"  [{tag}] {action} {attempt + 1}/{MAX_RETRIES} in {wait}s...")
+                print(f"  [{tag}] {action} {attempt + 1}/{max_retries} in {wait:.1f}s...")
                 time.sleep(wait)
             else:
+                if is_web2api:
+                    action_fail = "All retries failed" if not is_refine else "Refine retries exhausted"
+                    print(f"  [{tag}] {action_fail}: {e}")
+                    break
+
                 action_fail = "All retries failed" if not is_refine else "Refine retries exhausted"
                 print(f"  [{tag}] {action_fail}. Reinitializing...")
                 try:
@@ -239,13 +280,11 @@ def _make_request_with_retry(url: str, safe_data: bytes, payload: dict, row_id: 
                     print(f"  [{tag}] Recovery failed: {recovery_error}")
                     _log_interaction(payload, str(recovery_error), row_id=log_id)
 
-    raise RuntimeError(f"Translation failed after {MAX_RETRIES} retries + session recovery: {last_error}")
+    raise RuntimeError(f"Translation failed for {tag} after {max_retries} retries: {last_error}")
 
 
 def translate_shadok_block(full_text: str, target_langs: list[str], max_line_length: int) -> dict[str, str]:
     """Translate the full Shadok text as one literary block."""
-    import time
-
     user_content = json.dumps(
         {"text": full_text, "languages": target_langs},
         ensure_ascii=True
@@ -273,10 +312,8 @@ def translate_shadok_block(full_text: str, target_langs: list[str], max_line_len
     return _make_request_with_retry(url, safe_data, payload, row_id=None, is_shadok=True)
 
 
-def translate_batch(text: str, target_langs: list[str], row_id: Optional[int] = None) -> dict[str, str]:
+def translate_batch(text: str, target_langs: list[str], row_id: Optional[int | str] = None) -> dict[str, str]:
     """Translate text with automatic retry and session recovery."""
-    import time
-
     user_content = json.dumps(
         {"text": text, "languages": target_langs},
         ensure_ascii=True
@@ -303,15 +340,35 @@ def translate_batch(text: str, target_langs: list[str], row_id: Optional[int] = 
     return _make_request_with_retry(url, safe_data, payload, row_id=row_id, is_shadok=False)
 
 
-def refine(correction: str, target_langs: list[str], row_id: Optional[int] = None) -> dict[str, str]:
-    """Send a correction into the existing chat, with retry logic."""
-    import time
+def refine(
+    correction: str,
+    target_langs: list[str],
+    row_id: Optional[int | str] = None,
+    original: Optional[str] = None,
+    current_translations: Optional[dict[str, str]] = None,
+    validation_errors: Optional[list[tuple[str, str]] | list[str]] = None,
+) -> dict[str, str]:
+    """Send a correction into the chat, with retry logic and full stateless context for WEB2API."""
+    context_parts = []
+    if original:
+        context_parts.append(f'Source text: "{original}"')
+    if target_langs:
+        context_parts.append(f"Target languages required: {', '.join(target_langs)}")
+    if current_translations:
+        context_parts.append(f"Current candidate translations:\n{json.dumps(current_translations, ensure_ascii=False, indent=2)}")
+    if validation_errors:
+        if isinstance(validation_errors, list) and validation_errors and isinstance(validation_errors[0], tuple):
+            err_str = "\n".join(f"- {lc}: {msg}" for lc, msg in validation_errors)
+        else:
+            err_str = "\n".join(str(e) for e in validation_errors)
+        context_parts.append(f"Validation errors to fix:\n{err_str}")
+    if correction:
+        context_parts.append(f"Instructions:\n{correction}")
 
-    user_content = (
-        f"{correction}\n\n"
-        f"Return the corrected full JSON object with ALL languages: "
-        f"{', '.join(target_langs)}."
+    context_parts.append(
+        f"Return the corrected full JSON object with ALL requested languages: {', '.join(target_langs)}."
     )
+    user_content = "\n\n".join(context_parts)
 
     if PROVIDER in ("OMNIROAD", "WEB2API"):
         messages = [
@@ -329,50 +386,8 @@ def refine(correction: str, target_langs: list[str], row_id: Optional[int] = Non
         "stream": False,
     }
 
-    MAX_RETRIES = 2
-    last_error = None
-
-    for attempt in range(MAX_RETRIES + 1):
-        resp_text = "N/A"
-        try:
-            resp = requests.post(url, json=payload, timeout=TIMEOUT)
-            resp_text = resp.text
-
-            if resp.status_code != 200:
-                _log_interaction(payload, resp_text, row_id=row_id)
-                raise requests.HTTPError(f"Status {resp.status_code}")
-
-            data = resp.json()
-            content = data["choices"][0]["message"]["content"]
-            _log_interaction(payload, resp_text, row_id=row_id)
-            return _extract_json(content)
-
-        except Exception as e:
-            last_error = e
-            if resp_text == "N/A" and "resp" in locals():
-                resp_text = getattr(resp, 'text', 'N/A')
-            _log_interaction(payload, resp_text, row_id=row_id)
-
-            if attempt < MAX_RETRIES:
-                wait = 2 * (attempt + 1)
-                print(f"  [Row {row_id}] Refine retry {attempt + 1}/{MAX_RETRIES} in {wait}s...")
-                time.sleep(wait)
-            else:
-                print(f"  [Row {row_id}] Refine retries exhausted. Reinitializing session...")
-                try:
-                    init_session()
-                    time.sleep(1)
-                    resp = requests.post(url, data=safe_data, headers=headers, timeout=TIMEOUT)
-                    resp_text = resp.text
-                    if resp.status_code == 200:
-                        data = resp.json()
-                        content = data["choices"][0]["message"]["content"]
-                        _log_interaction(payload, resp_text, row_id=row_id)
-                        return _extract_json(content)
-                except Exception as recovery_error:
-                    print(f"  [Row {row_id}] Refine recovery failed: {recovery_error}")
-
-    raise RuntimeError(f"Refine failed after {MAX_RETRIES} retries + recovery: {last_error}")
+    safe_data = json.dumps(payload, ensure_ascii=True).encode('utf-8')
+    return _make_request_with_retry(url, safe_data, payload, row_id=row_id, is_shadok=False, is_refine=True)
 
 
 # ── Helpers ──────────────────────────────────────────────────────────

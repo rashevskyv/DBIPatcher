@@ -155,3 +155,20 @@ dbi_patcher/
 ### Комміти:
 - `fix: always prompt to redownload both DBI.nro and translation files on release update (v0.0.85)`
 
+## [2026-08-29] DBI 905, durable aliases та Web2API concurrency
+
+### Виконані дії:
+1. Додано durable union 45 temperature alias-ів з PR #22 і PR #23 до workbook,
+   усіх CSV та Turkish-колонки; видалено дубльовану `cmd_sync`.
+2. `scripts/patch_dbi.py` перенесено з DBI 898 `dbi-i18n` на pinned DBI 905
+   `0xroast/dbi-translate`, додано SHA-256 перевірку pristine NRO та нові
+   Keystone/Capstone залежності.
+3. Web2API перекладає незалежні рядки обмеженим пулом потоків. Workbook
+   змінюється тільки головним потоком; retry/refine, logging і model preflight
+   адаптовані для stateless concurrent requests.
+4. Додано focused regression tests. Gemini перевірив 80 тестів та live
+   `/v1/models` preflight; application workbook version — `v0.0.86`.
+
+### Комміти:
+- `feat: migrate DBI 905 patcher and parallelize Web2API translations (v0.0.86)`
+

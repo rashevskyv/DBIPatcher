@@ -1242,3 +1242,48 @@ TitleId : {} BID: {},TitleId   : {} BID: {}
 Проверять хэш при установке    : ,Hash bei Installation prüfen    : 
 Просмотр раздела USER          : ,USER-Partition anzeigen          : 
 Тема отображения               : ,Anzeigedesign                : 
+Температура    : {}$°$C,Temperatur              : {}°C
+Температура     : {}$°$C,Temperatur              : {}°C
+Температура      : {}$°$C,Temperatur              : {}°C
+Температура       : {}$°$C,Temperatur              : {}°C
+Температура        : {}$°$C,Temperatur              : {}°C
+Температура         : {}$°$C,Temperatur              : {}°C
+Температура          : {}$°$C,Temperatur              : {}°C
+Температура           : {}$°$C,Temperatur              : {}°C
+Температура            : {}$°$C,Temperatur              : {}°C
+Температура             : {}$°$C,Temperatur              : {}°C
+Температура              : {}$°$C,Temperatur              : {}°C
+Срепняя температура: {}$°$C,Durchschnittstemperatur : {}°C
+Средняя температура: {}$°$C,Durchschnittstemperatur : {}°C
+Температура батареи        : {}$°$C,Batterietemperatur               : {}°C
+Температура батареи         : {}$°$C,Batterietemperatur               : {}°C
+Температура батареи          : {}$°$C,Batterietemperatur               : {}°C
+Температура батареи           : {}$°$C,Batterietemperatur               : {}°C
+Температура батареи            : {}$°$C,Batterietemperatur               : {}°C
+Температура батареи             : {}$°$C,Batterietemperatur               : {}°C
+Температура батареи              : {}$°$C,Batterietemperatur               : {}°C
+Температура батареи               : {}$°$C,Batterietemperatur               : {}°C
+Температура батареи                : {}$°$C,Batterietemperatur               : {}°C
+Температура батареи                 : {}$°$C,Batterietemperatur               : {}°C
+Температура батареи                  : {}$°$C,Batterietemperatur               : {}°C
+Температура    : {}°C,Temperatur              : {}°C
+Температура     : {}°C,Temperatur              : {}°C
+Температура      : {}°C,Temperatur              : {}°C
+Температура       : {}°C,Temperatur              : {}°C
+Температура         : {}°C,Temperatur              : {}°C
+Температура          : {}°C,Temperatur              : {}°C
+Температура           : {}°C,Temperatur              : {}°C
+Температура            : {}°C,Temperatur              : {}°C
+Температура             : {}°C,Temperatur              : {}°C
+Температура              : {}°C,Temperatur              : {}°C
+Температура батареи        : {}°C,Batterietemperatur               : {}°C
+Температура батареи         : {}°C,Batterietemperatur               : {}°C
+Температура батареи          : {}°C,Batterietemperatur               : {}°C
+Температура батареи           : {}°C,Batterietemperatur               : {}°C
+Температура батареи            : {}°C,Batterietemperatur               : {}°C
+Температура батареи              : {}°C,Batterietemperatur               : {}°C
+Температура батареи               : {}°C,Batterietemperatur               : {}°C
+Температура батареи                : {}°C,Batterietemperatur               : {}°C
+Температура батареи                 : {}°C,Batterietemperatur               : {}°C
+Температура батареи                  : {}°C,Batterietemperatur               : {}°C
+Срепняя температура: {}°C,Durchschnittstemperatur : {}°C

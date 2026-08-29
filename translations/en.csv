@@ -1266,3 +1266,24 @@ TitleId : {} BID: {},TitleId  : {} BID: {}
 Температура батареи                : {}$°$C,Battery temperature          : {}°C
 Температура батареи                 : {}$°$C,Battery temperature          : {}°C
 Температура батареи                  : {}$°$C,Battery temperature          : {}°C
+Температура    : {}°C,Temperature         : {}°C
+Температура     : {}°C,Temperature         : {}°C
+Температура      : {}°C,Temperature         : {}°C
+Температура       : {}°C,Temperature         : {}°C
+Температура         : {}°C,Temperature         : {}°C
+Температура          : {}°C,Temperature         : {}°C
+Температура           : {}°C,Temperature         : {}°C
+Температура            : {}°C,Temperature         : {}°C
+Температура             : {}°C,Temperature         : {}°C
+Температура              : {}°C,Temperature         : {}°C
+Температура батареи        : {}°C,Battery temperature          : {}°C
+Температура батареи         : {}°C,Battery temperature          : {}°C
+Температура батареи          : {}°C,Battery temperature          : {}°C
+Температура батареи           : {}°C,Battery temperature          : {}°C
+Температура батареи            : {}°C,Battery temperature          : {}°C
+Температура батареи              : {}°C,Battery temperature          : {}°C
+Температура батареи               : {}°C,Battery temperature          : {}°C
+Температура батареи                : {}°C,Battery temperature          : {}°C
+Температура батареи                 : {}°C,Battery temperature          : {}°C
+Температура батареи                  : {}°C,Battery temperature          : {}°C
+Срепняя температура: {}°C,Average temperature : {}°C
