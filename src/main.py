@@ -1475,11 +1475,24 @@ def cmd_deploy() -> None:
         lang_codes = [lc for lc in langs if lc in col_map and lc != "ru"]
 
         print("  [CHECK] Verifying translation completeness...")
+        shadok_rows: set[int] = set()
+        shadok_config = load_shadok_config()
+        if shadok_config:
+            shadok_rows = build_shadok_exclusion_rows(
+                ws, col_map, shadok_config.get("mapping", [])
+            )
+
         missing_count = 0
         for row in range(2, ws.max_row + 1):
-            if not ws.cell(row, col_map["Original"]).value: continue
+            if not ws.cell(row, col_map["Original"]).value:
+                continue
             for lc in lang_codes:
                 val = ws.cell(row, col_map[lc]).value
+                # Intentional Shadok blank pads (" ") are complete, not missing.
+                if row in shadok_rows:
+                    if val is None or str(val) == "":
+                        missing_count += 1
+                    continue
                 if not val or not str(val).strip():
                     missing_count += 1
 

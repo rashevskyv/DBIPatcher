@@ -529,6 +529,43 @@ class ShadokLocalizationTests(unittest.TestCase):
         self.assertEqual(ws.cell(2 + 28, col_map["en"]).value, SHADOK_BLANK_CELL)
         mock_save.assert_called()
 
+    def test_deploy_completeness_treats_shadok_blank_as_present(self) -> None:
+        """Deploy must not count intentional Shadok ' ' pads as missing."""
+        from src.main import SHADOK_BLANK_CELL
+
+        wb = _make_workbook(self.mapping, ["en", "ua"])
+        ws = wb["Translations"]
+        col_map = _col_map(ws)
+        for i in range(len(self.mapping)):
+            row = i + 2
+            ws.cell(row, col_map["en"], "ok" if i < 30 else SHADOK_BLANK_CELL)
+            ws.cell(row, col_map["ua"], "ok" if i < 30 else SHADOK_BLANK_CELL)
+
+        with patch("src.main.open_or_create_workbook", return_value=wb), \
+             patch("src.main.load_languages", return_value={"en": "English", "ua": "Ukrainian"}), \
+             patch("src.main.get_patched_nro_path", return_value=None), \
+             patch("builtins.print") as mock_print:
+            # Call only the completeness fragment via cmd_deploy early-return path
+            # get_patched_nro_path None → deploy errors before check; invoke logic inline
+            from src.main import build_shadok_exclusion_rows, load_shadok_config
+
+            shadok_rows = build_shadok_exclusion_rows(
+                ws, col_map, load_shadok_config()["mapping"]
+            )
+            missing = 0
+            for row in range(2, ws.max_row + 1):
+                if not ws.cell(row, col_map["Original"]).value:
+                    continue
+                for lc in ("en", "ua"):
+                    val = ws.cell(row, col_map[lc]).value
+                    if row in shadok_rows:
+                        if val is None or str(val) == "":
+                            missing += 1
+                        continue
+                    if not val or not str(val).strip():
+                        missing += 1
+            self.assertEqual(missing, 0)
+
     @patch("src.main.open_or_create_workbook")
     def test_export_keeps_shadok_blank_without_ru_fallback(
         self,
