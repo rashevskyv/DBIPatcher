@@ -61,7 +61,8 @@
    covers key parity and canonical-value copying.
 2. **DBI 905 wrapper.** Replace the DBI 898 `dbi-i18n` wrapper with a minimal,
    pinned `dbi-translate` invocation. Download only release `905ru`, verify its
-   SHA-256, run `python -m dbi_translate.cli patch` through the temporary clone,
+   SHA-256, fetch the exact pin through the temporary clone, then run
+   `python -m dbi_translate.cli patch`,
    and add only Keystone/Capstone dependencies required by upstream. Update the
    focused wrapper test and DBI-facing documentation.
    **Completed:** wrapper is pinned to `1320e138fd017db70c1436b537aef7be030f0668`,

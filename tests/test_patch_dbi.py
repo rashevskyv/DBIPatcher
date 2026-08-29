@@ -55,7 +55,7 @@ class PatchDbiWrapperTests(unittest.TestCase):
         mock_subproc_run: MagicMock,
         mock_compute_sha256: MagicMock,
     ) -> None:
-        """Verify wrapper validates SHA-256, creates temp clone, checks out pinned SHA, and calls upstream CLI."""
+        """Verify wrapper validates SHA-256, fetches the pin, checks it out, and calls upstream CLI."""
         mock_temp_path = str(Path("/tmp/mock_temp_dir"))
         mock_tempdir.return_value.__enter__.return_value = mock_temp_path
         mock_is_file.return_value = True
@@ -64,7 +64,8 @@ class PatchDbiWrapperTests(unittest.TestCase):
         rev_parse_result = MagicMock()
         rev_parse_result.stdout = f"{PINNED_COMMIT_SHA}\n"
         mock_subproc_run.side_effect = [
-            MagicMock(returncode=0),  # git clone
+            MagicMock(returncode=0),  # git clone --no-checkout
+            MagicMock(returncode=0),  # git fetch pinned SHA
             MagicMock(returncode=0),  # git checkout
             rev_parse_result,         # git rev-parse HEAD
             MagicMock(returncode=0),  # python -m dbi_translate.cli patch
@@ -83,19 +84,30 @@ class PatchDbiWrapperTests(unittest.TestCase):
             expected_src_dir = str(Path(mock_temp_path) / "src")
 
             # Verify subprocess call sequence
-            self.assertEqual(mock_subproc_run.call_count, 4)
+            self.assertEqual(mock_subproc_run.call_count, 5)
 
-            # Call 1: git clone
+            # Call 1: git clone without checkout, so the exact pin is fetched next.
             c1 = mock_subproc_run.call_args_list[0]
             self.assertEqual(
                 c1,
-                call(["git", "clone", UPSTREAM_REPO_URL, mock_temp_path], check=True),
+                call(["git", "clone", "--no-checkout", UPSTREAM_REPO_URL, mock_temp_path], check=True),
             )
 
-            # Call 2: git checkout
+            # Call 2: direct fetch of the pinned SHA, including commits no longer on a ref.
             c2 = mock_subproc_run.call_args_list[1]
             self.assertEqual(
                 c2,
+                call(
+                    ["git", "fetch", "--no-tags", "origin", PINNED_COMMIT_SHA],
+                    cwd=mock_temp_path,
+                    check=True,
+                ),
+            )
+
+            # Call 3: git checkout
+            c3 = mock_subproc_run.call_args_list[2]
+            self.assertEqual(
+                c3,
                 call(
                     ["git", "checkout", "--detach", PINNED_COMMIT_SHA],
                     cwd=mock_temp_path,
@@ -103,10 +115,10 @@ class PatchDbiWrapperTests(unittest.TestCase):
                 ),
             )
 
-            # Call 3: git rev-parse HEAD
-            c3 = mock_subproc_run.call_args_list[2]
+            # Call 4: git rev-parse HEAD
+            c4 = mock_subproc_run.call_args_list[3]
             self.assertEqual(
-                c3,
+                c4,
                 call(
                     ["git", "rev-parse", "HEAD"],
                     cwd=mock_temp_path,
@@ -116,9 +128,9 @@ class PatchDbiWrapperTests(unittest.TestCase):
                 ),
             )
 
-            # Call 4: dbi_translate.cli patch
-            c4 = mock_subproc_run.call_args_list[3]
-            cmd_args, cmd_kwargs = c4
+            # Call 5: dbi_translate.cli patch
+            c5 = mock_subproc_run.call_args_list[4]
+            cmd_args, cmd_kwargs = c5
             self.assertEqual(
                 cmd_args[0],
                 [
@@ -216,7 +228,8 @@ class PatchDbiWrapperTests(unittest.TestCase):
         rev_parse_result = MagicMock()
         rev_parse_result.stdout = "deadbeefdeadbeefdeadbeefdeadbeefdeadbeef\n"
         mock_subproc_run.side_effect = [
-            MagicMock(returncode=0),  # git clone
+            MagicMock(returncode=0),  # git clone --no-checkout
+            MagicMock(returncode=0),  # git fetch pinned SHA
             MagicMock(returncode=0),  # git checkout
             rev_parse_result,         # git rev-parse HEAD
         ]

@@ -61,3 +61,4 @@
     - [x] Видалено `"br": "Brasilian"` з `languages.json`.
     - [x] Оновлено повідомлення про оновлення релізу: завжди вказувати на необхідність завантаження як `DBI.nro`, так і файлів перекладу.
 
+# [x] Emergency follow-up: fetch the pinned upstream DBI 905 commit explicitly before checkout, because it is no longer advertised by the upstream default ref.

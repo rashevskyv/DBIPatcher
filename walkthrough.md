@@ -40,7 +40,8 @@
 - `scripts/patch_dbi.py` пінить `0xroast/dbi-translate` на
   `1320e138fd017db70c1436b537aef7be030f0668` і приймає лише pristine DBI 905
   з SHA-256 `f4360db14ea7ed1043a5a0c7d076d4861cc3383f3b254b9b38d2eec6d175686f`.
-- Wrapper використовує тимчасовий clone, перевіряє detached SHA, передає
+- Wrapper використовує тимчасовий clone, явно fetch-ить pinned SHA навіть якщо його
+  більше немає на default ref, перевіряє detached SHA та передає
   temporary `src` через `PYTHONPATH` і запускає `dbi_translate.cli patch`.
   Upstream-код не vendor-иться. Потрібні `keystone-engine==0.9.2` та
   `capstone==5.0.9`; WSL/devkitA64/zstandard більше не потрібні.

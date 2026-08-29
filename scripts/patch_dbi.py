@@ -64,13 +64,20 @@ def patch_dbi(
     with tempfile.TemporaryDirectory(prefix="dbi_patch_") as temp_dir:
         temp_repo = Path(temp_dir)
 
-        # Clone upstream repository
+        # Clone the current repository metadata, then explicitly fetch the pinned
+        # commit. The pin may no longer be reachable from the upstream default ref.
         subprocess.run(
-            ["git", "clone", UPSTREAM_REPO_URL, str(temp_repo)],
+            ["git", "clone", "--no-checkout", UPSTREAM_REPO_URL, str(temp_repo)],
             check=True,
         )
 
-        # Detach and check out exact pinned commit
+        subprocess.run(
+            ["git", "fetch", "--no-tags", "origin", PINNED_COMMIT_SHA],
+            cwd=str(temp_repo),
+            check=True,
+        )
+
+        # Detach and check out exact pinned commit.
         subprocess.run(
             ["git", "checkout", "--detach", PINNED_COMMIT_SHA],
             cwd=str(temp_repo),
