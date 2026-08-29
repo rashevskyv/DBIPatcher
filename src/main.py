@@ -1299,6 +1299,13 @@ def cmd_shadok() -> None:
     max_lines = int(config.get("max_lines", 35))
     target_langs = get_shadok_target_langs()
     pad_only = "--pad-only" in sys.argv
+    langs_filter = os.environ.get("DBI_SHADOK_LANGS", "").strip()
+    if langs_filter:
+        wanted = {x.strip() for x in langs_filter.split(",") if x.strip()}
+        target_langs = [lc for lc in target_langs if lc in wanted]
+        if not target_langs:
+            print(f"  [ERROR] --langs matched nothing from {sorted(wanted)}")
+            return
 
     wb = open_or_create_workbook()
     ws = wb[SHEET_NAME]
@@ -1765,7 +1772,6 @@ def cmd_help() -> None:
     print("  translate   - Translate missing cells via AI")
     print("  shadok      - Localize Shadok parody block via AI (manual)")
     print("                Up to 3 attempts/lang; stricter prompt each retry")
-    print("                --pad-only  blank trailing slots (no AI) if RU still leaks")
     print("  validate    - Validate all translations")
     print("  align       - Align colons in blocks by longest line")
     print("  export      - Export per-language CSVs")
@@ -1779,13 +1785,15 @@ def cmd_help() -> None:
     print("  all         - Run full pipeline (sync → dist)")
     print("  help        - Show this help message")
     print("\nOptions:")
-    print("  -f, --force - Force re-translate all strings")
+    print("  -f, --force      Force re-translate all strings")
+    print("  --pad-only       With shadok: blank trailing slots only (no AI)")
+    print("  --langs a,b      With shadok: only these language codes")
     print("\nExamples:")
     print("  python -m src.main sync")
     print("  python -m src.main translate -f")
-    print("  python -m src.main shadok")
-    print("  python -m src.main align build")
-    print("  python -m src.main export build dist")
+    print("  python -m src.main shadok --pad-only")
+    print("  python -m src.main shadok --langs de,tr")
+    print("  python -m src.main validate align export build dist")
     print("  python -m src.main clear ua")
     print("  python -m src.main all")
     print("="*60 + "\n")
@@ -1795,8 +1803,23 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="DBI Translation Pipeline", add_help=False)
     parser.add_argument("commands", nargs="*", help="Pipeline steps to run")
     parser.add_argument("-f", "--force", action="store_true", help="Force re-translate all strings")
+    parser.add_argument(
+        "--pad-only",
+        action="store_true",
+        help="With shadok: blank trailing slots only (no AI)",
+    )
+    parser.add_argument(
+        "--langs",
+        default="",
+        help="With shadok: comma-separated language codes to process (default: all)",
+    )
     parser.add_argument("-h", "--help", action="store_true", help="Show help message")
     args = parser.parse_args()
+    # cmd_shadok reads these via env / sys.argv (flags must be registered above
+    # so argparse does not reject them before the command runs).
+    os.environ["DBI_SHADOK_LANGS"] = args.langs.strip()
+    if args.pad_only and "--pad-only" not in sys.argv:
+        sys.argv.append("--pad-only")
 
     if args.help or not args.commands or (len(args.commands) == 1 and args.commands[0] == "help"):
         cmd_help()
