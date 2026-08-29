@@ -116,6 +116,8 @@ class ShadokLocalizationTests(unittest.TestCase):
         self.assertIn("WORD-WRAP / REFLOW", prompt)
         self.assertIn("max_line_length", prompt)
         self.assertIn("expected_lines", prompt)
+        self.assertIn("Russian-Ukrainian war", prompt)
+        self.assertIn("swamp", prompt.lower())
         self.assertNotIn("Do NOT merge or split lines", prompt)
         self.assertNotIn("Do NOT care about line breaks", prompt)
 
@@ -140,12 +142,14 @@ class ShadokLocalizationTests(unittest.TestCase):
         padded = pad_shadok_lines_to_mapping(["a", "b"], 5)
         self.assertEqual(padded, ["a", "b", " ", " ", " "])
 
-    def test_fit_merges_overflow_into_dict_slots(self) -> None:
-        # 34 short lines fit screen height 35, but only 33 dict slots → one merge
-        lines = [f"L{i}" for i in range(34)]
+    def test_fit_packs_overflow_into_last_slot_with_lf(self) -> None:
+        # 35 visual lines, 33 dict slots → last slot holds lines 33..35 via [[LF]]
+        lines = [f"L{i}" for i in range(35)]
         fitted = fit_shadok_lines_to_slots(lines, slot_count=33, max_line_length=39)
         self.assertEqual(len(fitted), 33)
-        self.assertTrue(any(" " in line for line in fitted))
+        self.assertEqual(fitted[32], "L32[[LF]]L33[[LF]]L34")
+        for i in range(32):
+            self.assertEqual(fitted[i], f"L{i}")
 
     def test_resolve_missing_and_duplicate(self) -> None:
         wb = _make_workbook(self.mapping[:2], self.lang_codes)

@@ -163,6 +163,17 @@ def pad_shadok_lines_to_mapping(lines: list[str], mapping_count: int) -> list[st
     return list(lines) + [" "] * (mapping_count - len(lines))
 
 
+def expand_shadok_visual_lines(text: str) -> list[str]:
+    """Split a workbook cell into visual screen lines ([[LF]] / \\n / real newline)."""
+    if text is None:
+        return []
+    s = str(text).replace("[[LF]]", "\n").replace("\\n", "\n")
+    parts = [ln.rstrip("\r") for ln in s.split("\n")]
+    if len(parts) > 1 and parts[-1] == "":
+        parts = parts[:-1]
+    return parts
+
+
 def fit_shadok_lines_to_slots(
     lines: list[str],
     slot_count: int,
@@ -170,27 +181,19 @@ def fit_shadok_lines_to_slots(
 ) -> list[str]:
     """Fit validated screen lines into ``slot_count`` workbook keys (usually 33).
 
-    If there are fewer lines, pad with spaces. If there are more (but still within
-    screen height), merge adjacent pairs that fit under ``max_line_length``.
+    Fewer lines → pad trailing slots with a space.
+    More lines (still within screen height) → keep slots 1..slot_count-1 as-is and
+    pack the remainder into the last slot joined by ``[[LF]]`` so export/tokenizer
+    emit real line breaks while the physical screen still has room (up to max_lines).
     """
-    fitted = list(lines)
-    while len(fitted) > slot_count:
-        best_i = None
-        best_vl = None
-        for i in range(len(fitted) - 1):
-            combined = f"{fitted[i].rstrip()} {fitted[i + 1].lstrip()}"
-            vl = visual_length(combined)
-            if vl <= max_line_length and (best_i is None or vl < best_vl):
-                best_i = i
-                best_vl = vl
-        if best_i is None:
-            raise ValueError(
-                f"Cannot fit {len(fitted)} screen lines into {slot_count} dictionary "
-                f"slots without exceeding max_line_length={max_line_length}"
-            )
-        combined = f"{fitted[best_i].rstrip()} {fitted[best_i + 1].lstrip()}"
-        fitted = fitted[:best_i] + [combined] + fitted[best_i + 2 :]
-    return pad_shadok_lines_to_mapping(fitted, slot_count)
+    del max_line_length  # width already enforced per visual line before fit
+    if len(lines) <= slot_count:
+        return pad_shadok_lines_to_mapping(lines, slot_count)
+    head = list(lines[: slot_count - 1])
+    tail = list(lines[slot_count - 1 :])
+    # Workbook stores [[LF]]; export detokenize → \n for the bin builder
+    last = "[[LF]]".join(tail)
+    return head + [last]
 
 
 def build_shadok_exclusion_rows(ws, col_map: dict, mapping: list[dict]) -> set[int]:
@@ -787,32 +790,37 @@ def cmd_validate() -> None:
                     for row_idx, _o, _n in shadok_resolved
                 ]
                 # Trailing blank/space pads are OK (shorter reflow still fits the screen)
-                content = list(texts)
-                while content and not content[-1].strip():
-                    content.pop()
-                if not content:
+                content_slots = list(texts)
+                while content_slots and not content_slots[-1].strip():
+                    content_slots.pop()
+                if not content_slots:
                     shadok_errors += 1
                     print(f"  [SHADOK][{lc}] empty block")
                     continue
-                # Content lives in dictionary slots; screen height budget is max_lines
-                if len(content) > max_lines:
-                    shadok_errors += 1
-                    print(
-                        f"  [SHADOK][{lc}] {len(content)} lines exceeds "
-                        f"screen height budget {max_lines}"
-                    )
-                for i, text in enumerate(content):
-                    row_idx = shadok_resolved[i][0]
-                    if not text.strip():
+                # Expand last-slot [[LF]] packs into visual lines for height/width checks
+                visual_lines: list[str] = []
+                for slot_i, text in enumerate(content_slots):
+                    row_idx = shadok_resolved[slot_i][0]
+                    parts = expand_shadok_visual_lines(text)
+                    if not parts or any(not p.strip() for p in parts):
                         shadok_errors += 1
                         print(f"  [SHADOK][Row {row_idx}][{lc}] empty hole in block")
                         continue
-                    vl = visual_length(text)
-                    if vl > max_line_len:
-                        shadok_errors += 1
-                        print(
-                            f"  [SHADOK][Row {row_idx}][{lc}] visual_length {vl} > {max_line_len}"
-                        )
+                    visual_lines.extend(parts)
+                    for part in parts:
+                        vl = visual_length(part)
+                        if vl > max_line_len:
+                            shadok_errors += 1
+                            print(
+                                f"  [SHADOK][Row {row_idx}][{lc}] visual_length "
+                                f"{vl} > {max_line_len}"
+                            )
+                if len(visual_lines) > max_lines:
+                    shadok_errors += 1
+                    print(
+                        f"  [SHADOK][{lc}] {len(visual_lines)} visual lines exceed "
+                        f"screen height budget {max_lines}"
+                    )
 
         errors += shadok_errors
         print(f"--- Shadok integrity: {shadok_errors} issues ---")
@@ -1240,7 +1248,10 @@ def cmd_shadok() -> None:
     print("=" * 60)
     print(f"  Provider  : {ai_client.PROVIDER} (model: {shadok_model})")
     print(f"  Screen    : <= {max_lines} lines tall, <= {max_line_length} chars wide")
-    print(f"  Dict slots: {slot_count} (pad if fewer; merge if {slot_count + 1}..{max_lines})")
+    print(
+        f"  Dict slots: {slot_count} "
+        f"(pad if fewer; pack {slot_count + 1}..{max_lines} into last slot via [[LF]])"
+    )
     print(f"  Attempts  : {SHADOK_MAX_ATTEMPTS} (stricter prompt each retry)")
     print(f"  Languages : {len(target_langs)} ({', '.join(target_langs)})")
     print("-" * 60)
@@ -1297,8 +1308,8 @@ def cmd_shadok() -> None:
             ws.cell(row_idx, col_map[lc], line)
         save_workbook(wb)
         ok_langs += 1
-        content_n = sum(1 for line in lines if str(line).strip())
-        print(f"  [OK][{lc}] Wrote {slot_count} slots ({content_n} content / rest space-pad)")
+        visual_n = sum(len(expand_shadok_visual_lines(line)) for line in lines if str(line).strip())
+        print(f"  [OK][{lc}] Wrote {slot_count} slots ({visual_n} visual lines on screen)")
 
     print()
     print("=" * 60)
