@@ -62,3 +62,5 @@
     - [x] Оновлено повідомлення про оновлення релізу: завжди вказувати на необхідність завантаження як `DBI.nro`, так і файлів перекладу.
 
 # [x] Emergency follow-up: fetch the pinned upstream DBI 905 commit explicitly before checkout, because it is no longer advertised by the upstream default ref.
+
+# [x] Release notes: disclose possible untranslated/fallback strings and credit Bohdan Buinich (`dbi-i18n`) and 0xroast (`dbi-translate`).
