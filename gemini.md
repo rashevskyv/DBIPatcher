@@ -23,6 +23,13 @@
 2. Harden JSON fallback: unescape `\\n` після ручного витягу значення (фікс «got 1 line»).
 3. Offline тести на escalation і успіх на 3-й спробі.
 
+## [2026-08-29] Shadok: fewer lines OK, overflow only is bad
+
+### Виконані дії:
+1. Контракт: `1..max_lines` (33); менше = влазить на екран; більше = overflow fail.
+2. Коротший блок пишеться в перші N ключів; хвіст mapping заповнюється `" "` щоб не світився RU original.
+3. Integrity validate: trailing space/empty pads дозволені; дірки всередині — ні.
+
 ## [2026-04-23] Початкова ініціалізація
 
 ### Виконані дії:

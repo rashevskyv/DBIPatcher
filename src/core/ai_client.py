@@ -292,10 +292,11 @@ def build_shadok_system_prompt(
     """Base Shadok prompt plus escalating strictness for each retry attempt (0-based)."""
     prompt = SHADOK_SYSTEM_PROMPT
     prompt += (
-        f"\n\nHARD SCREEN BUDGET (always): expected_lines={expected_lines}, "
+        f"\n\nHARD SCREEN BUDGET (always): max_lines={expected_lines}, "
         f"max_line_length={max_line_length}. "
-        f"Before you answer, COUNT the \\n separators in your value: there must be "
-        f"exactly {expected_lines - 1} of them (yielding {expected_lines} lines)."
+        f"FEWER lines than {expected_lines} is OK (the text still fits the screen). "
+        f"MORE than {expected_lines} lines is a HARD FAIL (overflow). "
+        f"Before answering, COUNT your lines: must be between 1 and {expected_lines}."
     )
 
     if attempt <= 0:
@@ -313,9 +314,12 @@ def build_shadok_system_prompt(
             f"Your previous answer FAILED validation: {err}\n"
             "Previous output (fix it; do not repeat the same shape):\n"
             f"{prev}\n\n"
-            f"Return ONLY a JSON object. The language value MUST be exactly "
-            f"{expected_lines} non-empty lines joined by \\n, each visual length "
-            f"1..{max_line_length}. No markdown fences. No commentary. "
+            f"Return ONLY a JSON object. The language value MUST have "
+            f"1..{expected_lines} non-empty lines joined by \\n "
+            f"(FEWER is fine; MORE than {expected_lines} is forbidden), "
+            f"each visual length 1..{max_line_length}. "
+            "If you overflowed, compress/reflow into fewer or equal lines. "
+            "No markdown fences. No commentary. "
             "Prefer guillemets or single quotes inside the text; never raw "
             'unescaped " inside JSON string values.'
         )
@@ -326,13 +330,14 @@ def build_shadok_system_prompt(
         "\n\n=== RETRY STRICTNESS LEVEL 2 (FINAL) ===\n"
         f"FAILED again: {err}\n"
         "This is the last attempt. Mechanical checklist — all must hold:\n"
-        f"1) Exactly {expected_lines} lines (not {expected_lines - 1}, not "
-        f"{expected_lines + 1}).\n"
+        f"1) Line count L satisfies 1 <= L <= {expected_lines}. "
+        f"Overflow (L > {expected_lines}) is forbidden; fewer is OK.\n"
         f"2) Every line length in 1..{max_line_length} visible characters.\n"
         "3) No blank lines, no markdown, no ``` fences, no prose outside JSON.\n"
         "4) Inside JSON strings use \\n for line breaks only; never a raw newline.\n"
         '5) Never put unescaped " or \\\' inside values — use «» or \'.\n'
-        "6) Reflow/rephrase until the checklist passes; do not truncate words.\n"
+        "6) If previous output had too many lines, MERGE/reflow; "
+        "do not truncate words mid-token.\n"
         "Previous bad output:\n"
         f"{prev}"
     )
@@ -374,8 +379,9 @@ def translate_shadok_block(
         user_payload["previous_error"] = previous_error or ""
         user_payload["previous_text"] = previous_text or ""
         user_payload["instruction"] = (
-            f"Fix previous_text so it has exactly {expected_lines} lines, "
-            f"each <= {max_line_length}. Output JSON only."
+            f"Fix previous_text so it has at most {expected_lines} lines "
+            f"(fewer is OK), each <= {max_line_length}. "
+            f"Overflow above {expected_lines} is forbidden. Output JSON only."
         )
 
     user_content = json.dumps(user_payload, ensure_ascii=True)

@@ -121,16 +121,23 @@ def parse_and_validate_shadok_block(
     expected_count: int,
     max_line_length: int,
 ) -> list[str]:
-    """Validate a reflowed Shadok screen block: exactly N non-empty lines, each <= max.
+    """Validate a reflowed Shadok screen block against the screen budget.
 
-    The AI may wrap words across lines; this only enforces the screen budget.
-    Raises ValueError on any contract breach (no truncation/repair).
+    Fewer than ``expected_count`` lines is OK (still fits). More is a hard fail.
+    Each line must be non-empty and visual_length <= max. No truncation/repair.
     """
     if translated_text is None:
         raise ValueError("translated_text is None")
     lines = [ln.rstrip("\r") for ln in str(translated_text).split("\n")]
-    if len(lines) != expected_count:
-        raise ValueError(f"Expected {expected_count} lines, got {len(lines)}")
+    # Drop a single trailing empty from a final \\n, but not intentional blanks mid-block
+    if len(lines) > 1 and lines[-1] == "":
+        lines = lines[:-1]
+    if len(lines) < 1:
+        raise ValueError("Expected at least 1 non-empty line, got 0")
+    if len(lines) > expected_count:
+        raise ValueError(
+            f"Expected at most {expected_count} lines (screen budget), got {len(lines)}"
+        )
     for i, line in enumerate(lines):
         if not line.strip():
             raise ValueError(f"Line {i + 1} is empty/whitespace-only")
@@ -140,6 +147,18 @@ def parse_and_validate_shadok_block(
                 f"Line {i + 1} visual_length {vl} > {max_line_length}: {line[:60]!r}"
             )
     return lines
+
+
+def pad_shadok_lines_to_mapping(lines: list[str], mapping_count: int) -> list[str]:
+    """Pad a short block to mapping_count slots with a single space (suppresses RU fallback)."""
+    if len(lines) > mapping_count:
+        raise ValueError(
+            f"Cannot pad: {len(lines)} lines exceeds mapping size {mapping_count}"
+        )
+    if len(lines) == mapping_count:
+        return list(lines)
+    # One space keeps a non-null translation.bin entry so Original RU does not show
+    return list(lines) + [" "] * (mapping_count - len(lines))
 
 
 def build_shadok_exclusion_rows(ws, col_map: dict, mapping: list[dict]) -> set[int]:
@@ -726,15 +745,33 @@ def cmd_validate() -> None:
                 print(
                     f"  [SHADOK] Expected {len(mapping)} mapped rows, resolved {len(shadok_resolved)}"
                 )
-            for row_idx, orig, _new in shadok_resolved:
-                for lc in target_langs:
-                    if lc not in col_map:
-                        continue
-                    cell_val = ws.cell(row_idx, col_map[lc]).value
-                    text = "" if cell_val is None else str(cell_val)
+            for lc in target_langs:
+                if lc not in col_map:
+                    continue
+                texts = [
+                    "" if ws.cell(row_idx, col_map[lc]).value is None
+                    else str(ws.cell(row_idx, col_map[lc]).value)
+                    for row_idx, _o, _n in shadok_resolved
+                ]
+                # Trailing blank/space pads are OK (shorter reflow still fits the screen)
+                content = list(texts)
+                while content and not content[-1].strip():
+                    content.pop()
+                if not content:
+                    shadok_errors += 1
+                    print(f"  [SHADOK][{lc}] empty block")
+                    continue
+                if len(content) > len(shadok_resolved):
+                    shadok_errors += 1
+                    print(
+                        f"  [SHADOK][{lc}] {len(content)} lines exceeds "
+                        f"screen budget {len(shadok_resolved)}"
+                    )
+                for i, text in enumerate(content):
+                    row_idx = shadok_resolved[i][0]
                     if not text.strip():
                         shadok_errors += 1
-                        print(f"  [SHADOK][Row {row_idx}][{lc}] empty cell")
+                        print(f"  [SHADOK][Row {row_idx}][{lc}] empty hole in block")
                         continue
                     vl = visual_length(text)
                     if vl > max_line_len:
@@ -1218,11 +1255,19 @@ def cmd_shadok() -> None:
             fail_langs += 1
             continue
 
-        for (row_idx, _orig, _new), line in zip(resolved, lines):
+        padded = pad_shadok_lines_to_mapping(lines, expected_count)
+        for (row_idx, _orig, _new), line in zip(resolved, padded):
             ws.cell(row_idx, col_map[lc], line)
         save_workbook(wb)
         ok_langs += 1
-        print(f"  [OK][{lc}] Wrote {expected_count} cells")
+        pad_n = expected_count - len(lines)
+        if pad_n:
+            print(
+                f"  [OK][{lc}] Wrote {len(lines)} lines "
+                f"(+{pad_n} space-padded tail slots)"
+            )
+        else:
+            print(f"  [OK][{lc}] Wrote {len(lines)} lines")
 
     print()
     print("=" * 60)
