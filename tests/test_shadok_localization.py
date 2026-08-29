@@ -24,6 +24,7 @@ from src.main import (  # noqa: E402
     cmd_shadok,
     cmd_translate,
     cmd_validate,
+    fit_shadok_lines_to_slots,
     get_shadok_target_langs,
     load_shadok_config,
     pad_shadok_lines_to_mapping,
@@ -119,23 +120,32 @@ class ShadokLocalizationTests(unittest.TestCase):
         self.assertNotIn("Do NOT care about line breaks", prompt)
 
     def test_parse_and_validate_rejects_malformed(self) -> None:
+        # Screen height budget is 35; width is 39
         good = _valid_block("L", 33)
-        self.assertEqual(len(parse_and_validate_shadok_block(good, 33, 39)), 33)
-        # Fewer than budget is OK (still fits the screen)
-        self.assertEqual(len(parse_and_validate_shadok_block(_valid_block("L", 30), 33, 39)), 30)
+        self.assertEqual(len(parse_and_validate_shadok_block(good, 35, 39)), 33)
+        self.assertEqual(len(parse_and_validate_shadok_block(_valid_block("L", 30), 35, 39)), 30)
+        self.assertEqual(len(parse_and_validate_shadok_block(_valid_block("L", 34), 35, 39)), 34)
+        self.assertEqual(len(parse_and_validate_shadok_block(_valid_block("L", 35), 35, 39)), 35)
 
         with self.assertRaises(ValueError):
-            parse_and_validate_shadok_block(_valid_block("L", 35), 33, 39)  # overflow
+            parse_and_validate_shadok_block(_valid_block("L", 36), 35, 39)  # height overflow
         with self.assertRaises(ValueError):
             bad_empty = "\n".join(["ok"] * 20 + ["   "])
-            parse_and_validate_shadok_block(bad_empty, 33, 39)
+            parse_and_validate_shadok_block(bad_empty, 35, 39)
         with self.assertRaises(ValueError):
             too_long = "\n".join(["x" * 40] + ["ok"] * 20)
-            parse_and_validate_shadok_block(too_long, 33, 39)
+            parse_and_validate_shadok_block(too_long, 35, 39)
 
     def test_pad_shadok_lines_uses_space_tail(self) -> None:
         padded = pad_shadok_lines_to_mapping(["a", "b"], 5)
         self.assertEqual(padded, ["a", "b", " ", " ", " "])
+
+    def test_fit_merges_overflow_into_dict_slots(self) -> None:
+        # 34 short lines fit screen height 35, but only 33 dict slots → one merge
+        lines = [f"L{i}" for i in range(34)]
+        fitted = fit_shadok_lines_to_slots(lines, slot_count=33, max_line_length=39)
+        self.assertEqual(len(fitted), 33)
+        self.assertTrue(any(" " in line for line in fitted))
 
     def test_resolve_missing_and_duplicate(self) -> None:
         wb = _make_workbook(self.mapping[:2], self.lang_codes)
@@ -159,17 +169,19 @@ class ShadokLocalizationTests(unittest.TestCase):
             captured["safe_data"] = safe_data
             return {"en": _valid_block("E")}
 
-        with patch.object(ai_client, "_make_request_with_retry", side_effect=fake_retry):
-            ai_client.translate_shadok_block("a\nb\nc", ["en"], 39, expected_lines=3)
+        with patch.object(ai_client, "PROVIDER", "WEB2API"), \
+             patch.object(ai_client, "_make_request_with_retry", side_effect=fake_retry):
+            ai_client.translate_shadok_block("a\nb\nc", ["en"], 39, expected_lines=35)
 
         user = json.loads(captured["payload"]["messages"][-1]["content"])
         self.assertEqual(user["max_line_length"], 39)
-        self.assertEqual(user["expected_lines"], 3)
+        self.assertEqual(user["expected_lines"], 35)
         self.assertEqual(user["text"], "a\nb\nc")
         self.assertEqual(user["languages"], ["en"])
         self.assertEqual(user["attempt"], 0)
         system = captured["payload"]["messages"][0]["content"]
         self.assertIn("HARD SCREEN BUDGET", system)
+        self.assertEqual(captured["payload"]["model"], "gemini-3.7-flash")
 
     @patch("src.main.save_workbook")
     @patch("src.main.init_session_shadok")
@@ -205,7 +217,7 @@ class ShadokLocalizationTests(unittest.TestCase):
         ):
             self.assertEqual(target_langs, ["en"])
             self.assertEqual(max_line_length, 39)
-            self.assertEqual(expected_lines, 33)
+            self.assertEqual(expected_lines, 35)
             self.assertEqual(attempt, 0)
             # AI must receive joined *new* lines, never orig
             expected_source = "\n".join(item["new"] for item in self.mapping)
@@ -261,7 +273,7 @@ class ShadokLocalizationTests(unittest.TestCase):
         ):
             lc = target_langs[0]
             if lc == "en":
-                return {"en": _valid_block("BAD", 35)}  # overflow every attempt
+                return {"en": _valid_block("BAD", 36)}  # height overflow every attempt
             if lc == "tr":
                 return {"tr": "\n".join(["ok"] * 20 + [" "])}  # whitespace-only hole
             return {lc: _valid_block(lc.upper())}
@@ -433,18 +445,19 @@ class ShadokLocalizationTests(unittest.TestCase):
         self.assertEqual(len(resolved), 33)
 
     def test_shadok_prompt_strictness_escalates_per_attempt(self) -> None:
-        p0 = build_shadok_system_prompt(0, 33, 39)
+        p0 = build_shadok_system_prompt(0, 35, 39)
         p1 = build_shadok_system_prompt(
-            1, 33, 39, previous_error="Expected at most 33 lines, got 35", previous_text="long"
+            1, 35, 39, previous_error="Expected at most 35 lines, got 36", previous_text="long"
         )
         p2 = build_shadok_system_prompt(
-            2, 33, 39, previous_error="Line 1 visual_length 40 > 39", previous_text="bad"
+            2, 35, 39, previous_error="Line 1 visual_length 40 > 39", previous_text="bad"
         )
         self.assertIn("HARD SCREEN BUDGET", p0)
-        self.assertIn("FEWER lines", p0)
+        self.assertIn("at most 35 lines", p0)
+        self.assertIn("<= 39 characters", p0)
         self.assertNotIn("RETRY STRICTNESS LEVEL 1", p0)
         self.assertIn("RETRY STRICTNESS LEVEL 1", p1)
-        self.assertIn("got 35", p1)
+        self.assertIn("got 36", p1)
         self.assertIn("RETRY STRICTNESS LEVEL 2 (FINAL)", p2)
         self.assertIn("visual_length 40", p2)
         self.assertGreater(len(p2), len(p1))
@@ -481,9 +494,9 @@ class ShadokLocalizationTests(unittest.TestCase):
             calls.append(attempt)
             if attempt == 0:
                 self.assertIsNone(previous_error)
-                return {"en": _valid_block("X", 35)}  # overflow
+                return {"en": _valid_block("X", 36)}  # height overflow
             if attempt == 1:
-                self.assertIn("at most 33", previous_error or "")
+                self.assertIn("at most 35", previous_error or "")
                 self.assertIsNotNone(previous_text)
                 return {"en": _valid_block("Y", 40)}  # still overflow
             self.assertEqual(attempt, 2)
@@ -502,6 +515,20 @@ class ShadokLocalizationTests(unittest.TestCase):
         # Tail slots padded with a single space
         self.assertEqual(ws.cell(2 + 28, col_map["en"]).value, " ")
         mock_save.assert_called()
+
+    def test_translate_shadok_uses_gemini_37(self) -> None:
+        captured = {}
+
+        def fake_retry(url, safe_data, payload, row_id=None, is_shadok=False, is_refine=False):
+            captured["payload"] = payload
+            return {"en": _valid_block("E", 3)}
+
+        with patch.object(ai_client, "PROVIDER", "WEB2API"), \
+             patch.object(ai_client, "_make_request_with_retry", side_effect=fake_retry):
+            ai_client.translate_shadok_block("a\nb\nc", ["en"], 39, expected_lines=35)
+
+        self.assertEqual(captured["payload"]["model"], ai_client.MODEL_WEB2API_SHADOK)
+        self.assertEqual(ai_client.MODEL_WEB2API_SHADOK, "gemini-3.7-flash")
 
     def test_parse_json_safe_unescapes_newlines_in_fallback(self) -> None:
         # Unescaped interior " breaks json.loads; fallback must still decode \\n

@@ -118,13 +118,15 @@ def resolve_shadok_mapping_rows(
 
 def parse_and_validate_shadok_block(
     translated_text: str,
-    expected_count: int,
+    max_lines: int,
     max_line_length: int,
 ) -> list[str]:
     """Validate a reflowed Shadok screen block against the screen budget.
 
-    Fewer than ``expected_count`` lines is OK (still fits). More is a hard fail.
-    Each line must be non-empty and visual_length <= max. No truncation/repair.
+    Screen height budget is ``max_lines`` (default 35). Fewer lines is OK.
+    More than ``max_lines`` is a hard fail (overflow).
+    Each line must be non-empty and visual_length <= ``max_line_length`` (width, 39).
+    No truncation/repair here.
     """
     if translated_text is None:
         raise ValueError("translated_text is None")
@@ -134,9 +136,9 @@ def parse_and_validate_shadok_block(
         lines = lines[:-1]
     if len(lines) < 1:
         raise ValueError("Expected at least 1 non-empty line, got 0")
-    if len(lines) > expected_count:
+    if len(lines) > max_lines:
         raise ValueError(
-            f"Expected at most {expected_count} lines (screen budget), got {len(lines)}"
+            f"Expected at most {max_lines} lines (screen height budget), got {len(lines)}"
         )
     for i, line in enumerate(lines):
         if not line.strip():
@@ -159,6 +161,36 @@ def pad_shadok_lines_to_mapping(lines: list[str], mapping_count: int) -> list[st
         return list(lines)
     # One space keeps a non-null translation.bin entry so Original RU does not show
     return list(lines) + [" "] * (mapping_count - len(lines))
+
+
+def fit_shadok_lines_to_slots(
+    lines: list[str],
+    slot_count: int,
+    max_line_length: int,
+) -> list[str]:
+    """Fit validated screen lines into ``slot_count`` workbook keys (usually 33).
+
+    If there are fewer lines, pad with spaces. If there are more (but still within
+    screen height), merge adjacent pairs that fit under ``max_line_length``.
+    """
+    fitted = list(lines)
+    while len(fitted) > slot_count:
+        best_i = None
+        best_vl = None
+        for i in range(len(fitted) - 1):
+            combined = f"{fitted[i].rstrip()} {fitted[i + 1].lstrip()}"
+            vl = visual_length(combined)
+            if vl <= max_line_length and (best_i is None or vl < best_vl):
+                best_i = i
+                best_vl = vl
+        if best_i is None:
+            raise ValueError(
+                f"Cannot fit {len(fitted)} screen lines into {slot_count} dictionary "
+                f"slots without exceeding max_line_length={max_line_length}"
+            )
+        combined = f"{fitted[best_i].rstrip()} {fitted[best_i + 1].lstrip()}"
+        fitted = fitted[:best_i] + [combined] + fitted[best_i + 2 :]
+    return pad_shadok_lines_to_mapping(fitted, slot_count)
 
 
 def build_shadok_exclusion_rows(ws, col_map: dict, mapping: list[dict]) -> set[int]:
@@ -734,6 +766,7 @@ def cmd_validate() -> None:
         shadok_errors = 0
         mapping = shadok_config.get("mapping", [])
         max_line_len = int(shadok_config.get("max_line_length", 39))
+        max_lines = int(shadok_config.get("max_lines", 35))
         target_langs = get_shadok_target_langs()
 
         if shadok_resolve_error:
@@ -761,11 +794,12 @@ def cmd_validate() -> None:
                     shadok_errors += 1
                     print(f"  [SHADOK][{lc}] empty block")
                     continue
-                if len(content) > len(shadok_resolved):
+                # Content lives in dictionary slots; screen height budget is max_lines
+                if len(content) > max_lines:
                     shadok_errors += 1
                     print(
                         f"  [SHADOK][{lc}] {len(content)} lines exceeds "
-                        f"screen budget {len(shadok_resolved)}"
+                        f"screen height budget {max_lines}"
                     )
                 for i, text in enumerate(content):
                     row_idx = shadok_resolved[i][0]
@@ -1181,6 +1215,7 @@ def cmd_shadok() -> None:
         return
 
     max_line_length = int(config.get("max_line_length", 39))
+    max_lines = int(config.get("max_lines", 35))
     target_langs = get_shadok_target_langs()
 
     wb = open_or_create_workbook()
@@ -1196,15 +1231,16 @@ def cmd_shadok() -> None:
         return
 
     source = "\n".join(new for _, _, new in resolved)
-    expected_count = len(resolved)
+    slot_count = len(resolved)
+    shadok_model = getattr(ai_client, "MODEL_WEB2API_SHADOK", ai_client.MODEL)
 
     print()
     print("=" * 60)
     print("  DBI SHADOK LOCALIZER")
     print("=" * 60)
-    print(f"  Provider  : {ai_client.PROVIDER} (model: {ai_client.MODEL})")
-    print(f"  Rows      : {expected_count} (screen line budget)")
-    print(f"  Max len   : {max_line_length} (per screen row; word-wrap/reflow)")
+    print(f"  Provider  : {ai_client.PROVIDER} (model: {shadok_model})")
+    print(f"  Screen    : <= {max_lines} lines tall, <= {max_line_length} chars wide")
+    print(f"  Dict slots: {slot_count} (pad if fewer; merge if {slot_count + 1}..{max_lines})")
     print(f"  Attempts  : {SHADOK_MAX_ATTEMPTS} (stricter prompt each retry)")
     print(f"  Languages : {len(target_langs)} ({', '.join(target_langs)})")
     print("-" * 60)
@@ -1233,7 +1269,7 @@ def cmd_shadok() -> None:
                     source,
                     [lc],
                     max_line_length,
-                    expected_lines=expected_count,
+                    expected_lines=max_lines,
                     attempt=attempt,
                     previous_error=prev_error,
                     previous_text=prev_text,
@@ -1242,8 +1278,10 @@ def cmd_shadok() -> None:
                     raise ValueError(f"Missing language key {lc!r} in AI response")
                 prev_text = result[lc]
                 lines = parse_and_validate_shadok_block(
-                    result[lc], expected_count, max_line_length
+                    result[lc], max_lines, max_line_length
                 )
+                fitted = fit_shadok_lines_to_slots(lines, slot_count, max_line_length)
+                lines = fitted  # store fitted for write path below
                 break
             except Exception as e:
                 prev_error = str(e)
@@ -1255,19 +1293,12 @@ def cmd_shadok() -> None:
             fail_langs += 1
             continue
 
-        padded = pad_shadok_lines_to_mapping(lines, expected_count)
-        for (row_idx, _orig, _new), line in zip(resolved, padded):
+        for (row_idx, _orig, _new), line in zip(resolved, lines):
             ws.cell(row_idx, col_map[lc], line)
         save_workbook(wb)
         ok_langs += 1
-        pad_n = expected_count - len(lines)
-        if pad_n:
-            print(
-                f"  [OK][{lc}] Wrote {len(lines)} lines "
-                f"(+{pad_n} space-padded tail slots)"
-            )
-        else:
-            print(f"  [OK][{lc}] Wrote {len(lines)} lines")
+        content_n = sum(1 for line in lines if str(line).strip())
+        print(f"  [OK][{lc}] Wrote {slot_count} slots ({content_n} content / rest space-pad)")
 
     print()
     print("=" * 60)

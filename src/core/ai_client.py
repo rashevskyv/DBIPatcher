@@ -52,6 +52,7 @@ MODEL_OMNI             = "kr/claude-sonnet-4.5"
 WEB2API_URL            = "http://localhost:8081/v1/chat/completions"
 WEB2API_MODELS_URL     = "http://localhost:8081/v1/models"
 MODEL_WEB2API          = "gemini-3.6-flash"
+MODEL_WEB2API_SHADOK   = "gemini-3.7-flash"
 
 # Active Model (will be chosen based on PROVIDER)
 if PROVIDER == "OMNIROAD":
@@ -152,7 +153,8 @@ def init_session() -> None:
 def init_session_shadok() -> None:
     """Initialize a NEW chat session with shadok-specific system instructions."""
     if PROVIDER in ("OMNIROAD", "WEB2API"):
-        print(f"  [SHADOK-INIT] {PROVIDER} ({MODEL}) selected. Ready!")
+        shadok_model = MODEL_WEB2API_SHADOK if PROVIDER == "WEB2API" else MODEL
+        print(f"  [SHADOK-INIT] {PROVIDER} ({shadok_model}) selected. Ready!")
         return
 
     print("  [SHADOK-INIT] Creating new chat for Shadok block...")
@@ -290,13 +292,15 @@ def build_shadok_system_prompt(
     previous_text: str | None = None,
 ) -> str:
     """Base Shadok prompt plus escalating strictness for each retry attempt (0-based)."""
+    # expected_lines here is the screen HEIGHT budget (max_lines, typically 35).
+    # max_line_length is the screen WIDTH budget (typically 39 characters).
     prompt = SHADOK_SYSTEM_PROMPT
     prompt += (
-        f"\n\nHARD SCREEN BUDGET (always): max_lines={expected_lines}, "
-        f"max_line_length={max_line_length}. "
-        f"FEWER lines than {expected_lines} is OK (the text still fits the screen). "
-        f"MORE than {expected_lines} lines is a HARD FAIL (overflow). "
-        f"Before answering, COUNT your lines: must be between 1 and {expected_lines}."
+        f"\n\nHARD SCREEN BUDGET (always):\n"
+        f"- Height: at most {expected_lines} lines (FEWER is OK; MORE is overflow FAIL).\n"
+        f"- Width: each line visual length <= {max_line_length} characters.\n"
+        f"Do not confuse width with height: {max_line_length} is chars/line, "
+        f"{expected_lines} is max line count."
     )
 
     if attempt <= 0:
@@ -318,7 +322,7 @@ def build_shadok_system_prompt(
             f"1..{expected_lines} non-empty lines joined by \\n "
             f"(FEWER is fine; MORE than {expected_lines} is forbidden), "
             f"each visual length 1..{max_line_length}. "
-            "If you overflowed, compress/reflow into fewer or equal lines. "
+            "If you overflowed height, compress/reflow into fewer lines. "
             "No markdown fences. No commentary. "
             "Prefer guillemets or single quotes inside the text; never raw "
             'unescaped " inside JSON string values.'
@@ -330,9 +334,9 @@ def build_shadok_system_prompt(
         "\n\n=== RETRY STRICTNESS LEVEL 2 (FINAL) ===\n"
         f"FAILED again: {err}\n"
         "This is the last attempt. Mechanical checklist — all must hold:\n"
-        f"1) Line count L satisfies 1 <= L <= {expected_lines}. "
+        f"1) Line count L satisfies 1 <= L <= {expected_lines} (height). "
         f"Overflow (L > {expected_lines}) is forbidden; fewer is OK.\n"
-        f"2) Every line length in 1..{max_line_length} visible characters.\n"
+        f"2) Every line length in 1..{max_line_length} visible characters (width).\n"
         "3) No blank lines, no markdown, no ``` fences, no prose outside JSON.\n"
         "4) Inside JSON strings use \\n for line breaks only; never a raw newline.\n"
         '5) Never put unescaped " or \\\' inside values — use «» or \'.\n'
@@ -380,8 +384,9 @@ def translate_shadok_block(
         user_payload["previous_text"] = previous_text or ""
         user_payload["instruction"] = (
             f"Fix previous_text so it has at most {expected_lines} lines "
-            f"(fewer is OK), each <= {max_line_length}. "
-            f"Overflow above {expected_lines} is forbidden. Output JSON only."
+            f"(screen height; fewer is OK), each <= {max_line_length} chars "
+            f"(screen width). Height overflow above {expected_lines} is forbidden. "
+            "Output JSON only."
         )
 
     user_content = json.dumps(user_payload, ensure_ascii=True)
@@ -397,8 +402,9 @@ def translate_shadok_block(
         messages = [{"role": "user", "content": system_prompt + "\n\n" + user_content}]
         url = API_URL
 
+    shadok_model = MODEL_WEB2API_SHADOK if PROVIDER == "WEB2API" else MODEL
     payload = {
-        "model": MODEL,
+        "model": shadok_model,
         "messages": messages,
         "stream": False,
     }
