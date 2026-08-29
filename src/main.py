@@ -121,7 +121,11 @@ def parse_and_validate_shadok_block(
     expected_count: int,
     max_line_length: int,
 ) -> list[str]:
-    """Split/validate a Shadok AI block. Raises ValueError on any contract breach."""
+    """Validate a reflowed Shadok screen block: exactly N non-empty lines, each <= max.
+
+    The AI may wrap words across lines; this only enforces the screen budget.
+    Raises ValueError on any contract breach (no truncation/repair).
+    """
     if translated_text is None:
         raise ValueError("translated_text is None")
     lines = [ln.rstrip("\r") for ln in str(translated_text).split("\n")]
@@ -1155,8 +1159,8 @@ def cmd_shadok() -> None:
     print("  DBI SHADOK LOCALIZER")
     print("=" * 60)
     print(f"  Provider  : {ai_client.PROVIDER} (model: {ai_client.MODEL})")
-    print(f"  Rows      : {expected_count}")
-    print(f"  Max len   : {max_line_length}")
+    print(f"  Rows      : {expected_count} (screen line budget)")
+    print(f"  Max len   : {max_line_length} (per screen row; word-wrap/reflow)")
     print(f"  Languages : {len(target_langs)} ({', '.join(target_langs)})")
     print("-" * 60)
 

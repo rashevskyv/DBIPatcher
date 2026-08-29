@@ -5,6 +5,8 @@
 - Dedicated `python -m src.main shadok` path that localizes `mapping[*].new` into
   workbook rows identified by `mapping[*].orig`. Never rewrite Original to `new`.
 - Serial, validated full-block writes only; reject malformed AI output (no truncation).
+- Screen contract: one narrative block reflowed into exactly N lines, each
+  `visual_length <= max_line_length` (word wrap across lines allowed).
 - Exclude Shadok from general `translate` / `align`; add integrity checks in `validate`.
 - Target languages = all `languages.json` keys except `ru` (includes `frca`, `tr`).
 - Offline mocked tests only; do not run live AI / export / build / deploy.

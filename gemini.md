@@ -10,6 +10,12 @@
 5. Документація README/README_ES/Known Issues; offline тести `tests/test_shadok_localization.py`.
 6. Live `shadok`/translate/export/build НЕ запускались; workbook/CSV користувача не чіпались.
 
+## [2026-08-29] Shadok screen reflow contract
+
+### Виконані дії:
+1. Уточнено `data/prompts.json` shadok: це один екранний текстовий блок — літературна локалізація + word-wrap/reflow у рівно N рядків ≤ max_line_length (слова можуть переходити між рядками).
+2. Прибрано суперечливе «Do NOT merge or split lines»; валідація лишається: рівно N непорожніх рядків, кожен ≤ ліміту, без автообрізання.
+
 ## [2026-04-23] Початкова ініціалізація
 
 ### Виконані дії:

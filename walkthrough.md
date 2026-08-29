@@ -14,9 +14,10 @@ rejected with zero writes for that language (no truncation).
 2. **Guards**: `cmd_translate` always skips resolved Shadok rows (aborts if mapping
    cannot resolve); `cmd_align` excludes them; `cmd_validate` keeps structural skip
    and adds a Shadok integrity phase.
-3. **Prompt / AI**: `data/prompts.json` shadok prompt requires exact line count and
-   `max_line_length`; `translate_shadok_block` sends `expected_lines` +
-   `max_line_length`. Removed stale `translated_langs` from `data/shadok.json`.
+3. **Prompt / AI**: `data/prompts.json` shadok prompt treats the fable as one UI
+   screen block: literary localize, then word-wrap/reflow into exactly
+   `expected_lines` rows each `<= max_line_length` (words may move across lines).
+   `translate_shadok_block` sends those limits. Removed stale `translated_langs`.
 4. **Docs / tests**: README Known Issues updated; offline
    `tests/test_shadok_localization.py` covers production command paths with mocks.
 

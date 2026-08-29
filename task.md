@@ -3,6 +3,7 @@
   - [x] Serial `cmd_shadok` writes only after full validated block; never mutates Original; no version bump.
   - [x] `cmd_translate` / `cmd_align` exclude Shadok rows; `cmd_validate` adds Shadok integrity phase.
   - [x] Prompt + `translate_shadok_block` enforce expected_lines / max_line_length; remove stale `translated_langs`.
+  - [x] Screen reflow contract: literary localize then word-wrap into N lines ≤ max (words may cross lines).
   - [x] Offline tests in `tests/test_shadok_localization.py` (mock AI; no live pipeline).
 
 - [x] Завершене: заходи підвищення надійності релізу (Release Hardening) та синхронізація документації.

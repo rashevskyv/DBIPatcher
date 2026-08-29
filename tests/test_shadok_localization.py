@@ -104,6 +104,15 @@ class ShadokLocalizationTests(unittest.TestCase):
         expected = [lc for lc in all_langs if lc != "ru"]
         self.assertEqual(targets, expected)
 
+    def test_shadok_prompt_requires_screen_reflow(self) -> None:
+        with open(ROOT / "data" / "prompts.json", encoding="utf-8") as f:
+            prompt = json.load(f)["shadok"]
+        self.assertIn("WORD-WRAP / REFLOW", prompt)
+        self.assertIn("max_line_length", prompt)
+        self.assertIn("expected_lines", prompt)
+        self.assertNotIn("Do NOT merge or split lines", prompt)
+        self.assertNotIn("Do NOT care about line breaks", prompt)
+
     def test_parse_and_validate_rejects_malformed(self) -> None:
         good = _valid_block("L", 33)
         self.assertEqual(len(parse_and_validate_shadok_block(good, 33, 39)), 33)
