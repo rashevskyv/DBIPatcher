@@ -1593,6 +1593,12 @@ This release provides high-quality translations for **DBI version {dbi_ver}**.
 > [!IMPORTANT]
 > This translation is **strictly compatible only with the DBI.nro version provided in this release**. Do not use it with other versions of DBI as it may cause UI glitches or crashes.
 
+### ✨ Cyrillic glyph repair
+The bundled `DBI.nro` repairs the embedded glyphs `Є/є`, `І/і`, and `Ї/ї` used by Ukrainian, Belarusian, and Kazakh translations.
+
+> [!IMPORTANT]
+> For this glyph-repair update, re-download **`DBI.nro`**. The `translation_XX.bin` files are unchanged and do not need to be downloaded again.
+
 ### 📦 Supported Languages
 {langs_list}
 
@@ -1653,7 +1659,7 @@ This community translation set is still evolving. Some strings may remain untran
         kyiv_time = datetime.now(kyiv_tz).strftime("%Y-%m-%d %H:%M")
 
         update_notice = f"""> [!WARNING]
-> 🔄 **Release updated on {kyiv_time} (Kyiv time).** Please re-download both **DBI.nro** and **translation files** to get the latest version.
+> 🔄 **Release updated on {kyiv_time} (Kyiv time).** This update repairs Cyrillic glyphs in **DBI.nro**. Re-download **DBI.nro**; translation files are unchanged.
 """
         # Insert update notice after the badge line
         badge_line = f"![GitHub release (tag)](https://img.shields.io/github/downloads/rashevskyv/DBIPatcher/{dbi_ver}/total)"
