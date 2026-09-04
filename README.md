@@ -82,8 +82,9 @@ python scripts/import_translation_csv.py es419
 
 ### DBI 905 NRO Patching
 To patch a pristine `DBI.905.ru.nro` binary to support external runtime translations:
-- Requires **Python 3.10+** with `keystone-engine==0.9.2` and `capstone==5.0.9`.
+- Requires **Python 3.10+** with `keystone-engine==0.9.2`, `capstone==5.0.9`, and `zstandard>=0.23,<1`.
 - Uses the pinned upstream patcher from [0xroast/dbi-translate](https://github.com/0xroast/dbi-translate) (see [UPSTREAM.md](UPSTREAM.md)).
+- Automatically repairs embedded Cyrillic font glyphs (`Є`, `І`, `Ї`, `є`, `і`, `ї`) used by Ukrainian, Belarusian, and Kazakh translations directly in the shared patched NRO.
 
 ```powershell
 python scripts/patch_dbi.py --nro /path/to/DBI.905.ru.nro --output DBI.905.ru_patched.nro

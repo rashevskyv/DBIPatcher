@@ -1,3 +1,35 @@
+# Walkthrough: DBI 905 Cyrillic glyph repair (v0.0.90)
+
+## Outcome
+
+The shared DBI 905 NRO now repairs the embedded bitmap characters used by the
+Ukrainian, Belarusian, and Kazakh translations. The patch runs once for the NRO,
+independent of the selected `translation.bin`: `Э/э` are mirrored into `Є/є`,
+Latin `I/i` are copied into Cyrillic `І/і`, and `Ï/ï` into `Ї/ї`.
+
+### Pipeline and safeguards
+
+- `scripts/patch_dbi.py` still validates the exact pristine DBI 905 SHA-256 and
+  pinned `0xroast/dbi-translate` commit before producing a temporary runtime-
+  patched NRO.
+- The wrapper then discovers the unique Zstandard frame that expands to the
+  65,536 × 32-byte font. No legacy fixed offset or external font asset is used.
+- The repaired frame preserves the original checksum flag, must fit the original
+  compressed slot, and is decompressed and compared byte-for-byte before the
+  final output is written. Missing/ambiguous frames or failed validation abort.
+- `zstandard>=0.23,<1` is the only new dependency. Workbook metadata advanced
+  from `0.0.89` to `0.0.90`; translation cells and CSV files did not change.
+
+### Verification
+
+- Focused WSL suites: 13/13 patch/font tests and 5/5 workbook/alias tests passed;
+  `compileall` and `git diff --check` passed.
+- Full suite: 115/118 passed; the remaining three are pre-existing ES-419/Shadok
+  baseline failures unrelated to this patch.
+- Official DBI 905 smoke test: pristine SHA verified, one frame at `0xBBDC80`,
+  exactly six changed glyph slots, patched frame `593,503 / 594,283` bytes, and
+  unchanged final NRO length of `16,158,253` bytes. Temporary binaries were removed.
+
 # Walkthrough: Safe Shadok localization command
 
 ## Overview

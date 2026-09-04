@@ -1,4 +1,45 @@
-# Active plan: safe Shadok localization command
+# Completed plan: DBI 905 Cyrillic glyph repair
+
+## Scope
+
+- Extend the existing pinned `scripts/patch_dbi.py` workflow so its one shared
+  DBI 905 output repairs the embedded bitmap glyphs used by Ukrainian,
+  Belarusian, and Kazakh translations.
+- Reuse the established glyph derivation: mirror `Э/э` into `Є/є`; copy Latin
+  `I/i` into Cyrillic `І/і`; copy `Ï/ï` into `Ї/ї`.
+- Discover the unique 65,536 × 32-byte font from its Zstandard frame and preserve
+  the frame checksum/slot. Do not hardcode the old DBI 810 font offset and do not
+  commit a font binary.
+- Apply the font repair after the pinned `dbi-translate` CLI writes its output,
+  so pristine DBI 905 digest validation remains the trust boundary.
+
+## Safety and acceptance criteria
+
+- Missing or multiple supported font frames, oversized recompression, and failed
+  round-trip verification abort without writing a partially modified output.
+- Exactly `U+0404`, `U+0406`, `U+0407`, `U+0454`, `U+0456`, and `U+0457` change
+  inside the decompressed font; the final NRO length stays unchanged.
+- Focused offline tests cover glyph derivation and wrapper ordering. An isolated
+  WSL smoke test uses the official DBI 905 binary, validates its pinned SHA-256,
+  runs both patch stages, and retains no downloaded/generated NRO in the repo.
+- Restore only the required `zstandard` dependency, update concise patching docs
+  and attribution, bump workbook metadata once from `0.0.89` to `0.0.90`, and
+  commit locally. Do not run `deploy`, push, or regenerate translation CSVs.
+
+## Verification outcome
+
+- Gemini's WSL verification passed all 13 focused patch-wrapper/font tests and all
+  5 workbook/alias tests; `compileall` and `git diff --check` also passed.
+- The full existing suite ran 118 tests: 115 passed and the same 3 unrelated
+  ES-419/Shadok baseline assertions failed.
+- An isolated official DBI 905 smoke test verified the pristine SHA-256, applied
+  both patch stages, found one font frame at `0xBBDC80`, changed exactly the six
+  intended glyph slots, preserved the checksum, and kept the NRO at 16,158,253
+  bytes. The 593,503-byte repaired frame fits its 594,283-byte slot.
+- Workbook comparison against `HEAD` found only `Metadata!B1` changed from
+  `0.0.89` to `0.0.90`; translation cells and `translations/*.csv` are unchanged.
+
+# Completed plan: safe Shadok localization command
 
 ## Scope
 

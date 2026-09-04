@@ -1,3 +1,9 @@
+- [x] Completed: restore the Cyrillic glyph-repair stage for the shared DBI 905 NRO.
+  - [x] After the pinned `dbi-translate` runtime patch, auto-discover the unique embedded 2 MiB Zstandard bitmap font; do not use a version-specific font offset or bundled font asset.
+  - [x] Derive `Є/є`, `І/і`, and `Ї/ї` from existing glyphs, preserving support for every translation language that uses those codepoints (`ua`, `be`, `kk`) through the one shared NRO.
+  - [x] Fail safely when the font is missing/ambiguous, does not fit its original frame, or fails decompression verification; add focused regression coverage.
+  - [x] Restore the required Zstandard dependency, update DBI patching docs/credits, bump workbook metadata to `0.0.90`, verify in WSL including an official DBI 905 smoke test, and create one focused commit. Do not deploy or push.
+
 - [x] Active: safe Shadok localization command (`python -m src.main shadok`).
   - [x] Helpers: `get_shadok_target_langs`, `resolve_shadok_mapping_rows`, `parse_and_validate_shadok_block`.
   - [x] Serial `cmd_shadok` writes only after full validated block; never mutates Original; no version bump.

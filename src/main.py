@@ -1614,7 +1614,7 @@ This release provides high-quality translations for **DBI version {dbi_ver}**.
 This community translation set is still evolving. Some strings may remain untranslated and appear in the original DBI language or use an English fallback. Please report missing or incorrect strings in the project issues.
 
 ### 🙏 Credits
-- [Bohdan Buinich](https://github.com/BohdanBuinich) — creator of the earlier `dbi-i18n` runtime-translation approach and compatible table format.
+- [Bohdan Buinich](https://github.com/BohdanBuinich) — creator of the earlier `dbi-i18n` runtime-translation approach, compatible table format, and Cyrillic font-glyph repair approach.
 - [0xroast](https://github.com/0xroast) — author of `dbi-translate`, the pinned DBI 905 runtime patcher used for this release.
 
 ***
