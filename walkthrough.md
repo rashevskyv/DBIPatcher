@@ -1,4 +1,4 @@
-# Walkthrough: Інтеграція індонезійського перекладу (PR #24) та оновлення релізного повідомлення (v0.0.91)
+# Walkthrough: Інтеграція індонезійського перекладу (PR #24), оновлення релізного повідомлення та деплой (v0.0.91)
 
 ## Результати
 - Успішно підтягнуто та зафіксовано PR #24 від @aldokeita: файл `translations/id.csv` та конфігурацію мови в `data/languages.json`.
@@ -8,10 +8,12 @@
   - Додано `ID — Indonesian` до списку мов.
   - Додано розділ `### 🌐 Indonesian Localization` та подяку `@aldokeita` у `Credits`.
   - Оновлено плашку `update_notice` для інформування користувачів про додавання індонезійської локалізації.
-- Оновлено таблиці мов у `README.md` та `README_ES.md`.
+  - Закреслено пункти `Shadok Fables` та `Launcher Compatibility` у розділі `Known Issues` як вирішені.
+- Оновлено таблиці мов та розділ відомих проблем у `README.md` та `README_ES.md`.
 - Створено `tests/test_indonesian_translation.py` та оновлено `tests/test_temperature_aliases_and_sync.py`.
 - Згенеровано `output/translation_id.bin` розміром 680,992 байти.
-- Всі 119 тестів успішно пройдено при паралельному запуску.
+- Сформовано структуру папок `dist/` для всіх підтримуваних мов (`python -m src.main dist`).
+- Виконано деплой (`python -m src.main deploy`): оновлено активи релізу 905 на GitHub (включаючи `translation_id.bin`) та замінено опис релізу.
 
 # Walkthrough: DBI 905 Cyrillic glyph repair (v0.0.90)
 

@@ -1,10 +1,11 @@
-- [x] Завершено: інтеграція індонезійського перекладу (PR #24) та оновлення релізного шаблону.
+- [x] Завершено: інтеграція індонезійського перекладу (PR #24), оновлення релізного шаблону та деплой.
   - [x] Підтягнути зміни PR #24 (`translations/id.csv` та реєстрацію `id` у `data/languages.json`).
   - [x] Синхронізувати `data/dictionary.xlsx`: додати колонку `id`, заповнити всі 1288 рядків з `id.csv`, ітерувати версію до `0.0.91`.
   - [x] Оновити `cmd_deploy` у `src/main.py`: додати `ID` до списку мов, секцію Indonesian Localization, подяку @aldokeita у Credits та оновити повідомлення про реліз.
   - [x] Оновити таблиці підтримуваних мов у `README.md` та `README_ES.md`.
+  - [x] Закреслити пункти Shadok Fables та Launcher Compatibility у Known Issues у `README.md`, `README_ES.md` та шаблоні релізу.
   - [x] Додати набір тестів `tests/test_indonesian_translation.py` та оновити `tests/test_temperature_aliases_and_sync.py` для версії 0.0.91.
-  - [x] Перевірити побудову бінарника `translation_id.bin`.
+  - [x] Зібрати всі переклади (`python -m src.main build`), сформувати структуру папок (`python -m src.main dist`) та задеплоїти оновлення на GitHub Release 905 (`python -m src.main deploy`).
 
 - [x] Completed: restore the Cyrillic glyph-repair stage for the shared DBI 905 NRO.
   - [x] After the pinned `dbi-translate` runtime patch, auto-discover the unique embedded 2 MiB Zstandard bitmap font; do not use a version-specific font offset or bundled font asset.
