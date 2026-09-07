@@ -1,3 +1,18 @@
+# Walkthrough: Інтеграція індонезійського перекладу (PR #24) та оновлення релізного повідомлення (v0.0.91)
+
+## Результати
+- Успішно підтягнуто та зафіксовано PR #24 від @aldokeita: файл `translations/id.csv` та конфігурацію мови в `data/languages.json`.
+- Всі 1288 рядків індонезійського перекладу інтегровано в `data/dictionary.xlsx` у нову колонку `id`.
+- Метадані версії робочої книги оновлено з `0.0.90` до `0.0.91`.
+- Оновлено `cmd_deploy` у `src/main.py`:
+  - Додано `ID — Indonesian` до списку мов.
+  - Додано розділ `### 🌐 Indonesian Localization` та подяку `@aldokeita` у `Credits`.
+  - Оновлено плашку `update_notice` для інформування користувачів про додавання індонезійської локалізації.
+- Оновлено таблиці мов у `README.md` та `README_ES.md`.
+- Створено `tests/test_indonesian_translation.py` та оновлено `tests/test_temperature_aliases_and_sync.py`.
+- Згенеровано `output/translation_id.bin` розміром 680,992 байти.
+- Всі 119 тестів успішно пройдено при паралельному запуску.
+
 # Walkthrough: DBI 905 Cyrillic glyph repair (v0.0.90)
 
 ## Outcome

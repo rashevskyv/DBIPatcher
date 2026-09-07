@@ -35,6 +35,7 @@ Motor avanzado de localización asistida por IA para [DBI](https://github.com/ra
 | **ZHTW** | Chino tradicional | **NL** | Neerlandés |
 | **KK** | Kazajo | **ET** | Estonio |
 | **LT** | Lituano | **LV** | Letón |
+| **TR** | Turco | **ID** | Indonesio |
 
 ---
 

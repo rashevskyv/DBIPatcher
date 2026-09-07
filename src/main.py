@@ -1570,6 +1570,7 @@ def cmd_deploy() -> None:
 *   **ET** — Estonian
 *   **FR** — French
 *   **FRCA** — French (Canada)
+*   **ID** — Indonesian
 *   **IT** — Italian
 *   **JP** — Japanese
 *   **KK** — Kazakh
@@ -1596,8 +1597,8 @@ This release provides high-quality translations for **DBI version {dbi_ver}**.
 ### ✨ Cyrillic glyph repair
 The bundled `DBI.nro` repairs the embedded glyphs `Є/є`, `І/і`, and `Ї/ї` used by Ukrainian, Belarusian, and Kazakh translations.
 
-> [!IMPORTANT]
-> For this glyph-repair update, re-download **`DBI.nro`**. The `translation_XX.bin` files are unchanged and do not need to be downloaded again.
+### 🌐 Indonesian Localization
+Added complete Indonesian (`id`) translation contributed by [@aldokeita](https://github.com/aldokeita) in [#24](https://github.com/rashevskyv/DBIPatcher/pull/24). Download **`translation_id.bin`** and rename it to `translation.bin`.
 
 ### 📦 Supported Languages
 {langs_list}
@@ -1622,6 +1623,7 @@ This community translation set is still evolving. Some strings may remain untran
 ### 🙏 Credits
 - [Bohdan Buinich](https://github.com/BohdanBuinich) — creator of the earlier `dbi-i18n` runtime-translation approach, compatible table format, and Cyrillic font-glyph repair approach.
 - [0xroast](https://github.com/0xroast) — author of `dbi-translate`, the pinned DBI 905 runtime patcher used for this release.
+- [aldokeita](https://github.com/aldokeita) — Indonesian translation ([#24](https://github.com/rashevskyv/DBIPatcher/pull/24)).
 
 ***
 *Note: This NRO is a modified version of the [original DBI](https://github.com/rashevskyv/dbi/releases/tag/{dbi_ver}ru) optimized for these translations.*
@@ -1659,7 +1661,7 @@ This community translation set is still evolving. Some strings may remain untran
         kyiv_time = datetime.now(kyiv_tz).strftime("%Y-%m-%d %H:%M")
 
         update_notice = f"""> [!WARNING]
-> 🔄 **Release updated on {kyiv_time} (Kyiv time).** This update repairs Cyrillic glyphs in **DBI.nro**. Re-download **DBI.nro**; translation files are unchanged.
+> 🔄 **Release updated on {kyiv_time} (Kyiv time).** Added **Indonesian (id)** localization (`translation_id.bin`) contributed by [@aldokeita](https://github.com/aldokeita) in [#24](https://github.com/rashevskyv/DBIPatcher/pull/24).
 """
         # Insert update notice after the badge line
         badge_line = f"![GitHub release (tag)](https://img.shields.io/github/downloads/rashevskyv/DBIPatcher/{dbi_ver}/total)"

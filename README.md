@@ -35,7 +35,7 @@ An advanced, AI-powered localization engine for [DBI](https://github.com/rashevs
 | **ZHTW** | Traditional Chinese | **NL** | Dutch |
 | **KK** | Kazakh | **ET** | Estonian |
 | **LT** | Lithuanian | **LV** | Latvian |
-| **TR** | Turkish | | |
+| **TR** | Turkish | **ID** | Indonesian |
 
 ---
 
