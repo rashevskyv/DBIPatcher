@@ -1,0 +1,1289 @@
+original,translation
+"X - выбор, Y - инверсия выбора, (+) - меню","X - Pilih, Y - Balik pilihan, (+) - Menu"
+"X - выбор, Y - инверсия выбора, (+) - меню, L3 - запуск","X - Pilih, Y - Balik pilihan, (+) - Menu, L3 - Jalankan"
+"X - выбор, Y - инверсия выбора, (+) - меню, R3 - сортировка","X - Pilih, Y - Balik pilihan, (+) - Menu, R3 - Urutkan"
+"X - выбор, Y - инверсия выбора, (+) - меню, R3 - сортировка, L3 - запуск","X - Pilih, Y - Balik pilihan, (+) - Menu, R3 - Urutkan, L3 - Jalankan"
+"X - выбор, Y - инвертирование выбора, A - открыть, (-) - 2ая панель","X - Pilih, Y - Balik pilihan, A - Buka, (-) - Panel ke-2"
+"X - выбор, Y - инвертирование выбора, ⬅/➡ - смена панели, (-) - закрыть","X - Pilih, Y - Balik pilihan, ⬅/➡ - Ganti panel, (-) - Tutup"
+"ZL/ZR - смена даты, Y - период, X - сортировка, (+) - выбрать пользователя","ZL/ZR - Ganti tanggal, Y - Periode, X - Urutkan, (+) - Pilih pengguna"
+. Время игры \x1b[32;1m{:02}:{:02}:{:02}\x1b[37;1m,. Waktu main \x1b[32;1m{:02}:{:02}:{:02}\x1b[37;1m
+Невозможно смонтировать системный раздел,Gagal me-mount partisi sistem
+"DPAD или стики для перемещения, (+) - Настройки","DPAD atau stik untuk bergerak, (+) - Pengaturan"
+Ошибка создания файла: {},Gagal membuat file: {}
+Подключение к серверу...,Menyambung ke server...
+   Это действие будет нельзя отменить   ,   Tindakan ini tidak bisa dibatalkan   
+SDK подменён,SDK diganti
+Точка доступа,Access point
+Традиционный китайский,Mandarin Tradisional
+Транзисторов:      {:>3},Transistor:       {:>3}
+Требуется вручную разрешить синхронизацию времени через Интернет в настройках,Sinkronisasi waktu lewat internet harus diaktifkan manual di pengaturan
+Тёмная комната,Ruang gelap
+Убрать из любимых,Hapus dari favorit
+Увеличить размер (в МБ),Tambah ukuran (dalam MB)
+"Уверены, что хотите продолжить?",Yakin ingin melanjutkan?
+Удаление Wi-Fi профиля,Menghapus profil Wi-Fi
+Удаление Wi-Fi профиля...,Menghapus profil Wi-Fi...
+Удаление {} бекапа,Menghapus {} backup
+Удаление {} бекапов,Menghapus {} backup
+Удаление {} сохранений,Menghapus {} save
+Удаление {} сохранения,Menghapus {} save
+Удаление бекапов,Menghapus backup
+Удаление записи об игре...,Menghapus record game...
+Удаление игр,Menghapus game
+Удаление игры целиком: [{}],Hapus game utuh: [{}]
+Удаление каталога LFS,Menghapus direktori LFS
+Удаление контента,Menghapus konten
+Удаление настроек родительского контроля...,Menghapus pengaturan kontrol orang tua...
+Удаление не удалось.\n\nНажмите любую кнопку для продолжения,Penghapusan gagal.\n\nTekan tombol apa saja untuk lanjut
+Удаление неиспользуемого {}...,Menghapus {} tak terpakai...
+Удаление плейсхолдера...,Menghapus placeholder...
+Удаление пользователя,Menghapus pengguna
+Удаление пользователя...,Menghapus pengguna...
+Удаление ранее установленных файлов...,Menghapus file yang sudah terpasang...
+Удаление родительского контроля,Menghapus kontrol orang tua
+SaveFS очищена,SaveFS dibersihkan
+Удаление связи с Nintendo account...,Menghapus tautan akun Nintendo...
+Удаление сохранений,Menghapus save
+Удаление сохранения целиком,Menghapus seluruh save
+Удаление старого     {}...,Menghapus      {} lama...
+Удаление старого файла {}...,Menghapus file {} lama...
+Удаление старой записи об игре...,Menghapus record game lama...
+Удаление старой папки {}...,Menghapus folder {} lama...
+Удаление тайтла: [{}],Menghapus title: [{}]
+Удаление тикетов ({}),Menghapus ticket ({})
+Удаление...,Menghapus...
+Удалить,Hapus
+Удалить LFS,Hapus LFS
+Удалить сохранения,Hapus save
+Удалить старые бекапы,Hapus backup lama
+Удаляется {} из {}...,Menghapus {} dari {}...
+Удаляется {}...,Menghapus {}...
+Удаляется запись о контенте...,Menghapus record konten...
+Удаляется запись об игре...,Menghapus record game...
+Удаляется игра и весь связанный контент,Menghapus game dan semua konten terkait
+Titlekey не может быть инициализирован,Titlekey tidak bisa diinisialisasi
+Удаляется папка LFS...,Menghapus folder LFS...
+Удаляется пустая папка,Menghapus folder kosong
+Удаляется сохранение {}...,Menghapus save {}...
+Удаляется старая запись о контенте...,Menghapus record konten lama...
+Удаляется старый cnmt.nca...,Menghapus cnmt.nca lama...
+Удаляется тикет: {}...,Menghapus ticket: {}...
+Удаляются все объекты из альбома для игры,Menghapus semua item dari album game
+Удаляются все сохранения для игры,Menghapus semua save untuk game ini
+Удаляются сохранения...,Menghapus data save...
+"UID: {}, Ник: {}","UID: {}, Nama: {}"
+Удалённые,Terhapus
+Удачный экспорт,Ekspor berhasil
+Уделение старого тикета...,Menghapus ticket lama...
+Упаковка каталога в RomFS,Mengemas direktori jadi RomFS
+Упрощенный китайский,Mandarin Sederhana
+Успешно разобран как PFS0 файл,Berhasil dibaca sebagai file PFS0
+Устанавливается {},Memasang {}
+Установить как аватар...,Jadikan avatar...
+Установка,Pemasangan
+Установка анлокера...,Memasang unlocker...
+Установка завершена,Pemasangan selesai
+Установка игр (NAND),Pasang game (NAND)
+Установка игр (SD Card),Pasang game (Kartu SD)
+Установка игры завершена,Pemasangan game selesai
+Установка обновлений игр,Pasang update game
+Установка прервана,Pemasangan terputus
+Установка тайтлов ({}/{}),Memasang title ({}/{})
+USB Соединение,Koneksi USB
+Установка ярлыка...,Memasang shortcut...
+Установлен,Terpasang
+Установленные,Terpasang
+Установленные homebrew,Homebrew terpasang
+Установленные homebrew ({}),Homebrew terpasang ({})
+Установленные игры,Game terpasang
+Установленные тикеты,Ticket terpasang
+Установленные тикеты ({}),Ticket terpasang ({})
+Файл повреждён и не может быть установлен. Не найдена сигнатура HEAD,File rusak dan tidak bisa dipasang. Signature HEAD tidak ditemukan
+Файл повреждён и не может быть установлен. Не найдена сигнатура HFS0 в разделе root,File rusak dan tidak bisa dipasang. Signature HFS0 tidak ditemukan di partisi root
+Файл повреждён и не может быть установлен. Не найдена сигнатура HFS0 в разделе secure,File rusak dan tidak bisa dipasang. Signature HFS0 tidak ditemukan di partisi secure
+Файл повреждён и не может быть установлен. Не найдена сигнатура PFS0,File rusak dan tidak bisa dipasang. Signature PFS0 tidak ditemukan
+Файл слишком большой для хранилища,File terlalu besar untuk penyimpanan
+Файл: {},File: {}
+Фиксация ФС...,FS commit...
+Финальный размер: {},Ukuran akhir: {}
+Формирование списка...,Menyusun daftar...
+Форсированный язык    : {},Bahasa dipaksa : {}
+Форсированный язык    : {} ({}),Bahasa dipaksa : {} ({})
+Форсировать язык,Paksa bahasa
+Французский,Prancis
+"Х:{}, Т:{}, РЦ:{}","H:{}, T:{}, R:{}"
+Хранилища MTP,Penyimpanan MTP
+Хранилище только для чтения,Penyimpanan baca-saja
+Целевая запись о контенте не найдена,Record konten tujuan tidak ditemukan
+ЧАСТЬ КОНТЕНТА ОТСУТСТВУЕТ. ИГРА НЕ БУДЕТ РАБОТАТЬ,SEBAGIAN KONTEN HILANG. GAME TIDAK AKAN JALAN
+Число транзисторов: {:>3},Jumlah transistor: {:>3}
+Число уникальных сыграных игр : {},Jumlah game unik yang dimainkan : {}
+Число ходов:        {:>3},Jumlah langkah:    {:>3}
+Чтение каталога...,Membaca direktori...
+Чтение списка файлов...,Membaca daftar file...
+Что-то плохое грядёт,Ada sesuatu yang buruk mendekat
+Что-то пошло не так. Пропускаем оставшийся файл,Ada yang salah. Melewati sisa file
+"Чтобы вернуться, нажмите B",Tekan B untuk kembali
+Шадок у Гиби,Orang Rawa di Rumah Tetangga
+Экспорт SDK,Ekspor SDK
+Экспортировать,Ekspor
+Экспортировать SDK,Ekspor SDK
+Январь,Januari
+Японский,Jepang
+Ярлык для DBI,Shortcut untuk DBI
+да,ya
+не является LFS папкой,bukan folder LFS
+не является LFS папкой игры,bukan folder LFS game
+нет,tidak
+"ZL/ZR - смена даты, Y - период","ZL/ZR - ganti tanggal, Y - periode"
+"Получено: {}, (скорость не определена)","Diterima: {}, (kecepatan tidak diketahui)"
+Игры добавлены в список исключений,Game masuk daftar pengecualian
+Новых игр в список исключений добавлено не было,Tidak ada game baru yang ditambahkan ke daftar pengecualian
+Просмотр МТР устройства [{}],Melihat perangkat MTP [{}]
+Просмотр USB диска [{}],Melihat drive USB [{}]
+Заряд батареи (сырое значение) : {},Daya baterai (mentah)      : {}
+ru,id
+[CRC ОШИБКА ФАЙЛА],[ERROR CRC FILE]
+Будет скачана и установлена прошивка системы из файла {}.\n\nНажимте (+) для продолжения\nЛюбую другую кнопку для отмены,Firmware sistem akan diunduh dan dipasang dari file {}.\n\nTekan (+) untuk lanjut\nTombol lain untuk batal
+Распаковка архива не удалась,Ekstraksi arsip gagal
+Сканирование архива не удалось,Pemindaian arsip gagal
+Установить все обновления из этой папки,Pasang semua update dari folder ini
+Япония,Jepang
+Русский,Rusia
+Февраль,Februari
+Октябрь,Oktober
+[HASH MISMATCH: GC ➡ eShop],[HASH BEDA: GC ➡ eShop]
+Ноябрь,November
+Игрок,Pemain
+Время,Waktu
+Контент,Konten
+[HASH: OK],[HASH: OK]
+Красная,Merah
+[HASH MISMATCH: Неисправимо],[HASH BEDA: Tidak bisa dipulihkan]
+[ПРЕД],[PREV]
+Альбом,Album
+Выход,Keluar
+и т.д...,dst...
+{} бекап,{} backup
+874,874
+Пишется тело: {}/{}MB \r,Menulis isi: {}/{}MB \r
+Пишется скриншот\n,Menulis screenshot\n
+Пишется таблица хешей\n,Menulis tabel hash\n
+Пишется подпись видео\n,Menulis signature video\n
+Операция завершена\n,Operasi selesai\n
+"Будет скачана и установлена прошивка системы из файла {}.\n\nВНИМАНИЕ!!! Похоже, эта версия не поддерживается текущей атмосферой.\n\nНажимте (+) для продолжения\nЛюбую другую кнопку для отмены",Firmware sistem akan diunduh dan dipasang dari file {}.\n\nPERINGATAN!!! Sepertinya versi ini tidak didukung oleh Atmosphere saat ini.\n\nTekan (+) untuk lanjut\nTekan tombol lain untuk batal
+Копирование файла не удалось,Gagal menyalin file
+Daybreak.nro не найден,Daybreak.nro tidak ditemukan
+Изображение добавлено в альбом,Gambar ditambahkan ke album
+Ошибка добавления изобржения в альбом: {},Gagal menambahkan gambar ke album: {}
+Добавить в альбом,Tambah ke album
+Анализ mp4 файла,Menganalisis file mp4
+Длительность: {},Durasi: {}
+ОШИБКА! Файл не содержит один видео трек,ERROR! File tidak berisi satu track video
+ОШИБКА! Файл не содержит один аудио трек,ERROR! File tidak berisi satu track audio
+ОШИБКА! У видео трека неподдерживаемый кодек,ERROR! Track video memakai codec yang tidak didukung
+ОШИБКА! У аудио трека неподдерживаемый кодек,ERROR! Track audio memakai codec yang tidak didukung
+ОШИБКА! Аудио трек не стерео,ERROR! Track audio bukan stereo
+[{}] Общий тикет для {},[{}] Ticket umum untuk {}
+ОШИБКА! У аудио трека неподходящая частота дискретизации,ERROR! Sampling rate track audio tidak sesuai
+ОШИБКА! У видео трека неподходящая ширина,ERROR! Lebar track video tidak sesuai
+ОШИБКА! У видео трека неподходящая высота,ERROR! Tinggi track video tidak sesuai
+ВНИМАНИЕ! Возможно видео поток содержит B-Frames. Файл может не воспроизводиться,PERINGATAN! Stream video mungkin berisi B-Frame. File mungkin tidak bisa diputar
+"Похоже, это не MP4 файл",Sepertinya ini bukan file MP4
+Открыть как RomFS,Buka sebagai RomFS
+\x1b[31;1mГ\x1b[37;1m,\x1b[31;1mГ\x1b[37;1m
+\x1b[32;1mШ\x1b[37;1m,\x1b[32;1mШ\x1b[37;1m
+Ваша SD карта является подделкой. Рекомендуется заменить SD карту на проверенную.,Kartu SD terdeteksi palsu. Disarankan menggantinya dengan kartu SD yang terverifikasi.
+[{}] Персональный тикет для {},[{}] Ticket personal untuk {}
+Кажется ваша SD карта является подделкой.\n\nВозможны проблемы с установкой игр.\nВ этом случае рекомендуется заменить SD карту на проверенную.,"Kartu SD sepertinya palsu.\n\nBisa muncul masalah saat memasang game.\nKalau begitu, disarankan menggantinya dengan kartu SD yang terverifikasi."
+Информация о SD карте,Informasi kartu SD
+[ПОДПИСЬ: DBI],[SIGNATURE: DBI]
+.    Время игры    \x1b[32;1m{:02}:{:02}:{:02}\x1b[37;1m,.    Waktu main   \x1b[32;1m{:02}:{:02}:{:02}\x1b[37;1m
+"ZL/ZR смена даты, Y период, X сортировка, (+) выбрать пользователя","ZL/ZR ganti tanggal, Y periode, X urutkan, (+) pilih pengguna"
+[{}МБ] {}МБ из {}МБ ({:.2f} МБ/сек)\x1b[0K\r,[{}MB] {}MB dari {}MB ({:.2f} MB/s)\x1b[0K\r
+"X выбор, Y обратить выбор, (+) меню, R3 сортировка, L3 запуск","X pilih, Y balik pilihan, (+) menu, R3 urutkan, L3 jalankan"
+Создать все известные ({}),Buat semua yang dikenal ({})
+"X выбор, Y обратить выбор, (+) меню, L3 запуск","X pilih, Y balik pilihan, (+) menu, L3 jalankan"
+"DPAD или стики для перемещения, (+) Настройки","DPAD atau stik untuk bergerak, (+) Pengaturan"
+Просмотр HTTP/FTP/Github сервера...,Menjelajah server HTTP/FTP/Github...
+"X выбор, Y обратить выбор, (+) меню, R3 сортировка","X pilih, Y balik pilihan, (+) menu, R3 urutkan"
+"X выбор, Y обр. выбор, (+) меню","X pilih, Y balik pilihan, (+) menu"
+"X выбор, Y обратить выбор, A открыть, (-) 2ая панель, (+) меню","X pilih, Y balik pilihan, A buka, (-) panel ke-2, (+) menu"
+"X выбор, Y обр. выбор, ⬅/➡ смена панели, (-) закрыть, (+) меню","X pilih, Y batal pilih, ⬅/➡ ganti panel, (-) tutup, (+) menu"
+[ДЕЛЬТА ФРАГМЕНТ НЕ НУЖЕН],[DELTA FRAGMENT TIDAK PERLU]
+[КОНТЕНТ ОТСУТСТВУЕТ],[KONTEN HILANG]
+[НЕ СОЗДАТЬ ПЛЕЙСХОЛДЕР],[JANGAN BUAT PLACEHOLDER]
+[НЕДОСТАТОЧНО МЕСТА],[RUANG TIDAK CUKUP]
+[НЕИЗВЕСТНОЕ СЖАТИЕ],[KOMPRESI TIDAK DIKENAL]
+[ОТСУТСТВУЕТ],[HILANG]
+[ОШБК],[ERROR]
+[ОШИБКА NCA MAGIC],[ERROR MAGIC NCA]
+[ОШИБКА ЗАПИСИ В ПЛЕЙСХОЛДЕР],[ERROR TULIS PLACEHOLDER]
+[ОШИБКА РАСПАКОВКИ ZSTD: {}],[ERROR DEKOMPRESI ZSTD: {}]
+[ОШИБКА РАСПАКОВКИ],[ERROR EKSTRAKSI]
+[ОШИБКА],[ERROR]
+[ОШИБКА] Отсутствует URL списка обновлений,[ERROR] URL daftar update tidak ada
+[ПЕРЕДАЧА OK],[TRANSFER OK]
+[ПЕРЕДАЧА ПРЕРВАНА],[TRANSFER TERPUTUS]
+[ПОВРЕЖДЁННЫЙ NCA],[NCA RUSAK]
+[ПОДПИСЬ: OK],[SIGNATURE: OK]
+[ПОДПИСЬ: XCI➡NSP],[SIGNATURE: XCI➡NSP]
+[ПОДПИСЬ: Поддельная],[SIGNATURE: Palsu]
+[СТАРАЯ ПРОШИВКА],[FIRMWARE LAMA]
+[ТРЕБУЕТСЯ РЕЖИМ ТАЙТЛА],[BUTUH MODE TITLE]
+[ФАЙЛ ПОВРЕЖДЁН],[FILE RUSAK]
+[ХЕШ ИСПРАВЛЕН],[HASH DIPERBAIKI]
+[ХЕШ НЕ СОВПАДАЕТ],[HASH BEDA]
+\nНачало обработки dlc {}: {:016X},\nMulai memproses DLC {}: {:016X}
+\nНачало обработки программы {},\nMulai memproses aplikasi {}
+\nНачало создания Data.nca,\nMulai membuat Data.nca
+\nНачало создания Meta.nca,\nMulai membuat Meta.nca
+\nОшибка USB обмена,\nError transfer USB
+\nСборка PFS0,\nMembangun PFS0
+\nСборка RomFS,\nMembangun RomFS
+\nСекция 0,\nSeksi 0
+\nСекция 1,\nSeksi 1
+\nСекция 2,\nSeksi 2
+\nСоздан NSP: {},\nNSP dibuat: {}
+\nШифрование NCA,\nEnkripsi NCA
+{:04d} {} {:02d}. Всего: {} час,{:04d} {} {:02d}. Total: {} jam
+{:04d} {} {:02d}. Всего: {} часа,{:04d} {} {:02d}. Total: {} jam
+{:04d} {} {:02d}. Всего: {} часов,{:04d} {} {:02d}. Total: {} jam
+{:4d} {}. Всего: {} час,{:4d} {}. Total: {} jam
+{:4d} {}. Всего: {} часа,{:4d} {}. Total: {} jam
+{:4d} {}. Всего: {} часов,{:4d} {}. Total: {} jam
+{:4d}. Всего: {} час,{:4d}. Total: {} jam
+{:4d}. Всего: {} часа,{:4d}. Total: {} jam
+{:4d}. Всего: {} часов,{:4d}. Total: {} jam
+{:>3} {}{:<50}\x1b[37;1m {:>10},{:>3} {}{:<50}\x1b[37;1m {:>10}
+{:>6} объектов обработано. {:>5} записей найдено...\r,{:>6} objek diproses. {:>5} entri ditemukan...\r
+{:>6}/{}kB уже скачано...\r,{:>6}/{}kB sudah diunduh...\r
+{} cохранение,{} save
+{} cохранений,{} tersimpan
+{} cохранения,{} data save
+{} бекапа,{} backup
+{} бекапов,{} backup
+{} записей ({}),{} entri ({})
+{} записи ({}),{} entri ({})
+{} запись ({}),{} entri ({})
+{} игр ({}),{} game ({})
+{} игра ({}),{} game ({})
+{} игры ({}),{} game ({})
+{} сохранение,{} save
+{} сохранений,{} save
+{} сохранения,{} data save
+{} тикет,{} ticket
+{} тикета,{} ticket
+{} тикетов,{} ticket
+{}-{} FW:{}{} SDK:{},{}-{} FW:{}{} SDK:{}
+"{}/{} MB (Ср: {:.1f} MB/sec, Тек: {:.1f} MB/sec) Ост. {:02d}:{:02d}      \r","{}/{} MB (Rata: {:.1f} MB/s, Kini: {:.1f} MB/s) Sisa {:02d}:{:02d}      \r"
+"{}/{} МБ, {:.2f} МБ/сек","{}/{} MB, {:.2f} MB/s"
+{}: {} потерянная запись,{}: {} entri terlantar
+{}: {} потерянных записей,{}: {} entri hilang
+{}: {} потерянных записи,{}: {} entri hilang
+{}: {}/{} ({:.2f} МБ/сек),{}: {}/{} ({:.2f} MB/s)
+{}: {}/{} ({}%) ({:.2f} МБ/сек),{}: {}/{} ({}%) ({:.2f} MB/s)
+{}: пропускается {}/{} ({:.2f} МБ/сек),{}: melewati {}/{} ({:.2f} MB/s)
+"{}\n\nВосстановление бекапа не удалось\n\nНажмите A - прервать, другая кнопка - продолжить","{}\n\nPemulihan backup gagal\n\nTekan A untuk batal, tombol lain untuk lanjut"
+{}МБ из {}МБ ({:.2f} МБ/сек)\x1b[0K\r,{}MB dari {}MB ({:.2f} MB/s)\x1b[0K\r
+АВТО,AUTO
+Аватар установлен,Avatar diatur
+Август,Agustus
+Австралия,Australia
+Автозапуск MTP,Autostart MTP
+Автозапуск списка homebrew,Daftar homebrew autostart
+Агрументы для ярлыка,Argumen shortcut
+Адрес FTP сервера: {},Alamat server FTP: {}
+Адрес HTTP сервера: {},Alamat server HTTP: {}
+Альбом (0°),Album (0°)
+Американский английский,Inggris Amerika
+Апрель,April
+База этой игры не самодостаточна. Не забудьте установить обновление,Base game ini tidak berdiri sendiri. Jangan lupa pasang update-nya
+Бекапы,Backup
+Бекапы сохранений ({}),Backup data save ({})
+Британский английский,Inggris Britania
+В альбоме найден {} объект,{} objek ditemukan di album
+В альбоме найдено {} объекта,Ditemukan {} objek di album
+В альбоме найдено {} объектов,{} objek ditemukan di album
+В альбоме отсутствуют объекты,Tidak ada objek di album
+В файле /switch/prod.keys отсутствуют необходимые ключи.\n\nЧасть функций программы будет недоступна.\n\nПерегрузитесь в Hekate и используйте Lockpick_RCM.bin пейлоад\nдля дампа ключей из SysNAND.,Kunci yang dibutuhkan tidak ada di file /switch/prod.keys.\n\nSebagian fitur aplikasi tidak akan tersedia.\n\nReboot ke Hekate dan pakai payload Lockpick_RCM.bin\nuntuk mendump kunci dari SysNAND.
+ВНИМАНИЕ! Тайтл {:016X} не установлен,PERINGATAN! Title {:016X} belum terpasang
+ВНИМАНИЕ! Установленная версия ({}) не совпадает с желаемой ({}),PERINGATAN! Versi terpasang ({}) tidak cocok dengan yang diinginkan ({})
+ВО ВРЕМЯ ПЕРЕДАЧИ ФАЙЛА НАЙДЕНЫ ОШИБКИ. УСТАНОВКА ПРЕРВАНА,DITEMUKAN ERROR SAAT TRANSFER FILE. PEMASANGAN DIBATALKAN
+Введите URL сервера (HTTP или (S)FTP),Masukkan URL server (HTTP atau (S)FTP)
+Введите агрументы для ярлыка или оставьте пустым,Masukkan argumen untuk shortcut atau biarkan kosong
+Введите желаемый номер страницы,Masukkan nomor halaman
+Введите новое имя,Masukkan nama baru
+Введите новое имя каталога,Masukkan nama direktori baru
+Введите новое имя файла,Masukkan nama file baru
+Введите номер DLC,Masukkan nomor DLC
+Версия {} [v{}],Versi {} [v{}]
+Вместо пользователя {} использовать:,Pakai ganti pengguna {}:
+Внимание!\nНекоторые файлы были заблокированы и поэтому пропущены.,Peringatan!\nSebagian file terkunci sehingga dilewati.
+Во время разбора\n\n{}\n\nвозникла следующая ошибка:\n\n{},Saat membaca\n\n{}\n\nterjadi error berikut:\n\n{}
+Во время установки тикетов были ошибки. Проверьте наличие ES сигпатчей,Terjadi error saat memasang ticket. Periksa sigpatch ES
+Во время экспорта были ошибки,Terjadi error saat ekspor
+Возраст батареи                : {},Umur baterai               : {}
+Возрастной рейтинг,Rating usia
+Восстановить,Pulihkan
+Восстановить бекап...,Pulihkan backup...
+Восстановить для...,Pulihkan untuk...
+Восстановить как бекап сохранения,Pulihkan sebagai backup save
+Восстановление бекапа,Memulihkan backup
+Восстановление не удалось,Pemulihan gagal
+Восстановление успешно,Pemulihan berhasil
+Восстановление: {},Memulihkan: {}
+Время игры: {:02}:{:02}:{:02},Waktu main: {:02}:{:02}:{:02}
+Время передачи {:d}:{:02d}:{:02d},Waktu transfer {:d}:{:02d}:{:02d}
+Все игровые сессии,Semua sesi game
+Все игроки,Semua pemain
+Все объекты,Semua objek
+Все файлы в порядке,Semua file OK
+Всего {} байт получен,{} byte diterima
+Всего {} байт послан,{} byte terkirim
+Всего {} байта получено,Total {} byte diterima
+ Да, Ya
+Всего {} байта послано,{} byte terkirim
+Всего {} байтов получено,Total {} byte diterima
+Всего {} байтов послано,{} byte terkirim
+Всего записей: {},Total entri: {}
+Всего отослано: {} ({}/сек),Total terkirim: {} ({}/s)
+Всего программ: {},Total title: {}
+Вставить,Tempel
+Вставка...,Menempel...
+Всё время. Всего: {} час,Sepanjang waktu. Total: {} jam
+Всё время. Всего: {} часа,Sepanjang waktu. Total: {} jam
+Всё время. Всего: {} часов,Sepanjang waktu. Total: {} jam
+Вы собираетесь удалить следующие бекапы:,Backup berikut akan dihapus:
+Вы собираетесь удалить следующие игры:,Game berikut akan dihapus:
+Вы собираетесь удалить следующие сохранения:,Save berikut akan dihapus:
+Вы собираетесь удалить следующие тикеты:,Ticket berikut akan dihapus:
+Вы уверены в удалении {} записей?\n\n(+) - ДА   B - Отмена,Yakin ingin menghapus {} entri?\n\n(+) - YA   B - Batal
+Вы уверены в удалении {} записи?\n\n(+) - ДА   B - Отмена,Yakin ingin menghapus {} entri?\n\n(+) - YA   B - Batal
+Вы уверены в удалении {} объекта?\n\n(+) - ДА   B - Отмена,Yakin ingin menghapus {} objek?\n\n(+) - YA   B - Batal
+Вы уверены в удалении {} объектов?\n\n(+) - ДА   B - Отмена,Yakin ingin menghapus {} objek?\n\n(+) - YA   B - Batal
+"Вы уверены, что хотите удалить {}?\n\n(+) - ДА, другая кнопка - НЕТ","Yakin ingin menghapus {}?\n\n(+) - YA, tombol lain - TIDAK"
+"Вы уверены, что хотите удалить\n{}?\n\n(+) - ДА  В - Отмена",Yakin ingin menghapus\n{}?\n\n(+) - YA  B - Batal
+Выберите пользователя,Pilih pengguna
+Выберите тип сохранения,Pilih tipe save
+Выбрать все файлы игры,Pilih semua file game
+Выбрать того же пользователя,Pilih pengguna yang sama
+Выбрать ту же игру,Pilih game yang sama
+Вырезать,Potong
+Вычисление хэша,Menghitung hash
+Вычисленное время конца : {},Waktu selesai terhitung : {}
+Вычисленное время начала: {},Waktu mulai terhitung   : {}
+Генерация DLC [{:016X}][v{}],Membuat DLC [{:016X}][v{}]
+Генерация DLC анлокера...,Membuat unlocker DLC...
+Генерируется анлокер для {:016X} с номером {} и версией {}...,Membuat unlocker untuk {:016X} dengan nomor {} dan versi {}...
+Генерируется ярлык для пути '{}' и аргументов '{}'...,Membuat shortcut untuk path '{}' dan argumen '{}'...
+Главное меню,Menu utama
+Голландский,Belanda
+"Да, я уверен","Ya, yakin"
+Дамп анлокера в '{}'...,Mendump unlocker ke '{}'...
+Дамп текущей прошивки,Dump firmware saat ini
+Дамп ярлыка в '{}'...,Mendump shortcut ke '{}'...
+Действия с файлами,Operasi file
+Действия с файлами ({}),Aksi file ({})
+Декабрь,Desember
+День,Hari
+Диаграмма активности,Grafik Aktivitas
+Для бекапов,Untuk backup
+Для выхода нажмите любую кнопку,Tekan tombol untuk keluar
+Для дампов,Untuk dump
+Для логов,Untuk log
+Добавить в любимые,Tambah ke favorit
+Европа,Eropa
+"Есть несохранёные изменения.\nВы хотите их сохранить?\n\n(+) - Да, сохранить\n\n(-) - Выйти без сохранения\n\nДругая кнопка - Отмена","Ada perubahan yang belum disimpan.\nSimpan sekarang?\n\n(+) - Ya, simpan\n\n(-) - Keluar tanpa menyimpan\n\nTombol lain - Batal"
+Желаемая версия: {},Versi yang diinginkan: {}
+Журнал активности,Log Aktivitas
+Завершено,Selesai
+Загружается список обновлений...,Memuat daftar update...
+Загрузка изображения...,Memuat gambar...
+Загрузка текста...{}%,Memuat teks...{}%
+Загрузка файла... {}%,Memuat file... {}%
+Задать размер файла {} не удалось: {},Gagal mengatur ukuran file {}: {}
+Закончено за {:02d}:{:02d}:{:02d},Selesai dalam {:02d}:{:02d}:{:02d}
+Закончилась память при посылке ответа,Kehabisan memori saat mengirim respons
+Закончились дополнительные буферы. Скорость записи на носитель слишком низка,Kehabisan buffer tambahan. Kecepatan tulis ke penyimpanan terlalu rendah
+Закрытие соединения,Menutup koneksi
+Закрытие соединения к {}:{},Menutup koneksi ke {}:{}
+Запаковать LFS в romfs.bin,Kemas LFS jadi romfs.bin
+Запаковать в romfs.bin,Kemas jadi romfs.bin
+Запаковка папки в RomFS,Mengemas folder jadi RomFS
+Записанное время конца  : {},Waktu selesai tercatat  : {}
+Записанное время начала : {},Waktu mulai tercatat    : {}
+Запись в файл...,Menulis ke file...
+Запись за пределами файла,Menulis di luar file
+Заполнение нулями,Mengisi dengan nol
+Заполнить свободное место на SD нулями,Isi ruang kosong SD dengan nol
+Запрет захвата видео,Larang rekam video
+Запрет скриншотов,Larangan screenshot
+Запрещено,Dilarang
+Запускавшиеся игры,Game dimainkan
+Запустить FTP сервер...,Jalankan server FTP...
+Запустить HTTP сервер...,Menjalankan server HTTP...
+Запустить МТР соединение,Mulai koneksi MTP
+Запустить случайную игру,Jalankan game acak
+Заряд батареи                  : {},Daya baterai                   : {}
+Здесь пусто,Kosong
+Игра анонсирует SDK {},Game menyatakan SDK {}
+"Игра анонсирует более новый SDK ({}), чем текущая прошивка ({})",Game menyatakan SDK ({}) lebih baru dari firmware saat ini ({})
+Игра использует titleId от дополнения,Game memakai titleId dari DLC
+Игра использует titleId от обновления,Game memakai titleId dari update
+Извлечь в LFS,Ekstrak ke LFS
+Изменение размера сохранения на {} [{}]...,Mengubah ukuran save ke {} [{}]...
+Изменить версию DLC (десятичную),Ubah versi DLC (desimal)
+Изменить номер DLC (десятичный),Ubah nomor DLC (desimal)
+Изменить номер DLC (шестнадцатеричный),Ubah nomor DLC (heksadesimal)
+Изменён размер SaveFS,Ukuran SaveFS diubah
+Импорт исправленного тикета...,Mengimpor ticket diperbaiki...
+Импорт тикета...,Mengimpor ticket...
+"Имя каталога\n'{}'\nсодержит недопустимые символы.\nОн не может быть создан.\n\nНажмите A - прервать, B - пропустить, X - переименовать","Nama direktori\n'{}'\nmengandung karakter tidak valid.\nTidak bisa dibuat.\n\nTekan A - batal, B - lewati, X - ganti nama"
+"Имя файла\n'{}'\nсодержит недопустимые символы.\nОн не может быть создан.\n\nНажмите A - прервать, B - пропустить, X - переименовать","Nama file\n'{}'\nmengandung karakter tidak valid.\nTidak bisa dibuat.\n\nTekan A - batal, B - lewati, X - ganti nama"
+Инсталлируется romfs.bin,Memasang romfs.bin
+Информация о зарядке батареи,Informasi pengisian baterai
+Информация о контенте,Informasi konten
+Информация о контенте ({}),Informasi konten ({})
+Информация о прошивке,Informasi firmware
+Информация о системе,Informasi sistem
+Информация о сохранении,Informasi data save
+Информация о сохранении...,Informasi data save...
+Информация о тикете,Informasi ticket
+Информация о тикете...,Informasi ticket...
+Информация об NSP,Informasi NSP
+Информация об атмосфере,Informasi Atmosphere
+Информация об игровой активности,Informasi aktivitas game
+Информация об источние питания,Informasi sumber daya
+Информация об оборудовании,Informasi hardware
+Информация...,Informasi...
+Испанский,Spanyol
+Использовано дополнительной памяти: {}. Создано буферов: {},Memori tambahan terpakai: {}. Buffer dibuat: {}
+Использовать папку для...,Pakai folder untuk...
+Используется USB{},Memakai USB{}
+Итальянский,Italia
+Ищется control для ProgramId {},Mencari control untuk ProgramId {}
+Ищется exefs/romfs для ProgramId {},Mencari exefs/romfs untuk ProgramId {}
+Ищется exefs/romfs/logo для ProgramId {},Mencari exefs/romfs/logo untuk ProgramId {}
+Ищется {},Mencari {}
+Июль,Juli
+Июнь,Juni
+Канадский французский,Prancis Kanada
+"Когда ваше устройство подключится, нажмите любую кнопку",Tekan tombol apa saja saat perangkat tersambung
+Код партии батареи    : {} ({}),Kode lot baterai         : {} ({})
+Кодировка,Encoding
+Конец игры            : -,Akhir game      : -
+Конец игры            : {},Akhir game      : {}
+Контент уже на месте,Konten sudah ada di tempatnya
+Копирование IVFC слой {} в nca: {},Menyalin layer IVFC {} ke nca: {}
+Копирование PFS0 в nca,Menyalin PFS0 ke nca
+Копирование PFS0 хэш таблицы в nca,Menyalin tabel hash PFS0 ke nca
+Копирование SDK {} в файл: {}...,Menyalin SDK {} ke file: {}...
+Копировать,Salin
+Корейский,Korea
+Корень не найден,Root tidak ditemukan
+Корень сохранения не существует,Root save tidak ada
+Корея,Korea
+Латиноамериканский испанский,Spanyol Amerika Latin
+Май,Mei
+Март,Maret
+Масштаб: По ширине,Skala: Sesuai Lebar
+Масштаб: По экрану,Skala: Sesuai layar
+Масштаб: Точка в точку,Skala: Pixel Perfect
+Масштаб: Увеличение x2,Skala: Perbesaran 2x
+Место в  NAND         : {},Ruang di NAND        : {}
+Место на SD карте     : {},Ruang kartu SD  : {}
+Место на приставке не занято,Tidak ada ruang terpakai di konsol
+Мета контент отсутствует,Konten meta tidak ada
+Миссия провалена\n\nНажмите А для выхода,Misi gagal\n\nTekan A untuk keluar
+Миссия успешна\n\nОсталось ходов: {}\n\nНажмите А для выхода,Misi berhasil\n\nSisa langkah: {}\n\nTekan A untuk keluar
+Модификация файла не удалась,Modifikasi file gagal
+На выбранном устройстве нет достаточного свободного места для установки,Ruang kosong di perangkat yang dipilih tidak cukup untuk pemasangan
+На месте нет достаточно свободного места,Ruang kosong tidak cukup
+Нажмите (+) для перезаписи конфига обновлённым\n\nЛюбую другую кнопку для пропуска,Tekan (+) untuk menimpa config dengan yang baru\n\nTombol lain untuk melewati
+"Нажмите (+) для удаления, любую другую кнопку для пропуска...\n (-) Удалять все, больше не спрашивая","Tekan (+) untuk hapus, tombol lain untuk lewati...\n (-) Hapus semua tanpa bertanya lagi"
+"Нажмите A, чтобы продолжить, другую кнопку, чтобы выйти","Tekan A untuk lanjut, tombol lain untuk keluar"
+"Нажмите B, чтобы вернуться",Tekan B untuk kembali
+Нажмите любую кнопку,Tekan tombol apa saja
+Найден SDK: {},SDK ditemukan: {}
+Найден {} зарегистрированный контент-файл,Ditemukan {} file konten terdaftar
+Найден {} контент-файл,Ditemukan {} file konten
+Найден {} пользователь,Ditemukan {} pengguna
+Найден {} потерянный контент-файл,Ditemukan {} file konten terlantar
+Найден {} файл,Ditemukan {} file
+Найден {} файл с ошибками,Ditemukan {} file bermasalah
+Найден и удалён {} неиспользуемый тикет,Ditemukan dan dihapus {} ticket tak terpakai
+Найдена {} запись об игре,Ditemukan {} entri game
+Найдена {} запись об ошибках,Ditemukan {} record error
+Найдена {} установленная игра,Ditemukan {} game terpasang
+Найдено {} записей об играх,Ditemukan {} record game
+Найдено {} записей об ошибках,Ditemukan {} laporan error
+Найдено {} записи об играх,Ditemukan {} entri game
+({}/{}) Устанавливается {},({}/{}) Memasang {}
+Найдено {} записи об ошибках,Ditemukan {} laporan error
+Найдено {} зарегистрированных контент-файла,Ditemukan {} file konten terdaftar
+Найдено {} зарегистрированных контент-файлов,Ditemukan {} file konten terdaftar
+Найдено {} контент-файла,Ditemukan {} file konten
+Найдено {} контент-файлов,{} file konten ditemukan
+Найдено {} обновление,{} update ditemukan
+Найдено {} обновлений,Ditemukan {} update
+Найдено {} обновления,Ditemukan {} update
+Найдено {} пользователей,Ditemukan {} pengguna
+Найдено {} пользователя,Ditemukan {} pengguna
+Найдено {} потерянных контент-файла,Ditemukan {} file konten hilang
+Найдено {} потерянных контент-файлов,Ditemukan {} file konten terlantar
+Найдено {} сохранение,Ditemukan {} save
+Найдено {} сохранение...,Ditemukan {} save...
+Найдено {} сохранений,Ditemukan {} save
+Найдено {} сохранений...,Ditemukan {} save...
+Найдено {} сохранения,Ditemukan {} save
+Найдено {} сохранения...,Ditemukan {} save...
+Найдено {} установленные игры,Ditemukan {} game terpasang
+Найдено {} установленных игр,Ditemukan {} game terpasang
+Найдено {} файла,{} file ditemukan
+Найдено {} файла с ошибками,Ditemukan {} file bermasalah
+Найдено {} файлов,{} file ditemukan
+Найдено {} файлов с ошибками,Ditemukan {} file bermasalah
+Найдено и удалено {} неиспользуемых тикета,Ditemukan dan dihapus {} ticket tak terpakai
+Найдено и удалено {} неиспользуемых тикетов,Ditemukan dan dihapus {} ticket tak terpakai
+Найдено существующее сохранение. Восстанавливаю бекап в него...,Ditemukan save yang ada. Memulihkan backup ke sana...
+Настройки,Pengaturan
+Настройки DBI,Pengaturan DBI
+Настройки FB2,Pengaturan FB2
+Начало игры           : -,Mulai game      : -
+Начало игры           : {},Mulai game      : {}
+Начало создания Control.nca,Mulai membuat Control.nca
+Начало создания Program.nca,Mulai membuat Program.nca
+Начать установку,Mulai pemasangan
+Не доступно,Tidak tersedia
+Не известно,Tidak diketahui
+"Не найден USB диск, который смог бы вместить получившийся дамп. Убедитесь, что он отформатирован в ExFAT.",Tidak ada drive USB yang muat untuk hasil dump. Pastikan formatnya ExFAT.
+Не найдены требуемые тикеты,Ticket yang dibutuhkan tak ada
+. Время простоя \x1b[33;1m{:02}:{:02}:{:02}\x1b[37;1m,. Waktu diam \x1b[33;1m{:02}:{:02}:{:02}\x1b[37;1m
+Не получилось создать NSP,Gagal membuat NSP
+Не удалось получить список,Gagal mengambil daftar
+Не удалось установить аватар\n{},Gagal mengatur avatar\n{}
+Не установлен,Belum terpasang
+Невозможно найти путь,Path tidak ditemukan
+Невозможно открыть папку журналов ошибок,Gagal membuka folder log error
+Невозможно переименовать '{}' в '{}':,Gagal ganti nama '{}' jadi '{}':
+Невозможно получить список LFS,Gagal mengambil daftar LFS
+Невозможно получить список пользователей,Gagal mengambil daftar pengguna
+Невозможно получить статус связи с Nintendo Account,Gagal mengambil status tautan Akun Nintendo
+...готово,...selesai
+Невозможно получить число записей об ошибках,Gagal menghitung record error
+Невозможно прочитать общие тикеты,Gagal membaca ticket umum
+Невозможно прочитать персонализированные тикеты,Gagal membaca ticket personal
+Невозможно разобрать content meta,Gagal membaca meta konten
+Невозможно разобрать content meta. Неожиданная ошибка,Gagal membaca meta konten. Error tak terduga
+Невозможно разобрать content meta. УСТАРЕВШАЯ ПРОШИВКА. Требуется обновление HOS,Gagal membaca meta konten. FIRMWARE USANG. Perlu update HOS
+Невозможно разобрать nca. УСТАРЕВШАЯ ПРОШИВКА. Требуется обновление HOS,Gagal membaca nca. FIRMWARE USANG. Perlu update HOS
+Невозможно разобрать индекс кеша,Gagal membaca indeks cache
+Невозможно распаковать '{}':,Gagal membongkar '{}':
+Невозможно скопировать файл\n   '{}'\n➡ '{}'\n,Gagal menyalin file\n   '{}'\n➡ '{}'\n
+Невозможно смонтировать сохранение,Gagal me-mount save
+Невозможно смонтировать устройство сохраниения,Gagal me-mount perangkat save
+Невозможно создать каталог,Gagal membuat direktori
+Невозможно создать каталог '{}':,Gagal membuat direktori '{}':
+Невозможно создать файл,Gagal membuat file
+Невозможно создать файл '{}':,Gagal membuat file '{}':
+Недопустимый идентификатор,Identifier tidak valid
+Неизвестная игра [{:016x}],Game tidak dikenal [{:016x}]
+: {:>4} сохранение,: {:>4} save
+Неизвестно,Tidak diketahui
+Неизвестный тайтл,Title tidak dikenal
+Немецкий,Jerman
+Неправильное хранилище,Penyimpanan tidak valid
+Неправильный родительский объект,Objek induk tidak valid
+Нет,Tidak
+Нет VFS. Прекращение работы,Tidak ada VFS. Menghentikan
+Нет exefs VFS. Прекращение работы,Tidak ada VFS exefs. Menghentikan
+: {:>4} сохранений,: {:>4} save
+Нет logo VFS. Прекращение работы,Tidak ada VFS logo. Menghentikan
+Нет romfs VFS. Прекращение работы,Tidak ada VFS romfs. Menghentikan
+Нет лого,Tidak ada logo
+Нечего устанавливать,Tidak ada untuk dipasang
+Новое имя для '{}',Nama baru untuk '{}'
+Новый каталог,Direktori baru
+Новый размер сохранения в МБ,Ukuran save baru dalam MB
+Новый рейтинг (-1 для удаления),Rating baru (-1 untuk hapus)
+: {:>4} сохранения,: {:>4} save
+Номер страницы,Nomor halaman
+Ночь,Malam
+Нужен связанный аккаунт,Perlu akun yang tertaut
+ОШИБКА ПОЛУЧЕНИЯ ЭКСТРА ДАННЫХ,ERROR MENGAMBIL DATA TAMBAHAN
+Обнаружены недопустимые символы,Terdeteksi karakter tidak valid
+Обновить DBI,Update DBI
+Обновить DBI из этого файла,Update DBI dari file ini
+Обновить TitleDB,Update TitleDB
+Обновление TitleDB,Mengupdate TitleDB
+Обновление базы данных...,Mengupdate database...
+Обновление версии до {} {}\n\nНажмите (+) для продолжения\nЛюбую другую кнопку для отмены,Mengupdate versi ke {} {}\n\nTekan (+) untuk lanjut\nTombol lain untuk batal
+Обновление времени...,Mengupdate waktu...
+Обновление закончено\n\nНажмите любую кнопку\nдля перезапуска DBI,Update selesai\n\nTekan tombol apa saja\nuntuk memulai ulang DBI
+Обновление фейковой записи {} ➡ [v{}],Mengupdate record palsu {} ➡ [v{}]
+Обновление. Пожалуйста подождите...,Mengupdate. Mohon tunggu...
+Обновляется запись об игре...,Mengupdate record game...
+Обрабатывается запись {:016X},Memproses record {:016X}
+Обратный альбом (180°),Album terbalik (180°)
+Обратный портрет (270°),Portrait terbalik (270°)
+Общее время активной игры     : {} часов,Total waktu main aktif        : {} jam
+Общее время дампа {:d}:{:02d}:{:02d},Total waktu dump {:d}:{:02d}:{:02d}
+Общее время запущенных игр    : {} часов,Total waktu main              : {} jam
+Общее время игры      : -,Total waktu main: -
+Общее время игры      : {:d} часов {:02d} минут,Total waktu main: {:d} jam {:02d} menit
+Общее время установки: {:d}:{:02d}:{:02d},Total waktu pemasangan: {:d}:{:02d}:{:02d}
+Общее время: {:02}:{:02}:{:02},Total waktu: {:02}:{:02}:{:02}
+Общее занимаемое место: N:{} + S:{} = {},Total ruang terpakai: N:{} + S:{} = {}
+Общее число запусков  : -,Total peluncuran         : -
+Общие,Umum
+Общий размер установки: {},Total ukuran pemasangan: {}
+Объединение списков,Gabungkan daftar
+Объект {} не допустим,Objek {} tidak diizinkan
+Объект {} не может быть создан,Objek {} tidak bisa dibuat
+Объект не открыт для редактирования,Objek tidak terbuka untuk diedit
+Объект удалён,Objek terhapus
+Объект уже открыт для редактирования,Objek sudah terbuka untuk diedit
+Огибка получения адреса сокета: {} {},Error mengambil alamat socket: {} {}
+Ожидаемый размер: {},Ukuran diharapkan: {}
+Ожидается большой (>4GB) файл,Diperkirakan file besar (>4GB)
+Ожидается запуск dbibackend на стороне ПК...,Menunggu dbibackend dijalankan di sisi PC...
+Ожидание: {} секунд,Menunggu: {} detik
+Ожидание: {} секунда,Menunggu: {} detik
+Ожидание: {} секунды,Menunggu: {} detik
+Ориентация,Orientasi
+Ориентация...,Orientasi...
+Основной SDK не найден. Пробуем мультипрограмный вариант,SDK utama tidak ditemukan. Mencoba varian multi-program
+Оставить сохранения,Pertahankan data save
+Осталось ходов:    {:>3},Sisa langkah:  {:>3}
+Остаток файла пропускается,Sisa file dilewati
+Отключение связи с мобильным приложением...,Memutus koneksi dari aplikasi mobile...
+Открываем папку прошивки...,Membuka folder firmware...
+Открыть,Buka
+Открыть вторую панель,Buka panel kedua
+Открыть как 7Z,Buka sebagai 7Z
+Открыть как RAR,Buka sebagai RAR
+Открыть как ZIP,Buka sebagai ZIP
+Открыть как hex,Buka sebagai hex
+Открыть как текст,Buka sebagai teks
+Открыть контент по MTP,Buka konten via MTP
+Открыть папку LFS,Buka folder LFS
+Content meta не найден. Установка прервана,Meta konten tidak ditemukan. Pemasangan dibatalkan
+Отослано {}/{} байт,Terkirim {}/{} byte
+Отсутствуют ES сигпатчи!,Sigpatch ES tidak ada!
+Очистка /atmosphere/contents,Membersihkan /atmosphere/contents
+Очистка кеша rightsId...,Membersihkan cache rightsId...
+Очистка папки...,Membersihkan folder...
+Очистка плейсхолдеров...,Membersihkan placeholder...
+Очистка системы от мусора,Membersihkan sampah sistem
+Очистка сохранений,Membersihkan data save
+Очистка...,Membersihkan...
+Ошибка FTP сервера,Error server FTP
+DBI Просмотр альбома,Tampilan Album DBI
+Ошибка во время копирования файла,Error saat menyalin file
+Ошибка во время обновления тайтла,Error saat mengupdate title
+Ошибка выделения сокета: {},Error alokasi socket: {}
+Ошибка завершения соединения: {},Error memutus koneksi: {}
+Ошибка загрузки картинки,Error memuat gambar
+Ошибка загрузки файла из альбома: {},Error memuat file dari album: {}
+Ошибка закрытия сокета: {},Error menutup socket: {}
+Ошибка записи файла: {},Error menulis file: {}
+Ошибка изменения размера файла,Error mengubah ukuran file
+Ошибка инициализации {}: {},Error inisialisasi {}: {}
+"DPAD и стики - прокрутка, L - стр. вверх, R - стр. вниз","DPAD dan stik - gulir, L - halaman atas, R - halaman bawah"
+Ошибка опроса сокета: {},Error poll socket: {}
+Ошибка открытия каталога: {},Error membuka direktori: {}
+Ошибка открытия сокета: {},Error membuka socket: {}
+Ошибка открытия файла,Error membuka file
+Ошибка открытия файла '{}': {},Error membuka file '{}': {}
+Ошибка открытия файла: {},Error membuka file: {}
+Ошибка отсылки: {},Error kirim: {}
+Ошибка переименования: {},Error ganti nama: {}
+Ошибка подключения: {},Error koneksi: {}
+Ошибка подмены SDK: {},Error mengganti SDK: {}
+"DPAD и стики - прокрутка, L - стр. вверх, R - стр. вниз, R3 - Текст/Hex","DPAD dan stik - gulir, L - halaman atas, R - halaman bawah, R3 - Teks/Hex"
+Ошибка получения адреса узла: {},Error mengambil alamat node: {}
+Ошибка получения внеочередных данных: {},Error mengambil data out-of-band: {}
+Ошибка получения имени сокета: {} {},Error mengambil nama socket: {} {}
+Ошибка получения информаци о файле: {},Error mengambil informasi file: {}
+Ошибка получения размера файла: {},Error mengambil ukuran file: {}
+Ошибка получения флагов сокета: {},Error mengambil flag socket: {}
+Ошибка получения хранилища {},Error mengambil penyimpanan {}
+Ошибка получения: {},Error pengambilan: {}
+Ошибка получения: {} {},Error pengambilan: {} {}
+Ошибка посылки файла: {},Error mengirim file: {}
+Ошибка привязки сокета к порту {}: {},Error mengikat socket ke port {}: {}
+Ошибка привязки: {},Error binding: {}
+Ошибка принятия соединения: {} {},Error menerima koneksi: {} {}
+Ошибка приёма соединения: {},Error menerima data koneksi: {}
+Ошибка проверси метки сокета: {},Error verifikasi label socket: {}
+Ошибка прослушивания: {},Error listen: {}
+Ошибка прослушки сокета: {},Error socket listening: {}
+Ошибка сжатия,Error kompresi
+Ошибка создания каталога: {},Error membuat direktori: {}
+Ошибка создания сокета: {},Error membuat socket: {}
+Ошибка создания сохранения,Error membuat save
+Ошибка удаления каталога: {},Error menghapus direktori: {}
+Ошибка удаления файла: {},Error menghapus file: {}
+Ошибка установки флагов сокета: {},Error mengatur flag socket: {}
+Ошибка чтения записи об игре: {},Error membaca record game: {}
+Ошибка чтения каталога: {},Error membaca direktori: {}
+Ошибка чтения файла: {},Error membaca file: {}
+Ошибок не найдено,Tidak ada error
+Ошибочный номер DLC (Должен быть в диапазоне 0x001-0x7FF),Nomor DLC tidak valid (Harus antara 0x001-0x7FF)
+Ошибочный номер DLC (Должен быть в диапазоне 1-2047),Nomor DLC tidak valid (Harus antara 1-2047)
+"Ошибочный тикет {0}: kg {1:02X}, pm {2:02X}","Ticket tidak valid {0}: kg {1:02X}, pm {2:02X}"
+Папка LFS не найдена,Folder LFS tidak ditemukan
+Папка обновления очищена,Folder update dibersihkan
+Параметры FTP,Pengaturan FTP
+Параметры MTP,Pengaturan MTP
+Параметры установки,Opsi pemasangan
+Передача окончена,Transfer selesai
+Переименование объекта,Mengganti nama objek
+Переименовать,Ganti nama
+Перейти к первой странице,Ke halaman pertama
+Перейти к последней странице,Ke halaman terakhir
+Перейти к странице...,Ke halaman...
+Переместить,Pindah
+Переместить в NAND,Pindah ke NAND
+Переместить на SD карту,Pindah ke kartu SD
+"Перемещение {} ({}, {}) в {}","Memindahkan {} ({}, {}) ke {}"
+Перемещение {} записей,Memindahkan {} entri
+Перемещение {} записи,Memindahkan {} entri
+Перемещение {} игр,Memindahkan {} game
+Перемещение {} игры,Memindahkan {} game
+FTP сервер (нажмите B для остановки),Server FTP (tekan B untuk berhenti)
+Перемещение контента,Memindahkan konten
+Перенос строк,Ganti baris
+Переоткрытие ФС сохранения: {},Membuka ulang FS save: {}
+Пишется новая запись о контенте...,Menulis record konten baru...
+Пишется новый cnmt.nca...,Menulis cnmt.nca baru...
+Подготовка...,Menyiapkan...
+Подключаемся к {}...,Menyambung ke {}...
+Подключено к {}:{},Tersambung ke {}:{}
+Подмена SDK,Penggantian SDK
+Подменить SDK,Ganti SDK
+Подсчитывается размер установки...,Menghitung ukuran pemasangan...
+Подсчитывается размер установки...{}%,Menghitung ukuran pasang...{}%
+Подсчитываются объекты в альбоме в NAND,Menghitung objek album di NAND
+Подсчитываются объекты в альбоме на SD карте,Menghitung objek album di kartu SD
+Подсчёт метаданных...,Menghitung metadata...
+Подсчёт основного хэша,Menghitung hash utama
+Подсчёт хэша секции,Menghitung hash seksi
+"Пожалуйста, подключите вашу консоль к ПК кабелем USB Type-C или нажмите B","Sambungkan konsol ke PC dengan kabel USB Type-C, atau tekan B"
+"Пожалуйста, подождите...",Mohon tunggu...
+Поиск записей об ошибках,Mencari log error
+Поиск неиспользуемых тикетов,Mencari ticket tak terpakai
+Поиск подготовленного системного обновления,Mencari update sistem yang disiapkan
+Поиск потерянных тайтлов,Mencari title yang hilang
+Поиск потерянных файлов в NAND,Mencari file hilang di NAND
+Поиск потерянных файлов на SD,Mencari file hilang di SD
+Поиск сохранений удалённых пользователей...,Mencari data save pengguna terhapus...
+Get chargeInfoFields : {},Ambil chargeInfoFields : {}
+Получен список из {} записей,Menerima daftar {} entri
+Получен список из {} записи,Menerima daftar {} entri
+Получение версий установленных игр,Mengambil versi game terpasang
+Получение информации из hac_versionlist...,Mengambil informasi dari hac_versionlist...
+Получение информации из системы...,Mengambil informasi sistem...
+Получение информации об играх...,Mengambil informasi game...
+Получение списка тикетов...,Mengambil daftar ticket...
+Получение файла: {} МБ ({:.2f} МБ/сек),Menerima file: {} MB ({:.2f} MB/s)
+Получение файла: {}/\x1b[36;1m{}\x1b[37;1m МБ (\x1b[32;1m{}%\x1b[37;1m) (\x1b[33;1m{:.2f}\x1b[37;1m МБ/сек),Menerima file: {}/\x1b[36;1m{}\x1b[37;1m MB (\x1b[32;1m{}%\x1b[37;1m) (\x1b[33;1m{:.2f}\x1b[37;1m MB/s)
+Полученное время: {},Waktu diterima: {}
+Полученный размер: {},Ukuran diterima: {}
+"Получено: {}, ({:.2f} МБ/сек)","Diterima: {}, ({:.2f} MB/s)"
+Пользователь {} не найден. Создание сохранения невозможно,Pengguna {} tidak ditemukan. Save tidak bisa dibuat
+Пользователь не найден,Pengguna tak ditemukan
+Попытаться разобрать,Coba baca
+Попытка исправить,Mencoba memperbaiki
+Портрет (90°),Portrait (90°)
+Португальский,Portugis
+"L+⬅-Начало, L+➡-Конец, ZL-Регистр, ZR-Ввод, Y-Пробел, X-Забой, R3-Язык","L+⬅-Home, L+➡-End, ZL-Kapital, ZR-Enter, Y-Spasi, X-Backspace, R3-Bahasa"
+После удаления игры не будут запускаться,Game tidak akan jalan setelah dihapus
+Посылается файл: {},Mengirim file: {}
+Посылается файл: {}/\x1b[36;1m{}\x1b[37;1m МБ (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m МБ/сек),Mengirim file: {}/\x1b[36;1m{}\x1b[37;1m MB (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m MB/s)
+Превышен размер командного буфера,Ukuran buffer perintah terlampaui
+LFS мод.: -,Mode LFS : -
+Предоставить по FTP,Sediakan via FTP
+Прекращение прослушивания на {}:{},Berhenti listening di {}:{}
+Прервано пользователем,Dibatalkan pengguna
+Привязка к {}:{},Mengikat ke {}:{}
+Принято соединение от {}:{},Menerima koneksi dari {}:{}
+Проверить целостность,Verifikasi integritas
+Проверка magic...,Memeriksa magic...
+"Проверка {} ({}, {}), {}","Verifikasi {} ({}, {}), {}"
+Проверка картриджа...,Memeriksa kartrid...
+Проверка на наличие  {}...,Memeriksa {}...
+Проверка обновлений,Memeriksa update
+Проверка обновлений игр,Memeriksa update game
+Проверка сохранений,Memeriksa data save
+Проверка целостности ({}),Cek integritas ({})
+Проверяется: {},Memeriksa: {}
+"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","Mod LFS  : Ada, Ukuran: perhitungan dimatikan di pengaturan"
+Проверяются бекапы...,Memeriksa backup...
+Проверяются сохранения,Memeriksa save
+Программа {}. Control не найдена,Aplikasi {}. Control tidak ditemukan
+Программа {}. Exefs не найдена,Program {}. Exefs tidak ditemukan
+Программа {}. Romfs не найдена,Aplikasi {}. Romfs tidak ditemukan
+Произошла неизвестная ошибка,Terjadi error tak dikenal
+Произошла ошибка:,Terjadi error:
+Произошла ошибка: {},Terjadi error: {}
+LFS папка игры,Folder game LFS
+Пропускается: {}          \r,Melewati: {}          \r
+Прослушивание на {}:{},Listening di {}:{}
+Просмотр альбома по HTTP,Lihat album via HTTP
+MTP Респондер (нажмите B для остановки),MTP Responder (tekan B untuk berhenti)
+Просмотреть игры,Lihat game
+Просто запуск,Jalankan saja
+Разбор,Membaca
+Раздел secure не найден,Seksi secure tidak ditemukan
+"Размер  : {}, {} файл","Ukuran: {}, {} file"
+"Размер  : {}, {} файла","Ukuran: {}, {} file"
+"Размер  : {}, {} файлов","Ukuran: {}, {} file"
+Размер посылаемого файла   : {},Ukuran file yang dikirim: {}
+Размер сохранений     : {},Ukuran data save: {}
+Размер: {},Ukuran: {}
+Разрешено,Diizinkan
+Распаковать в подкаталог,Ekstrak ke subdirektori
+Распаковать сюда,Ekstrak di sini
+Распаковка файла,Membongkar file
+Растущие цветы:     {},Bunga tumbuh:        {}
+Nintendo Account задан и связан,Akun Nintendo diatur dan tertaut
+Регистрация контента {}...,Mendaftarkan konten {}...
+Регистрация файла {}...,Mendaftarkan file {}...
+Регистры котроллера MAX17050,Register kontroler MAX17050
+Редактирование возрастного рейтинга...,Mengedit rating usia...
+Редактирование запретов,Edit pembatasan
+Рендеринг FB2,Merender FB2
+"Nintendo Account задан, но не связан","Akun Nintendo diatur, tapi belum tertaut"
+Сброс требуемой версии,Reset versi yang dibutuhkan
+Сбросить требуемую версию,Reset versi yang dibutuhkan
+Сведения,Informasi
+Сведения...,Informasi...
+Свободное место в хранилище: {},Ruang penyimpanan kosong: {}
+Свободное место: {},Ruang kosong: {}
+Сгенерировать и установить,Buat dan pasang
+Nintendo Account не задан,Akun Nintendo belum diatur
+Сдампить на SD карту,Dump ke kartu SD
+Сдампить на внешний USB,Dump ke USB eksternal
+Сдампить текущую прошивку,Dump firmware saat ini
+Сдамплено: {}/{} ({}%) ({:.2f} МБ/сек),Didump: {}/{} ({}%) ({:.2f} MB/s)
+Сделать бекап,Buat backup
+"Сделать бекап, если новее",Backup kalau lebih baru
+Северная Америка,Amerika Utara
+Сентябрь,September
+Сепия,Sepia
+Сервер запущен,Server dijalankan
+Сервер предлагает выполнить обновление DBI\n\nНажите (+) для согласия\nЛюбую другую кнопку для отмены,Server menawarkan update DBI\n\nTekan (+) untuk konfirmasi\nTombol lain untuk batal
+Сессии,Sesi
+Сессия закрыта,Sesi ditutup
+Сессия открыта,Sesi dibuka
+Синхронизация времени по NTP,Sinkronisasi waktu NTP
+Системные приложения,Aplikasi sistem
+Системный по умолчанию,Bawaan sistem
+Сканирование директорий...,Memindai direktori...
+Сканирование игр...,Memindai game...
+Скачано {}/{},Terunduh {}/{}
+Скачивание файла не удалось,Unduhan file gagal
+Скорость передачи: {:.2f} МБ/сек,Laju transfer: {:.2f} MB/s
+Собираются сведения...,Mengumpulkan informasi...
+Соединение сброшено,Koneksi direset
+Создание DLC анлокера,Membuat unlocker DLC
+Создание NSP,Membuat NSP
+Создание sdmc:/versions.txt,Membuat sdmc:/versions.txt
+Создание дампа ({}),Membuat dump ({})
+Создание дампа: {},Membuat dump: {}
+Создание единого репака,Membuat repack gabungan
+Создание записи об игре...,Membuat record game...
+Создание новой записи об игре...,Membuat entri game baru...
+Создание плейсхолдера: {}...,Membuat placeholder: {}...
+"Создание репака Id: {:016X}, Версия: {}, Тип: {}","Membuat repack Id: {:016X}, Versi: {}, Tipe: {}"
+Создание строк... {}%,Membuat string... {}%
+Создание таблицы имён,Membuat tabel nama
+Создание тела файла,Membuat isi file
+Создание точки доступа...,Membuat access point...
+Создание хэш таблицы,Membuat tabel hash
+Создание ярлыка,Membuat shortcut
+Создано новое сохранение. Восстанавливаю бекап в него...,Save baru dibuat. Memulihkan backup ke sana...
+Создать sdmc:/versions.txt,Buat sdmc:/versions.txt
+Создать единый репак,Buat repack tunggal
+Создать новое сохранение...,Buat save baru...
+Создать новый каталог...,Buat direktori baru...
+Создать новый файл...,Buat file baru...
+Создать ярлык,Buat shortcut
+Создать ярлык для hbmenu,Buat shortcut untuk hbmenu
+Создать ярлык на рабочий стол для DBI...,Buat shortcut desktop untuk DBI...
+Создать ярлык с аргументами...,Buat shortcut dengan argumen...
+Создаётся обновлённая запись об игре...,Membuat record game terbaru...
+Сохранение для {} уже существует,Data save untuk {} sudah ada
+Сохранения,Data Save
+Сохранения будут удалены!,Data save akan dihapus!
+Сохранения удалённых игр ({}),Save game terhapus ({})
+Сохранения установленных игр ({}),Save game terpasang ({})
+Сохранёные в системе параметры котроллера батареи,Parameter kontroler baterai tersimpan di sistem
+Существующая запись об игре не найдена,Record game yang ada tidak ditemukan
+Существующее сохранение не найдено и новое не может быть создано,Save yang ada tidak ditemukan dan yang baru tidak bisa dibuat
+SDK {} уже был экспортирован: {},SDK {} sudah diekspor: {}
+Тайтл не установлен,Title belum terpasang
+Тайтл установлен,Title terpasang
+Тайтлы с ошибками:,Title bermasalah:
+Текущее время: {},Waktu saat ini: {}
+SDK на подмену не найдены,Tidak ada SDK untuk diganti
+Тема,Tema
+Тикет исправлен,Ticket diperbaiki
+Тикеты,Ticket
+Тикеты не найдены,Tidak ada ticket
+864,864
+881,881
+"больше шансов, что оно заработает». Их",akhirnya berhasil.' Taktik mereka
+быстро проникли в планы шадоков и,"tetangga, jadi pintar berkat internet,"
+"всякий раз, когда растение расцветает","gudang peralatan, mengepungnya, lalu"
+"выражениях: «Чем больше неудач, тем","kerugian, makin besar peluang semuanya"
+"вычислили, что у них есть по крайней",peluang satu banding sejuta saat semua
+заработает… И они торопятся поскорее,999.999 blunder fatal pertama itu
+"и дает транзистор, они мчатся, чтобы","kini tiap kali dia melihat chip, mereka"
+"и не кончилось успехом». Или, в других",Atau dengan kata lain: 'Makin tinggi
+"мере один шанс из миллиона, что она",akhirnya berhasil... jadi mereka buru-buru melakukan
+миллионная заработает».,"I. I. Bullshitter, Irama Terobosan"
+"ничего, что бы непрерывно продолжалось",uang muka sementara untuk kejayaan.'
+"но окружили его со всех сторон, и",tamu itu merangkak ke salah satu
+"опытов, чтобы быть уверенными, что", 
+осуществить 999999 первых неудачных,agar kemenangan menyusul.»
+"очень умные благодаря своим шляпам,",tetangga untuk mengambil suku cadang. Si
+"планету гиби искать транзисторы. Гиби,",dikirim dari rawa langsung ke
+постоянно кончаясь неудачами.,dengan patuh menghasilkan pertumbuhan negatif.
+принципов шадокской логики: «Нет,'Tidak ada bencana yang bukan sekadar
+"ракета еще несовершенна, но они","macet, tapi mereka mati-matian berpegang pada"
+"растений, произрастающих на огородах.",konon memanen chip langsung dari
+решили позабавиться. Они позволили,cepat membaca rencana licik itu
+собрать урожай прежде шадока.,merebutnya kembali.
+"терпят неудачу потому, что не хватает",rudal berjatuhan karena mikrocip
+транзисторов в системах безопасности.,langka—baik di sistem pemandu maupun
+"шадоку забраться в один из их огородов,",dan memutuskan bersenang-senang. Mereka biarkan
+«У шадоков ситуация удовлетворительна.,"«Bagi para ork, semua berjalan sesuai rencana:"
+"Испытания ракет продолжаются,","proses nullifikasi terus berjalan,"
+Но у гиби транзисторы собирают с,"toilet. Sementara itu, para tetangga"
+Решено послать одного из шадоков на,peralatan kebun mereka. Maka seorang relawan
+original,asli
+"SSID: {}, Пароль: {}","SSID: {}, Password: {}"
+Тип оборудования        : {},Tipe perangkat    : {}
+TempC0               : {:04x},TempC0                  : {:04x}
+Уровень заряда батареи         : {},Level daya baterai         : {}
+URL для проверки обновлений,URL cek update
+Установка с картриджа,Pasang dari kartrid
+Установка через DBIbackend,Pasang via DBIbackend
+Форсировать UTF-8,Paksa UTF-8
+Хэш версии              : {},Hash versi        : {}
+Читать дату файлов,Baca tanggal file
+Экзосфера очищает CAL0      : {},Exosphere hapus CAL0  : {}
+Экран                 : ({:08X}) {},Layar                    : ({:08X}) {}
+Язык                    : {},Bahasa            : {}
+"Интервал автобекапа сейвов, дни","Interval auto-backup save, hari"
+Конфигурация зарядки            : {},Konfigurasi pengisian        : {}
+Режим Hi-Z включён              : {},Mode Hi-Z aktif              : {}
+Зарядка батареи включена        : {},Pengisian baterai aktif      : {}
+Маршрут электропитания          : {},Jalur suplai daya            : {}
+Напряжение источника            : {} mV,Tegangan sumber              : {} mV
+Ток источника                   : {} mA,Arus sumber                  : {} mA
+Быстрая зарядка разрешена       : {},Pengisian cepat diizinkan    : {}
+Целевая прошивка            : {}.{}.{},Firmware target       : {}.{}.{}
+Поддерживаемая версия HOS   : {},Versi HOS didukung    : {}
+Предел входного тока (буст)     : {} mA,Batas arus masuk (boost)     : {} mA
+Предел тока быстрой зарядки     : {} mA,Batas arus pengisian cepat   : {} mA
+Напряжение батареи              : {} mV,Tegangan baterai             : {} mV
+Контроллер источника получен    : {},Kontroler sumber didapat     : {}
+OTG Запрошен                    : {},OTG diminta                  : {}
+Производитель    : {:s} ({:02X}),Produsen           : {:s} ({:02X})
+OEM ID           : {:s} ({:s}),OEM ID             : {:s} ({:s})
+Имя продукта     : {:s},Nama produk        : {:s}
+Ревизия продукта : {:s},Revisi produk      : {:s}
+Серийный номер   : {:s},Nomor seri         : {:s}
+Ёмкость с завода   : {} mAh,Kapasitas pabrik    : {} mAh
+Автоповтор кнопок при удержании,Auto-ulang tombol saat ditahan
+Версия атмосферы            : {}.{}.{},Versi Atmosphere      : {}.{}.{}
+Версия прошивки         : {}.{}.{}-{}.{},Versi firmware    : {}.{}.{}-{}.{}
+Возраст батареи                : {}%,Umur baterai               : {}%
+Время гашения экрана в секундах,Waktu redup layar dalam detik
+Выключать экран,Matikan layar
+Выход на рабочий стол,Keluar ke Home
+Дата первого игрового события : {},Tanggal main pertama          : {}
+Добавлять суффикс к имени файла,Tambah suffix ke nama file
+Достаточное питание            : {},Daya mencukupi             : {}
+Есть исправление RCM бага   : {},Ada perbaikan bug RCM : {}
+Журналирование действий,Pencatatan aksi
+Закладки на SD,Bookmark SD
+Запись в CAL0 разрешена     : {},Tulis CAL0 diizinkan  : {}
+Запускать точку доступа,Jalankan access point
+Запустить FTP сервер,Jalankan server FTP
+Запустить HTTP сервер,Jalankan server HTTP
+Заряд батареи                  : {}%,Daya baterai               : {}%
+Заряд батареи (сырое значение) : {}%,Daya baterai (mentah)      : {}%
+Зарядка батареи                : {},Daya baterai               : {}
+Инструменты,Alat
+Использовать 5 GHz,Pakai 5 GHz
+Использовать MSG_WAITALL в recv,Pakai MSG_WAITALL di recv
+Использовать для неё TitleID,Pakai TitleID untuknya
+Использовать разгон,Pakai overclock
+Использовать скрытый SSID,Pakai SSID tersembunyi
+Источник питания                : {},Sumber daya                  : {}
+Курсор на обеих панелях,Kursor di kedua panel
+%% заряд-разряд    : {},%% isi-kosong       : {}
+Никнейм консоли         : {},Nama konsol       : {}
+Общее число игровых сессий    : {},Total sesi main               : {}
+Bluetooth MAC адрес   : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Alamat MAC Bluetooth     : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X}
+CDIR в листинге,CDIR di daftar
+Configuration Id1     : {},Id1 konfigurasi          : {}
+DeviceId                : {0:} ({0:016X}),DeviceId          : {0:} ({0:016X})
+Папка для бекапа сохранений,Folder backup data save
+Папка для дампа игр,Folder dump game
+Папка журналов,Folder log
+DramId                  : {} ({}),DramId            : {} ({})
+Пароль,Password
+Перевернуть джойконы,Balik Joy-Con
+Перевернуть экран,Putar layar
+Emummc включён              : {},Emummc aktif          : {}
+Переносить слова,Bungkus kata
+Платформа               : {},Platform          : {}
+FullCap              : {:04x} ({} mAh),FullCap                 : {:04x} ({} mAh)
+Подсвечивать файлы обновлений,Sorot file update
+FullCapNom           : {:04x} ({} mAh),FullCapNom              : {:04x} ({} mAh)
+Показываемая версия     : {},Versi tampil      : {}
+Показываемое название   : {},Nama tampil       : {}
+Показывать 'Обновить отсюда',Tampilkan 'Update dari sini'
+Показывать объединённый NSP,Tampilkan NSP gabungan
+Показывать папку 'Mods&Cheats',Tampilkan folder 'Mods&Cheats'
+Показывать прогрев кеша,Tampilkan pemanasan cache
+Показывать размер LFS (долго),Tampilkan ukuran LFS (lambat)
+Показывать секунды,Tampilkan detik
+Показывать часы в статусе,Tampilkan jam di status
+Поколение ключа             : {},Generasi kunci        : {}
+Git commit hash             : {:016X},Hash commit Git       : {:016X}
+Полная ёмкость     : {} mAh,Kapasitas penuh     : {} mAh
+IavgEmpty            : {:04x},IavgEmpty               : {:04x}
+Пользовательские хранилища,Penyimpanan pengguna
+Предел входного тока            : {} mA,Batas arus masuk             : {} mA
+Предназначение          : {},Tujuan            : {}
+Проверять хэш при установке,Verifikasi hash saat pasang
+Просмотр SD карты,Jelajahi kartu SD
+Просмотр USB носителей,Jelajahi drive USB
+Просмотр раздела SYSTEM,Jelajahi partisi SYSTEM
+Просмотр раздела USER,Jelajahi partisi USER
+Просмотр сети,Jelajahi jaringan
+Просмотр сохранений,Lihat save
+Просмотр тикетов,Lihat ticket
+Просмотр установленных игр,Lihat game terpasang
+Регион                  : {},Region            : {}
+Режим HiZ зарядки       : {},Mode isi HiZ      : {}
+Режим киоска            : {},Mode kiosk        : {}
+Родительский PIN        : {},PIN orang tua     : {}
+Серийный # прочитанный  : {},Nomor seri terbaca: {}
+Серийный # угаданный    : {},Nomor seri tebakan: {}
+Серийный номер        : {},Nomor seri               : {}
+Силовая роль                    : {},Peran daya                   : {}
+QrTable00            : {:04x},QrTable00               : {:04x}
+Смещать курсор после выделения,Pindah kursor setelah memilih
+QrTable10            : {:04x},QrTable10               : {:04x}
+Сожжено предохранителей : {},Fuse terbakar     : {}
+Создавать LFS папку,Buat folder LFS
+QrTable20            : {:04x},QrTable20               : {:04x}
+QrTable30            : {:04x},QrTable30               : {:04x}
+RCOMP0               : {:04x},RCOMP0                  : {:04x}
+Сохранения только в RO режиме,Save hanya baca-saja
+RTC запущены (приблизительно) : {},RTC mulai (perkiraan)         : {}
+Текущая ёмкость                 : {}%,Kapasitas saat ini           : {}%
+Текущая ёмкость    : {} mAh,Kapasitas kini      : {} mAh
+Текущее напряжение : {} mV,Tegangan kini       : {} mV
+Текущий заряд      : {}%,Daya kini           : {}%
+Текущий ток        : {} mA,Arus kini           : {} mA
+Тема отображения,Tema tampilan
+Температура        : {}°C,Suhu                : {}°C
+Температура батареи             : {}°C,Suhu baterai                 : {}°C
+Тип SoC                 : {},Tipe SoC          : {}
+Тип источника питания          : {},Tipe sumber daya           : {}
+Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Alamat MAC Wireless LAN  : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X}
+Форсировано вклчение USB 3.0: {},Paksa aktifkan USB 3.0: {}
+Возраст батареи                 : {}%,Umur baterai                 : {}%
+Предел напряжения заряда батареи: {} mV,Batas tegangan isi baterai   : {} mV
+Средняя температура: {}°C,Suhu rata-rata      : {}°C
+Сумма %% заряд-разряд: {} (~{} 0-100 циклов),Total %% isi-kosong     : {} (~{} siklus 0-100)
+"          Париж, издательство Грассе.", 
+      Название: {}\n      Издатель: {}\n      Версия: ,      Nama: {}\n      Penerbit: {}\n      Versi: 
+Удаление игры ,Menghapus game 
+Удаляется бекап ,Menghapus backup 
+Удалять после установки: ,Hapus setelah pasang    :
+  Автоопределение,  Deteksi otomatis
+Шифрование секции ,Enkripsi seksi 
+Ярлык   : ,Shortcut   : 
+ {} минут, {} menit
+Язык    : ,Bahasa   :
+Путь    : ,Path    : 
+  Жак Руксель. Великолепие навыворот.,Penerbit Negara Bunker «Looking-Glass»
+  Кодировка...,  Encoding...
+  Применить,  Terapkan
+  Редактирование,  Mengedit
+ (по времени игры), (per waktu main)
+ (по названию игры), (per judul game)
+ (по числу запусков), (per jumlah main)
+     {:<10} Шифрование: {} Размер установки: {}{:>10},     {:<10} Enkripsi: {} Ukuran pasang: {}{:>10}
+ [НЕ МОГУ ОТКРЫТЬ ФАЙЛ], [FILE TIDAK BISA DIBUKA]
+Автозапуск FTP: ,Autostart FTP: 
+Автор   : ,Penulis  :
+ {:>5} часа, {:>5} jam
+Базовое хранилище: ,Penyimpanan dasar: 
+ {:>5} часов, {:>5} jam
+ВНИМАНИЕ ,PERINGATAN 
+ВНИМАНИЕ! ,PERINGATAN! 
+ {} в чёрном списке., {} di daftar hitam.
+Версия  : ,Versi    :
+Внимание! ,Peringatan! 
+ {} минута, {} menit
+ {} минуты, {} menit
+Всего освобождено места : ,Total ruang dibebaskan : 
+    {:>2} сек,    {:>2} dtk
+ Закрытие игры, Menutup game
+Выйти из DBI           : ,Keluar DBI              :
+Выключить экран        : ,Matikan layar           :
+ Запуск игры, Jalankan game
+ Логаут пользователя \x1b[36;1m{}\x1b[37;1m, Keluar dari pengguna \x1b[36;1m{}\x1b[37;1m
+ Логин пользователя \x1b[36;1m{}\x1b[37;1m, Nama pengguna \x1b[36;1m{}\x1b[37;1m
+ Переключение на игру, Beralih ke game
+Загружено ,Dimuat 
+ Режим работы изменился: {}, Mode operasi berubah: {}
+ Сброс системных часов, Reset jam sistem
+ Сворачивание игры, Kecilkan game
+Запрос на удаление ,Permintaan hapus 
+ Состояние электропитания изменилось: {}, Status suplai daya berubah: {}
+" и {} новое DLC,"," dan {} DLC baru,"
+"    Великий колдун сказал, что ракеты",Ahli strategi utama mereka menyatakan bahwa
+" и {} новых DLC,"," dan {} DLC baru,"
+Имя     : ,Nama     :
+ сортировка по дате создания, urut per tanggal dibuat
+ сортировка по имени, urut per nama
+ сортировка по имени игры, urut per nama game
+Используется ,Terpakai 
+ сортировка по месту установки, urut per lokasi pasang
+Конвертация в фейковые ,Mengubah jadi palsu 
+ сортировка по общему размеру, urut per ukuran total
+ сортировка по пользователю, urut per pengguna
+ сортировка по порядку игры, urut per urutan game
+Место установки        : ,Lokasi pemasangan       :
+ сортировка по размеру, urut per ukuran
+Название: ,Nama: 
+    Дело здесь в одном из основных,Rahasianya ada pada logika mereka yang dalam:
+Начало установки. Место установки: ,Pemasangan dimulai. Lokasi pemasangan: 
+Невозможно создать выходной zip-файл: ,Gagal membuat file zip keluaran: 
+Неиспользуемый тикет: ,Ticket tak terpakai: 
+   {:>3} мин,   {:>3} mnt
+Общий размер передачи  : ,Total ukuran transfer   :
+Общий размер установки : ,Total ukuran pemasangan :
+Ожидается ,Diharapkan 
+Ожидание включения интерфейса: ,Menunggu antarmuka aktif: 
+Освобождено места в NAND: ,Ruang NAND dibebaskan: 
+Освобождено места на SD : ,Ruang SD dibebaskan : 
+   Получение списка бекапов...   ,   Mengambil daftar backup...   
+DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - Переход к странице... \n\n       L/R - Навигация по главам   \n\n       (-) - Эта подсказка         \n\n       (+) - Меню                  ,DPAD/Stik - Navigasi halaman\n\n     ZR+ZL - Lompat ke halaman...\n\n       L/R - Navigasi bab   \n\n       (-) - Petunjuk ini         \n\n       (+) - Menu                  
+Ошибка чтения регистров max17050: ,Error membaca register max17050: 
+Ошибка чтения сохранённых параметров контроллера: ,Error membaca parameter kontroler tersimpan: 
+   Получение списка бекапов...{}/{}    ,   Mengambil daftar backup...{}/{}    
+Предупреждения: ,Peringatan: 
+"LFS мод.: Присутствует, Размер: ","Mod LFS  : Ada, Ukuran:"
+Пропускаем файл до начала secure раздела ,Melewati file ke awal seksi secure 
+Размер  : ,Ukuran: 
+Сброс требуемой версии к ,Reset versi yang dibutuhkan ke 
+   Получение списка сохранений...   ,   Mengambil daftar save...   
+Скорость USB интерфейса: ,Kecepatan antarmuka USB: 
+Создан zip-файл: ,File zip dibuat: 
+Создание бекапа сохранения ,Membuat backup save 
+Создание каталога: ,Membuat direktori: 
+Создание объекта: ,Membuat objek: 
+Создание фейковой записи... ,Membuat entri palsu... 
+Создаётся MTP хранилище: ,Membuat penyimpanan MTP: 
+Статистика игры ,Statistik game 
+Строка поиска: ,String pencarian: 
+Не проверять место     : ,Jangan cek ruang        :
+Проверять хеш-сумму NCA: ,Verifikasi hash NCA     :
+Патчить имена (HOS 21+): ,Patch nama (HOS 21+)    :
+Занулять мастерключ    : ,Reset masterkey         :
+Патчить запись видео   : ,Patch rekam video       :
+Патчить скриншоты      : ,Patch screenshot        :
+Игра использует SDK {},Game memakai SDK {}
+Удалить старые обновления игр,Hapus update game lama
+Удалить потерянный контент с SD,Hapus konten terlantar dari SD
+Удалить потерянный контент из NAND,Hapus konten terlantar dari NAND
+Удалить плейсхолдеры с SD,Hapus placeholder dari SD
+Удалить плейсхолдеры из NAND,Hapus placeholder dari NAND
+Удалить неиспользуемые тикеты,Hapus ticket tak terpakai
+Починить тикеты с ошибками дампа,Perbaiki ticket dengan error dump
+Удалить скачанное обновление системы,Hapus update sistem terunduh
+Очистить папку erpt_reports,Bersihkan folder erpt_reports
+Очистить кеш тикетов,Bersihkan cache ticket
+Очистить /atmosphere/contents,Bersihkan /atmosphere/contents
+Удалить сохранения удалённых пользователей,Hapus save pengguna terhapus
+Дата производства: {:s},Tanggal produksi   : {:s}
+Ник: {},Nama: {}
+Установить обновления из текущей папки,Pasang update dari folder ini
+Патчить требование NNID: ,Patch syarat NNID       :
+Выполнить выбранные действия,Jalankan aksi yang dipilih
+CID: {:s},CID                : {:s}
+TitleId : {} BID: {},TitleId  : {} BID: {}
+"Meta SDK: {},  Program SDK: {}","Meta SDK : {},  SDK Program: {}"
+"Внимание!!! Включение следующих опций приведет к тому,",Peringatan!!! Mengaktifkan opsi berikut akan membuat
+что установленные NCA файлы будут отличаться от исходных:,file NCA yang terpasang berbeda dari aslinya:
+Включение синхронизации времени по сети...,Mengaktifkan sinkronisasi waktu jaringan…
+ Да ,Ya 
+Нет , Tidak 
+Это действие будет нельзя отменить,Tindakan ini tidak bisa dibatalkan
+Да,Ya
+Произошла ошибка: ,Terjadi error: 
+В файле /switch/prod.keys отсутствуют необходимые ключи.,File /switch/prod.keys kekurangan kunci yang dibutuhkan.
+Часть функций программы будет недоступна.,Sebagian fungsi program tidak akan tersedia.
+Перегрузитесь в Hekate и используйте Lockpick_RCM.bin пейлоад,Reboot ke Hekate dan pakai payload Lockpick_RCM.bin
+для дампа ключей из SysNAND.,untuk mendump kunci dari SysNAND.
+Проверять хэш при установке    : ,Verifikasi hash pasang    : 
+Просмотр раздела USER          : ,Jelajahi partisi USER          : 
+Тема отображения               : ,Tema tampilan                : 
+Температура    : {}$°$C,Suhu                : {}°C
+Температура     : {}$°$C,Suhu                : {}°C
+Температура      : {}$°$C,Suhu                : {}°C
+Температура       : {}$°$C,Suhu                : {}°C
+Температура        : {}$°$C,Suhu                : {}°C
+Температура         : {}$°$C,Suhu                : {}°C
+Температура          : {}$°$C,Suhu                : {}°C
+Температура           : {}$°$C,Suhu                : {}°C
+Температура            : {}$°$C,Suhu                : {}°C
+Температура             : {}$°$C,Suhu                : {}°C
+Температура              : {}$°$C,Suhu                : {}°C
+Срепняя температура: {}$°$C,Suhu rata-rata      : {}°C
+Средняя температура: {}$°$C,Suhu rata-rata      : {}°C
+Температура батареи        : {}$°$C,Suhu baterai                 : {}°C
+Температура батареи         : {}$°$C,Suhu baterai                 : {}°C
+Температура батареи          : {}$°$C,Suhu baterai                 : {}°C
+Температура батареи           : {}$°$C,Suhu baterai                 : {}°C
+Температура батареи            : {}$°$C,Suhu baterai                 : {}°C
+Температура батареи             : {}$°$C,Suhu baterai                 : {}°C
+Температура батареи              : {}$°$C,Suhu baterai                 : {}°C
+Температура батареи               : {}$°$C,Suhu baterai                 : {}°C
+Температура батареи                : {}$°$C,Suhu baterai                 : {}°C
+Температура батареи                 : {}$°$C,Suhu baterai                 : {}°C
+Температура батареи                  : {}$°$C,Suhu baterai                 : {}°C
+Температура    : {}°C,Suhu                : {}°C
+Температура     : {}°C,Suhu                : {}°C
+Температура      : {}°C,Suhu                : {}°C
+Температура       : {}°C,Suhu                : {}°C
+Температура         : {}°C,Suhu                : {}°C
+Температура          : {}°C,Suhu                : {}°C
+Температура           : {}°C,Suhu                : {}°C
+Температура            : {}°C,Suhu                : {}°C
+Температура             : {}°C,Suhu                : {}°C
+Температура              : {}°C,Suhu                : {}°C
+Температура батареи        : {}°C,Suhu baterai                 : {}°C
+Температура батареи         : {}°C,Suhu baterai                 : {}°C
+Температура батареи          : {}°C,Suhu baterai                 : {}°C
+Температура батареи           : {}°C,Suhu baterai                 : {}°C
+Температура батареи            : {}°C,Suhu baterai                 : {}°C
+Температура батареи              : {}°C,Suhu baterai                 : {}°C
+Температура батареи               : {}°C,Suhu baterai                 : {}°C
+Температура батареи                : {}°C,Suhu baterai                 : {}°C
+Температура батареи                 : {}°C,Suhu baterai                 : {}°C
+Температура батареи                  : {}°C,Suhu baterai                 : {}°C
+Срепняя температура: {}°C,Suhu rata-rata      : {}°C
