@@ -1613,9 +1613,9 @@ Added complete Indonesian (`id`) translation contributed by [@aldokeita](https:/
 
 ### ⚠️ Known Issues
 - ~~**Hardcoded Strings**: Some interface elements are hardcoded within the DBI binary and cannot be localized via `translation.bin`. Confirmation prompts may still display in Russian: **Да** (Yes) and **Нет** (No).~~ ✅ Fixed!
-- **Shadok Fables**: Satirical blocks use intentional adapted parody localization (not literal DBI Shadok translation) via `python -m src.main shadok`.
+- ~~**Shadok Fables**: Satirical blocks use intentional adapted parody localization (not literal DBI Shadok translation) via `python -m src.main shadok`.~~ ✅ Fixed!
 - ~~**System Language Names**: Names of languages in the DBI settings menu are hardcoded in the binary.~~ ✅ Fixed!
-- **Launcher Compatibility**: Translations have been tested exclusively on [Kefir](https://github.com/rashevskyv/kefir). On Kefir, the translation works successfully regardless of whether DBI is launched via [Sphaira](https://github.com/ITotalJustice/sphaira) or [nx-hbmenu](https://github.com/switchbrew/nx-hbmenu/releases/). If you experience issues with translations not applying on other custom firmwares, please refer to [#12](https://github.com/rashevskyv/DBIPatcher/issues/12).
+- ~~**Launcher Compatibility**: Translations have been tested exclusively on [Kefir](https://github.com/rashevskyv/kefir). On Kefir, the translation works successfully regardless of whether DBI is launched via [Sphaira](https://github.com/ITotalJustice/sphaira) or [nx-hbmenu](https://github.com/switchbrew/nx-hbmenu/releases/). If you experience issues with translations not applying on other custom firmwares, please refer to [#12](https://github.com/rashevskyv/DBIPatcher/issues/12).~~ ✅ Fixed!
 
 ### 📝 Translation Coverage
 This community translation set is still evolving. Some strings may remain untranslated and appear in the original DBI language or use an English fallback. Please report missing or incorrect strings in the project issues.
