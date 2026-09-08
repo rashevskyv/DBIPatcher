@@ -236,4 +236,11 @@ dbi_patcher/
 ### Комміти:
 - `feat: integrate Indonesian localization from PR #24 and update release notes (v0.0.91)`
 
+## [2026-09-08] Інтеграція вихідних рядків DBI 905 (PR #26), синхронізація та переклад (v0.0.93)
 
+### Виконані дії:
+1. **Інтеграція PR #26**: Прийнято та підтягнуто PR #26 від @aldokeita з 6 вихідними рядками у `data/ua.csv`.
+2. **Синхронізація словника**: Виконано `python -m src.main sync`. Додано 6 рядків у `data/dictionary.xlsx`, загальна кількість зросла до 1294, для `ua` значення встановлено з `data/ua.csv`.
+3. **AI-переклад**: Виконано `python -m src.main translate` через Web2API (`gemini-3.6-flash`) з паралельною чергою воркерів. Перекладено всі 138 клітинок для всіх 24 мов.
+4. **Валідація та збірка**: Виконано `python -m src.main validate` (30264 перевірок без помилок у загальній таблиці), експортовано всі CSV (`python -m src.main export`) та успішно скомпільовано 24 бінарники `translation_*.bin`.
+5. **Тестування**: Оновлено тести `tests/test_temperature_aliases_and_sync.py` та `tests/test_indonesian_translation.py` для 1294 рядків і версії 0.0.93. Всі 112 тестів успішно пройдено паралельно (`pytest -n auto`).
