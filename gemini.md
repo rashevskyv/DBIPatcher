@@ -256,3 +256,7 @@ dbi_patcher/
 3. **Структура `dist/`**: Виконано `python -m src.main dist` для генерації структури папок для всіх 24 мов.
 4. **Версіонування**: Ітеровано версію метаданих `data/dictionary.xlsx` до `0.0.94`, оновлено тест `tests/test_temperature_aliases_and_sync.py`.
 5. **Тестування**: Всі 112 тестів успішно пройдено паралельно (`pytest -n auto`).
+6. **Деплой**: Виконано `python -m src.main deploy`. Всі 24 бінарники `translation_*.bin` та `DBI.nro` оновлено в GitHub Release 905 з актуалізованим описом та плашкою. Файли скопійовано у цільові каталоги, зміни запушено у `master`.
+
+### Комміти:
+- `docs: update deploy release notes and credits for PR #26, bump version to v0.0.94`

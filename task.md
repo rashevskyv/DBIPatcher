@@ -4,6 +4,7 @@
   - [x] Виконати `python -m src.main dist` для структурування всіх мовних папок з `DBI.nro` та `translation.bin`.
   - [x] Ітерувати версію словника до `0.0.94` та оновити тести `tests/test_temperature_aliases_and_sync.py`.
   - [x] Прогнати тести паралельно (`pytest -n auto`).
+  - [x] Задеплоїти оновлення на GitHub Release 905 (`python -m src.main deploy`) та запушити зміни в `origin/master`.
 
 - [x] Завершено: інтеграція відсутніх рядків DBI 905 (PR #26), синхронізація, AI-переклад та збірка (v0.0.93).
   - [x] Прийняти та підтягнути PR #26 (`data/ua.csv`: 6 нових вихідних рядків від @aldokeita).
