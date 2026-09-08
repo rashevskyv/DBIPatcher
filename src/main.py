@@ -1600,6 +1600,14 @@ The bundled `DBI.nro` repairs the embedded glyphs `Є/є`, `І/і`, and `Ї/ї` 
 ### 🌐 Indonesian Localization
 Added complete Indonesian (`id`) translation contributed by [@aldokeita](https://github.com/aldokeita) in [#24](https://github.com/rashevskyv/DBIPatcher/pull/24). Download **`translation_id.bin`** and rename it to `translation.bin`.
 
+### 🧩 Missing DBI 905 Strings Added (All Languages)
+Added 6 missing source strings across all 24 languages, contributed by [@aldokeita](https://github.com/aldokeita) in [#26](https://github.com/rashevskyv/DBIPatcher/pull/26) based on on-device analysis in [#25](https://github.com/rashevskyv/DBIPatcher/issues/25):
+- ` Новый DLC ` (update check entries, preserving leading space for exact prefix match)
+- `Записано: ` & `МБ/сек)` (install summary and transfer speed)
+- `Игра использует мастер-ключ ` (post-install information)
+- `Android extensions: ` (MTP responder)
+- ` в чёрном списке.` (update check summary)
+
 ### 📦 Supported Languages
 {langs_list}
 
@@ -1623,7 +1631,7 @@ This community translation set is still evolving. Some strings may remain untran
 ### 🙏 Credits
 - [Bohdan Buinich](https://github.com/BohdanBuinich) — creator of the earlier `dbi-i18n` runtime-translation approach, compatible table format, and Cyrillic font-glyph repair approach.
 - [0xroast](https://github.com/0xroast) — author of `dbi-translate`, the pinned DBI 905 runtime patcher used for this release.
-- [aldokeita](https://github.com/aldokeita) — Indonesian translation ([#24](https://github.com/rashevskyv/DBIPatcher/pull/24)).
+- [aldokeita](https://github.com/aldokeita) — Indonesian translation ([#24](https://github.com/rashevskyv/DBIPatcher/pull/24)) and missing DBI 905 source strings ([#26](https://github.com/rashevskyv/DBIPatcher/pull/26)).
 
 ***
 *Note: This NRO is a modified version of the [original DBI](https://github.com/rashevskyv/dbi/releases/tag/{dbi_ver}ru) optimized for these translations.*
@@ -1661,7 +1669,7 @@ This community translation set is still evolving. Some strings may remain untran
         kyiv_time = datetime.now(kyiv_tz).strftime("%Y-%m-%d %H:%M")
 
         update_notice = f"""> [!WARNING]
-> 🔄 **Release updated on {kyiv_time} (Kyiv time).** Added **Indonesian (id)** localization (`translation_id.bin`) contributed by [@aldokeita](https://github.com/aldokeita) in [#24](https://github.com/rashevskyv/DBIPatcher/pull/24).
+> 🔄 **Release updated on {kyiv_time} (Kyiv time).** Added 6 missing DBI 905 source strings across install summary, master key, MTP, and update checks for all 24 languages (contributed by [@aldokeita](https://github.com/aldokeita) in [#26](https://github.com/rashevskyv/DBIPatcher/pull/26) based on analysis in [#25](https://github.com/rashevskyv/DBIPatcher/issues/25)). Please redownload both `DBI.nro` and `translation_<lang>.bin` for your language.
 """
         # Insert update notice after the badge line
         badge_line = f"![GitHub release (tag)](https://img.shields.io/github/downloads/rashevskyv/DBIPatcher/{dbi_ver}/total)"

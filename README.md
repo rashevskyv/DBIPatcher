@@ -135,6 +135,7 @@ Spanish (Latin America) contributions should follow the
 - **DBI Creator**: [duckbill](https://github.com/rashevskyv/dbi)
 - **Localization Engine**: [tg:@buinich_bohdan](https://github.com/rashevskyv)
 - **Assembly Patcher**: [0xroast/dbi-translate](https://github.com/0xroast/dbi-translate)
+- **Contributors**: [aldokeita](https://github.com/aldokeita) (Indonesian localization in [#24](https://github.com/rashevskyv/DBIPatcher/pull/24), missing DBI 905 source strings in [#26](https://github.com/rashevskyv/DBIPatcher/pull/26))
 - **Special Thanks**: Claude 3.5 Sonnet for the heavy lifting.
 
 > *Created with ❤️ for the Switch community.*

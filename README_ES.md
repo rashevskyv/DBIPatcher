@@ -128,6 +128,8 @@ Las contribuciones para español latinoamericano deben seguir la [guía de estil
 
 - **Creador de DBI**: [duckbill](https://github.com/rashevskyv/dbi).
 - **Motor de localización**: [tg:@buinich_bohdan](https://github.com/rashevskyv).
+- **Parcheador de ensamblador**: [0xroast/dbi-translate](https://github.com/0xroast/dbi-translate).
+- **Colaboradores**: [aldokeita](https://github.com/aldokeita) (localización al indonesio en [#24](https://github.com/rashevskyv/DBIPatcher/pull/24), cadenas de origen faltantes de DBI 905 en [#26](https://github.com/rashevskyv/DBIPatcher/pull/26)).
 - **Agradecimiento especial**: Claude 3.5 Sonnet por asistir en las traducciones.
 
 > *Creado con ❤️ para la comunidad de Nintendo Switch.*

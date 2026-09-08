@@ -244,3 +244,15 @@ dbi_patcher/
 3. **AI-переклад**: Виконано `python -m src.main translate` через Web2API (`gemini-3.6-flash`) з паралельною чергою воркерів. Перекладено всі 138 клітинок для всіх 24 мов.
 4. **Валідація та збірка**: Виконано `python -m src.main validate` (30264 перевірок без помилок у загальній таблиці), експортовано всі CSV (`python -m src.main export`) та успішно скомпільовано 24 бінарники `translation_*.bin`.
 5. **Тестування**: Оновлено тести `tests/test_temperature_aliases_and_sync.py` та `tests/test_indonesian_translation.py` для 1294 рядків і версії 0.0.93. Всі 112 тестів успішно пройдено паралельно (`pytest -n auto`).
+
+### Комміти:
+- `feat: integrate missing source strings from PR #26, sync, translate and rebuild (v0.0.93)`
+
+## [2026-09-08] Оновлення опису релізу під PR #26, структура dist та підготовка деплою (v0.0.94)
+
+### Виконані дії:
+1. **Шаблон деплою (`src/main.py`)**: Оновлено `release_body`, `update_notice` та список подяк `Credits` для відображення доданих 6 рядків DBI 905, посилання на PR #26 та Issue #25, і подяки автору @aldokeita.
+2. **Документація**: Додано внесок @aldokeita у блок Credits файлів `README.md` та `README_ES.md`.
+3. **Структура `dist/`**: Виконано `python -m src.main dist` для генерації структури папок для всіх 24 мов.
+4. **Версіонування**: Ітеровано версію метаданих `data/dictionary.xlsx` до `0.0.94`, оновлено тест `tests/test_temperature_aliases_and_sync.py`.
+5. **Тестування**: Всі 112 тестів успішно пройдено паралельно (`pytest -n auto`).
