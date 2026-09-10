@@ -1842,10 +1842,12 @@ Added 6 missing source strings across all 24 languages, contributed by [@aldokei
 - `Android extensions: ` (MTP responder)
 - ` в чёрном списке.` (update check summary)
 
-### 🎨 Colored Status Lines & 256-Byte Gate (All Languages)
-Fixed untranslated colored status lines and expanded the `make_pfxsfx` gate from 128 to 256 bytes ([#25](https://github.com/rashevskyv/DBIPatcher/issues/25)):
-- Added exact color-prefixed status entries with ANSI escape compensation for skipped control bytes (`Установка игры завершена`, `Тикет исправлен`, `[ПЕРЕДАЧА OK]`, `[ПЕРЕДАЧА ПРЕРВАНА]`, `[ПОДПИСЬ: ...]`).
-- Expanded assembly line length gate in `patch_dbi.py` from 128 to 256 bytes, enabling translation of 130+ byte log lines containing 24-bit RGB ANSI codes.
+### 🎨 Installation Status Lines & 256-Byte Gate (All Languages, [#25](https://github.com/rashevskyv/DBIPatcher/issues/25))
+Comprehensive fix for installation status logging and signature verification across all 24 languages:
+- **Exhaustive Status Line Suffixes**: Resolved translation leakage where installation logs showed localized signatures (`[SIGNATURE: OK]`) but left transfer status in Russian (`[ПЕРЕДАЧА OK]`). Added 99 complete suffix combinations covering plain-text transfer status prefixes, single/double space separators, ANSI color resets (`\x1b[37;1m`), and yellow DBI signature color (`\x1b[33;1m`).
+- **Fixed Double Escape Artifact**: Removed redundant escape token in entry 1298, preventing raw ANSI escape codes (`[32;1m`) from printing on the console screen.
+- **256-Byte Line Length Gate**: Expanded assembly line gate in `patch_dbi.py` (`cmp x20, #0x100`) from 128 to 256 bytes in `DBI.nro`, allowing long log lines containing 24-bit RGB ANSI color sequences to be translated without truncation.
+- **Exact Color-Prefixed Status Entries**: Added exact color-prefixed entries with ANSI escape compensation for skipped control bytes (`Установка игры завершена`, `Тикет исправлен`, `[ПЕРЕДАЧА OK]`, `[ПЕРЕДАЧА ПРЕРВАНА]`, `[ПОДПИСЬ: ...]`).
 
 ### 📦 Supported Languages
 {langs_list}
@@ -1917,7 +1919,7 @@ This community translation set is still evolving. Some strings may remain untran
         kyiv_time = datetime.now(kyiv_tz).strftime("%Y-%m-%d %H:%M")
 
         update_notice = f"""> [!WARNING]
-> 🔄 **Release updated on {kyiv_time} (Kyiv time).** Added 6 missing DBI 905 source strings across install summary, master key, MTP, and update checks for all 24 languages (contributed by [@aldokeita](https://github.com/aldokeita) in [#26](https://github.com/rashevskyv/DBIPatcher/pull/26) based on analysis in [#25](https://github.com/rashevskyv/DBIPatcher/issues/25)). Please redownload both `DBI.nro` and `translation_<lang>.bin` for your language.
+> 🔄 **Release updated on {kyiv_time} (Kyiv time) (v{patcher_ver}).** Fixed installation log status line translation (Transfer & Signature, [#25](https://github.com/rashevskyv/DBIPatcher/issues/25)) with 99 comprehensive compound suffixes, expanded assembly line length gate to 256 bytes, and resolved double-ESC display artifacts. Please redownload both `DBI.nro` and `translation_<lang>.bin` for your language.
 """
         # Insert update notice after the badge line
         badge_line = f"![GitHub release (tag)](https://img.shields.io/github/downloads/rashevskyv/DBIPatcher/{dbi_ver}/total)"
