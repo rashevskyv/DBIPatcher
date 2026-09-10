@@ -1293,3 +1293,139 @@ TitleId : {} BID: {},Başlık Kimliği : {} TEKLİF: {}
 Android extensions: ,Android extensions: 
  в чёрном списке., kara listede.
 МБ/сек),MB/s)
+[32;1mУстановка игры завершена\x1b[37;1m,\x1b[32;1mOyunun kurulumu tamamlandı\x1b[37;1m
+[32;1mТикет исправлен\x1b[37;1m,\x1b[32;1mBilet düzeltildi\x1b[37;1m
+[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m,[32;1m[AKTARIM TAMAM]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m
+\x1b[31;1m[ПЕРЕДАЧА ПРЕРВАНА]\x1b[37;1m,\x1b[31;1m[AKTARIM KESİLDİ]\x1b[37;1m
+[ПОДПИСЬ: Поддельная]\x1b[37;1m,[İMZA: Sahte]\x1b[37;1m
+[ПОДПИСЬ: OK]\x1b[37;1m,[İMZA: Tamam]\x1b[37;1m
+[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[İMZA: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[32;1m[İMZA: Tamam]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[38;2;255;128;0m[İMZA: Sahte]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[32;1m[İMZA: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: OK],[AKTARIM TAMAM] [İMZA: Tamam]
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: Поддельная],[AKTARIM TAMAM] [İMZA: Sahte]
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: XCI➡NSP],[AKTARIM TAMAM] [İMZA: XCI➡NSP]
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: DBI],[AKTARIM TAMAM] [İMZA: DBI]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: OK],[AKTARIM TAMAM][İMZA: Tamam]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: Поддельная],[AKTARIM TAMAM][İMZA: Sahte]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: XCI➡NSP],[AKTARIM TAMAM][İMZA: XCI➡NSP]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: DBI],[AKTARIM TAMAM][İMZA: DBI]
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM] \x1b[32;1m[İMZA: Tamam]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM] \x1b[38;2;255;128;0m[İMZA: Sahte]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM] \x1b[32;1m[İMZA: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM] \x1b[32;1m[İMZA: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m \x1b[32;1m[İMZA: Tamam]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m \x1b[38;2;255;128;0m[İMZA: Sahte]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m \x1b[32;1m[İMZA: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m \x1b[32;1m[İMZA: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m\x1b[32;1m[İMZA: Tamam]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m\x1b[38;2;255;128;0m[İMZA: Sahte]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m\x1b[32;1m[İMZA: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m\x1b[32;1m[İMZA: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[32;1m[İMZA: DBI]\x1b[37;1m
+\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[İMZA: Tamam]\x1b[37;1m
+\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[38;2;255;128;0m[İMZA: Sahte]\x1b[37;1m
+\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[İMZA: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[İMZA: DBI]\x1b[37;1m
+[ПОДПИСЬ: DBI]\x1b[37;1m,[İMZA: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m  \x1b[32;1m[İMZA: Tamam]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]  \x1b[32;1m[İMZA: Tamam]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m \x1b[32;1m[İMZA: Tamam]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m  \x1b[32;1m[İMZA: Tamam]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m\x1b[32;1m[İMZA: Tamam]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[AKTARIM TAMAM] \x1b[32;1m[İMZA: Tamam]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[AKTARIM TAMAM]  \x1b[32;1m[İMZA: Tamam]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[AKTARIM TAMAM]\x1b[32;1m[İMZA: Tamam]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m [İMZA: Tamam]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m  [İMZA: Tamam]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m[İMZA: Tamam]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM] [İMZA: Tamam]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]  [İMZA: Tamam]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM][İMZA: Tamam]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: OK]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m [İMZA: Tamam]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: OK]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m  [İMZA: Tamam]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: OK]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m[İMZA: Tamam]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: OK]\x1b[37;1m,[AKTARIM TAMAM] [İMZA: Tamam]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: OK]\x1b[37;1m,[AKTARIM TAMAM]  [İMZA: Tamam]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: OK],[AKTARIM TAMAM]  [İMZA: Tamam]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: OK]\x1b[37;1m,[AKTARIM TAMAM][İMZA: Tamam]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m  \x1b[38;2;255;128;0m[İMZA: Sahte]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]  \x1b[38;2;255;128;0m[İMZA: Sahte]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m \x1b[38;2;255;128;0m[İMZA: Sahte]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m  \x1b[38;2;255;128;0m[İMZA: Sahte]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m\x1b[38;2;255;128;0m[İMZA: Sahte]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[AKTARIM TAMAM] \x1b[38;2;255;128;0m[İMZA: Sahte]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[AKTARIM TAMAM]  \x1b[38;2;255;128;0m[İMZA: Sahte]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[AKTARIM TAMAM]\x1b[38;2;255;128;0m[İMZA: Sahte]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m [İMZA: Sahte]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m  [İMZA: Sahte]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m[İMZA: Sahte]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM] [İMZA: Sahte]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]  [İMZA: Sahte]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM][İMZA: Sahte]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: Поддельная]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m [İMZA: Sahte]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: Поддельная]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m  [İMZA: Sahte]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m[İMZA: Sahte]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: Поддельная]\x1b[37;1m,[AKTARIM TAMAM] [İMZA: Sahte]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: Поддельная]\x1b[37;1m,[AKTARIM TAMAM]  [İMZA: Sahte]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: Поддельная],[AKTARIM TAMAM]  [İMZA: Sahte]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: Поддельная]\x1b[37;1m,[AKTARIM TAMAM][İMZA: Sahte]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m  \x1b[32;1m[İMZA: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]  \x1b[32;1m[İMZA: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m \x1b[32;1m[İMZA: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m  \x1b[32;1m[İMZA: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m\x1b[32;1m[İMZA: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[AKTARIM TAMAM] \x1b[32;1m[İMZA: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[AKTARIM TAMAM]  \x1b[32;1m[İMZA: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[AKTARIM TAMAM]\x1b[32;1m[İMZA: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m [İMZA: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m  [İMZA: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m[İMZA: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM] [İMZA: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]  [İMZA: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM][İMZA: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m [İMZA: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m  [İMZA: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m[İMZA: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[AKTARIM TAMAM] [İMZA: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[AKTARIM TAMAM]  [İMZA: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: XCI➡NSP],[AKTARIM TAMAM]  [İMZA: XCI➡NSP]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[AKTARIM TAMAM][İMZA: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m \x1b[33;1m[İMZA: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m  \x1b[33;1m[İMZA: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m\x1b[33;1m[İMZA: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM] \x1b[33;1m[İMZA: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]  \x1b[33;1m[İMZA: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[33;1m[İMZA: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m \x1b[33;1m[İMZA: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m  \x1b[33;1m[İMZA: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m\x1b[33;1m[İMZA: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[AKTARIM TAMAM] \x1b[33;1m[İMZA: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[AKTARIM TAMAM]  \x1b[33;1m[İMZA: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[AKTARIM TAMAM]\x1b[33;1m[İMZA: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m  \x1b[32;1m[İMZA: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]  \x1b[32;1m[İMZA: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m \x1b[32;1m[İMZA: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m  \x1b[32;1m[İMZA: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m\x1b[32;1m[İMZA: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[AKTARIM TAMAM] \x1b[32;1m[İMZA: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[AKTARIM TAMAM]  \x1b[32;1m[İMZA: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[AKTARIM TAMAM]\x1b[32;1m[İMZA: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m [İMZA: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m  [İMZA: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]\x1b[37;1m[İMZA: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM] [İMZA: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM]  [İMZA: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[AKTARIM TAMAM][İMZA: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: DBI]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m [İMZA: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: DBI]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m  [İMZA: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m[İMZA: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: DBI]\x1b[37;1m,[AKTARIM TAMAM] [İMZA: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: DBI]\x1b[37;1m,[AKTARIM TAMAM]  [İMZA: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: DBI],[AKTARIM TAMAM]  [İMZA: DBI]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: DBI]\x1b[37;1m,[AKTARIM TAMAM][İMZA: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m,[AKTARIM TAMAM]\x1b[37;1m
+[ПЕРЕДАЧА ПРЕРВАНА]\x1b[37;1m,[AKTARIM KESİLDİ]\x1b[37;1m
+\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[33;1m[İMZA: DBI]\x1b[37;1m

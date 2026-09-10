@@ -1842,6 +1842,11 @@ Added 6 missing source strings across all 24 languages, contributed by [@aldokei
 - `Android extensions: ` (MTP responder)
 - ` в чёрном списке.` (update check summary)
 
+### 🎨 Colored Status Lines & 256-Byte Gate (All Languages)
+Fixed untranslated colored status lines and expanded the `make_pfxsfx` gate from 128 to 256 bytes ([#25](https://github.com/rashevskyv/DBIPatcher/issues/25)):
+- Added exact color-prefixed status entries with ANSI escape compensation for skipped control bytes (`Установка игры завершена`, `Тикет исправлен`, `[ПЕРЕДАЧА OK]`, `[ПЕРЕДАЧА ПРЕРВАНА]`, `[ПОДПИСЬ: ...]`).
+- Expanded assembly line length gate in `patch_dbi.py` from 128 to 256 bytes, enabling translation of 130+ byte log lines containing 24-bit RGB ANSI codes.
+
 ### 📦 Supported Languages
 {langs_list}
 
@@ -1865,7 +1870,7 @@ This community translation set is still evolving. Some strings may remain untran
 ### 🙏 Credits
 - [Bohdan Buinich](https://github.com/BohdanBuinich) — creator of the earlier `dbi-i18n` runtime-translation approach, compatible table format, and Cyrillic font-glyph repair approach.
 - [0xroast](https://github.com/0xroast) — author of `dbi-translate`, the pinned DBI 905 runtime patcher used for this release.
-- [aldokeita](https://github.com/aldokeita) — Indonesian translation ([#24](https://github.com/rashevskyv/DBIPatcher/pull/24)) and missing DBI 905 source strings ([#26](https://github.com/rashevskyv/DBIPatcher/pull/26)).
+- [aldokeita](https://github.com/aldokeita) — Indonesian translation ([#24](https://github.com/rashevskyv/DBIPatcher/pull/24)), missing DBI 905 source strings ([#26](https://github.com/rashevskyv/DBIPatcher/pull/26)), and colored status lines / gate research ([#25](https://github.com/rashevskyv/DBIPatcher/issues/25)).
 
 ***
 *Note: This NRO is a modified version of the [original DBI](https://github.com/rashevskyv/dbi/releases/tag/{dbi_ver}ru) optimized for these translations.*

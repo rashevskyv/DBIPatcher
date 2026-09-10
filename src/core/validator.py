@@ -36,14 +36,31 @@ class Validator:
         return None
 
     def check_tokens(self, original, translation):
-        """Checks if internal tokens like [[LF]], [[TAB]] are preserved."""
+        """Checks if internal tokens like [[LF]], [[TAB]], [[ESC]] are preserved."""
         pattern = r"\[\[[A-Z]+\]\]"
         orig_tokens = re.findall(pattern, original)
         trans_tokens = re.findall(pattern, translation)
         
-        if sorted(orig_tokens) != sorted(trans_tokens):
-            return f"Token mismatch: expected {orig_tokens}, found {trans_tokens}"
-        return None
+        if sorted(orig_tokens) == sorted(trans_tokens):
+            return None
+
+        # Handle legitimate DBI exact ANSI-status asymmetry:
+        # DBI lead-control skip strips the initial \x1b (<0x20). An exact lookup
+        # does not restore it, so the dictionary translation must carry a leading
+        # [[ESC]] while the original lookup key starts bare with "[...m".
+        if (
+            re.match(r"^\[\d+(?:;\d+)*m", original)
+            and translation.startswith("[[ESC]][")
+            and len(trans_tokens) == len(orig_tokens) + 1
+        ):
+            trans_copy = list(trans_tokens)
+            if "[[ESC]]" in trans_copy:
+                trans_copy.remove("[[ESC]]")
+                if sorted(orig_tokens) == sorted(trans_copy):
+                    return None
+
+        return f"Token mismatch: expected {orig_tokens}, found {trans_tokens}"
+
 
     def check_colon(self, original, translation):
         """Checks if colon presence is preserved (ignoring colons inside format specifiers)."""

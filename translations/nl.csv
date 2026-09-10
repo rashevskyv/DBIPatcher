@@ -1293,3 +1293,139 @@ TitleId : {} BID: {},TitleId   : {} BID: {}
 Android extensions: ,Android extensions: 
  в чёрном списке., op de zwarte lijst.
 МБ/сек),MB/s)
+[32;1mУстановка игры завершена\x1b[37;1m,\x1b[32;1mInstallatie van de game voltooid\x1b[37;1m
+[32;1mТикет исправлен\x1b[37;1m,\x1b[32;1mTicket opgelost\x1b[37;1m
+[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m,[32;1m[OVERDRACHT OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m
+\x1b[31;1m[ПЕРЕДАЧА ПРЕРВАНА]\x1b[37;1m,\x1b[31;1m[OVERDRACHT ONDERBROKEN]\x1b[37;1m
+[ПОДПИСЬ: Поддельная]\x1b[37;1m,[HANDTEKENING: Vals]\x1b[37;1m
+[ПОДПИСЬ: OK]\x1b[37;1m,[HANDTEKENING: OK]\x1b[37;1m
+[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[HANDTEKENING: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[32;1m[HANDTEKENING: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[38;2;255;128;0m[HANDTEKENING: Vals]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[32;1m[HANDTEKENING: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: OK],[OVERDRACHT OK] [HANDTEKENING: OK]
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: Поддельная],[OVERDRACHT OK] [HANDTEKENING: Vals]
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: XCI➡NSP],[OVERDRACHT OK] [HANDTEKENING: XCI➡NSP]
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: DBI],[OVERDRACHT OK] [HANDTEKENING: DBI]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: OK],[OVERDRACHT OK][HANDTEKENING: OK]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: Поддельная],[OVERDRACHT OK][HANDTEKENING: Vals]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: XCI➡NSP],[OVERDRACHT OK][HANDTEKENING: XCI➡NSP]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: DBI],[OVERDRACHT OK][HANDTEKENING: DBI]
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK] \x1b[32;1m[HANDTEKENING: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK] \x1b[38;2;255;128;0m[HANDTEKENING: Vals]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK] \x1b[32;1m[HANDTEKENING: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK] \x1b[32;1m[HANDTEKENING: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m \x1b[32;1m[HANDTEKENING: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m \x1b[38;2;255;128;0m[HANDTEKENING: Vals]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m \x1b[32;1m[HANDTEKENING: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m \x1b[32;1m[HANDTEKENING: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m\x1b[32;1m[HANDTEKENING: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m\x1b[38;2;255;128;0m[HANDTEKENING: Vals]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m\x1b[32;1m[HANDTEKENING: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m\x1b[32;1m[HANDTEKENING: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[32;1m[HANDTEKENING: DBI]\x1b[37;1m
+\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[HANDTEKENING: OK]\x1b[37;1m
+\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[38;2;255;128;0m[HANDTEKENING: Vals]\x1b[37;1m
+\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[HANDTEKENING: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[HANDTEKENING: DBI]\x1b[37;1m
+[ПОДПИСЬ: DBI]\x1b[37;1m,[HANDTEKENING: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m  \x1b[32;1m[HANDTEKENING: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]  \x1b[32;1m[HANDTEKENING: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m \x1b[32;1m[HANDTEKENING: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m  \x1b[32;1m[HANDTEKENING: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m\x1b[32;1m[HANDTEKENING: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[OVERDRACHT OK] \x1b[32;1m[HANDTEKENING: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[OVERDRACHT OK]  \x1b[32;1m[HANDTEKENING: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[OVERDRACHT OK]\x1b[32;1m[HANDTEKENING: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m [HANDTEKENING: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m  [HANDTEKENING: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m[HANDTEKENING: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK] [HANDTEKENING: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]  [HANDTEKENING: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK][HANDTEKENING: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: OK]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m [HANDTEKENING: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: OK]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m  [HANDTEKENING: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: OK]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m[HANDTEKENING: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: OK]\x1b[37;1m,[OVERDRACHT OK] [HANDTEKENING: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: OK]\x1b[37;1m,[OVERDRACHT OK]  [HANDTEKENING: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: OK],[OVERDRACHT OK]  [HANDTEKENING: OK]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: OK]\x1b[37;1m,[OVERDRACHT OK][HANDTEKENING: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m  \x1b[38;2;255;128;0m[HANDTEKENING: Vals]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]  \x1b[38;2;255;128;0m[HANDTEKENING: Vals]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m \x1b[38;2;255;128;0m[HANDTEKENING: Vals]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m  \x1b[38;2;255;128;0m[HANDTEKENING: Vals]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m\x1b[38;2;255;128;0m[HANDTEKENING: Vals]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[OVERDRACHT OK] \x1b[38;2;255;128;0m[HANDTEKENING: Vals]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[OVERDRACHT OK]  \x1b[38;2;255;128;0m[HANDTEKENING: Vals]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[OVERDRACHT OK]\x1b[38;2;255;128;0m[HANDTEKENING: Vals]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m [HANDTEKENING: Vals]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m  [HANDTEKENING: Vals]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m[HANDTEKENING: Vals]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK] [HANDTEKENING: Vals]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]  [HANDTEKENING: Vals]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK][HANDTEKENING: Vals]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: Поддельная]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m [HANDTEKENING: Vals]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: Поддельная]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m  [HANDTEKENING: Vals]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m[HANDTEKENING: Vals]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: Поддельная]\x1b[37;1m,[OVERDRACHT OK] [HANDTEKENING: Vals]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: Поддельная]\x1b[37;1m,[OVERDRACHT OK]  [HANDTEKENING: Vals]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: Поддельная],[OVERDRACHT OK]  [HANDTEKENING: Vals]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: Поддельная]\x1b[37;1m,[OVERDRACHT OK][HANDTEKENING: Vals]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m  \x1b[32;1m[HANDTEKENING: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]  \x1b[32;1m[HANDTEKENING: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m \x1b[32;1m[HANDTEKENING: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m  \x1b[32;1m[HANDTEKENING: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m\x1b[32;1m[HANDTEKENING: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[OVERDRACHT OK] \x1b[32;1m[HANDTEKENING: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[OVERDRACHT OK]  \x1b[32;1m[HANDTEKENING: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[OVERDRACHT OK]\x1b[32;1m[HANDTEKENING: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m [HANDTEKENING: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m  [HANDTEKENING: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m[HANDTEKENING: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK] [HANDTEKENING: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]  [HANDTEKENING: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK][HANDTEKENING: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m [HANDTEKENING: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m  [HANDTEKENING: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m[HANDTEKENING: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[OVERDRACHT OK] [HANDTEKENING: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[OVERDRACHT OK]  [HANDTEKENING: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: XCI➡NSP],[OVERDRACHT OK]  [HANDTEKENING: XCI➡NSP]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[OVERDRACHT OK][HANDTEKENING: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m \x1b[33;1m[HANDTEKENING: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m  \x1b[33;1m[HANDTEKENING: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m\x1b[33;1m[HANDTEKENING: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK] \x1b[33;1m[HANDTEKENING: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]  \x1b[33;1m[HANDTEKENING: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[33;1m[HANDTEKENING: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m \x1b[33;1m[HANDTEKENING: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m  \x1b[33;1m[HANDTEKENING: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m\x1b[33;1m[HANDTEKENING: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[OVERDRACHT OK] \x1b[33;1m[HANDTEKENING: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[OVERDRACHT OK]  \x1b[33;1m[HANDTEKENING: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[OVERDRACHT OK]\x1b[33;1m[HANDTEKENING: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m  \x1b[32;1m[HANDTEKENING: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]  \x1b[32;1m[HANDTEKENING: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m \x1b[32;1m[HANDTEKENING: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m  \x1b[32;1m[HANDTEKENING: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m\x1b[32;1m[HANDTEKENING: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[OVERDRACHT OK] \x1b[32;1m[HANDTEKENING: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[OVERDRACHT OK]  \x1b[32;1m[HANDTEKENING: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[OVERDRACHT OK]\x1b[32;1m[HANDTEKENING: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m [HANDTEKENING: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m  [HANDTEKENING: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]\x1b[37;1m[HANDTEKENING: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK] [HANDTEKENING: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK]  [HANDTEKENING: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[OVERDRACHT OK][HANDTEKENING: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: DBI]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m [HANDTEKENING: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: DBI]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m  [HANDTEKENING: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m[HANDTEKENING: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: DBI]\x1b[37;1m,[OVERDRACHT OK] [HANDTEKENING: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: DBI]\x1b[37;1m,[OVERDRACHT OK]  [HANDTEKENING: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: DBI],[OVERDRACHT OK]  [HANDTEKENING: DBI]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: DBI]\x1b[37;1m,[OVERDRACHT OK][HANDTEKENING: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m,[OVERDRACHT OK]\x1b[37;1m
+[ПЕРЕДАЧА ПРЕРВАНА]\x1b[37;1m,[OVERDRACHT ONDERBROKEN]\x1b[37;1m
+\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[33;1m[HANDTEKENING: DBI]\x1b[37;1m

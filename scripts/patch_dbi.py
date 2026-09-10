@@ -256,6 +256,21 @@ def patch_dbi(
             else src_dir
         )
 
+        # Expand make_pfxsfx line length gate from 128 (0x80) to 256 (0x100) bytes
+        # to allow longer status lines (e.g. 24-bit RGB ANSI codes) to match.
+        runtime_path = temp_repo / "src" / "dbi_translate" / "runtime.py"
+        runtime_src = runtime_path.read_text(encoding="utf-8")
+        gate_target = '("I", "cmp x20, #0x80"), ("I", "b.hi {miss}"),'
+        gate_replacement = '("I", "cmp x20, #0x100"), ("I", "b.hi {miss}"),'
+        if gate_target not in runtime_src:
+            raise RuntimeError(
+                "Upstream dbi_translate/runtime.py does not contain expected 0x80 length gate"
+            )
+        runtime_path.write_text(
+            runtime_src.replace(gate_target, gate_replacement, 1),
+            encoding="utf-8",
+        )
+
         intermediate_nro = Path(temp_dir) / "intermediate.nro"
         subprocess.run(
             [

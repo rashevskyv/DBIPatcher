@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import inspect
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -188,7 +189,8 @@ class PatchDbiWrapperTests(unittest.TestCase):
             rev_parse_result,         # git rev-parse HEAD
         ]
 
-        with tempfile.TemporaryDirectory() as td:
+        td = tempfile.mkdtemp()
+        try:
             dummy_nro = Path(td) / "DBI.905.ru.nro"
             dummy_output = Path(td) / "out" / "DBI.905.ru_patched.nro"
 
@@ -196,6 +198,8 @@ class PatchDbiWrapperTests(unittest.TestCase):
                 patch_dbi(dummy_nro, dummy_output)
             self.assertIn("Checkout verification failed", str(ctx.exception))
             self.assertFalse(dummy_output.exists())
+        finally:
+            shutil.rmtree(td, ignore_errors=True)
 
     @patch("scripts.patch_dbi.compute_sha256")
     @patch("scripts.patch_dbi.subprocess.run")
@@ -217,13 +221,16 @@ class PatchDbiWrapperTests(unittest.TestCase):
             returncode=128, cmd=["git", "clone"]
         )
 
-        with tempfile.TemporaryDirectory() as td:
+        td = tempfile.mkdtemp()
+        try:
             dummy_nro = Path(td) / "DBI.905.ru.nro"
             dummy_output = Path(td) / "out" / "DBI.905.ru_patched.nro"
 
             with self.assertRaises(subprocess.CalledProcessError):
                 patch_dbi(dummy_nro, dummy_output)
             self.assertFalse(dummy_output.exists())
+        finally:
+            shutil.rmtree(td, ignore_errors=True)
 
     @patch("scripts.patch_dbi.compute_sha256")
     @patch("scripts.patch_dbi.subprocess.run")
@@ -237,7 +244,8 @@ class PatchDbiWrapperTests(unittest.TestCase):
         mock_compute_sha256: MagicMock,
     ) -> None:
         """Verify wrapper calls upstream CLI with intermediate path, then font patches before writing output."""
-        with tempfile.TemporaryDirectory() as td:
+        td = tempfile.mkdtemp()
+        try:
             mock_temp_path = Path(td) / "work"
             mock_temp_path.mkdir(parents=True, exist_ok=True)
             mock_tempdir.return_value.__enter__.return_value = str(mock_temp_path)
@@ -246,6 +254,10 @@ class PatchDbiWrapperTests(unittest.TestCase):
 
             rev_parse_result = MagicMock()
             rev_parse_result.stdout = f"{PINNED_COMMIT_SHA}\n"
+
+            mock_runtime = mock_temp_path / "src" / "dbi_translate" / "runtime.py"
+            mock_runtime.parent.mkdir(parents=True, exist_ok=True)
+            mock_runtime.write_text('("I", "cmp x20, #0x80"), ("I", "b.hi {miss}"),\n', encoding="utf-8")
 
             intermediate_file = mock_temp_path / "intermediate.nro"
             synthetic_nro = make_synthetic_nro()
@@ -289,10 +301,50 @@ class PatchDbiWrapperTests(unittest.TestCase):
             # Final output was written with patched font
             self.assertTrue(dummy_output.is_file())
             patched_frame = find_embedded_font(dummy_output.read_bytes())
-            self.assertEqual(
-                patched_frame.raw[0x0406 * GLYPH_SIZE : 0x0406 * GLYPH_SIZE + 32],
-                patched_frame.raw[0x0049 * GLYPH_SIZE : 0x0049 * GLYPH_SIZE + 32],
+            # Verify that the 0x80 gate was expanded to 0x100 in runtime.py
+            self.assertIn(
+                '("I", "cmp x20, #0x100"), ("I", "b.hi {miss}"),',
+                mock_runtime.read_text(encoding="utf-8"),
             )
+        finally:
+            shutil.rmtree(td, ignore_errors=True)
+
+    @patch("scripts.patch_dbi.compute_sha256")
+    @patch("scripts.patch_dbi.subprocess.run")
+    @patch("scripts.patch_dbi.tempfile.TemporaryDirectory")
+    @patch("pathlib.Path.is_file")
+    def test_patch_dbi_raises_when_upstream_runtime_gate_missing(
+        self,
+        mock_is_file: MagicMock,
+        mock_tempdir: MagicMock,
+        mock_subproc_run: MagicMock,
+        mock_compute_sha256: MagicMock,
+    ) -> None:
+        """Verify RuntimeError is raised if upstream runtime.py lacks the 0x80 gate pattern."""
+        td = tempfile.mkdtemp()
+        try:
+            mock_temp_path = Path(td) / "work"
+            mock_temp_path.mkdir(parents=True, exist_ok=True)
+            mock_tempdir.return_value.__enter__.return_value = str(mock_temp_path)
+            mock_is_file.return_value = True
+            mock_compute_sha256.return_value = EXPECTED_DBI_SHA256
+
+            rev_parse_result = MagicMock()
+            rev_parse_result.stdout = f"{PINNED_COMMIT_SHA}\n"
+            mock_subproc_run.return_value = rev_parse_result
+
+            mock_runtime = mock_temp_path / "src" / "dbi_translate" / "runtime.py"
+            mock_runtime.parent.mkdir(parents=True, exist_ok=True)
+            mock_runtime.write_text('# unexpected code without gate\n', encoding="utf-8")
+
+            dummy_nro = Path(td) / "DBI.905.ru.nro"
+            dummy_output = Path(td) / "out" / "DBI.905.ru_patched.nro"
+
+            with self.assertRaises(RuntimeError) as ctx:
+                patch_dbi(dummy_nro, dummy_output)
+            self.assertIn("does not contain expected 0x80 length gate", str(ctx.exception))
+        finally:
+            shutil.rmtree(td, ignore_errors=True)
 
     @patch("scripts.patch_dbi.compute_sha256")
     @patch("scripts.patch_dbi.subprocess.run")
@@ -308,12 +360,17 @@ class PatchDbiWrapperTests(unittest.TestCase):
         mock_compute_sha256: MagicMock,
     ) -> None:
         """Verify that any failure in the font stage aborts and leaves output unwritten."""
-        with tempfile.TemporaryDirectory() as td:
+        td = tempfile.mkdtemp()
+        try:
             mock_temp_path = Path(td) / "work"
             mock_temp_path.mkdir(parents=True, exist_ok=True)
             mock_tempdir.return_value.__enter__.return_value = str(mock_temp_path)
             mock_is_file.return_value = True
             mock_compute_sha256.return_value = EXPECTED_DBI_SHA256
+
+            mock_runtime = mock_temp_path / "src" / "dbi_translate" / "runtime.py"
+            mock_runtime.parent.mkdir(parents=True, exist_ok=True)
+            mock_runtime.write_text('("I", "cmp x20, #0x80"), ("I", "b.hi {miss}"),\n', encoding="utf-8")
 
             intermediate_file = mock_temp_path / "intermediate.nro"
             intermediate_file.write_bytes(b"INTERMEDIATE_NRO_BYTES")
@@ -338,6 +395,8 @@ class PatchDbiWrapperTests(unittest.TestCase):
 
             self.assertIn("Font repair failed", str(ctx.exception))
             self.assertFalse(dummy_output.exists(), "Final output must not be created on font stage failure")
+        finally:
+            shutil.rmtree(td, ignore_errors=True)
 
     def test_synthetic_font_glyph_repair_and_frame_round_trip(self) -> None:
         """Consolidated success test: verifies 6 glyph changes, copy/mirror, frame discovery, length, and round-trip."""

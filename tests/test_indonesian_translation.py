@@ -17,12 +17,12 @@ OUTPUT_BIN = ROOT / "output" / "translation_id.bin"
 
 class IndonesianTranslationTests(unittest.TestCase):
     def test_id_csv_exists_and_row_count(self) -> None:
-        """Verify translations/id.csv exists and has 1294 translation rows."""
+        """Verify translations/id.csv exists and has 1430 translation rows."""
         self.assertTrue(ID_CSV.exists(), "translations/id.csv does not exist")
         with open(ID_CSV, "r", encoding="utf-8-sig") as f:
             rows = list(csv.reader(f))
         self.assertEqual(rows[0], ["original", "translation"], "Invalid header in id.csv")
-        self.assertEqual(len(rows) - 1, 1294, f"Expected 1,294 data rows, got {len(rows) - 1}")
+        self.assertEqual(len(rows) - 1, 1430, f"Expected 1,430 data rows, got {len(rows) - 1}")
 
     def test_id_csv_completeness(self) -> None:
         """Verify every row in id.csv has non-empty translation."""

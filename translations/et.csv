@@ -1293,3 +1293,139 @@ TitleId : {} BID: {},TitleId    : {} BID: {}
 Android extensions: ,Android extensions: 
  в чёрном списке., mustas nimekirjas.
 МБ/сек),MB/s)
+[32;1mУстановка игры завершена\x1b[37;1m,\x1b[32;1mMängu installimine lõpetatud\x1b[37;1m
+[32;1mТикет исправлен\x1b[37;1m,\x1b[32;1mPilet parandatud\x1b[37;1m
+[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m,[32;1m[ÜLEKANNE OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m
+\x1b[31;1m[ПЕРЕДАЧА ПРЕРВАНА]\x1b[37;1m,\x1b[31;1m[ÜLEKANNE KATKESTATUD]\x1b[37;1m
+[ПОДПИСЬ: Поддельная]\x1b[37;1m,[ALLKIRI: Võltsitud]\x1b[37;1m
+[ПОДПИСЬ: OK]\x1b[37;1m,[ALLKIRI: OK]\x1b[37;1m
+[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[ALLKIRI: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[32;1m[ALLKIRI: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[38;2;255;128;0m[ALLKIRI: Võltsitud]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[32;1m[ALLKIRI: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: OK],[ÜLEKANNE OK] [ALLKIRI: OK]
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: Поддельная],[ÜLEKANNE OK] [ALLKIRI: Võltsitud]
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: XCI➡NSP],[ÜLEKANNE OK] [ALLKIRI: XCI➡NSP]
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: DBI],[ÜLEKANNE OK] [ALLKIRI: DBI]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: OK],[ÜLEKANNE OK][ALLKIRI: OK]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: Поддельная],[ÜLEKANNE OK][ALLKIRI: Võltsitud]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: XCI➡NSP],[ÜLEKANNE OK][ALLKIRI: XCI➡NSP]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: DBI],[ÜLEKANNE OK][ALLKIRI: DBI]
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK] \x1b[32;1m[ALLKIRI: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK] \x1b[38;2;255;128;0m[ALLKIRI: Võltsitud]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK] \x1b[32;1m[ALLKIRI: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK] \x1b[32;1m[ALLKIRI: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m \x1b[32;1m[ALLKIRI: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m \x1b[38;2;255;128;0m[ALLKIRI: Võltsitud]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m \x1b[32;1m[ALLKIRI: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m \x1b[32;1m[ALLKIRI: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m\x1b[32;1m[ALLKIRI: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m\x1b[38;2;255;128;0m[ALLKIRI: Võltsitud]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m\x1b[32;1m[ALLKIRI: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m\x1b[32;1m[ALLKIRI: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[32;1m[ALLKIRI: DBI]\x1b[37;1m
+\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[ALLKIRI: OK]\x1b[37;1m
+\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[38;2;255;128;0m[ALLKIRI: Võltsitud]\x1b[37;1m
+\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[ALLKIRI: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ALLKIRI: DBI]\x1b[37;1m
+[ПОДПИСЬ: DBI]\x1b[37;1m,[ALLKIRI: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m  \x1b[32;1m[ALLKIRI: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]  \x1b[32;1m[ALLKIRI: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m \x1b[32;1m[ALLKIRI: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m  \x1b[32;1m[ALLKIRI: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m\x1b[32;1m[ALLKIRI: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[ÜLEKANNE OK] \x1b[32;1m[ALLKIRI: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[ÜLEKANNE OK]  \x1b[32;1m[ALLKIRI: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[ÜLEKANNE OK]\x1b[32;1m[ALLKIRI: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m [ALLKIRI: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m  [ALLKIRI: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m[ALLKIRI: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK] [ALLKIRI: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]  [ALLKIRI: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK][ALLKIRI: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: OK]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m [ALLKIRI: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: OK]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m  [ALLKIRI: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: OK]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m[ALLKIRI: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: OK]\x1b[37;1m,[ÜLEKANNE OK] [ALLKIRI: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: OK]\x1b[37;1m,[ÜLEKANNE OK]  [ALLKIRI: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: OK],[ÜLEKANNE OK]  [ALLKIRI: OK]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: OK]\x1b[37;1m,[ÜLEKANNE OK][ALLKIRI: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m  \x1b[38;2;255;128;0m[ALLKIRI: Võltsitud]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]  \x1b[38;2;255;128;0m[ALLKIRI: Võltsitud]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m \x1b[38;2;255;128;0m[ALLKIRI: Võltsitud]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m  \x1b[38;2;255;128;0m[ALLKIRI: Võltsitud]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m\x1b[38;2;255;128;0m[ALLKIRI: Võltsitud]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[ÜLEKANNE OK] \x1b[38;2;255;128;0m[ALLKIRI: Võltsitud]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[ÜLEKANNE OK]  \x1b[38;2;255;128;0m[ALLKIRI: Võltsitud]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[ÜLEKANNE OK]\x1b[38;2;255;128;0m[ALLKIRI: Võltsitud]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m [ALLKIRI: Võltsitud]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m  [ALLKIRI: Võltsitud]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m[ALLKIRI: Võltsitud]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK] [ALLKIRI: Võltsitud]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]  [ALLKIRI: Võltsitud]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK][ALLKIRI: Võltsitud]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: Поддельная]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m [ALLKIRI: Võltsitud]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: Поддельная]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m  [ALLKIRI: Võltsitud]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m[ALLKIRI: Võltsitud]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: Поддельная]\x1b[37;1m,[ÜLEKANNE OK] [ALLKIRI: Võltsitud]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: Поддельная]\x1b[37;1m,[ÜLEKANNE OK]  [ALLKIRI: Võltsitud]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: Поддельная],[ÜLEKANNE OK]  [ALLKIRI: Võltsitud]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: Поддельная]\x1b[37;1m,[ÜLEKANNE OK][ALLKIRI: Võltsitud]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m  \x1b[32;1m[ALLKIRI: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]  \x1b[32;1m[ALLKIRI: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m \x1b[32;1m[ALLKIRI: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m  \x1b[32;1m[ALLKIRI: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m\x1b[32;1m[ALLKIRI: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[ÜLEKANNE OK] \x1b[32;1m[ALLKIRI: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[ÜLEKANNE OK]  \x1b[32;1m[ALLKIRI: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[ÜLEKANNE OK]\x1b[32;1m[ALLKIRI: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m [ALLKIRI: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m  [ALLKIRI: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m[ALLKIRI: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK] [ALLKIRI: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]  [ALLKIRI: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK][ALLKIRI: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m [ALLKIRI: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m  [ALLKIRI: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m[ALLKIRI: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[ÜLEKANNE OK] [ALLKIRI: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[ÜLEKANNE OK]  [ALLKIRI: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: XCI➡NSP],[ÜLEKANNE OK]  [ALLKIRI: XCI➡NSP]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[ÜLEKANNE OK][ALLKIRI: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m \x1b[33;1m[ALLKIRI: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m  \x1b[33;1m[ALLKIRI: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m\x1b[33;1m[ALLKIRI: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK] \x1b[33;1m[ALLKIRI: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]  \x1b[33;1m[ALLKIRI: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[33;1m[ALLKIRI: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m \x1b[33;1m[ALLKIRI: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m  \x1b[33;1m[ALLKIRI: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m\x1b[33;1m[ALLKIRI: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[ÜLEKANNE OK] \x1b[33;1m[ALLKIRI: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[ÜLEKANNE OK]  \x1b[33;1m[ALLKIRI: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[ÜLEKANNE OK]\x1b[33;1m[ALLKIRI: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m  \x1b[32;1m[ALLKIRI: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]  \x1b[32;1m[ALLKIRI: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m \x1b[32;1m[ALLKIRI: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m  \x1b[32;1m[ALLKIRI: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m\x1b[32;1m[ALLKIRI: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[ÜLEKANNE OK] \x1b[32;1m[ALLKIRI: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[ÜLEKANNE OK]  \x1b[32;1m[ALLKIRI: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[ÜLEKANNE OK]\x1b[32;1m[ALLKIRI: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m [ALLKIRI: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m  [ALLKIRI: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]\x1b[37;1m[ALLKIRI: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK] [ALLKIRI: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK]  [ALLKIRI: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ÜLEKANNE OK][ALLKIRI: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: DBI]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m [ALLKIRI: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: DBI]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m  [ALLKIRI: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m[ALLKIRI: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: DBI]\x1b[37;1m,[ÜLEKANNE OK] [ALLKIRI: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: DBI]\x1b[37;1m,[ÜLEKANNE OK]  [ALLKIRI: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: DBI],[ÜLEKANNE OK]  [ALLKIRI: DBI]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: DBI]\x1b[37;1m,[ÜLEKANNE OK][ALLKIRI: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m,[ÜLEKANNE OK]\x1b[37;1m
+[ПЕРЕДАЧА ПРЕРВАНА]\x1b[37;1m,[ÜLEKANNE KATKESTATUD]\x1b[37;1m
+\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[33;1m[ALLKIRI: DBI]\x1b[37;1m

@@ -1293,3 +1293,139 @@ TitleId : {} BID: {},TitleId  : {} BID: {}
 Android extensions: ,Android extensions: 
  в чёрном списке., na czarnej liście.
 МБ/сек),MB/s)
+[32;1mУстановка игры завершена\x1b[37;1m,\x1b[32;1mInstalacja gry zakończona\x1b[37;1m
+[32;1mТикет исправлен\x1b[37;1m,\x1b[32;1mTicket naprawiony\x1b[37;1m
+[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m,[32;1m[TRANSFER OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m
+\x1b[31;1m[ПЕРЕДАЧА ПРЕРВАНА]\x1b[37;1m,\x1b[31;1m[TRANSFER PRZERWANY]\x1b[37;1m
+[ПОДПИСЬ: Поддельная]\x1b[37;1m,[PODPIS: Fałszywy]\x1b[37;1m
+[ПОДПИСЬ: OK]\x1b[37;1m,[PODPIS: OK]\x1b[37;1m
+[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[PODPIS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[32;1m[PODPIS: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[38;2;255;128;0m[PODPIS: Fałszywy]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[32;1m[PODPIS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: OK],[TRANSFER OK] [PODPIS: OK]
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: Поддельная],[TRANSFER OK] [PODPIS: Fałszywy]
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: XCI➡NSP],[TRANSFER OK] [PODPIS: XCI➡NSP]
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: DBI],[TRANSFER OK] [PODPIS: DBI]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: OK],[TRANSFER OK][PODPIS: OK]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: Поддельная],[TRANSFER OK][PODPIS: Fałszywy]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: XCI➡NSP],[TRANSFER OK][PODPIS: XCI➡NSP]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: DBI],[TRANSFER OK][PODPIS: DBI]
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[TRANSFER OK] \x1b[32;1m[PODPIS: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[TRANSFER OK] \x1b[38;2;255;128;0m[PODPIS: Fałszywy]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[TRANSFER OK] \x1b[32;1m[PODPIS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[TRANSFER OK] \x1b[32;1m[PODPIS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m \x1b[32;1m[PODPIS: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m \x1b[38;2;255;128;0m[PODPIS: Fałszywy]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m \x1b[32;1m[PODPIS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m \x1b[32;1m[PODPIS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m\x1b[32;1m[PODPIS: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m\x1b[38;2;255;128;0m[PODPIS: Fałszywy]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m\x1b[32;1m[PODPIS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m\x1b[32;1m[PODPIS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[32;1m[PODPIS: DBI]\x1b[37;1m
+\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[PODPIS: OK]\x1b[37;1m
+\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[38;2;255;128;0m[PODPIS: Fałszywy]\x1b[37;1m
+\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[PODPIS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[PODPIS: DBI]\x1b[37;1m
+[ПОДПИСЬ: DBI]\x1b[37;1m,[PODPIS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m  \x1b[32;1m[PODPIS: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]  \x1b[32;1m[PODPIS: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m \x1b[32;1m[PODPIS: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m  \x1b[32;1m[PODPIS: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m\x1b[32;1m[PODPIS: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[TRANSFER OK] \x1b[32;1m[PODPIS: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[TRANSFER OK]  \x1b[32;1m[PODPIS: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[TRANSFER OK]\x1b[32;1m[PODPIS: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m [PODPIS: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m  [PODPIS: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m[PODPIS: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[TRANSFER OK] [PODPIS: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]  [PODPIS: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[TRANSFER OK][PODPIS: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: OK]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m [PODPIS: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: OK]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m  [PODPIS: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: OK]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m[PODPIS: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: OK]\x1b[37;1m,[TRANSFER OK] [PODPIS: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: OK]\x1b[37;1m,[TRANSFER OK]  [PODPIS: OK]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: OK],[TRANSFER OK]  [PODPIS: OK]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: OK]\x1b[37;1m,[TRANSFER OK][PODPIS: OK]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m  \x1b[38;2;255;128;0m[PODPIS: Fałszywy]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]  \x1b[38;2;255;128;0m[PODPIS: Fałszywy]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m \x1b[38;2;255;128;0m[PODPIS: Fałszywy]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m  \x1b[38;2;255;128;0m[PODPIS: Fałszywy]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m\x1b[38;2;255;128;0m[PODPIS: Fałszywy]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[TRANSFER OK] \x1b[38;2;255;128;0m[PODPIS: Fałszywy]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[TRANSFER OK]  \x1b[38;2;255;128;0m[PODPIS: Fałszywy]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[TRANSFER OK]\x1b[38;2;255;128;0m[PODPIS: Fałszywy]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m [PODPIS: Fałszywy]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m  [PODPIS: Fałszywy]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m[PODPIS: Fałszywy]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[TRANSFER OK] [PODPIS: Fałszywy]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]  [PODPIS: Fałszywy]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[TRANSFER OK][PODPIS: Fałszywy]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: Поддельная]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m [PODPIS: Fałszywy]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: Поддельная]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m  [PODPIS: Fałszywy]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m[PODPIS: Fałszywy]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: Поддельная]\x1b[37;1m,[TRANSFER OK] [PODPIS: Fałszywy]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: Поддельная]\x1b[37;1m,[TRANSFER OK]  [PODPIS: Fałszywy]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: Поддельная],[TRANSFER OK]  [PODPIS: Fałszywy]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: Поддельная]\x1b[37;1m,[TRANSFER OK][PODPIS: Fałszywy]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m  \x1b[32;1m[PODPIS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]  \x1b[32;1m[PODPIS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m \x1b[32;1m[PODPIS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m  \x1b[32;1m[PODPIS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m\x1b[32;1m[PODPIS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[TRANSFER OK] \x1b[32;1m[PODPIS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[TRANSFER OK]  \x1b[32;1m[PODPIS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[TRANSFER OK]\x1b[32;1m[PODPIS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m [PODPIS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m  [PODPIS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m[PODPIS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[TRANSFER OK] [PODPIS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]  [PODPIS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[TRANSFER OK][PODPIS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m [PODPIS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m  [PODPIS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m[PODPIS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[TRANSFER OK] [PODPIS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[TRANSFER OK]  [PODPIS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: XCI➡NSP],[TRANSFER OK]  [PODPIS: XCI➡NSP]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[TRANSFER OK][PODPIS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m \x1b[33;1m[PODPIS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m  \x1b[33;1m[PODPIS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m\x1b[33;1m[PODPIS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[TRANSFER OK] \x1b[33;1m[PODPIS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]  \x1b[33;1m[PODPIS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[33;1m[PODPIS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m \x1b[33;1m[PODPIS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m  \x1b[33;1m[PODPIS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m\x1b[33;1m[PODPIS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[TRANSFER OK] \x1b[33;1m[PODPIS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[TRANSFER OK]  \x1b[33;1m[PODPIS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[TRANSFER OK]\x1b[33;1m[PODPIS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m  \x1b[32;1m[PODPIS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]  \x1b[32;1m[PODPIS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m \x1b[32;1m[PODPIS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m  \x1b[32;1m[PODPIS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m\x1b[32;1m[PODPIS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[TRANSFER OK] \x1b[32;1m[PODPIS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[TRANSFER OK]  \x1b[32;1m[PODPIS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[TRANSFER OK]\x1b[32;1m[PODPIS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m [PODPIS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m  [PODPIS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]\x1b[37;1m[PODPIS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[TRANSFER OK] [PODPIS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[TRANSFER OK]  [PODPIS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[TRANSFER OK][PODPIS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: DBI]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m [PODPIS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: DBI]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m  [PODPIS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m[PODPIS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: DBI]\x1b[37;1m,[TRANSFER OK] [PODPIS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: DBI]\x1b[37;1m,[TRANSFER OK]  [PODPIS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: DBI],[TRANSFER OK]  [PODPIS: DBI]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: DBI]\x1b[37;1m,[TRANSFER OK][PODPIS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m,[TRANSFER OK]\x1b[37;1m
+[ПЕРЕДАЧА ПРЕРВАНА]\x1b[37;1m,[TRANSFER PRZERWANY]\x1b[37;1m
+\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[33;1m[PODPIS: DBI]\x1b[37;1m
