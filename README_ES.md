@@ -88,6 +88,8 @@ En Windows, haz doble clic en `run.bat` (o ejecuta `python menu.py`) en la raíz
 - `all` abarca todos los pasos de construcción, localización y pruebas (`sync`, `translate`, `shadok`, `align`, `validate`, `export`, `build`, `dist`, `check`, `test`), indentados bajo `all`.
 - `deploy` y `clear` son operaciones independientes.
 - Las acciones siempre se ejecutan en orden canónico y seguro.
+- **Paso de argumentos CLI**: `run.bat` admite argumentos por línea de comandos (ej. `.\run.bat shadok -f` para forzar la retraducción de Shadok, `.\run.bat all`, `.\run.bat check`). Al ejecutarse sin argumentos, abre el menú interactivo.
+- **Omisión inteligente de Shadok**: `shadok` omite automáticamente los bloques de idioma ya completos para evitar retraducciones redundantes en ejecuciones del pipeline completo. Usa `-f` / `--force` para forzar la retraducción.
 
 ### Comandos principales
 

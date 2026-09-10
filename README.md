@@ -95,6 +95,8 @@ On Windows, double-click `run.bat` (or run `python menu.py`) in the repository r
 - `all` encompasses all build, localization, and test steps (`sync`, `translate`, `shadok`, `align`, `validate`, `export`, `build`, `dist`, `check`, `test`), visually indented under `all`.
 - `deploy` and `clear` are standalone operations.
 - Actions always run in a canonical, safe pipeline order regardless of selection sequence.
+- **CLI Argument Forwarding**: `run.bat` supports command-line arguments (e.g. `.\run.bat shadok -f` for forced Shadok re-translation, `.\run.bat all`, `.\run.bat check`). When run without arguments, it launches the interactive menu.
+- **Smart Shadok Skip**: `shadok` skips already completed language blocks automatically to prevent redundant re-translations during full pipeline runs. Use `-f` / `--force` to force re-translation.
 
 ### Commands
 ```powershell

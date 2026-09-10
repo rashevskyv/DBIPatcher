@@ -1,3 +1,33 @@
+# Walkthrough: Оптимізація запуску Shadok (пропуск готових перекладів), форсований режим -f та CLI-аргументи в run.bat (v0.0.99)
+
+## Результати
+- **Збереження готових перекладів байок Шадоків**:
+  - Реалізовано функцію `is_shadok_block_complete(ws, col_idx, resolved)` у [`src/main.py`](file:///d:/git/dev/dbi_patcher/src/main.py):
+    1. Перевіряє, що всі 33 слоти мають значення (не `None` і не порожній рядок `""`, враховуючи `SHADOK_BLANK_CELL = " "` для відступів та хвостових слотів).
+    2. Перевіряє відсутність витоків вихідного російського тексту у клітинках перекладу.
+    3. Перевіряє наявність принаймні 5 унікальних рядків контенту (захист від заповнення однаковими фіктивними плейсхолдерами).
+  - Оновлено `cmd_shadok()`: якщо переклад для певної мови вже повний, він автоматично пропускається з повідомленням `[SKIP][<lc>] Shadok block already complete. Use -f / --force to re-translate.`.
+  - Якщо всі мови завершені, сесія AI (`init_session_shadok()`) взагалі не ініціалізується, що суттєво пришвидшує загальний запуск `all` або `shadok` (з хвилин очікування до часток секунди).
+  - Для мов з відсутніми або неповними перекладами перекладається весь блок з 33 слотів цілком (відповідно до вимоги, що Шадок є єдиним цільним екраном-байкою).
+- **Підтримка форсованого перекладу (`-f` / `--force`)**:
+  - Додано прапорці `-f` / `--force` та змінну оточення `DBI_SHADOK_FORCE=1` для примусового перезапису перекладів Шадоків через AI.
+  - Оновлено `cmd_help()` та `main()` у [`src/main.py`](file:///d:/git/dev/dbi_patcher/src/main.py).
+- **Оновлення [`run.bat`](file:///d:/git/dev/dbi_patcher/run.bat)**:
+  - Додано детальну довідку з прикладами використання прямо у коментарях файлу.
+  - Додано прокидання параметрів командного рядка: при виклику з аргументами (наприклад, `run.bat shadok -f`, `run.bat all`, `run.bat test`) вони автоматично передаються у `python -m src.main %*`. При подвійному кліку або запуску без аргументів відкривається інтерактивне меню [`menu.py`](file:///d:/git/dev/dbi_patcher/menu.py).
+- **Оновлення меню [`menu.py`](file:///d:/git/dev/dbi_patcher/menu.py)**:
+  - У пункті `shadok` уточнено опис: `Localize Shadok satirical fables via AI (skips complete)`.
+- **Перевірка логіки PR #26**:
+  - Підтверджено збереження всіх 6 доданих рядків від `@aldokeita` (включно з пробілом у `" Новый DLC "`), їхніх перекладів у 24 мовах та подяк у релізних шаблонах.
+- **Нові юніт-тести**:
+  - Додано тести `test_is_shadok_block_complete_rules`, `test_cmd_shadok_skips_complete_unless_force` та `test_cmd_shadok_translates_only_incomplete_languages` у [`tests/test_shadok_localization.py`](file:///d:/git/dev/dbi_patcher/tests/test_shadok_localization.py).
+- **Версіонування та тестування**:
+  - Ітеровано версію словника до **`0.0.99`** у [`data/dictionary.xlsx`](file:///d:/git/dev/dbi_patcher/data/dictionary.xlsx).
+  - Оновлено [`tests/test_temperature_aliases_and_sync.py`](file:///d:/git/dev/dbi_patcher/tests/test_temperature_aliases_and_sync.py).
+  - Повний набір тестів виконано паралельно (`pytest tests -n auto`): **141 passed, 0 failed (100% green)**.
+- **Оновлення документації**:
+  - Оновлено [`README.md`](file:///d:/git/dev/dbi_patcher/README.md) та [`README_ES.md`](file:///d:/git/dev/dbi_patcher/README_ES.md).
+
 # Walkthrough: Виправлення локалізації ES-419 та 100% успішне проходження всіх 138 тестів (v0.0.98)
 
 ## Результати

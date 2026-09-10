@@ -1454,12 +1454,40 @@ def repad_shadok_language_slots(
     return changed
 
 
+def is_shadok_block_complete(
+    ws,
+    col_idx: int,
+    resolved: list[tuple[int, str, str]],
+) -> bool:
+    """Check whether the entire Shadok block for a language column is complete.
+
+    A block is considered complete if:
+    1. Every slot is populated (not None and not empty string "").
+       SHADOK_BLANK_CELL (" ") is a valid populated slot for spacer/tail rows.
+    2. No slot leaks the Russian original (val.strip() != orig.strip()).
+    3. The block contains real multi-line translation content (at least 5 unique
+       non-blank lines), guarding against dummy placeholders.
+    """
+    unique_content: set[str] = set()
+    for row_idx, orig, _new in resolved:
+        val = ws.cell(row_idx, col_idx).value
+        if val is None or str(val) == "":
+            return False
+        val_str = str(val).strip()
+        if val_str and val_str == str(orig).strip():
+            return False
+        if val_str:
+            unique_content.add(val_str)
+    return len(unique_content) >= 5
+
+
 def cmd_shadok() -> None:
     """Localize Shadok parody texts (mapping.new) into rows identified by mapping.orig.
 
     Per language: up to SHADOK_MAX_ATTEMPTS AI calls with escalating prompt strictness.
     Malformed attempts never write cells for that language.
 
+    Skips languages that are already complete unless -f / --force is given.
     ``--pad-only``: do not call AI; only blank trailing slots that still leak Russian.
     """
     config = load_shadok_config()
@@ -1476,6 +1504,7 @@ def cmd_shadok() -> None:
     max_lines = int(config.get("max_lines", 35))
     target_langs = get_shadok_target_langs()
     pad_only = "--pad-only" in sys.argv
+    force = "-f" in sys.argv or "--force" in sys.argv or os.environ.get("DBI_SHADOK_FORCE") == "1"
     langs_filter = os.environ.get("DBI_SHADOK_LANGS", "").strip()
     if langs_filter:
         wanted = {x.strip() for x in langs_filter.split(",") if x.strip()}
@@ -1530,14 +1559,33 @@ def cmd_shadok() -> None:
     )
     print(f"  Attempts  : {SHADOK_MAX_ATTEMPTS} (stricter prompt each retry)")
     print(f"  Languages : {len(target_langs)} ({', '.join(target_langs)})")
+    if force:
+        print("  Mode      : FORCE (--force / -f active)")
     print("-" * 60)
+
+    pending_langs = []
+    for lc in target_langs:
+        if lc not in col_map:
+            print(f"  [SKIP][{lc}] no workbook column")
+            continue
+        if not force and is_shadok_block_complete(ws, col_map[lc], resolved):
+            print(f"  [SKIP][{lc}] Shadok block already complete. Use -f / --force to re-translate.")
+            continue
+        pending_langs.append(lc)
+
+    if not pending_langs:
+        print("-" * 60)
+        print("  All requested Shadok blocks are already complete! Nothing to translate.")
+        print("  Use -f / --force to force re-translation.")
+        print("=" * 60)
+        return
 
     init_session_shadok()
 
     ok_langs = 0
     fail_langs = 0
 
-    for lc in target_langs:
+    for lc in pending_langs:
         if lc not in col_map:
             print(f"  [SKIP][{lc}] no workbook column")
             continue
@@ -2047,14 +2095,15 @@ def cmd_help() -> None:
     print("  all         - Run full pipeline (sync → dist)")
     print("  help        - Show this help message")
     print("\nOptions:")
-    print("  -f, --force      Force re-translate all strings")
+    print("  -f, --force      Force re-translate all strings (including Shadok blocks)")
     print("  --pad-only       With shadok: blank trailing slots only (no AI)")
     print("  --langs a,b      With shadok: only these language codes")
     print("\nExamples:")
     print("  python -m src.main sync")
     print("  python -m src.main translate -f")
+    print("  python -m src.main shadok -f")
     print("  python -m src.main shadok --pad-only")
-    print("  python -m src.main shadok --langs de,tr")
+    print("  python -m src.main shadok --langs de,tr -f")
     print("  python -m src.main validate align export build dist")
     print("  python -m src.main clear ua")
     print("  python -m src.main all")
@@ -2080,6 +2129,10 @@ def main() -> int:
     # cmd_shadok reads these via env / sys.argv (flags must be registered above
     # so argparse does not reject them before the command runs).
     os.environ["DBI_SHADOK_LANGS"] = args.langs.strip()
+    if args.force:
+        os.environ["DBI_SHADOK_FORCE"] = "1"
+        if "-f" not in sys.argv and "--force" not in sys.argv:
+            sys.argv.append("-f")
     if args.pad_only and "--pad-only" not in sys.argv:
         sys.argv.append("--pad-only")
 

@@ -28,6 +28,7 @@ from src.main import (  # noqa: E402
     cmd_validate,
     fit_shadok_lines_to_slots,
     get_shadok_target_langs,
+    is_shadok_block_complete,
     load_shadok_config,
     pad_shadok_lines_to_mapping,
     parse_and_validate_shadok_block,
@@ -337,6 +338,114 @@ class ShadokLocalizationTests(unittest.TestCase):
             self.assertEqual(ws.cell(r, col_map["frca"]).value, "KEEP_FRCA")
         self.assertEqual(mock_translate.call_count, 3)
         mock_save.assert_not_called()
+
+    def test_is_shadok_block_complete_rules(self) -> None:
+        wb = _make_workbook(self.mapping, self.lang_codes)
+        ws = wb["Translations"]
+        col_map = _col_map(ws)
+        resolved = resolve_shadok_mapping_rows(ws, col_map, self.mapping)
+
+        # 1. Initially empty cells -> False
+        self.assertFalse(is_shadok_block_complete(ws, col_map["en"], resolved))
+
+        # 2. Populated with 33 distinct lines -> True
+        for i, (r, orig, _new) in enumerate(resolved):
+            ws.cell(r, col_map["en"], f"Translated Line {i}")
+        self.assertTrue(is_shadok_block_complete(ws, col_map["en"], resolved))
+
+        # 3. Trailing blank cells (SHADOK_BLANK_CELL) -> True
+        ws.cell(resolved[-1][0], col_map["en"], SHADOK_BLANK_CELL)
+        self.assertTrue(is_shadok_block_complete(ws, col_map["en"], resolved))
+
+        # 4. One cell is None or empty string -> False
+        ws.cell(resolved[0][0], col_map["en"], "")
+        self.assertFalse(is_shadok_block_complete(ws, col_map["en"], resolved))
+        ws.cell(resolved[0][0], col_map["en"], None)
+        self.assertFalse(is_shadok_block_complete(ws, col_map["en"], resolved))
+
+        # 5. One cell leaks original Russian string -> False
+        ws.cell(resolved[0][0], col_map["en"], resolved[0][1])
+        self.assertFalse(is_shadok_block_complete(ws, col_map["en"], resolved))
+
+        # 6. Dummy identical placeholder across all slots (< 5 unique lines) -> False
+        for r, orig, _new in resolved:
+            ws.cell(r, col_map["de"], "DUMMY_REPEAT")
+        self.assertFalse(is_shadok_block_complete(ws, col_map["de"], resolved))
+
+    @patch("src.main.save_workbook")
+    @patch("src.main.init_session_shadok")
+    @patch("src.main.translate_shadok_block")
+    @patch("src.main.open_or_create_workbook")
+    def test_cmd_shadok_skips_complete_unless_force(
+        self,
+        mock_open_wb: MagicMock,
+        mock_translate: MagicMock,
+        mock_init: MagicMock,
+        mock_save: MagicMock,
+    ) -> None:
+        wb = _make_workbook(self.mapping, self.lang_codes)
+        ws = wb["Translations"]
+        col_map = _col_map(ws)
+        # Populate "en" completely
+        for i, (r, orig, _new) in enumerate(resolve_shadok_mapping_rows(ws, col_map, self.mapping)):
+            ws.cell(r, col_map["en"], f"Existing Translation {i}")
+
+        mock_open_wb.return_value = wb
+
+        # A) Without -f: should skip and never call AI or init_session
+        with patch("src.main.get_shadok_target_langs", return_value=["en"]), \
+             patch("sys.argv", ["main.py", "shadok"]):
+            cmd_shadok()
+
+        mock_init.assert_not_called()
+        mock_translate.assert_not_called()
+        mock_save.assert_not_called()
+        # Verify content was preserved
+        self.assertEqual(ws.cell(2, col_map["en"]).value, "Existing Translation 0")
+
+        # B) With -f: should force re-translate
+        mock_translate.return_value = {"en": _valid_block("RETRANSLATED")}
+        with patch("src.main.get_shadok_target_langs", return_value=["en"]), \
+             patch("sys.argv", ["main.py", "shadok", "-f"]):
+            cmd_shadok()
+
+        mock_init.assert_called_once()
+        mock_translate.assert_called_once()
+        mock_save.assert_called()
+        self.assertEqual(ws.cell(2, col_map["en"]).value, "RETRANSLATED00 ok line")
+
+    @patch("src.main.save_workbook")
+    @patch("src.main.init_session_shadok")
+    @patch("src.main.translate_shadok_block")
+    @patch("src.main.open_or_create_workbook")
+    def test_cmd_shadok_translates_only_incomplete_languages(
+        self,
+        mock_open_wb: MagicMock,
+        mock_translate: MagicMock,
+        mock_init: MagicMock,
+        mock_save: MagicMock,
+    ) -> None:
+        wb = _make_workbook(self.mapping, self.lang_codes)
+        ws = wb["Translations"]
+        col_map = _col_map(ws)
+        # Populate "en" completely, leave "de" empty
+        for i, (r, orig, _new) in enumerate(resolve_shadok_mapping_rows(ws, col_map, self.mapping)):
+            ws.cell(r, col_map["en"], f"Complete EN {i}")
+            ws.cell(r, col_map["de"], None)
+
+        mock_open_wb.return_value = wb
+        mock_translate.return_value = {"de": _valid_block("NEW_DE")}
+
+        with patch("src.main.get_shadok_target_langs", return_value=["en", "de"]), \
+             patch("sys.argv", ["main.py", "shadok"]):
+            cmd_shadok()
+
+        # Should translate only "de" (1 call)
+        self.assertEqual(mock_translate.call_count, 1)
+        args, kwargs = mock_translate.call_args
+        self.assertEqual(args[1], ["de"])
+        self.assertEqual(ws.cell(2, col_map["en"]).value, "Complete EN 0")
+        self.assertEqual(ws.cell(2, col_map["de"]).value, "NEW_DE00 ok line")
 
     @patch("src.main.save_workbook")
     @patch("src.main.init_session")
