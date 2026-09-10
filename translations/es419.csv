@@ -107,8 +107,8 @@ USB Соединение,Conexión USB
 Фиксация ФС...,Confirmación del sistema de archivos...
 Финальный размер: {},Tamaño final: {}
 Формирование списка...,Generando lista...
-Форсированный язык    : {},Idioma forzado            : {}
-Форсированный язык    : {} ({}),Idioma forzado            : {} ({})
+Форсированный язык    : {},Idioma forzado              : {}
+Форсированный язык    : {} ({}),Idioma forzado              : {} ({})
 Форсировать язык,Forzar idioma
 Французский,Francés
 "Х:{}, Т:{}, РЦ:{}","H:{}, T:{}, R:{}"
@@ -470,10 +470,10 @@ Daybreak.nro не найден,Daybreak.nro no encontrado
 Июнь,Junio
 Канадский французский,Francés canadiense
 "Когда ваше устройство подключится, нажмите любую кнопку",Presiona cualquier botón cuando tu dispositivo se conecte
-Код партии батареи    : {} ({}),Código de lote batería           : {} ({})
+Код партии батареи    : {} ({}),Código de lote batería              : {} ({})
 Кодировка,Codificación
-Конец игры            : -,Fin del juego             : -
-Конец игры            : {},Fin del juego             : {}
+Конец игры            : -,Fin del juego               : -
+Конец игры            : {},Fin del juego               : {}
 Контент уже на месте,El contenido ya está en su lugar
 Копирование IVFC слой {} в nca: {},Copiando capa IVFC {} a nca: {}
 Копирование PFS0 в nca,Copiando PFS0 a nca
@@ -492,7 +492,7 @@ Daybreak.nro не найден,Daybreak.nro no encontrado
 Масштаб: Точка в точку,Escala: Píxel perfecto
 Масштаб: Увеличение x2,Escala: Ampliación x2
 Место в  NAND         : {},Espacio en NAND      : {}
-Место на SD карте     : {},Espacio en tarjeta SD     : {}
+Место на SD карте     : {},Espacio en tarjeta SD       : {}
 Место на приставке не занято,No se ocupa espacio en la consola
 Мета контент отсутствует,Falta el contenido meta
 Миссия провалена\n\nНажмите А для выхода,Misión fallida\n\nPresiona A para salir
@@ -550,8 +550,8 @@ Daybreak.nro не найден,Daybreak.nro no encontrado
 Настройки,Configuración
 Настройки DBI,Configuración de DBI
 Настройки FB2,Configuración de FB2
-Начало игры           : -,Inicio del juego          : -
-Начало игры           : {},Inicio del juego          : {}
+Начало игры           : -,Inicio del juego            : -
+Начало игры           : {},Inicio del juego            : {}
 Начало создания Control.nca,Iniciando creación de Control.nca
 Начало создания Program.nca,Iniciando creación de Program.nca
 Начать установку,Iniciar instalación
@@ -630,8 +630,8 @@ Daybreak.nro не найден,Daybreak.nro no encontrado
 Общее время активной игры     : {} часов,Tiempo total de juego activo     : {} horas
 Общее время дампа {:d}:{:02d}:{:02d},Tiempo total de volcado {:d}:{:02d}:{:02d}
 Общее время запущенных игр    : {} часов,Tiempo total de juego            : {} horas
-Общее время игры      : -,Tiempo total de juego     : -
-Общее время игры      : {:d} часов {:02d} минут,Tiempo total de juego     : {:d} horas {:02d} minutos
+Общее время игры      : -,Tiempo total de juego       : -
+Общее время игры      : {:d} часов {:02d} минут,Tiempo total de juego       : {:d} horas {:02d} minutos
 Общее время установки: {:d}:{:02d}:{:02d},Tiempo total de instalación: {:d}:{:02d}:{:02d}
 Общее время: {:02}:{:02}:{:02},Tiempo total: {:02}:{:02}:{:02}
 Общее занимаемое место: N:{} + S:{} = {},Espacio total ocupado: N:{} + S:{} = {}
@@ -841,7 +841,7 @@ MTP Респондер (нажмите B для остановки),Respondedor 
 "Размер  : {}, {} файла","Tamaño  : {}, {} archivo"
 "Размер  : {}, {} файлов","Tamaño  : {}, {} archivos"
 Размер посылаемого файла   : {},Tamaño del archivo enviado: {}
-Размер сохранений     : {},Tamaño de datos de guardado: {}
+Размер сохранений     : {},Tamaño de datos de guardado : {}
 Размер: {},Tamaño: {}
 Разрешено,Permitido
 Распаковать в подкаталог,Extraer a subdirectorio
@@ -976,7 +976,7 @@ URL для проверки обновлений,URL para verificar actualizacio
 Хэш версии              : {},Hash de versión           : {}
 Читать дату файлов,Leer fecha de archivo
 Экзосфера очищает CAL0      : {},Exosphere limpia CAL0         : {}
-Экран                 : ({:08X}) {},Pantalla                         : ({:08X}) {}
+Экран                 : ({:08X}) {},Pantalla                            : ({:08X}) {}
 Язык                    : {},Idioma                    : {}
 "Интервал автобекапа сейвов, дни","Intervalo de respaldo automático de datos de guardado, días"
 Конфигурация зарядки            : {},Configuración de carga                 : {}
@@ -1030,9 +1030,9 @@ OEM ID           : {:s} ({:s}),OEM ID                : {:s} ({:s})
 %% заряд-разряд    : {},%% carga-descarga    : {}
 Никнейм консоли         : {},Apodo de la consola       : {}
 Общее число игровых сессий    : {},Número total de sesiones de jueg : {}
-Bluetooth MAC адрес   : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Dirección MAC Bluetooth          : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X}
+Bluetooth MAC адрес   : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Dirección MAC Bluetooth             : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X}
 CDIR в листинге,CDIR en listado
-Configuration Id1     : {},Configuration Id1                : {}
+Configuration Id1     : {},Configuration Id1                   : {}
 DeviceId                : {0:} ({0:016X}),DeviceId                  : {0:} ({0:016X})
 Папка для бекапа сохранений,Carpeta de respaldo de datos de guardado
 Папка для дампа игр,Carpeta de volcado de juegos
@@ -1078,7 +1078,7 @@ IavgEmpty            : {:04x},IavgEmpty              : {:04x}
 Родительский PIN        : {},PIN parental              : {}
 Серийный # прочитанный  : {},N.º de serie leído        : {}
 Серийный # угаданный    : {},Número de serie adivinado : {}
-Серийный номер        : {},Número de serie                  : {}
+Серийный номер        : {},Número de serie                     : {}
 Силовая роль                    : {},Rol de alimentación                    : {}
 QrTable00            : {:04x},QrTable00              : {:04x}
 Смещать курсор после выделения,Mover cursor después de selección
@@ -1100,10 +1100,10 @@ RTC запущены (приблизительно) : {},RTC iniciado (aproximad
 Температура батареи             : {}°C,Temperatura de la batería              : {}°C
 Тип SoC                 : {},Tipo de SoC               : {}
 Тип источника питания          : {},Tipo de fuente de alimentación        : {}
-Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Dirección MAC de la red inalámbrica: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X}
-Форсировано вклчение USB 3.0: {},USB 3.0 forzado              : {}
+Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Dirección MAC de la red inalámbrica : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X}
+Форсировано вклчение USB 3.0: {},USB 3.0 forzado               : {}
 Возраст батареи                 : {}%,Edad de la batería                     : {}%
-Предел напряжения заряда батареи: {} mV,Límite de voltaje de carga       : {} mV
+Предел напряжения заряда батареи: {} mV,Límite de voltaje de carga             : {} mV
 Средняя температура: {}°C,Temperatura promedio : {}°C
 Сумма %% заряд-разряд: {} (~{} 0-100 циклов),Suma %% carga-descarga : {} (~{} 0-100 ciclos)
 "          Париж, издательство Грассе.",          después de ellos llegue la vi

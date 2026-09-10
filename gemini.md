@@ -307,3 +307,19 @@ dbi_patcher/
 ### Комміти:
 - `feat: smart skip for complete Shadok fables, add -f force flag, and run.bat CLI forwarding (v0.0.99)`
 
+## [2026-09-10] UI block alignment for ID/ES419, temperature aliases, and v0.0.100
+
+### Виконані дії:
+1. **Вирівнювання UI-блоків (`cmd_align`)**:
+   - Вирівняно двокрапки у структурованих блоках інтерфейсу для індонезійської (`id`) та латиноамериканської іспанської (`es419`).
+   - Оновлено `translations/id.csv` та `translations/es419.csv`.
+   - Збірка бінарників `output/translation_*.bin` та `dist/*/translation.bin`.
+2. **Сумісність перевірки аліасів температури**:
+   - Оновлено `tests/test_temperature_aliases_and_sync.py`: канонічні рядки в `id` отримали інтерфейсні пробіли вирівнювання згідно з `blocks.json`, тоді як 45 аліасів зберегли базову форму з відступами вихідного перекладу (аналогічно до турецької мови `tr`). Додано `if lc in ("tr", "id"): self.assertEqual(str(actual_val).split(), str(expected_val).split())`.
+3. **Тестування та версіонування**:
+   - Ітеровано версію словника до `0.0.100`.
+   - Усі 141 тест успішно проходять паралельно (`pytest tests -n auto`: 141 passed, 0 failed).
+
+### Комміти:
+- `fix: handle UI block alignment for ID and ES419, update temperature alias tests (v0.0.100)`
+

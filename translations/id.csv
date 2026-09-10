@@ -107,8 +107,8 @@ USB Соединение,Koneksi USB
 Фиксация ФС...,FS commit...
 Финальный размер: {},Ukuran akhir: {}
 Формирование списка...,Menyusun daftar...
-Форсированный язык    : {},Bahasa dipaksa : {}
-Форсированный язык    : {} ({}),Bahasa dipaksa : {} ({})
+Форсированный язык    : {},Bahasa dipaksa   : {}
+Форсированный язык    : {} ({}),Bahasa dipaksa   : {} ({})
 Форсировать язык,Paksa bahasa
 Французский,Prancis
 "Х:{}, Т:{}, РЦ:{}","H:{}, T:{}, R:{}"
@@ -470,10 +470,10 @@ Daybreak.nro не найден,Daybreak.nro tidak ditemukan
 Июнь,Juni
 Канадский французский,Prancis Kanada
 "Когда ваше устройство подключится, нажмите любую кнопку",Tekan tombol apa saja saat perangkat tersambung
-Код партии батареи    : {} ({}),Kode lot baterai         : {} ({})
+Код партии батареи    : {} ({}),Kode lot baterai        : {} ({})
 Кодировка,Encoding
-Конец игры            : -,Akhir game      : -
-Конец игры            : {},Akhir game      : {}
+Конец игры            : -,Akhir game       : -
+Конец игры            : {},Akhir game       : {}
 Контент уже на месте,Konten sudah ada di tempatnya
 Копирование IVFC слой {} в nca: {},Menyalin layer IVFC {} ke nca: {}
 Копирование PFS0 в nca,Menyalin PFS0 ke nca
@@ -492,7 +492,7 @@ Daybreak.nro не найден,Daybreak.nro tidak ditemukan
 Масштаб: Точка в точку,Skala: Pixel Perfect
 Масштаб: Увеличение x2,Skala: Perbesaran 2x
 Место в  NAND         : {},Ruang di NAND        : {}
-Место на SD карте     : {},Ruang kartu SD  : {}
+Место на SD карте     : {},Ruang kartu SD   : {}
 Место на приставке не занято,Tidak ada ruang terpakai di konsol
 Мета контент отсутствует,Konten meta tidak ada
 Миссия провалена\n\nНажмите А для выхода,Misi gagal\n\nTekan A untuk keluar
@@ -550,8 +550,8 @@ Daybreak.nro не найден,Daybreak.nro tidak ditemukan
 Настройки,Pengaturan
 Настройки DBI,Pengaturan DBI
 Настройки FB2,Pengaturan FB2
-Начало игры           : -,Mulai game      : -
-Начало игры           : {},Mulai game      : {}
+Начало игры           : -,Mulai game       : -
+Начало игры           : {},Mulai game       : {}
 Начало создания Control.nca,Mulai membuat Control.nca
 Начало создания Program.nca,Mulai membuat Program.nca
 Начать установку,Mulai pemasangan
@@ -627,11 +627,11 @@ Daybreak.nro не найден,Daybreak.nro tidak ditemukan
 Обрабатывается запись {:016X},Memproses record {:016X}
 Обратный альбом (180°),Album terbalik (180°)
 Обратный портрет (270°),Portrait terbalik (270°)
-Общее время активной игры     : {} часов,Total waktu main aktif        : {} jam
+Общее время активной игры     : {} часов,Total waktu main aktif          : {} jam
 Общее время дампа {:d}:{:02d}:{:02d},Total waktu dump {:d}:{:02d}:{:02d}
-Общее время запущенных игр    : {} часов,Total waktu main              : {} jam
-Общее время игры      : -,Total waktu main: -
-Общее время игры      : {:d} часов {:02d} минут,Total waktu main: {:d} jam {:02d} menit
+Общее время запущенных игр    : {} часов,Total waktu main                : {} jam
+Общее время игры      : -,Total waktu main : -
+Общее время игры      : {:d} часов {:02d} минут,Total waktu main : {:d} jam {:02d} menit
 Общее время установки: {:d}:{:02d}:{:02d},Total waktu pemasangan: {:d}:{:02d}:{:02d}
 Общее время: {:02}:{:02}:{:02},Total waktu: {:02}:{:02}:{:02}
 Общее занимаемое место: N:{} + S:{} = {},Total ruang terpakai: N:{} + S:{} = {}
@@ -841,7 +841,7 @@ MTP Респондер (нажмите B для остановки),MTP Responde
 "Размер  : {}, {} файла","Ukuran: {}, {} file"
 "Размер  : {}, {} файлов","Ukuran: {}, {} file"
 Размер посылаемого файла   : {},Ukuran file yang dikirim: {}
-Размер сохранений     : {},Ukuran data save: {}
+Размер сохранений     : {},Ukuran data save : {}
 Размер: {},Ukuran: {}
 Разрешено,Diizinkan
 Распаковать в подкаталог,Ekstrak ke subdirektori
@@ -966,89 +966,89 @@ SDK на подмену не найдены,Tidak ada SDK untuk diganti
 Решено послать одного из шадоков на,peralatan kebun mereka. Maka seorang relawan
 original,asli
 "SSID: {}, Пароль: {}","SSID: {}, Password: {}"
-Тип оборудования        : {},Tipe perangkat    : {}
-TempC0               : {:04x},TempC0                  : {:04x}
-Уровень заряда батареи         : {},Level daya baterai         : {}
+Тип оборудования        : {},Tipe perangkat     : {}
+TempC0               : {:04x},TempC0              : {:04x}
+Уровень заряда батареи         : {},Level daya baterai    : {}
 URL для проверки обновлений,URL cek update
 Установка с картриджа,Pasang dari kartrid
 Установка через DBIbackend,Pasang via DBIbackend
 Форсировать UTF-8,Paksa UTF-8
-Хэш версии              : {},Hash versi        : {}
+Хэш версии              : {},Hash versi         : {}
 Читать дату файлов,Baca tanggal file
-Экзосфера очищает CAL0      : {},Exosphere hapus CAL0  : {}
-Экран                 : ({:08X}) {},Layar                    : ({:08X}) {}
-Язык                    : {},Bahasa            : {}
+Экзосфера очищает CAL0      : {},Exosphere hapus CAL0   : {}
+Экран                 : ({:08X}) {},Layar                   : ({:08X}) {}
+Язык                    : {},Bahasa             : {}
 "Интервал автобекапа сейвов, дни","Interval auto-backup save, hari"
-Конфигурация зарядки            : {},Konfigurasi pengisian        : {}
-Режим Hi-Z включён              : {},Mode Hi-Z aktif              : {}
-Зарядка батареи включена        : {},Pengisian baterai aktif      : {}
-Маршрут электропитания          : {},Jalur suplai daya            : {}
-Напряжение источника            : {} mV,Tegangan sumber              : {} mV
-Ток источника                   : {} mA,Arus sumber                  : {} mA
-Быстрая зарядка разрешена       : {},Pengisian cepat diizinkan    : {}
-Целевая прошивка            : {}.{}.{},Firmware target       : {}.{}.{}
-Поддерживаемая версия HOS   : {},Versi HOS didukung    : {}
-Предел входного тока (буст)     : {} mA,Batas arus masuk (boost)     : {} mA
-Предел тока быстрой зарядки     : {} mA,Batas arus pengisian cepat   : {} mA
-Напряжение батареи              : {} mV,Tegangan baterai             : {} mV
-Контроллер источника получен    : {},Kontroler sumber didapat     : {}
-OTG Запрошен                    : {},OTG diminta                  : {}
-Производитель    : {:s} ({:02X}),Produsen           : {:s} ({:02X})
-OEM ID           : {:s} ({:s}),OEM ID             : {:s} ({:s})
-Имя продукта     : {:s},Nama produk        : {:s}
-Ревизия продукта : {:s},Revisi produk      : {:s}
-Серийный номер   : {:s},Nomor seri         : {:s}
-Ёмкость с завода   : {} mAh,Kapasitas pabrik    : {} mAh
+Конфигурация зарядки            : {},Konfigurasi pengisian      : {}
+Режим Hi-Z включён              : {},Mode Hi-Z aktif            : {}
+Зарядка батареи включена        : {},Pengisian baterai aktif    : {}
+Маршрут электропитания          : {},Jalur suplai daya          : {}
+Напряжение источника            : {} mV,Tegangan sumber            : {} mV
+Ток источника                   : {} mA,Arus sumber                : {} mA
+Быстрая зарядка разрешена       : {},Pengisian cepat diizinkan  : {}
+Целевая прошивка            : {}.{}.{},Firmware target        : {}.{}.{}
+Поддерживаемая версия HOS   : {},Versi HOS didukung     : {}
+Предел входного тока (буст)     : {} mA,Batas arus masuk (boost)   : {} mA
+Предел тока быстрой зарядки     : {} mA,Batas arus pengisian cepat : {} mA
+Напряжение батареи              : {} mV,Tegangan baterai           : {} mV
+Контроллер источника получен    : {},Kontroler sumber didapat   : {}
+OTG Запрошен                    : {},OTG diminta                : {}
+Производитель    : {:s} ({:02X}),Produsen         : {:s} ({:02X})
+OEM ID           : {:s} ({:s}),OEM ID           : {:s} ({:s})
+Имя продукта     : {:s},Nama produk      : {:s}
+Ревизия продукта : {:s},Revisi produk    : {:s}
+Серийный номер   : {:s},Nomor seri       : {:s}
+Ёмкость с завода   : {} mAh,Kapasitas pabrik : {} mAh
 Автоповтор кнопок при удержании,Auto-ulang tombol saat ditahan
-Версия атмосферы            : {}.{}.{},Versi Atmosphere      : {}.{}.{}
-Версия прошивки         : {}.{}.{}-{}.{},Versi firmware    : {}.{}.{}-{}.{}
-Возраст батареи                : {}%,Umur baterai               : {}%
+Версия атмосферы            : {}.{}.{},Versi Atmosphere       : {}.{}.{}
+Версия прошивки         : {}.{}.{}-{}.{},Versi firmware     : {}.{}.{}-{}.{}
+Возраст батареи                : {}%,Umur baterai          : {}%
 Время гашения экрана в секундах,Waktu redup layar dalam detik
 Выключать экран,Matikan layar
 Выход на рабочий стол,Keluar ke Home
-Дата первого игрового события : {},Tanggal main pertama          : {}
+Дата первого игрового события : {},Tanggal main pertama            : {}
 Добавлять суффикс к имени файла,Tambah suffix ke nama file
-Достаточное питание            : {},Daya mencukupi             : {}
-Есть исправление RCM бага   : {},Ada perbaikan bug RCM : {}
+Достаточное питание            : {},Daya mencukupi        : {}
+Есть исправление RCM бага   : {},Ada perbaikan bug RCM  : {}
 Журналирование действий,Pencatatan aksi
 Закладки на SD,Bookmark SD
-Запись в CAL0 разрешена     : {},Tulis CAL0 diizinkan  : {}
+Запись в CAL0 разрешена     : {},Tulis CAL0 diizinkan   : {}
 Запускать точку доступа,Jalankan access point
 Запустить FTP сервер,Jalankan server FTP
 Запустить HTTP сервер,Jalankan server HTTP
-Заряд батареи                  : {}%,Daya baterai               : {}%
-Заряд батареи (сырое значение) : {}%,Daya baterai (mentah)      : {}%
-Зарядка батареи                : {},Daya baterai               : {}
+Заряд батареи                  : {}%,Daya baterai          : {}%
+Заряд батареи (сырое значение) : {}%,Daya baterai (mentah) : {}%
+Зарядка батареи                : {},Daya baterai          : {}
 Инструменты,Alat
 Использовать 5 GHz,Pakai 5 GHz
 Использовать MSG_WAITALL в recv,Pakai MSG_WAITALL di recv
 Использовать для неё TitleID,Pakai TitleID untuknya
 Использовать разгон,Pakai overclock
 Использовать скрытый SSID,Pakai SSID tersembunyi
-Источник питания                : {},Sumber daya                  : {}
+Источник питания                : {},Sumber daya                : {}
 Курсор на обеих панелях,Kursor di kedua panel
-%% заряд-разряд    : {},%% isi-kosong       : {}
-Никнейм консоли         : {},Nama konsol       : {}
-Общее число игровых сессий    : {},Total sesi main               : {}
-Bluetooth MAC адрес   : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Alamat MAC Bluetooth     : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X}
+%% заряд-разряд    : {},%% isi-kosong    : {}
+Никнейм консоли         : {},Nama konsol        : {}
+Общее число игровых сессий    : {},Total sesi main                 : {}
+Bluetooth MAC адрес   : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Alamat MAC Bluetooth    : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X}
 CDIR в листинге,CDIR di daftar
-Configuration Id1     : {},Id1 konfigurasi          : {}
-DeviceId                : {0:} ({0:016X}),DeviceId          : {0:} ({0:016X})
+Configuration Id1     : {},Id1 konfigurasi         : {}
+DeviceId                : {0:} ({0:016X}),DeviceId           : {0:} ({0:016X})
 Папка для бекапа сохранений,Folder backup data save
 Папка для дампа игр,Folder dump game
 Папка журналов,Folder log
-DramId                  : {} ({}),DramId            : {} ({})
+DramId                  : {} ({}),DramId             : {} ({})
 Пароль,Password
 Перевернуть джойконы,Balik Joy-Con
 Перевернуть экран,Putar layar
-Emummc включён              : {},Emummc aktif          : {}
+Emummc включён              : {},Emummc aktif           : {}
 Переносить слова,Bungkus kata
-Платформа               : {},Platform          : {}
-FullCap              : {:04x} ({} mAh),FullCap                 : {:04x} ({} mAh)
+Платформа               : {},Platform           : {}
+FullCap              : {:04x} ({} mAh),FullCap             : {:04x} ({} mAh)
 Подсвечивать файлы обновлений,Sorot file update
-FullCapNom           : {:04x} ({} mAh),FullCapNom              : {:04x} ({} mAh)
-Показываемая версия     : {},Versi tampil      : {}
-Показываемое название   : {},Nama tampil       : {}
+FullCapNom           : {:04x} ({} mAh),FullCapNom          : {:04x} ({} mAh)
+Показываемая версия     : {},Versi tampil       : {}
+Показываемое название   : {},Nama tampil        : {}
 Показывать 'Обновить отсюда',Tampilkan 'Update dari sini'
 Показывать объединённый NSP,Tampilkan NSP gabungan
 Показывать папку 'Mods&Cheats',Tampilkan folder 'Mods&Cheats'
@@ -1056,13 +1056,13 @@ FullCapNom           : {:04x} ({} mAh),FullCapNom              : {:04x} ({} mAh)
 Показывать размер LFS (долго),Tampilkan ukuran LFS (lambat)
 Показывать секунды,Tampilkan detik
 Показывать часы в статусе,Tampilkan jam di status
-Поколение ключа             : {},Generasi kunci        : {}
-Git commit hash             : {:016X},Hash commit Git       : {:016X}
-Полная ёмкость     : {} mAh,Kapasitas penuh     : {} mAh
-IavgEmpty            : {:04x},IavgEmpty               : {:04x}
+Поколение ключа             : {},Generasi kunci         : {}
+Git commit hash             : {:016X},Hash commit Git        : {:016X}
+Полная ёмкость     : {} mAh,Kapasitas penuh  : {} mAh
+IavgEmpty            : {:04x},IavgEmpty           : {:04x}
 Пользовательские хранилища,Penyimpanan pengguna
-Предел входного тока            : {} mA,Batas arus masuk             : {} mA
-Предназначение          : {},Tujuan            : {}
+Предел входного тока            : {} mA,Batas arus masuk           : {} mA
+Предназначение          : {},Tujuan             : {}
 Проверять хэш при установке,Verifikasi hash saat pasang
 Просмотр SD карты,Jelajahi kartu SD
 Просмотр USB носителей,Jelajahi drive USB
@@ -1072,40 +1072,40 @@ IavgEmpty            : {:04x},IavgEmpty               : {:04x}
 Просмотр сохранений,Lihat save
 Просмотр тикетов,Lihat ticket
 Просмотр установленных игр,Lihat game terpasang
-Регион                  : {},Region            : {}
-Режим HiZ зарядки       : {},Mode isi HiZ      : {}
-Режим киоска            : {},Mode kiosk        : {}
-Родительский PIN        : {},PIN orang tua     : {}
-Серийный # прочитанный  : {},Nomor seri terbaca: {}
-Серийный # угаданный    : {},Nomor seri tebakan: {}
-Серийный номер        : {},Nomor seri               : {}
-Силовая роль                    : {},Peran daya                   : {}
-QrTable00            : {:04x},QrTable00               : {:04x}
+Регион                  : {},Region             : {}
+Режим HiZ зарядки       : {},Mode isi HiZ       : {}
+Режим киоска            : {},Mode kiosk         : {}
+Родительский PIN        : {},PIN orang tua      : {}
+Серийный # прочитанный  : {},Nomor seri terbaca : {}
+Серийный # угаданный    : {},Nomor seri tebakan : {}
+Серийный номер        : {},Nomor seri              : {}
+Силовая роль                    : {},Peran daya                 : {}
+QrTable00            : {:04x},QrTable00           : {:04x}
 Смещать курсор после выделения,Pindah kursor setelah memilih
-QrTable10            : {:04x},QrTable10               : {:04x}
-Сожжено предохранителей : {},Fuse terbakar     : {}
+QrTable10            : {:04x},QrTable10           : {:04x}
+Сожжено предохранителей : {},Fuse terbakar      : {}
 Создавать LFS папку,Buat folder LFS
-QrTable20            : {:04x},QrTable20               : {:04x}
-QrTable30            : {:04x},QrTable30               : {:04x}
-RCOMP0               : {:04x},RCOMP0                  : {:04x}
+QrTable20            : {:04x},QrTable20           : {:04x}
+QrTable30            : {:04x},QrTable30           : {:04x}
+RCOMP0               : {:04x},RCOMP0              : {:04x}
 Сохранения только в RO режиме,Save hanya baca-saja
-RTC запущены (приблизительно) : {},RTC mulai (perkiraan)         : {}
-Текущая ёмкость                 : {}%,Kapasitas saat ini           : {}%
-Текущая ёмкость    : {} mAh,Kapasitas kini      : {} mAh
-Текущее напряжение : {} mV,Tegangan kini       : {} mV
-Текущий заряд      : {}%,Daya kini           : {}%
-Текущий ток        : {} mA,Arus kini           : {} mA
+RTC запущены (приблизительно) : {},RTC mulai (perkiraan)           : {}
+Текущая ёмкость                 : {}%,Kapasitas saat ini         : {}%
+Текущая ёмкость    : {} mAh,Kapasitas kini   : {} mAh
+Текущее напряжение : {} mV,Tegangan kini    : {} mV
+Текущий заряд      : {}%,Daya kini        : {}%
+Текущий ток        : {} mA,Arus kini        : {} mA
 Тема отображения,Tema tampilan
-Температура        : {}°C,Suhu                : {}°C
-Температура батареи             : {}°C,Suhu baterai                 : {}°C
-Тип SoC                 : {},Tipe SoC          : {}
-Тип источника питания          : {},Tipe sumber daya           : {}
-Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Alamat MAC Wireless LAN  : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X}
-Форсировано вклчение USB 3.0: {},Paksa aktifkan USB 3.0: {}
-Возраст батареи                 : {}%,Umur baterai                 : {}%
-Предел напряжения заряда батареи: {} mV,Batas tegangan isi baterai   : {} mV
-Средняя температура: {}°C,Suhu rata-rata      : {}°C
-Сумма %% заряд-разряд: {} (~{} 0-100 циклов),Total %% isi-kosong     : {} (~{} siklus 0-100)
+Температура        : {}°C,Suhu             : {}°C
+Температура батареи             : {}°C,Suhu baterai               : {}°C
+Тип SoC                 : {},Tipe SoC           : {}
+Тип источника питания          : {},Tipe sumber daya      : {}
+Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Alamat MAC Wireless LAN : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X}
+Форсировано вклчение USB 3.0: {},Paksa aktifkan USB 3.0 : {}
+Возраст батареи                 : {}%,Umur baterai               : {}%
+Предел напряжения заряда батареи: {} mV,Batas tegangan isi baterai : {} mV
+Средняя температура: {}°C,Suhu rata-rata   : {}°C
+Сумма %% заряд-разряд: {} (~{} 0-100 циклов),Total %% isi-kosong : {} (~{} siklus 0-100)
 "          Париж, издательство Грассе.", 
       Название: {}\n      Издатель: {}\n      Версия: ,      Nama: {}\n      Penerbit: {}\n      Versi: 
 Удаление игры ,Menghapus game 
@@ -1219,19 +1219,19 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Очистить кеш тикетов,Bersihkan cache ticket
 Очистить /atmosphere/contents,Bersihkan /atmosphere/contents
 Удалить сохранения удалённых пользователей,Hapus save pengguna terhapus
-Дата производства: {:s},Tanggal produksi   : {:s}
+Дата производства: {:s},Tanggal produksi : {:s}
 Ник: {},Nama: {}
 Установить обновления из текущей папки,Pasang update dari folder ini
 Патчить требование NNID: ,Patch syarat NNID       :
 Выполнить выбранные действия,Jalankan aksi yang dipilih
-CID: {:s},CID                : {:s}
+CID: {:s},CID              : {:s}
 TitleId : {} BID: {},TitleId  : {} BID: {}
 "Meta SDK: {},  Program SDK: {}","Meta SDK : {},  SDK Program: {}"
 "Внимание!!! Включение следующих опций приведет к тому,",Peringatan!!! Mengaktifkan opsi berikut akan membuat
 что установленные NCA файлы будут отличаться от исходных:,file NCA yang terpasang berbeda dari aslinya:
 Включение синхронизации времени по сети...,Mengaktifkan sinkronisasi waktu jaringan…
- Да ,Ya 
-Нет , Tidak 
+ Да , Ya 
+Нет ,Tida
 Это действие будет нельзя отменить,Tindakan ini tidak bisa dibatalkan
 Да,Ya
 Произошла ошибка: ,Terjadi error: 
