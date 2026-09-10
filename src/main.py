@@ -35,6 +35,7 @@ from src.core.text_utils import tokenize, detokenize, normalize_tokens_out, visu
 from src.core.validator import validate
 from src.core import ai_client
 from src.core.ai_client import translate_batch, refine, init_session, init_session_shadok, translate_shadok_block
+from src.core.errors import ExportError
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -51,6 +52,9 @@ META_SHEET = "Metadata"
 
 BLOCK_JSON = DATA_DIR / "blocks.json"
 SHADOK_JSON = DATA_DIR / "shadok.json"
+
+DEFAULT_MIN_TRANSLATION_SIZE = 330_000  # ~322 KB (half of min valid ~661 KB)
+MIN_CORRUPT_THRESHOLD = 100 * 1024      # Under 100 KB is definitely corrupted
 
 def find_dbi_version_row(ws, col_map) -> int:
     """Find the row that likely contains the pure 3-4 digit version number."""
@@ -848,6 +852,67 @@ def cmd_validate() -> None:
 
 # ── export ───────────────────────────────────────────────────────────
 
+def export_language(
+    lc: str,
+    wb: openpyxl.Workbook | None = None,
+    ws: openpyxl.worksheet.worksheet.Worksheet | None = None,
+    col_map: dict[str, int] | None = None,
+    shadok_rows: set[int] | None = None,
+) -> tuple[Path, int, int]:
+    """Export a single language to CSV file (original, translation).
+    
+    Returns (csv_path, entry_count, missing_count).
+    """
+    if wb is None or ws is None or col_map is None:
+        wb = open_or_create_workbook()
+        ws = wb[SHEET_NAME]
+        header = [ws.cell(1, c).value for c in range(1, ws.max_column + 1)]
+        col_map = {h: i + 1 for i, h in enumerate(header) if h}
+
+    if lc not in col_map:
+        raise ExportError(f"Language column '{lc}' not found in dictionary!")
+
+    if shadok_rows is None:
+        shadok_config = load_shadok_config()
+        if shadok_config:
+            shadok_rows = build_shadok_exclusion_rows(
+                ws, col_map, shadok_config.get("mapping", [])
+            )
+        else:
+            shadok_rows = set()
+
+    TRANSLATIONS_DIR.mkdir(parents=True, exist_ok=True)
+    csv_path = TRANSLATIONS_DIR / f"{lc}.csv"
+
+    count = 0
+    missing_count = 0
+    with csv_path.open("w", encoding="utf-8", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["original", "translation"])
+        for row in range(2, ws.max_row + 1):
+            original = ws.cell(row, col_map["Original"]).value
+            if not original:
+                continue
+
+            translation = ws.cell(row, col_map[lc]).value
+
+            # Shadok blanks must stay blank — never fall back to EN/RU originals
+            if row in shadok_rows:
+                if translation is None or str(translation) == "":
+                    translation = SHADOK_BLANK_CELL
+                elif not str(translation).strip():
+                    translation = SHADOK_BLANK_CELL
+            elif not translation or not str(translation).strip():
+                english_fallback = ws.cell(row, col_map["en"]).value if "en" in col_map else None
+                translation = english_fallback if english_fallback and str(english_fallback).strip() else original
+                missing_count += 1
+
+            writer.writerow([detokenize(str(original)), detokenize(str(translation))])
+            count += 1
+
+    return csv_path, count, missing_count
+
+
 def cmd_export() -> None:
     """Export per-language CSV files (original, translation) for the bin builder."""
     langs = load_languages()
@@ -865,41 +930,13 @@ def cmd_export() -> None:
         )
 
     TRANSLATIONS_DIR.mkdir(parents=True, exist_ok=True)
-
     missing_total = 0
-    
+
     for lc in langs:
         if lc not in col_map or lc == "ru":
             continue
-        csv_path = TRANSLATIONS_DIR / f"{lc}.csv"
-        count = 0
-        missing_count = 0
-        with csv_path.open("w", encoding="utf-8", newline="") as f:
-            writer = csv.writer(f)
-            writer.writerow(["original", "translation"])
-            for row in range(2, ws.max_row + 1):
-                original = ws.cell(row, col_map["Original"]).value
-                if not original:
-                    continue
-                    
-                translation = ws.cell(row, col_map[lc]).value
-
-                # Shadok blanks must stay blank — never fall back to EN/RU originals
-                if row in shadok_rows:
-                    if translation is None or str(translation) == "":
-                        translation = SHADOK_BLANK_CELL
-                    elif not str(translation).strip():
-                        translation = SHADOK_BLANK_CELL
-                elif not translation or not str(translation).strip():
-                    english_fallback = ws.cell(row, col_map["en"]).value if "en" in col_map else None
-                    translation = english_fallback if english_fallback and str(english_fallback).strip() else original
-                    missing_count += 1
-                    missing_total += 1
-                    print(f"  [WARNING] Row {row} missing translation for '{lc}'. Fallback to: {translation[:30] + '...' if len(str(translation)) > 30 else translation}")
-
-                writer.writerow([detokenize(str(original)), detokenize(str(translation))])
-                count += 1
-                
+        csv_path, count, missing_count = export_language(lc, wb, ws, col_map, shadok_rows)
+        missing_total += missing_count
         print(f"  {lc}.csv: {count} entries" + (f" ({missing_count} missing translations filled with fallback)" if missing_count else ""))
 
     if missing_total > 0:
@@ -910,6 +947,135 @@ def cmd_export() -> None:
 
     print("\n[BUILD] Auto-building binaries...")
     cmd_build()
+
+
+def get_translation_size_threshold(search_dirs: list[Path] | None = None) -> int:
+    """Compute the minimum acceptable size for a translation.bin file.
+
+    Finds the minimum size among valid translation binaries (>= 100 KB)
+    and divides it by 2. Returns DEFAULT_MIN_TRANSLATION_SIZE if no valid binaries exist.
+    """
+    if search_dirs is None:
+        search_dirs = [OUTPUT_DIR, DIST_DIR]
+
+    valid_sizes: list[int] = []
+    for d in search_dirs:
+        if not d.exists():
+            continue
+        for bin_file in d.glob("**/*translation*.bin"):
+            try:
+                sz = bin_file.stat().st_size
+                if sz >= MIN_CORRUPT_THRESHOLD:
+                    valid_sizes.append(sz)
+            except OSError:
+                pass
+
+    if valid_sizes:
+        min_valid = min(valid_sizes)
+        return min_valid // 2
+    return DEFAULT_MIN_TRANSLATION_SIZE
+
+
+def regenerate_translation_bin(lc: str) -> Path:
+    """Regenerate CSV from dictionary and compile translation.bin for a language."""
+    print(f"  [REGEN] Re-exporting CSV and recompiling translation_{lc}.bin...")
+    csv_path, count, _ = export_language(lc)
+    bin_path = OUTPUT_DIR / f"translation_{lc}.bin"
+    cmd = [sys.executable, str(BUILD_SCRIPT), str(csv_path), "-o", str(bin_path)]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    if result.returncode != 0:
+        raise ExportError(f"Failed to build binary for {lc}: {result.stderr}")
+    return bin_path
+
+
+def verify_and_regenerate_translation(
+    lc: str,
+    bin_path: Path,
+    min_threshold: int | None = None,
+) -> tuple[Path, int]:
+    """Verify binary exists and meets minimum size threshold; regenerate if undersized.
+
+    Returns (bin_path, file_size_in_bytes).
+    Raises ExportError if binary remains below min_threshold after regeneration.
+    """
+    if min_threshold is None:
+        min_threshold = get_translation_size_threshold()
+
+    if not bin_path.exists():
+        print(f"  [REGEN] {bin_path.name} not found. Triggering generation...")
+        bin_path = regenerate_translation_bin(lc)
+
+    current_size = bin_path.stat().st_size
+    if current_size < min_threshold:
+        size_kb = round(current_size / 1024, 2)
+        thresh_kb = round(min_threshold / 1024, 2)
+        print(
+            f"  [WARN] {bin_path.name} is undersized: {current_size} bytes ({size_kb} KB) "
+            f"< threshold {min_threshold} bytes ({thresh_kb} KB). Automatically regenerating..."
+        )
+        bin_path = regenerate_translation_bin(lc)
+        current_size = bin_path.stat().st_size
+        new_kb = round(current_size / 1024, 2)
+        if current_size < min_threshold:
+            raise ExportError(
+                f"Binary {bin_path.name} ({current_size} bytes / {new_kb} KB) remains below "
+                f"minimum threshold {min_threshold} bytes ({thresh_kb} KB) after regeneration! "
+                f"Check dictionary translations for '{lc}'."
+            )
+        print(f"  [REGEN OK] {bin_path.name} successfully regenerated: {current_size} bytes ({new_kb} KB).")
+
+    return bin_path, current_size
+
+
+def verify_remote_release_assets(dbi_ver: str, local_assets: list[Path], min_threshold: int) -> None:
+    """Verify uploaded release assets on GitHub, checking file sizes in KB."""
+    print(f"\n  [VERIFY] Checking uploaded assets on GitHub Release {dbi_ver}...")
+    res = subprocess.run(
+        ["gh", "release", "view", dbi_ver, "--json", "assets"],
+        capture_output=True, text=True, encoding="utf-8"
+    )
+    if res.returncode != 0:
+        raise ExportError(f"Failed to query GitHub release assets: {res.stderr}")
+
+    try:
+        data = json.loads(res.stdout)
+        remote_assets = {a["name"]: a["size"] for a in data.get("assets", [])}
+    except Exception as e:
+        raise ExportError(f"Failed to parse GitHub release assets JSON: {e}")
+
+    failed = 0
+    for local_p in local_assets:
+        fname = local_p.name
+        local_size = local_p.stat().st_size
+        local_kb = round(local_size / 1024, 2)
+
+        if fname not in remote_assets:
+            print(f"  [ERROR] Asset '{fname}' was not found in GitHub Release!")
+            failed += 1
+            continue
+
+        remote_size = remote_assets[fname]
+        remote_kb = round(remote_size / 1024, 2)
+
+        if "translation" in fname and remote_size < min_threshold:
+            print(
+                f"  [ERROR] {fname}: Uploaded size {remote_size} bytes ({remote_kb} KB) "
+                f"is below threshold {min_threshold} bytes!"
+            )
+            failed += 1
+        elif remote_size != local_size:
+            print(
+                f"  [ERROR] {fname}: Size mismatch! Local has {local_size} bytes ({local_kb} KB), "
+                f"GitHub has {remote_size} bytes ({remote_kb} KB)!"
+            )
+            failed += 1
+        else:
+            print(f"  [UPLOAD OK] {fname}: {remote_size} bytes ({remote_kb} KB) confirmed on GitHub.")
+
+    if failed > 0:
+        raise ExportError(f"GitHub Release asset verification failed ({failed} defective or missing files)!")
+    print(f"  [VERIFY OK] All {len(local_assets)} release assets successfully verified on GitHub.\n")
+
 
 
 def cmd_sync() -> None:
@@ -1008,9 +1174,11 @@ def cmd_sync() -> None:
 # ── build ────────────────────────────────────────────────────────────
 
 def cmd_build() -> None:
-    """Run build_translation_bin.py for each exported CSV."""
+    """Run build_translation_bin.py for each exported CSV and verify binary sizes."""
     langs = load_languages()
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    min_threshold = get_translation_size_threshold()
+    print(f"  [BUILD] Size threshold for valid binaries: {min_threshold} bytes ({round(min_threshold / 1024, 2)} KB)")
 
     for lc in langs:
         if lc == "ru":
@@ -1025,8 +1193,10 @@ def cmd_build() -> None:
         result = subprocess.run(cmd, capture_output=True, text=True)
         if result.returncode != 0:
             print(f"  [!] Error building {lc}: {result.stderr}")
-        else:
-            print(f"  OK: {bin_path.name}")
+            continue
+
+        bin_path, sz = verify_and_regenerate_translation(lc, bin_path, min_threshold)
+        print(f"  OK: {bin_path.name} ({round(sz / 1024, 2)} KB)")
 
     print("Build done.")
 
@@ -1057,14 +1227,15 @@ def cmd_dist() -> None:
 
     nro_ver = get_nro_version()
     print(f"  Using patched NRO: {source_nro.name} (version {nro_ver})")
+    min_threshold = get_translation_size_threshold()
+    print(f"  [DIST] Minimum translation size threshold: {min_threshold} bytes ({round(min_threshold / 1024, 2)} KB)")
 
     for lc in langs:
         if lc == "ru": continue
 
         bin_path = OUTPUT_DIR / f"translation_{lc}.bin"
-        if not bin_path.exists():
-            # Try to build it if missing? No, user usually runs build before dist.
-            continue
+        # Verify and regenerate if missing or undersized before copying
+        bin_path, _ = verify_and_regenerate_translation(lc, bin_path, min_threshold)
 
         lang_dist = DIST_DIR / lc
         lang_dist.mkdir(parents=True, exist_ok=True)
@@ -1072,9 +1243,15 @@ def cmd_dist() -> None:
         # Copy and rename NRO to DBI.nro as requested by user's example
         shutil.copy2(source_nro, lang_dist / "DBI.nro")
         # Copy and rename BIN to translation.bin
-        shutil.copy2(bin_path, lang_dist / "translation.bin")
+        target_bin = lang_dist / "translation.bin"
+        shutil.copy2(bin_path, target_bin)
+        dist_sz = target_bin.stat().st_size
+        if dist_sz < min_threshold:
+            raise ExportError(
+                f"Dist file {target_bin} is undersized: {dist_sz} bytes < threshold {min_threshold} bytes!"
+            )
 
-        print(f"  [OK] {lc}: DBI.nro + translation.bin")
+        print(f"  [OK] {lc}: DBI.nro + translation.bin ({round(dist_sz / 1024, 2)} KB)")
 
     print(f"\nOrganization in 'dist' folder complete using {source_nro.name}")
 
@@ -1523,19 +1700,28 @@ def cmd_deploy() -> None:
 
             # Copy translation_en.bin to D:\git\dev\_kefir\kefir\switch\DBI\translation.bin
             en_bin = OUTPUT_DIR / "translation_en.bin"
+            min_threshold = get_translation_size_threshold()
             if en_bin.exists():
+                en_bin, en_sz = verify_and_regenerate_translation("en", en_bin, min_threshold)
                 shutil.copy2(en_bin, kefir_dir / "translation.bin")
-                print(f"  [COPY] translation_en.bin -> {kefir_dir / 'translation.bin'}")
+                copied_en = kefir_dir / "translation.bin"
+                if copied_en.stat().st_size < min_threshold:
+                    raise ExportError(f"Copied Kefir translation.bin is undersized: {copied_en.stat().st_size} bytes!")
+                print(f"  [COPY] translation_en.bin ({round(en_sz / 1024, 2)} KB) -> {copied_en}")
             else:
                 print(f"  [WARN] translation_en.bin not found")
 
             # Copy translation_ua.bin to E:\Switch\addons\switch\DBI\translation.bin
             ua_bin = OUTPUT_DIR / "translation_ua.bin"
-            switch_dir = Path("E:/Switch/addons/switch/DBI")
             if ua_bin.exists():
+                ua_bin, ua_sz = verify_and_regenerate_translation("ua", ua_bin, min_threshold)
+                switch_dir = Path("E:/Switch/addons/switch/DBI")
                 switch_dir.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(ua_bin, switch_dir / "translation.bin")
-                print(f"  [COPY] translation_ua.bin -> {switch_dir / 'translation.bin'}")
+                copied_ua = switch_dir / "translation.bin"
+                if copied_ua.stat().st_size < min_threshold:
+                    raise ExportError(f"Copied Switch translation.bin is undersized: {copied_ua.stat().st_size} bytes!")
+                print(f"  [COPY] translation_ua.bin ({round(ua_sz / 1024, 2)} KB) -> {copied_ua}")
             else:
                 print(f"  [WARN] translation_ua.bin not found")
 
@@ -1646,6 +1832,15 @@ This community translation set is still evolving. Some strings may remain untran
     check_tag = subprocess.run(["gh", "release", "view", dbi_ver], capture_output=True, text=True, encoding="utf-8")
 
     assets = [str(a) for a in Path("output").glob("translation_*.bin")]
+    if not assets:
+        raise ExportError("No translation binaries found in output/ to deploy!")
+
+    print(f"  [CHECK] Verifying {len(assets)} translation binaries before upload (threshold: {min_threshold} bytes / {round(min_threshold / 1024, 2)} KB)...")
+    for a_str in assets:
+        a_path = Path(a_str)
+        lc = a_path.stem.replace("translation_", "")
+        _, sz = verify_and_regenerate_translation(lc, a_path, min_threshold)
+        print(f"  [ASSET OK] {a_path.name}: {sz} bytes ({round(sz / 1024, 2)} KB)")
 
     # Get the patched NRO for release and rename it for the asset upload
     patched_nro = get_patched_nro_path()
@@ -1696,6 +1891,10 @@ This community translation set is still evolving. Some strings may remain untran
             print(f"  [GH] Assets updated successfully in release {dbi_ver}!")
         except subprocess.CalledProcessError as e:
             print(f"  [ERROR] Failed to update assets: {e}")
+            raise
+
+        local_assets_to_verify = [Path(a) for a in assets] + [Path(a) for a in nro_assets]
+        verify_remote_release_assets(dbi_ver, local_assets_to_verify, min_threshold)
     else:
         # Release doesn't exist - create new one
         print(f"  [GH] Creating new release {dbi_ver}...")
@@ -1713,10 +1912,14 @@ This community translation set is still evolving. Some strings may remain untran
             print(f"  [GH] Release {dbi_ver} created successfully!")
         except subprocess.CalledProcessError as e:
             print(f"  [ERROR] GitHub release failed: {e}")
+            raise
+
+        local_assets_to_verify = [Path(a) for a in assets] + [Path(a) for a in nro_assets]
+        verify_remote_release_assets(dbi_ver, local_assets_to_verify, min_threshold)
 
 
 def cmd_check() -> None:
-    """Check dictionary integrity against source CSV and blocks.json"""
+    """Check dictionary integrity against source CSV and blocks.json, and verify binary sizes"""
     print("\n" + "="*60 + "\n  STEP: check\n" + "="*60)
     
     ua_path = DATA_DIR / "ua.csv"
@@ -1751,9 +1954,39 @@ def cmd_check() -> None:
                 if pat not in dict_originals:
                     print(f"  [ERROR] Block {bid} string missing in dictionary: {repr(pat)}")
                     mismatches += 1
+
+    # Check binary sizes
+    print("\n  [CHECK] Verifying translation binary sizes...")
+    min_threshold = get_translation_size_threshold()
+    print(f"  Size threshold (half of minimum valid size): {min_threshold} bytes ({round(min_threshold / 1024, 2)} KB)")
+
+    output_bins = list(OUTPUT_DIR.glob("translation_*.bin"))
+    if not output_bins:
+        print("  [WARN] No translation binaries in output/. Run 'build' or 'export' first.")
+    else:
+        for ob in sorted(output_bins):
+            sz = ob.stat().st_size
+            sz_kb = round(sz / 1024, 2)
+            if sz < min_threshold:
+                print(f"  [ERROR] output/{ob.name}: {sz} bytes ({sz_kb} KB) < threshold {min_threshold} bytes! Needs regeneration.")
+                mismatches += 1
+            else:
+                print(f"  [OK] output/{ob.name}: {sz} bytes ({sz_kb} KB)")
+
+    if DIST_DIR.exists():
+        dist_bins = list(DIST_DIR.glob("*/translation.bin"))
+        for db in sorted(dist_bins):
+            sz = db.stat().st_size
+            sz_kb = round(sz / 1024, 2)
+            lang_name = db.parent.name
+            if sz < min_threshold:
+                print(f"  [ERROR] dist/{lang_name}/translation.bin: {sz} bytes ({sz_kb} KB) < threshold {min_threshold} bytes! Needs regeneration.")
+                mismatches += 1
+            else:
+                print(f"  [OK] dist/{lang_name}/translation.bin: {sz} bytes ({sz_kb} KB)")
                 
     if mismatches == 0:
-        print("  [OK] Health check passed successfully! All strings match identically.")
+        print("\n  [OK] Health check passed successfully! All strings match and all binaries meet size requirements.")
     else:
         print(f"\n  [FAIL] Health check failed with {mismatches} issues.")
 

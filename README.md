@@ -90,12 +90,24 @@ To patch a pristine `DBI.905.ru.nro` binary to support external runtime translat
 python scripts/patch_dbi.py --nro /path/to/DBI.905.ru.nro --output DBI.905.ru_patched.nro
 ```
 
+### Quick Start Launcher (`run.bat` / `menu.py`)
+On Windows, double-click `run.bat` (or run `python menu.py`) in the repository root to launch an interactive terminal menu with checkbox selection:
+- `all` encompasses all build, localization, and test steps (`sync`, `translate`, `shadok`, `align`, `validate`, `export`, `build`, `dist`, `check`, `test`), visually indented under `all`.
+- `deploy` and `clear` are standalone operations.
+- Actions always run in a canonical, safe pipeline order regardless of selection sequence.
+
 ### Commands
 ```powershell
+# Interactive menu launcher
+.\run.bat
+
 # Run the full test cycle (sync, translate, align, validate, build)
 python -m src.main test
 
-# Deploy a new version (Commit, Push, GitHub Release)
+# Check dictionary integrity and translation binary sizes
+python -m src.main check
+
+# Deploy a new version (Commit, Push, GitHub Release with size verification)
 python -m src.main deploy
 
 # Individual steps
@@ -104,8 +116,17 @@ python -m src.main sync       # Update dictionary from source CSVs
 $env:DBI_TRANSLATE_WORKERS=4; python -m src.main translate
 python -m src.main align      # Fix UI alignment for specific blocks
 python -m src.main validate   # Verify data integrity
-python -m src.main build      # Generate binary .bin files
+python -m src.main export     # Export per-language CSVs & compile binaries
+python -m src.main build      # Generate binary .bin files (with auto-regeneration if undersized)
+python -m src.main dist       # Organize per-language dist/ folders (with size verification)
 ```
+
+### 🛡️ Translation Binary Size Protection
+The pipeline automatically protects against corrupt or incomplete translations:
+- Computes minimum expected binary size dynamically (half of the smallest valid translation, ~330 KB). Any file under 100 KB or below this threshold is treated as an error.
+- Undersized binaries are automatically re-exported from `data/dictionary.xlsx` and rebuilt on the fly during `build`, `dist`, and `deploy`.
+- During deployment, uploaded assets are verified directly against GitHub Release metadata (`gh release view --json assets`) to confirm that all uploaded files match local sizes and exceed the size threshold.
+
 
 ---
 

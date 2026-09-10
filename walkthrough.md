@@ -1,4 +1,108 @@
+# Walkthrough: Виправлення локалізації ES-419 та 100% успішне проходження всіх 138 тестів (v0.0.98)
+
+## Результати
+- **Діагностика та усунення 3 падінь у тестах [`tests/test_es419_translation.py`](file:///d:/git/dev/dbi_patcher/tests/test_es419_translation.py)**:
+  - **Причина проблеми**: При злитті PR #16 колонка `es419` у словнику була частково перезаписана європейською іспанською термінологією (`lanzar` замість `Iniciar`, `ajustes` замість `Configuración`, `sticks` замість `Palancas`, `copias de seguridad` замість `Respaldo`, `partidas guardadas` замість `Datos de guardado`, `borrando` замість `Eliminando`). Також рядки не мали спеціальної токенізації (`[[ESC]]`, `[[LF]]`), через що 3 тести (`test_preferred_es419_terminology`, `test_all_rows_pass_structural_validation`, `test_csv_schema_and_completeness`) стабільно падали.
+  - **Відновлення автентичних перекладів**:
+    - Витягнуто оригінальні переклади автора PR #16 (`e01d8a2`) та оновлено 142 клітинки у [`data/dictionary.xlsx`](file:///d:/git/dev/dbi_patcher/data/dictionary.xlsx).
+    - Переклади токенізовано згідно з правилами проекту. Усі нові рядки (температурні аліаси, ключі DBI 905 та рядки PR #26) повністю збережено.
+    - Експортовано оновлений [`translations/es419.csv`](file:///d:/git/dev/dbi_patcher/translations/es419.csv) (1294 записи, 0 пропущених).
+- **Перезбірка бінарників**:
+  - Скомпільовано [`output/translation_es419.bin`](file:///d:/git/dev/dbi_patcher/output/translation_es419.bin) розміром 744,752 байти (727.3 KB).
+  - Оновлено файл [`dist/es419/translation.bin`](file:///d:/git/dev/dbi_patcher/dist/es419/translation.bin).
+- **Версіонування та 100% проходження тестів**:
+  - Ітеровано версію словника до **`0.0.98`**.
+  - Оновлено тест [`tests/test_temperature_aliases_and_sync.py`](file:///d:/git/dev/dbi_patcher/tests/test_temperature_aliases_and_sync.py) на версію `0.0.98`.
+  - Запущено повний набір тестів паралельно (`pytest tests -n auto`): **усі 138 тестів завершилися успішно (138 passed, 0 failed, 100% green)**.
+
+# Walkthrough: Вкладення дій під All з таб-відступами та ізоляція Deploy/Clear (v0.0.97)
+
+## Результати
+- **Оновлення складу `all` та ієрархія в [`menu.py`](file:///d:/git/dev/dbi_patcher/menu.py)**:
+  - До списку `ALL_SUB_ACTIONS` включено всі етапи побудови, локалізації та тестів:
+    `sync`, `translate`, `shadok`, `align`, `validate`, `export`, `build`, `dist`, `check`, `test`.
+  - Пункти `deploy` та `clear` відокремлені як незалежні операції верхнього рівня.
+  - При обранні `all` автоматично виставляються прапорці на всі 10 підпорядкованих дій; при знятті будь-якої з них з `all` галочка автоматично скидається. Якщо вибрати всі 10 вручну — `all` автоматично стає відміченим.
+- **Візуальне виділення табом (відступом у 4 пробіли)**:
+  - Усі 10 дій всередині `all` виводяться з відступом у 4 символи (таб) від лівого краю пункту `all`:
+    ```text
+    >> [ ] all        - Complete build pipeline (all steps except deploy & clear)
+           [ ] sync       - Synchronize dictionary with source CSV files
+           [ ] translate  - Translate missing strings using AI (Web2API / Gemini)
+           [ ] shadok     - Localize Shadok satirical fables via AI
+           [ ] align      - Align colon positions in structured UI blocks
+           [ ] validate   - Validate dictionary structure and translation rules
+           [ ] export     - Export CSV files and compile translation.bin files
+           [ ] build      - Compile translation.bin binaries (with size check & auto-regen)
+           [ ] dist       - Pack NRO and translation.bin into per-language dist/ folders
+           [ ] check      - Check source integrity and verify binary file sizes
+           [ ] test       - Run parallel test suite (pytest -n auto)
+       [ ] deploy     - Deploy release to GitHub (with size verification)
+       [ ] clear      - Clear translations for a specific language
+    ```
+  - Курсор навігації `>>` та прапорець `[ ]` налаштовано так, що вони ніколи не зміщуються по горизонталі під час переміщення вгору-вниз (без візуального «тремтіння»).
+- **Справжній запуск pytest у кроці `test`**:
+  - У TUI меню дія `test` запускає паралельний набір тестів проекту (`pytest tests -n auto`) через `subprocess`, що відповідає підпису пункту.
+- **CRLF нормалізація [`run.bat`](file:///d:/git/dev/dbi_patcher/run.bat)**:
+  - Батник перекодовано у суворий Windows CRLF-формат, що усуває зайвий вивід команд під час запуску в середовищі Windows `cmd.exe`.
+- **Тестування та версіонування**:
+  - Оновлено та розширено набір юніт-тестів [`tests/test_menu.py`](file:///d:/git/dev/dbi_patcher/tests/test_menu.py) (9 тестів: перемикання `all`, авто-зняття/постановка прапорця, перевірка прапорця `indent=True` для всіх 10 дочірніх дій, ізоляція `deploy`/`clear` та канонічний порядок).
+  - Ітеровано версію словника `data/dictionary.xlsx` до `0.0.97`.
+  - Оновлено тест `tests/test_temperature_aliases_and_sync.py` для очікування `0.0.97`.
+  - Оновлено документацію в `README.md` та `README_ES.md`.
+  - Усі 135 тестів успішно виконано в паралельному режимі (`pytest tests -n auto`).
+
+# Walkthrough: Python TUI-інтерфейс на базі Kefirosphere/build.py та спрощення run.bat (v0.0.96)
+
+## Результати
+- **Розробка Python TUI-інтерфейсу ([`menu.py`](file:///d:/git/dev/dbi_patcher/menu.py))**:
+  - Створено повноцінний інтерактивний консольний інтерфейс у терміналі, за зразком механізму `interactive_select` з `Kefirosphere/build.py`.
+  - Підтримує швидку навігацію клавішами `UP`/`DOWN` (або `k`/`j`), перемикання чекбоксів клавішею `SPACE`, запуск обраного ланцюжка через `ENTER` та вихід через `Q`/`ESC`.
+  - Реалізовано кольорове ANSI-оформлення з підтримкою VT100 на Windows (`os.system("")`), активним підсвічуванням курсора та відмічених пунктів `[x]`.
+- **Логіка зв'язку мета-опції `all` та окремого `dist`**:
+  - Мета-пункт `all` контролює основні етапи побудови: `sync`, `translate`, `align`, `validate`, `export`, `build`.
+  - При виборі `all` автоматично встановлюються галочки на всі ці 6 кроків.
+  - При ручному знятті/зміні будь-якого з цих 6 кроків з `all` автоматично знімається вибір, а всі інші обрані користувачем дії залишаються відміченими для виконання.
+  - При повному ручному виборі всіх 6 кроків `all` автоматично стає відміченим.
+  - Дія `dist` є окремою та незалежною опцією і не перемикається разом з `all`, але може бути обрана окремо або разом з іншими діями.
+- **Фіксований канонічний порядок виконання**:
+  - Незалежно від того, в якому порядку користувач клацав чекбокси у списку, обрані операції завжди виконуються у суворо визначеному порядку:
+    `clear` -> `sync` -> `translate` -> `shadok` -> `align` -> `validate` -> `export` -> `build` -> `dist` -> `check` -> `test` -> `deploy`.
+  - У нижній частині меню динамічно відображається сформований ланцюжок дій (`Execution plan:`).
+- **Спрощення `run.bat`**:
+  - Батник скорочено до перевірки наявності Python у PATH та виклику `python "%~dp0menu.py"`, що забезпечує стабільний запуск TUI по дабл-кліку без сирого виводу команд `echo`.
+- **Тестування та версіонування**:
+  - Додано юніт-тести логіки меню в [`tests/test_menu.py`](file:///d:/git/dev/dbi_patcher/tests/test_menu.py) (8 тестів на перемикання `all`, авто-зняття прапорця, незалежність `dist` та канонічний порядок).
+  - Ітеровано версію словника `data/dictionary.xlsx` до `0.0.96`.
+  - Оновлено тест `tests/test_temperature_aliases_and_sync.py` для очікування `0.0.96`.
+  - Оновлено документацію в `README.md` та `README_ES.md`.
+  - Всі 134 тести успішно виконано в паралельному режимі (`pytest tests -n auto`).
+
+# Walkthrough: Інтерактивний run.bat, контроль розміру файлів перекладу та авто-перегенерація (v0.0.95)
+
+
+## Результати
+- **Інтерактивний батнік (`run.bat`)**:
+  - Створено Windows-батнік `run.bat` у корені репозиторію з підтримкою кодування UTF-8 (`chcp 65001`) для запуску через подвійний клік.
+  - Меню надає зручний доступ до всіх функцій пайплайну: `sync`, `translate`, `validate`, `align`, `shadok`, `export`, `build`, `dist`, `check`, `test` (паралельний запуск pytest), `all`, `clear` (із запитом коду мови) та `deploy` (із підтвердженням `y/N`).
+  - Після кожної дії передбачено паузу (`pause`) та циклічне повернення в головне меню, що виключає закриття вікна терміналу при запуску з Провідника Windows.
+- **Аналіз та розв'язання проблеми заниженого розміру бінарників**:
+  - Виявлено аномальний файл `dist/en/translation.bin` розміром 2,672 байти (2.61 KB при нормі ~671 KB).
+  - Знайдено корінь проблеми: у тесті `tests/test_shadok_localization.py` виклик `cmd_export()` не мокував `cmd_build()`, через що 33 тестових рядки Шадоків перекомпілювалися в реальну директорію `output/translation_en.bin`. Тест ізольовано шляхом мокування `cmd_build`.
+  - Реалізовано динамічний розрахунок порогу `get_translation_size_threshold()`: відкидаються пошкоджені файли (< 100 KB), знаходиться мінімальний валідний розмір (661,544 байти, ~646 KB для `zhcn`) та ділиться на два -> поріг складає 330,772 байти (~323 KB).
+  - Створено механізм авто-перегенерації `verify_and_regenerate_translation()`: якщо бінарник відсутній або менший за поріг, автоматично виконується експорт мовного CSV зі словника `dictionary.xlsx` та перезбірка.
+  - Інтегровано перевірку розміру в `cmd_build`, `cmd_dist` (перевірка перед і після копіювання), `cmd_deploy` (перевірка локальних копій Kefir/Switch та всіх ассетів перед завантаженням) і `cmd_check` (вивід таблиці розмірів у KB з валідацією).
+  - Реалізовано `verify_remote_release_assets()` у `cmd_deploy`: після завантаження релізу на GitHub скрипт звертається до `gh release view {dbi_ver} --json assets`, перевіряє точний розмір у кілобайтах кожного завантаженого файлу, звіряє з локальним розміром та гарантує, що жоден переклад не є заниженим.
+  - Виправлено файли: `dist/en/translation.bin` та `output/translation_en.bin` тепер мають повноцінний розмір 687,184 байти (671.08 KB).
+- **Тестування та версіонування**:
+  - Додано набір юніт-тестів `tests/test_translation_size_check.py` (7 тестів на поріг, фолбек, авто-перегенерацію, детекцію помилок та перевірку GitHub ассетів).
+  - Оновлено версію робочої книги `data/dictionary.xlsx` до `0.0.95`.
+  - Оновлено `tests/test_temperature_aliases_and_sync.py` для очікування версії `0.0.95`.
+  - Оновлено документацію в `README.md` та `README_ES.md`.
+  - Усі 126 тестів успішно виконано в паралельному режимі (`pytest tests -n auto`).
+
 # Walkthrough: Оновлення релізного опису, плашки деплою під PR #26 та структура dist (v0.0.94)
+
 
 ## Результати
 - Оновлено `cmd_deploy` у `src/main.py`:

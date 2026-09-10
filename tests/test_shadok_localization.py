@@ -587,7 +587,8 @@ class ShadokLocalizationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             out = Path(td)
             with patch("src.main.TRANSLATIONS_DIR", out), \
-                 patch("src.main.load_languages", return_value={"en": "English"}):
+                 patch("src.main.load_languages", return_value={"en": "English"}), \
+                 patch("src.main.cmd_build"):
                 cmd_export()
             with (out / "en.csv").open("r", encoding="utf-8", newline="") as f:
                 rows = list(csv.reader(f))

@@ -83,13 +83,25 @@ python scripts/build_translation_bin.py translations/es419.csv -o output/transla
 python scripts/import_translation_csv.py es419
 ```
 
+### Lanzador interactivo (`run.bat` / `menu.py`)
+En Windows, haz doble clic en `run.bat` (o ejecuta `python menu.py`) en la raíz del repositorio para abrir un menú interactivo con casillas de selección:
+- `all` abarca todos los pasos de construcción, localización y pruebas (`sync`, `translate`, `shadok`, `align`, `validate`, `export`, `build`, `dist`, `check`, `test`), indentados bajo `all`.
+- `deploy` y `clear` son operaciones independientes.
+- Las acciones siempre se ejecutan en orden canónico y seguro.
+
 ### Comandos principales
 
 ```powershell
+# Lanzador interactivo
+.\run.bat
+
 # Ejecutar el ciclo completo de pruebas
 python -m src.main test
 
-# Publicar una versión en GitHub
+# Verificar la integridad y el tamaño de los binarios
+python -m src.main check
+
+# Publicar una versión en GitHub (con verificación de tamaño de archivos)
 python -m src.main deploy
 
 # Ejecutar etapas individuales
@@ -97,8 +109,17 @@ python -m src.main sync       # Sincronizar el diccionario con los CSV fuente
 python -m src.main translate  # Traducir cadenas pendientes mediante IA
 python -m src.main align      # Corregir la alineación visual por bloques
 python -m src.main validate   # Validar la integridad de las traducciones
-python -m src.main build      # Generar archivos binarios de traducción
+python -m src.main export     # Exportar CSVs por idioma y compilar binarios
+python -m src.main build      # Generar binarios .bin (con autorregeneración si son menores al umbral)
+python -m src.main dist       # Organizar carpetas dist/ por idioma (con verificación de tamaño)
 ```
+
+### 🛡️ Protección de tamaño de binarios de traducción
+El pipeline protege automáticamente contra binarios dañados o incompletos:
+- Calcula dinámicamente el tamaño mínimo esperado (la mitad del archivo válido más pequeño, ~330 KB). Cualquier archivo de menos de 100 KB o inferior a este umbral se considera un error.
+- Los binarios incompletos se reexportan automáticamente desde `data/dictionary.xlsx` y se recompilan durante `build`, `dist` y `deploy`.
+- Durante el despliegue, los archivos subidos a GitHub Release se verifican mediante `gh release view --json assets` para asegurar que coincidan exactamente con los tamaños locales y superen el umbral requerido.
+
 
 ---
 
