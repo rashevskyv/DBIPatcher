@@ -66,3 +66,15 @@ def sink_hook(v: Version, pfxsfx_addr):   # x0=console obj, x1=len, x2=data
         ("I", "ldr x19, [sp, #0x10]"), ("I", "ldp x29, x30, [sp], #0x20"),
         ("I", "mov x22, x1"), ("I", f"b {v.sink.resume:#x}"),   # displaced MOV X22,X1
     ]
+
+
+def ctor_stub(site, ctor_exact_addr):
+    """Entry stub for one std::string(const char*, size_t) copy (B-entry): run the exact-match
+    translator on (x1, x2), re-run the displaced ADD X5,X0,#0x10 and continue the copy."""
+    return [
+        ("I", "stp x29, x30, [sp, #-0x10]!"),
+        ("I", f"bl {ctor_exact_addr:#x}"),
+        ("I", "ldp x29, x30, [sp], #0x10"),
+        ("I", "add x5, x0, #0x10"),                   # displaced CTOR_INSN
+        ("I", f"b {site + 4:#x}"),
+    ]

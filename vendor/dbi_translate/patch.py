@@ -8,9 +8,9 @@ import struct
 from capstone import Cs, CS_ARCH_ARM64, CS_MODE_LITTLE_ENDIAN
 
 from .asm import assemble, enc_b, enc_bl
-from .hooks import ctor_hook, glog_hook, reader_hook, sink_hook
-from .runtime import PATH_STR, STATE_MAGIC, loader, make_fmt, make_pfxsfx, shared_lookup
-from .versions import BASE, Version
+from .hooks import ctor_hook, ctor_stub, glog_hook, reader_hook, sink_hook
+from .runtime import PATH_STR, STATE_MAGIC, ctor_exact, loader, make_fmt, make_pfxsfx, shared_lookup
+from .versions import BASE, CTOR_INSN, Site, Version
 
 
 class PatchError(Exception):
@@ -60,6 +60,9 @@ def patch_nro(v: Version, data: bytes):
     for site, label in ((v.reader, "reader"), (v.fmt, "fmt"), (v.glog, "glog"),
                         (v.ctor, "ctor"), (v.sink, "sink")):
         _check_site(data, site, label)
+    ctor_sites = [Site(a, CTOR_INSN, a + 4, "B") for a in v.ctors]
+    for site in ctor_sites:
+        _check_site(data, site, "ctor copy")
     _check_state_area(v, data)
 
     # cave layout: [path][pool][shared_lookup][loader][fmt][pfxsfx][glog][ctor][sink][reader]
@@ -75,6 +78,14 @@ def patch_nro(v: Version, data: bytes):
     ch = assemble(ctor_hook(v, px_base), addr); ch_base = addr; addr += len(ch)
     sk = assemble(sink_hook(v, px_base), addr); sk_base = addr; addr += len(sk)
     rh = assemble(reader_hook(v, ld_base), addr); rh_base = addr; addr += len(rh)
+    # [ctor_exact][one stub per std::string(const char*, size_t) copy]
+    stubs = []
+    if ctor_sites:
+        ce = assemble(ctor_exact(sl_base), addr); ce_base = addr; addr += len(ce)
+        stubs.append((ce_base, ce))
+        for site in ctor_sites:
+            st = assemble(ctor_stub(site.addr, ce_base), addr)
+            stubs.append((addr, st)); addr += len(st)
 
     total = addr - cave_start
     if total > cave_end - cave_start:
@@ -92,26 +103,32 @@ def patch_nro(v: Version, data: bytes):
     data[ch_base:ch_base + len(ch)] = ch
     data[sk_base:sk_base + len(sk)] = sk
     data[rh_base:rh_base + len(rh)] = rh
+    for base, code in stubs:
+        data[base:base + len(code)] = code
     struct.pack_into("<I", data, v.fmt.addr, enc_b(v.fmt.addr, fmt_base))
     struct.pack_into("<I", data, v.glog.addr, enc_b(v.glog.addr, lg_base))
     struct.pack_into("<I", data, v.ctor.addr, enc_b(v.ctor.addr, ch_base))
     struct.pack_into("<I", data, v.sink.addr, enc_bl(v.sink.addr, sk_base))
     struct.pack_into("<I", data, v.reader.addr, enc_b(v.reader.addr, rh_base))
+    stub_bases = [base for base, _ in stubs[1:]]
+    for site, base in zip(ctor_sites, stub_bases):
+        struct.pack_into("<I", data, site.addr, enc_b(site.addr, base))
     if v.bss_end:
         struct.pack_into("<I", data, v.bss_end[0], v.bss_end[2])
 
     _self_check(v, orig, data, addr,
-                {"fmt": fmt_base, "glog": lg_base, "ctor": ch_base, "sink": sk_base, "reader": rh_base})
+                {"fmt": fmt_base, "glog": lg_base, "ctor": ch_base, "sink": sk_base, "reader": rh_base},
+                list(zip(ctor_sites, stub_bases)))
 
     report = [
         f"path @ {path_addr:#x}  pool @ {pool_addr:#x}  shared_lookup @ {sl_base:#x}({len(sl)}B)  "
         f"loader @ {ld_base:#x}({len(ld)}B)",
-        f"cave used {total}/{cave_end - cave_start}",
+        f"cave used {total}/{cave_end - cave_start}  ({len(ctor_sites)} ctor copies hooked)",
     ]
     return bytes(data), report
 
 
-def _self_check(v, orig, data, cave_top, bases):
+def _self_check(v, orig, data, cave_top, bases, ctor_stubs=()):
     md = Cs(CS_ARCH_ARM64, CS_MODE_LITTLE_ENDIAN)
 
     def expect(site, base, mnem):
@@ -127,8 +144,11 @@ def _self_check(v, orig, data, cave_top, bases):
     expect(v.ctor, bases["ctor"], "b")
     expect(v.sink, bases["sink"], "bl")
     expect(v.reader, bases["reader"], "b")
+    for site, base in ctor_stubs:
+        expect(site, base, "b")
 
     sites = {v.reader.addr, v.fmt.addr, v.glog.addr, v.ctor.addr, v.sink.addr}
+    sites.update(site.addr for site, _ in ctor_stubs)
     if v.bss_end:
         sites.add(v.bss_end[0])
     cave_start = v.cave[0]

@@ -101,6 +101,34 @@ def loader(v: Version, path_addr, pool_addr):
     ]
 
 
+def ctor_exact(sl_addr):
+    """(X0=dest, X1=data, X2=len) -> same registers, with X1/X2 replaced by the translation on
+    an exact hit. Called from the entry stub of each std::string(const char*, size_t) copy, so
+    only X0-X2 are live. Exact match only (no prefix/suffix rebuild): these constructors also
+    build paths and file names. Skips strings longer than 0x100 or without a byte >= 0x80."""
+    return [
+        ("I", "cbz x2, {ce_ret}"),
+        ("I", "cmp x2, #0x100"), ("I", "b.hi {ce_ret}"),
+        ("I", "mov x9, #0"),
+        ("L", "ce_scan"),
+        ("I", "ldrb w10, [x1, x9]"), ("I", "cmp w10, #0x80"), ("I", "b.hs {ce_go}"),
+        ("I", "add x9, x9, #1"), ("I", "cmp x9, x2"), ("I", "b.lo {ce_scan}"),
+        ("L", "ce_ret"),
+        ("I", "ret"),
+        ("L", "ce_go"),
+        ("I", "stp x29, x30, [sp, #-0x30]!"),
+        ("I", "stp x0, x1, [sp, #0x10]"), ("I", "str x2, [sp, #0x20]"),
+        ("I", "mov x0, x1"), ("I", "mov x1, x2"),
+        ("I", f"bl {sl_addr:#x}"),                  # (x0=key, x1=len) -> (x0=tr|0, x1=trlen)
+        ("I", "cbz x0, {ce_miss}"),
+        ("I", "mov x2, x1"), ("I", "mov x1, x0"), ("I", "ldr x0, [sp, #0x10]"),
+        ("I", "ldp x29, x30, [sp], #0x30"), ("I", "ret"),
+        ("L", "ce_miss"),
+        ("I", "ldp x0, x1, [sp, #0x10]"), ("I", "ldr x2, [sp, #0x20]"),
+        ("I", "ldp x29, x30, [sp], #0x30"), ("I", "ret"),
+    ]
+
+
 def make_fmt(v: Version, sl_addr):
     # fmt hook (B-entry, no LR saved at the site). x0=fmt_ptr, x1=fmt_len, x2=argdesc, x3=args,
     # x8=out. Calls _shared_lookup on the template (no gate: it returns 0 until the table loads,

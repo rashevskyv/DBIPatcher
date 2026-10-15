@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 BASE = 0x7100000000   # NRO load address; the offsets below are file offsets
+CTOR_INSN = 0x91004005   # ADD X5,X0,#0x10: first insn of std::string(const char*, size_t)
 
 
 @dataclass(frozen=True)
@@ -40,6 +41,10 @@ class Version:
     # program's __bss_end__: the main thread's static TLS block (DBI's decrypted UI strings)
     # runs right up to it. Moving bss_end to the image end makes crt0 zero that tail on boot.
     bss_end: tuple[int, int, int] | None = None
+    # Entry points of the std::string(const char*, size_t) copies (one per translation unit,
+    # first instruction CTOR_INSN). Each gets an exact-match hook; the game info panel builds
+    # its labels (Контент, Тикеты, Язык, ...) through them, not through `ctor`.
+    ctors: tuple[int, ...] = ()
 
 
 V905 = Version(
@@ -75,6 +80,14 @@ V912 = Version(
     sink=Site(0x67E160, 0xAA0103F6, 0x67E164, "BL"),    # MOV X22,X1
     clear_cave=True,
     bss_end=(0xFC, 0x1278898, 0x1278F10),               # MOD0 @0xF0: bss_end 0x1278988 -> 0x1279000
+    ctors=(
+        0x0E8880, 0x110D50, 0x1461E0, 0x156290, 0x164F50, 0x18BA40, 0x1F4B00, 0x204560,
+        0x219280, 0x21D700, 0x238D00, 0x279C70, 0x283610, 0x28D5E0, 0x2B6FE0, 0x2CA240,
+        0x2E6CF0, 0x372720, 0x3C80B0, 0x3E6820, 0x40EFA0, 0x43B6F0, 0x4691F0, 0x475FC0,
+        0x49A140, 0x4AB830, 0x4CA470, 0x4D9A00, 0x4DE590, 0x4F2910, 0x51E010, 0x541B00,
+        0x573480, 0x59AC70, 0x5AE1E0, 0x5BC160, 0x5FEC30, 0x60D3E0, 0x61CC40, 0x621C30,
+        0x632B00, 0x682F90, 0x696B30,
+    ),
 )
 
 VERSIONS = {v.name: v for v in (V905, V912)}
