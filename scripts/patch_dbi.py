@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-"""Wrapper script to execute pinned upstream DBI 905 assembly patcher and repair Cyrillic font glyphs.
+"""Patch a pristine DBI NRO for runtime translation and repair Cyrillic font glyphs.
 
-This script clones 0xroast/dbi-translate into a temporary directory at an
-exact pinned commit, verifies the commit hash, executes the upstream
-patcher CLI against a user-supplied pristine DBI 905 NRO into an intermediate
-binary, and applies in-memory Cyrillic glyph repairs to the embedded bitmap font
-before writing the final shared patched NRO.
+The runtime-translation engine is the vendored `dbi_translate` package in
+`vendor/dbi_translate` (originally 0xroast/dbi-translate, MIT). The DBI version is
+detected from the input SHA-256; each supported release has a `Version` entry in
+`vendor/dbi_translate/versions.py`.
 
 Cyrillic font-glyph repair logic is adapted from Bohdan Buinich's dbi-i18n
 reference implementation.
@@ -16,18 +15,20 @@ from __future__ import annotations
 import argparse
 from dataclasses import dataclass
 import hashlib
-import os
 from pathlib import Path
-import subprocess
 import sys
-import tempfile
 
 import zstandard
 
-UPSTREAM_REPO_URL = "https://github.com/0xroast/dbi-translate.git"
-PINNED_COMMIT_SHA = "1320e138fd017db70c1436b537aef7be030f0668"
-EXPECTED_DBI_SHA256 = "f4360db14ea7ed1043a5a0c7d076d4861cc3383f3b254b9b38d2eec6d175686f"
-TARGET_DBI_VERSION = "905"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "vendor"))
+
+from dbi_translate import VERSIONS, patch_nro  # noqa: E402
+
+# Pristine russian release NROs from https://github.com/rashevskyv/dbi/releases
+DBI_SHA256 = {
+    "f4360db14ea7ed1043a5a0c7d076d4861cc3383f3b254b9b38d2eec6d175686f": "905",
+    "e77da77f95a24f94fb39df23513961846a75d07aa2f970f39846ed7bbbd22bd2": "912",
+}
 
 ZSTD_MAGIC = b"\x28\xb5\x2f\xfd"
 GLYPH_SIZE = 32
@@ -67,15 +68,17 @@ def compute_sha256(file_path: Path) -> str:
     return h.hexdigest()
 
 
-def verify_nro_sha256(nro_path: Path) -> None:
-    """Verify input NRO file matches the expected pristine DBI 905 release SHA-256."""
+def detect_version(nro_path: Path) -> str:
+    """Return the DBI version of a pristine release NRO, identified by its SHA-256."""
     actual_sha = compute_sha256(nro_path)
-    if actual_sha.lower() != EXPECTED_DBI_SHA256.lower():
+    version = DBI_SHA256.get(actual_sha.lower())
+    if version is None:
+        known = ", ".join(f"{v} ({sha})" for sha, v in DBI_SHA256.items())
         raise ValueError(
-            f"Invalid NRO SHA-256 for DBI {TARGET_DBI_VERSION}:\n"
-            f"  Expected: {EXPECTED_DBI_SHA256}\n"
-            f"  Actual:   {actual_sha}"
+            f"Unsupported NRO SHA-256: {actual_sha}; "
+            f"supported pristine DBI releases: {known}"
         )
+    return version
 
 
 def reverse_16_bits(value: int) -> int:
@@ -194,13 +197,14 @@ def patch_nro_font(nro_data: bytearray) -> bytearray:
 def patch_dbi(
     nro_path: Path,
     output_path: Path,
-) -> None:
-    """Clone upstream at pinned SHA, run runtime patcher into intermediate NRO, and repair font in memory."""
+) -> str:
+    """Patch a pristine DBI NRO for runtime translation and repair the font in memory.
+    Returns the detected DBI version."""
     resolved_nro = nro_path.resolve()
     if not resolved_nro.is_file():
         raise FileNotFoundError(f"Input NRO file not found: {resolved_nro}")
 
-    verify_nro_sha256(resolved_nro)
+    version = detect_version(resolved_nro)
 
     resolved_output = output_path.resolve()
     if resolved_nro == resolved_output:
@@ -208,135 +212,50 @@ def patch_dbi(
             f"Output path cannot be identical to input NRO path: {resolved_output}"
         )
 
+    data = resolved_nro.read_bytes()
+    translated, report = patch_nro(VERSIONS[version], data)
+    for line in report:
+        print(line)
+
+    patched_data = patch_nro_font(bytearray(translated))
+    if len(patched_data) != len(data):
+        raise RuntimeError(
+            f"Patched NRO length mismatch: got {len(patched_data)}, expected {len(data)}"
+        )
+
     resolved_output.parent.mkdir(parents=True, exist_ok=True)
-
-    with tempfile.TemporaryDirectory(prefix="dbi_patch_") as temp_dir:
-        temp_repo = Path(temp_dir)
-
-        # Clone the current repository metadata, then explicitly fetch the pinned
-        # commit. The pin may no longer be reachable from the upstream default ref.
-        subprocess.run(
-            ["git", "clone", "--no-checkout", UPSTREAM_REPO_URL, str(temp_repo)],
-            check=True,
-        )
-
-        subprocess.run(
-            ["git", "fetch", "--no-tags", "origin", PINNED_COMMIT_SHA],
-            cwd=str(temp_repo),
-            check=True,
-        )
-
-        # Detach and check out exact pinned commit.
-        subprocess.run(
-            ["git", "checkout", "--detach", PINNED_COMMIT_SHA],
-            cwd=str(temp_repo),
-            check=True,
-        )
-
-        # Verify HEAD matches pinned SHA
-        verify_proc = subprocess.run(
-            ["git", "rev-parse", "HEAD"],
-            cwd=str(temp_repo),
-            capture_output=True,
-            text=True,
-            check=True,
-        )
-        current_sha = verify_proc.stdout.strip()
-        if current_sha != PINNED_COMMIT_SHA:
-            raise RuntimeError(
-                f"Checkout verification failed: expected {PINNED_COMMIT_SHA}, got {current_sha}"
-            )
-
-        # Execute upstream patch CLI with temporary clone's src directory in PYTHONPATH
-        env = os.environ.copy()
-        src_dir = str(temp_repo / "src")
-        env["PYTHONPATH"] = (
-            f"{src_dir}{os.pathsep}{env['PYTHONPATH']}"
-            if "PYTHONPATH" in env and env["PYTHONPATH"]
-            else src_dir
-        )
-
-        # Expand make_pfxsfx line length gate from 128 (0x80) to 256 (0x100) bytes
-        # to allow longer status lines (e.g. 24-bit RGB ANSI codes) to match.
-        runtime_path = temp_repo / "src" / "dbi_translate" / "runtime.py"
-        runtime_src = runtime_path.read_text(encoding="utf-8")
-        gate_target = '("I", "cmp x20, #0x80"), ("I", "b.hi {miss}"),'
-        gate_replacement = '("I", "cmp x20, #0x100"), ("I", "b.hi {miss}"),'
-        if gate_target not in runtime_src:
-            raise RuntimeError(
-                "Upstream dbi_translate/runtime.py does not contain expected 0x80 length gate"
-            )
-        runtime_path.write_text(
-            runtime_src.replace(gate_target, gate_replacement, 1),
-            encoding="utf-8",
-        )
-
-        intermediate_nro = Path(temp_dir) / "intermediate.nro"
-        subprocess.run(
-            [
-                sys.executable,
-                "-m",
-                "dbi_translate.cli",
-                "patch",
-                "--nro",
-                str(resolved_nro),
-                "--output",
-                str(intermediate_nro),
-                "--version",
-                TARGET_DBI_VERSION,
-            ],
-            cwd=str(temp_repo),
-            env=env,
-            check=True,
-        )
-
-        intermediate_data = bytearray(intermediate_nro.read_bytes())
-        initial_len = len(intermediate_data)
-
-        # Apply Cyrillic glyph repair and verify in memory before writing output
-        patched_data = patch_nro_font(intermediate_data)
-        if len(patched_data) != initial_len:
-            raise RuntimeError(
-                f"Patched NRO length mismatch: got {len(patched_data)}, expected {initial_len}"
-            )
-
-        resolved_output.write_bytes(patched_data)
+    resolved_output.write_bytes(patched_data)
+    return version
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Apply DBI 905 assembly patches and Cyrillic font glyph repair."
+        description="Apply DBI runtime-translation patches and Cyrillic font glyph repair."
     )
     parser.add_argument(
         "--nro",
         type=Path,
         required=True,
-        help="Path to pristine DBI 905 input file (e.g. DBI.905.ru.nro)",
+        help="Path to a pristine DBI release NRO (e.g. DBI.912.ru.nro)",
     )
     parser.add_argument(
         "--output",
         type=Path,
         required=True,
-        help="Path to save patched DBI 905 NRO output file (e.g. DBI.905.ru_patched.nro)",
+        help="Path to save the patched NRO (e.g. DBI.912.ru_patched.nro)",
     )
     args = parser.parse_args()
 
     try:
-        patch_dbi(args.nro, args.output)
-    except FileNotFoundError as err:
+        version = patch_dbi(args.nro, args.output)
+    except (FileNotFoundError, ValueError) as err:
         print(f"Error: {err}", file=sys.stderr)
         return 1
-    except ValueError as err:
-        print(f"Error: {err}", file=sys.stderr)
-        return 1
-    except subprocess.CalledProcessError as err:
-        print(f"Subprocess failed with exit code {err.returncode}: {err}", file=sys.stderr)
-        return err.returncode or 1
     except Exception as err:
         print(f"Error: {err}", file=sys.stderr)
         return 1
 
-    print(f"Successfully patched DBI NRO -> {args.output}")
+    print(f"Successfully patched DBI {version} NRO -> {args.output}")
     return 0
 
 

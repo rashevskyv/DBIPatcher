@@ -1,13 +1,14 @@
 from __future__ import annotations
 
+import dataclasses
 import inspect
+import os
 from pathlib import Path
-import shutil
-import subprocess
+import struct
 import sys
 import tempfile
 import unittest
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 import zstandard
 
@@ -16,16 +17,12 @@ sys.path.insert(0, str(ROOT))
 
 from scripts.patch_dbi import (
     COPIED_GLYPHS,
-    EXPECTED_DBI_SHA256,
+    DBI_SHA256,
     FONT_SIZE,
     GLYPH_COUNT,
     GLYPH_SIZE,
     MIRRORED_GLYPHS,
-    PINNED_COMMIT_SHA,
     REPAIRED_GLYPH_CODEPOINTS,
-    TARGET_DBI_VERSION,
-    UPSTREAM_REPO_URL,
-    compute_sha256,
     decompress_font_frame,
     find_embedded_font,
     patch_cyrillic_glyphs,
@@ -33,6 +30,11 @@ from scripts.patch_dbi import (
     patch_nro_font,
     reverse_16_bits,
 )
+from dbi_translate import VERSIONS, patch_nro
+from dbi_translate.patch import PatchError
+
+# Pristine release NROs for the integration tests (skipped when unset).
+NRO = {"905": os.environ.get("DBI_905_NRO"), "912": os.environ.get("DBI_912_NRO")}
 
 
 def make_synthetic_font() -> bytearray:
@@ -84,319 +86,76 @@ def make_synthetic_nro(
 class PatchDbiWrapperTests(unittest.TestCase):
     """Offline focused tests for scripts/patch_dbi.py."""
 
-    def test_pinned_constants(self) -> None:
-        """Verify upstream repository URL, pinned commit SHA, expected SHA-256, and DBI version."""
-        self.assertEqual(
-            UPSTREAM_REPO_URL,
-            "https://github.com/0xroast/dbi-translate.git",
-        )
-        self.assertEqual(
-            PINNED_COMMIT_SHA,
-            "1320e138fd017db70c1436b537aef7be030f0668",
-        )
-        self.assertEqual(
-            EXPECTED_DBI_SHA256,
-            "f4360db14ea7ed1043a5a0c7d076d4861cc3383f3b254b9b38d2eec6d175686f",
-        )
-        self.assertEqual(
-            TARGET_DBI_VERSION,
-            "905",
-        )
+    def test_every_known_release_has_an_engine_version(self) -> None:
+        self.assertEqual(set(DBI_SHA256.values()), {"905", "912"})
+        self.assertTrue(set(DBI_SHA256.values()) <= set(VERSIONS))
 
-    def test_signature_has_no_version_parameter(self) -> None:
-        """Verify patch_dbi only accepts nro_path and output_path (no public version override)."""
-        sig = inspect.signature(patch_dbi)
-        params = list(sig.parameters.keys())
+    def test_signature(self) -> None:
+        params = list(inspect.signature(patch_dbi).parameters)
         self.assertEqual(params, ["nro_path", "output_path"])
 
     def test_nonexistent_nro_raises_file_not_found(self) -> None:
-        """Verify FileNotFoundError is raised when input NRO does not exist."""
         with tempfile.TemporaryDirectory() as td:
-            nonexistent = Path(td) / "nonexistent" / "DBI.905.ru.nro"
-            dummy_output = Path(td) / "out" / "DBI.905.ru_patched.nro"
+            dummy_output = Path(td) / "out" / "DBI.nro"
             with self.assertRaises(FileNotFoundError):
-                patch_dbi(nonexistent, dummy_output)
+                patch_dbi(Path(td) / "missing" / "DBI.912.ru.nro", dummy_output)
             self.assertFalse(dummy_output.exists())
 
-    @patch("scripts.patch_dbi.subprocess.run")
-    def test_sha256_mismatch_rejects_before_clone(
-        self,
-        mock_subproc_run: MagicMock,
-    ) -> None:
-        """Verify digest mismatch raises ValueError and aborts before any clone operation."""
+    def test_unknown_sha_rejected_before_writing(self) -> None:
         with tempfile.TemporaryDirectory() as td:
-            dummy_nro = Path(td) / "DBI.905.ru.nro"
-            dummy_nro.write_bytes(b"tampered or non-905 NRO binary data")
-            dummy_output = Path(td) / "out" / "DBI.905.ru_patched.nro"
-
+            nro = Path(td) / "DBI.nro"
+            nro.write_bytes(b"not a supported DBI release")
+            out = Path(td) / "out.nro"
             with self.assertRaises(ValueError) as ctx:
-                patch_dbi(dummy_nro, dummy_output)
+                patch_dbi(nro, out)
+            self.assertIn("Unsupported NRO SHA-256", str(ctx.exception))
+            self.assertFalse(out.exists())
 
-            err_msg = str(ctx.exception)
-            self.assertIn("Invalid NRO SHA-256", err_msg)
-            self.assertIn(EXPECTED_DBI_SHA256, err_msg)
-            actual_digest = compute_sha256(dummy_nro)
-            self.assertIn(actual_digest, err_msg)
+    def test_runtime_line_gate_is_256_bytes(self) -> None:
+        runtime = (ROOT / "vendor" / "dbi_translate" / "runtime.py").read_text(encoding="utf-8")
+        self.assertIn('("I", "cmp x20, #0x100"), ("I", "b.hi {miss}"),', runtime)
+        self.assertNotIn('("I", "cmp x20, #0x80"), ("I", "b.hi {miss}"),', runtime)
 
-            mock_subproc_run.assert_not_called()
-            self.assertFalse(dummy_output.exists())
+    def _release(self, version: str) -> bytes:
+        path = NRO[version]
+        if not (path and Path(path).is_file()):
+            self.skipTest(f"set DBI_{version}_NRO to a pristine DBI {version} NRO")
+        return Path(path).read_bytes()
 
-    @patch("scripts.patch_dbi.compute_sha256")
-    @patch("scripts.patch_dbi.subprocess.run")
-    @patch("pathlib.Path.is_file")
-    def test_same_input_and_output_path_raises_value_error_before_clone(
-        self,
-        mock_is_file: MagicMock,
-        mock_subproc_run: MagicMock,
-        mock_compute_sha256: MagicMock,
-    ) -> None:
-        """Verify identical input and output paths raise ValueError before cloning or patching."""
-        mock_is_file.return_value = True
-        mock_compute_sha256.return_value = EXPECTED_DBI_SHA256
-
+    def _check_release(self, version: str) -> None:
+        data = self._release(version)
+        v = VERSIONS[version]
         with tempfile.TemporaryDirectory() as td:
-            dummy_nro = Path(td) / "DBI.905.ru.nro"
-            dummy_output = Path(td) / "DBI.905.ru.nro"
+            out = Path(td) / "DBI.nro"
+            self.assertEqual(patch_dbi(Path(NRO[version]), out), version)
+            patched = out.read_bytes()
+        self.assertEqual(len(patched), len(data))
+        font = find_embedded_font(bytearray(data))
+        font_slot = range(font.offset, font.offset + font.compressed_size)
+        sites = {v.reader.addr, v.fmt.addr, v.glog.addr, v.ctor.addr, v.sink.addr, v.bss_end[0]}
+        cave = range(*v.cave)
+        changed = [i for i in range(len(data)) if data[i] != patched[i]]
+        self.assertTrue(all(i in cave or i in font_slot or any(s <= i < s + 4 for s in sites)
+                            for i in changed))
+        mod0 = struct.unpack_from("<I", patched, 4)[0]
+        bss_end = mod0 + struct.unpack_from("<i", patched, mod0 + 12)[0]
+        data_off, data_size, bss_size = struct.unpack_from("<III", patched, 0x30)
+        self.assertEqual(bss_end, data_off + data_size + bss_size)
 
-            with self.assertRaises(ValueError) as ctx:
-                patch_dbi(dummy_nro, dummy_output)
+    def test_patch_905_release(self) -> None:
+        self._check_release("905")
 
-            self.assertIn("Output path cannot be identical to input NRO path", str(ctx.exception))
-            mock_subproc_run.assert_not_called()
+    def test_patch_912_release(self) -> None:
+        self._check_release("912")
 
-    @patch("scripts.patch_dbi.compute_sha256")
-    @patch("scripts.patch_dbi.subprocess.run")
-    @patch("scripts.patch_dbi.tempfile.TemporaryDirectory")
-    @patch("pathlib.Path.is_file")
-    def test_sha_mismatch_raises_runtime_error(
-        self,
-        mock_is_file: MagicMock,
-        mock_tempdir: MagicMock,
-        mock_subproc_run: MagicMock,
-        mock_compute_sha256: MagicMock,
-    ) -> None:
-        """Verify RuntimeError is raised when checked out commit differs from pinned SHA."""
-        mock_tempdir.return_value.__enter__.return_value = "/tmp/mock_temp_dir"
-        mock_is_file.return_value = True
-        mock_compute_sha256.return_value = EXPECTED_DBI_SHA256
-
-        rev_parse_result = MagicMock()
-        rev_parse_result.stdout = "deadbeefdeadbeefdeadbeefdeadbeefdeadbeef\n"
-        mock_subproc_run.side_effect = [
-            MagicMock(returncode=0),  # git clone --no-checkout
-            MagicMock(returncode=0),  # git fetch pinned SHA
-            MagicMock(returncode=0),  # git checkout
-            rev_parse_result,         # git rev-parse HEAD
-        ]
-
-        td = tempfile.mkdtemp()
-        try:
-            dummy_nro = Path(td) / "DBI.905.ru.nro"
-            dummy_output = Path(td) / "out" / "DBI.905.ru_patched.nro"
-
-            with self.assertRaises(RuntimeError) as ctx:
-                patch_dbi(dummy_nro, dummy_output)
-            self.assertIn("Checkout verification failed", str(ctx.exception))
-            self.assertFalse(dummy_output.exists())
-        finally:
-            shutil.rmtree(td, ignore_errors=True)
-
-    @patch("scripts.patch_dbi.compute_sha256")
-    @patch("scripts.patch_dbi.subprocess.run")
-    @patch("scripts.patch_dbi.tempfile.TemporaryDirectory")
-    @patch("pathlib.Path.is_file")
-    def test_subprocess_failure_propagates(
-        self,
-        mock_is_file: MagicMock,
-        mock_tempdir: MagicMock,
-        mock_subproc_run: MagicMock,
-        mock_compute_sha256: MagicMock,
-    ) -> None:
-        """Verify subprocess.CalledProcessError propagates on failure."""
-        mock_tempdir.return_value.__enter__.return_value = "/tmp/mock_temp_dir"
-        mock_is_file.return_value = True
-        mock_compute_sha256.return_value = EXPECTED_DBI_SHA256
-
-        mock_subproc_run.side_effect = subprocess.CalledProcessError(
-            returncode=128, cmd=["git", "clone"]
-        )
-
-        td = tempfile.mkdtemp()
-        try:
-            dummy_nro = Path(td) / "DBI.905.ru.nro"
-            dummy_output = Path(td) / "out" / "DBI.905.ru_patched.nro"
-
-            with self.assertRaises(subprocess.CalledProcessError):
-                patch_dbi(dummy_nro, dummy_output)
-            self.assertFalse(dummy_output.exists())
-        finally:
-            shutil.rmtree(td, ignore_errors=True)
-
-    @patch("scripts.patch_dbi.compute_sha256")
-    @patch("scripts.patch_dbi.subprocess.run")
-    @patch("scripts.patch_dbi.tempfile.TemporaryDirectory")
-    @patch("pathlib.Path.is_file")
-    def test_patch_dbi_invokes_upstream_intermediate_then_writes_patched_output(
-        self,
-        mock_is_file: MagicMock,
-        mock_tempdir: MagicMock,
-        mock_subproc_run: MagicMock,
-        mock_compute_sha256: MagicMock,
-    ) -> None:
-        """Verify wrapper calls upstream CLI with intermediate path, then font patches before writing output."""
-        td = tempfile.mkdtemp()
-        try:
-            mock_temp_path = Path(td) / "work"
-            mock_temp_path.mkdir(parents=True, exist_ok=True)
-            mock_tempdir.return_value.__enter__.return_value = str(mock_temp_path)
-            mock_is_file.return_value = True
-            mock_compute_sha256.return_value = EXPECTED_DBI_SHA256
-
-            rev_parse_result = MagicMock()
-            rev_parse_result.stdout = f"{PINNED_COMMIT_SHA}\n"
-
-            mock_runtime = mock_temp_path / "src" / "dbi_translate" / "runtime.py"
-            mock_runtime.parent.mkdir(parents=True, exist_ok=True)
-            mock_runtime.write_text('("I", "cmp x20, #0x80"), ("I", "b.hi {miss}"),\n', encoding="utf-8")
-
-            intermediate_file = mock_temp_path / "intermediate.nro"
-            synthetic_nro = make_synthetic_nro()
-
-            def fake_subprocess_run(cmd, *args, **kwargs):
-                if isinstance(cmd, list) and "-m" in cmd and "dbi_translate.cli" in cmd:
-                    intermediate_file.write_bytes(synthetic_nro)
-                    return MagicMock(returncode=0)
-                if isinstance(cmd, list) and "rev-parse" in cmd:
-                    return rev_parse_result
-                return MagicMock(returncode=0)
-
-            mock_subproc_run.side_effect = fake_subprocess_run
-
-            dummy_nro = Path(td) / "DBI.905.ru.nro"
-            dummy_output = Path(td) / "out" / "DBI.905.ru_patched.nro"
-
-            patch_dbi(dummy_nro, dummy_output)
-
-            # Subprocess calls: clone, fetch, checkout, rev-parse, CLI patch
-            self.assertEqual(mock_subproc_run.call_count, 5)
-
-            # Call 5 passed intermediate_file as --output, not dummy_output
-            c5_args = mock_subproc_run.call_args_list[4][0][0]
-            self.assertEqual(
-                c5_args,
-                [
-                    sys.executable,
-                    "-m",
-                    "dbi_translate.cli",
-                    "patch",
-                    "--nro",
-                    str(dummy_nro.resolve()),
-                    "--output",
-                    str(intermediate_file),
-                    "--version",
-                    "905",
-                ],
-            )
-
-            # Final output was written with patched font
-            self.assertTrue(dummy_output.is_file())
-            patched_frame = find_embedded_font(dummy_output.read_bytes())
-            # Verify that the 0x80 gate was expanded to 0x100 in runtime.py
-            self.assertIn(
-                '("I", "cmp x20, #0x100"), ("I", "b.hi {miss}"),',
-                mock_runtime.read_text(encoding="utf-8"),
-            )
-        finally:
-            shutil.rmtree(td, ignore_errors=True)
-
-    @patch("scripts.patch_dbi.compute_sha256")
-    @patch("scripts.patch_dbi.subprocess.run")
-    @patch("scripts.patch_dbi.tempfile.TemporaryDirectory")
-    @patch("pathlib.Path.is_file")
-    def test_patch_dbi_raises_when_upstream_runtime_gate_missing(
-        self,
-        mock_is_file: MagicMock,
-        mock_tempdir: MagicMock,
-        mock_subproc_run: MagicMock,
-        mock_compute_sha256: MagicMock,
-    ) -> None:
-        """Verify RuntimeError is raised if upstream runtime.py lacks the 0x80 gate pattern."""
-        td = tempfile.mkdtemp()
-        try:
-            mock_temp_path = Path(td) / "work"
-            mock_temp_path.mkdir(parents=True, exist_ok=True)
-            mock_tempdir.return_value.__enter__.return_value = str(mock_temp_path)
-            mock_is_file.return_value = True
-            mock_compute_sha256.return_value = EXPECTED_DBI_SHA256
-
-            rev_parse_result = MagicMock()
-            rev_parse_result.stdout = f"{PINNED_COMMIT_SHA}\n"
-            mock_subproc_run.return_value = rev_parse_result
-
-            mock_runtime = mock_temp_path / "src" / "dbi_translate" / "runtime.py"
-            mock_runtime.parent.mkdir(parents=True, exist_ok=True)
-            mock_runtime.write_text('# unexpected code without gate\n', encoding="utf-8")
-
-            dummy_nro = Path(td) / "DBI.905.ru.nro"
-            dummy_output = Path(td) / "out" / "DBI.905.ru_patched.nro"
-
-            with self.assertRaises(RuntimeError) as ctx:
-                patch_dbi(dummy_nro, dummy_output)
-            self.assertIn("does not contain expected 0x80 length gate", str(ctx.exception))
-        finally:
-            shutil.rmtree(td, ignore_errors=True)
-
-    @patch("scripts.patch_dbi.compute_sha256")
-    @patch("scripts.patch_dbi.subprocess.run")
-    @patch("scripts.patch_dbi.tempfile.TemporaryDirectory")
-    @patch("pathlib.Path.is_file")
-    @patch("scripts.patch_dbi.patch_nro_font")
-    def test_patch_dbi_aborts_without_writing_output_when_font_stage_fails(
-        self,
-        mock_patch_nro_font: MagicMock,
-        mock_is_file: MagicMock,
-        mock_tempdir: MagicMock,
-        mock_subproc_run: MagicMock,
-        mock_compute_sha256: MagicMock,
-    ) -> None:
-        """Verify that any failure in the font stage aborts and leaves output unwritten."""
-        td = tempfile.mkdtemp()
-        try:
-            mock_temp_path = Path(td) / "work"
-            mock_temp_path.mkdir(parents=True, exist_ok=True)
-            mock_tempdir.return_value.__enter__.return_value = str(mock_temp_path)
-            mock_is_file.return_value = True
-            mock_compute_sha256.return_value = EXPECTED_DBI_SHA256
-
-            mock_runtime = mock_temp_path / "src" / "dbi_translate" / "runtime.py"
-            mock_runtime.parent.mkdir(parents=True, exist_ok=True)
-            mock_runtime.write_text('("I", "cmp x20, #0x80"), ("I", "b.hi {miss}"),\n', encoding="utf-8")
-
-            intermediate_file = mock_temp_path / "intermediate.nro"
-            intermediate_file.write_bytes(b"INTERMEDIATE_NRO_BYTES")
-
-            rev_parse_result = MagicMock()
-            rev_parse_result.stdout = f"{PINNED_COMMIT_SHA}\n"
-            mock_subproc_run.side_effect = [
-                MagicMock(returncode=0),  # clone
-                MagicMock(returncode=0),  # fetch
-                MagicMock(returncode=0),  # checkout
-                rev_parse_result,         # rev-parse
-                MagicMock(returncode=0),  # patch CLI
-            ]
-
-            mock_patch_nro_font.side_effect = ValueError("Font repair failed")
-
-            dummy_nro = Path(td) / "DBI.905.ru.nro"
-            dummy_output = Path(td) / "out" / "DBI.905.ru_patched.nro"
-
-            with self.assertRaises(ValueError) as ctx:
-                patch_dbi(dummy_nro, dummy_output)
-
-            self.assertIn("Font repair failed", str(ctx.exception))
-            self.assertFalse(dummy_output.exists(), "Final output must not be created on font stage failure")
-        finally:
-            shutil.rmtree(td, ignore_errors=True)
+    def test_state_inside_bss_is_rejected(self) -> None:
+        # The first 912 layout put the patcher state on page 0x1278000: inside
+        # __bss_end__ (0x1278988), on top of the main thread's TLS string slots.
+        data = self._release("912")
+        v = dataclasses.replace(VERSIONS["912"], state=0x1278000, persist=0x1278020,
+                                scratch=0x1278080)
+        with self.assertRaises(PatchError):
+            patch_nro(v, data)
 
     def test_synthetic_font_glyph_repair_and_frame_round_trip(self) -> None:
         """Consolidated success test: verifies 6 glyph changes, copy/mirror, frame discovery, length, and round-trip."""

@@ -1,0 +1,33 @@
+dbi-translate
+
+This tool patches DBI but includes none of it. Users supply their own DBI NRO.
+
+Credits and related work:
+
+- DBI -- the Nintendo Switch homebrew installer/manager this tool patches.
+  Authored by duckbill; hosted and maintained on GitHub by rashevskyv.
+  https://github.com/rashevskyv/dbi
+
+- dbi-i18n by BohdanBuinich -- the runtime-translation approach for DBI and the
+  DBITRNS table format, with which this project's tables are compatible. This project
+  is an independent, self-contained reimplementation (offline keystone/capstone rather
+  than a devkitA64 toolchain) and shares no source with it.
+  https://github.com/BohdanBuinich/dbi-i18n
+
+- DBIPatcher by rashevskyv -- the community translation dataset and localization
+  pipeline; its CSVs work directly with `build-table`.
+  https://github.com/rashevskyv/DBIPatcher
+
+- Morce3232 -- earlier DBI patching work that inspired the above.
+  https://github.com/Morce3232
+
+Vendored into DBIPatcher as vendor/dbi_translate from upstream commit
+1320e138fd017db70c1436b537aef7be030f0668, with these changes:
+
+- DBI 912 support (V912 in versions.py; the runtime lives in an unreferenced
+  libde265 function because the 912 .text zero tail is too small).
+- Patcher state, persistent string and scratch buffer moved past MOD0
+  __bss_end__ (they overlapped the main thread's TLS string slots), MOD0
+  bss_end raised to the image end so crt0 zeroes them on boot, and a build
+  check that rejects any state area inside __bss_end__.
+- make_pfxsfx line-length gate raised from 128 to 256 bytes.

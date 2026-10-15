@@ -1,36 +1,31 @@
-# Upstream Assembly Patcher Integration
+# Vendored Runtime-Translation Engine
 
-## Repository & Pinned Revision
+## Origin
 
-- **Upstream Repository**: [0xroast/dbi-translate](https://github.com/0xroast/dbi-translate)
-- **Pinned Commit SHA**: `1320e138fd017db70c1436b537aef7be030f0668`
+- **Upstream**: [0xroast/dbi-translate](https://github.com/0xroast/dbi-translate) (MIT).
+- **Base commit**: `1320e138fd017db70c1436b537aef7be030f0668`.
+- **Location here**: [`vendor/dbi_translate/`](vendor/dbi_translate/), with the upstream `LICENSE` and a `NOTICE` that lists every local change.
 
-## DBI 905 Compatibility
+The engine is part of this repository. `scripts/patch_dbi.py` imports it directly; it no longer clones upstream at build time.
 
-The upstream patcher is specifically designed and validated for **DBI 905** (`DBI.905.ru.nro` from official release [905ru](https://github.com/rashevskyv/dbi/releases/tag/905ru), SHA-256 `f4360db14ea7ed1043a5a0c7d076d4861cc3383f3b254b9b38d2eec6d175686f`). It performs ARM64 binary patching against the uncompressed and unpatched DBI binary to inject runtime translation loading hooks and hook string lookup tables into the `.text` code cave.
+## Local changes to the engine
 
-Because offset mappings and assembly instructions are specific to DBI 905, running this patcher against other DBI versions is not supported and will fail verification.
+1. **DBI 912 support** (`V912` in `versions.py`). The five hook sites were matched to 905 by instruction sequence; the instruction words are identical. The 912 `.text` zero tail is only 0x244 bytes (the runtime needs 0x4B8), so the runtime goes into an unreferenced libde265 function at `0x939DAC` (5208 bytes), zeroed before use.
+2. **Patcher state moved out of DBI's TLS block** (905 and 912). The state, the persistent string and the scratch buffer used to sit on the last bss page, below MOD0 `__bss_end__`. That range is the main thread's static TLS block, where DBI decrypts its UI strings, so DBI strings and the patcher state could overwrite each other. The state now sits between `__bss_end__` and the image end, and MOD0 `bss_end` is raised to the image end so crt0 zeroes it on every boot. `patch_nro` rejects any state area inside `__bss_end__`.
+3. **Line-length gate** of `make_pfxsfx` raised from 128 to 256 bytes (formerly a text replacement in `patch_dbi.py`).
 
-## Why Upstream Code Is Not Vendored or Submoduled
+## Supported DBI releases
 
-1. **No Code Redundancy**: This repository is focused strictly on the translation dataset and localization pipeline (`dictionary.xlsx`, AI translation, validation, and `.bin` serialization).
-2. **Ephemeral Wrapper**: The wrapper script (`scripts/patch_dbi.py`) clones the upstream repository into a temporary directory (`tempfile.TemporaryDirectory()`), verifies the exact pinned commit hash (`git rev-parse HEAD`), executes the patch CLI, and automatically deletes the temporary clone. No upstream files persist in this repository.
-3. **No Unintentional Drifts**: Pinned checkout ensures reproducible patching without git submodule maintenance overhead or accidental divergence.
+| DBI | Pristine NRO SHA-256 |
+|---|---|
+| 905 | `f4360db14ea7ed1043a5a0c7d076d4861cc3383f3b254b9b38d2eec6d175686f` |
+| 912 | `e77da77f95a24f94fb39df23513961846a75d07aa2f970f39846ed7bbbd22bd2` |
 
-## Licensing
-
-The upstream repository is MIT licensed. To maintain separation between translation dataset development and patching tooling, no upstream source code or binary patcher assets are vendored or committed into this repository.
-
-## Patching Prerequisites
-
-To execute the wrapper:
-- **Python**: >= 3.10 with `keystone-engine==0.9.2`, `capstone==5.0.9`, and `zstandard>=0.23,<1`
-- **Pristine DBI NRO**: A clean, untampered `DBI.905.ru.nro` matching SHA-256 `f4360db14ea7ed1043a5a0c7d076d4861cc3383f3b254b9b38d2eec6d175686f`
-- No WSL, devkitA64 toolchain, or external assembler is required.
+`patch_dbi.py` detects the version from the input SHA-256 and rejects any other file.
 
 ## Embedded Cyrillic Font-Glyph Repair Stage
 
-Following the upstream assembly patch stage, `scripts/patch_dbi.py` applies an in-memory bitmap font repair before emitting the final patched NRO. This logic is adapted from [Bohdan Buinich](https://github.com/BohdanBuinich)'s reference implementation for `dbi-i18n`.
+After the engine patch, `scripts/patch_dbi.py` applies an in-memory bitmap font repair before writing the patched NRO. This logic is adapted from [Bohdan Buinich](https://github.com/BohdanBuinich)'s reference implementation for `dbi-i18n`.
 
 ### Repaired Unicode Destinations
 The pristine Russian DBI font lacks Ukrainian, Belarusian, and Kazakh glyphs. The repair stage derives exactly six destination glyphs from existing glyphs:
@@ -44,7 +39,6 @@ The pristine Russian DBI font lacks Ukrainian, Belarusian, and Kazakh glyphs. Th
 All other 65,530 glyphs remain untouched.
 
 ### Dynamic Frame Discovery & Trust Boundary
-- **Automatic Frame Discovery**: Rather than relying on fragile hardcoded offsets, the wrapper searches the binary for Zstandard frame candidates (magic bytes `28 B5 2F FD`) that decompress to exactly 2,097,152 bytes (65,536 glyphs × 32 bytes). Exactly one supported frame must exist; zero or multiple matching frames trigger a hard error.
+- **Automatic Frame Discovery**: The wrapper searches the binary for Zstandard frame candidates (magic bytes `28 B5 2F FD`) that decompress to exactly 2,097,152 bytes (65,536 glyphs × 32 bytes). Exactly one supported frame must exist; zero or multiple matching frames trigger a hard error.
 - **Fit & Recompression**: The repaired font is recompressed at Zstandard level 18 while preserving the original frame checksum flag and content size header. If the recompressed frame exceeds the original compressed slot size, patching is rejected.
 - **Round-Trip Validation**: The repacked frame is decompressed from the in-memory NRO buffer and verified byte-for-byte against the expected repaired font before the final output file is written.
-- **No External Font Binary or Fixed Offset**: The entire 2 MiB font is decoded, transformed, and validated directly from the binary itself without vendoring external font assets or hardcoding legacy DBI 810 offsets.

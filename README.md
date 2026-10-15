@@ -80,15 +80,16 @@ python scripts/build_translation_bin.py translations/es419.csv -o output/transla
 python scripts/import_translation_csv.py es419
 ```
 
-### DBI 905 NRO Patching
-To patch a pristine `DBI.905.ru.nro` binary to support external runtime translations:
+### DBI NRO Patching
+To patch a pristine `DBI.nro` (905 or 912 Russian release) to support external runtime translations:
 - Requires **Python 3.10+** with `keystone-engine==0.9.2`, `capstone==5.0.9`, and `zstandard>=0.23,<1`.
-- Uses the pinned upstream patcher from [0xroast/dbi-translate](https://github.com/0xroast/dbi-translate) (see [UPSTREAM.md](UPSTREAM.md)).
-- Automatically expands the `make_pfxsfx` line length gate from 128 to 256 bytes, enabling translation of long status lines with 24-bit RGB ANSI color sequences.
+- Uses the runtime-translation engine vendored in [`vendor/dbi_translate/`](vendor/dbi_translate/) (originally [0xroast/dbi-translate](https://github.com/0xroast/dbi-translate); see [UPSTREAM.md](UPSTREAM.md) for the local changes).
+- Detects the DBI version from the input SHA-256 and rejects any other file.
+- Translates long status lines up to 256 bytes, including 24-bit RGB ANSI color sequences.
 - Automatically repairs embedded Cyrillic font glyphs (`Є`, `І`, `Ї`, `є`, `і`, `ї`) used by Ukrainian, Belarusian, and Kazakh translations directly in the shared patched NRO.
 
 ```powershell
-python scripts/patch_dbi.py --nro /path/to/DBI.905.ru.nro --output DBI.905.ru_patched.nro
+python scripts/patch_dbi.py --nro /path/to/DBI.912.ru.nro --output DBI.912.ru_patched.nro
 ```
 
 ### Quick Start Launcher (`run.bat` / `menu.py`)
@@ -158,7 +159,7 @@ Spanish (Latin America) contributions should follow the
 
 - **DBI Creator**: [duckbill](https://github.com/rashevskyv/dbi)
 - **Localization Engine**: [tg:@buinich_bohdan](https://github.com/rashevskyv)
-- **Assembly Patcher**: [0xroast/dbi-translate](https://github.com/0xroast/dbi-translate)
+- **Assembly Patcher**: [0xroast/dbi-translate](https://github.com/0xroast/dbi-translate) (vendored in `vendor/dbi_translate/`)
 - **Contributors**: [aldokeita](https://github.com/aldokeita) (Indonesian localization in [#24](https://github.com/rashevskyv/DBIPatcher/pull/24), missing DBI 905 source strings in [#26](https://github.com/rashevskyv/DBIPatcher/pull/26), colored status lines & gate research in [#25](https://github.com/rashevskyv/DBIPatcher/issues/25))
 - **Special Thanks**: Claude 3.5 Sonnet for the heavy lifting.
 
