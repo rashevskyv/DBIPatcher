@@ -1823,31 +1823,22 @@ def cmd_deploy() -> None:
     release_body = f"""### 🌍 DBI Multilingual Localization (v{patcher_ver})
 ![GitHub release (tag)](https://img.shields.io/github/downloads/rashevskyv/DBIPatcher/{dbi_ver}/total)
 
-This release provides high-quality translations for **DBI version {dbi_ver}**.
+This release provides translations for **DBI version {dbi_ver}**.
 
 > [!IMPORTANT]
-> This translation is **strictly compatible only with the DBI.nro version provided in this release**. Do not use it with other versions of DBI as it may cause UI glitches or crashes.
+> Use the `DBI.nro` and the `translation_XX.bin` files **from this release together**. The translation tables now carry a lookup index that older patched `DBI.nro` builds do not read.
+
+### ✨ What's new
+- **DBI 912 support.** The runtime-translation engine is now part of this repository (`vendor/dbi_translate`, originally [0xroast/dbi-translate](https://github.com/0xroast/dbi-translate)) and supports DBI 905 and 912.
+- **Smooth menus.** Translation lookups use a hash index instead of scanning the whole table for every line. Menus, context menus and settings no longer lag ([#28](https://github.com/rashevskyv/DBIPatcher/issues/28)).
+- **More stable patch.** The patcher no longer keeps its state on top of DBI's own text buffers, which could corrupt some lines and reload the table.
+- **Game info panel translated** — tabs (Content / Tickets / Saves) and the Name / Author / Version / Language rows ([#25](https://github.com/rashevskyv/DBIPatcher/issues/25)).
+- **Clean Cyrillic translations.** Ukrainian, Belarusian and Kazakh no longer get mixed words such as "Такмпити" or cut words such as "Видалит" in context menus.
+- **Version line** at the top shows the translation language, e.g. `{dbi_ver}-ua`.
+- **New DBI {dbi_ver} strings** translated for all languages: transfer progress lines, theme menu, panel hints, total play time.
 
 ### ✨ Cyrillic glyph repair
 The bundled `DBI.nro` repairs the embedded glyphs `Є/є`, `І/і`, and `Ї/ї` used by Ukrainian, Belarusian, and Kazakh translations.
-
-### 🌐 Indonesian Localization
-Added complete Indonesian (`id`) translation contributed by [@aldokeita](https://github.com/aldokeita) in [#24](https://github.com/rashevskyv/DBIPatcher/pull/24). Download **`translation_id.bin`** and rename it to `translation.bin`.
-
-### 🧩 Missing DBI 905 Strings Added (All Languages)
-Added 6 missing source strings across all 24 languages, contributed by [@aldokeita](https://github.com/aldokeita) in [#26](https://github.com/rashevskyv/DBIPatcher/pull/26) based on on-device analysis in [#25](https://github.com/rashevskyv/DBIPatcher/issues/25):
-- ` Новый DLC ` (update check entries, preserving leading space for exact prefix match)
-- `Записано: ` & `МБ/сек)` (install summary and transfer speed)
-- `Игра использует мастер-ключ ` (post-install information)
-- `Android extensions: ` (MTP responder)
-- ` в чёрном списке.` (update check summary)
-
-### 🎨 Installation Status Lines & 256-Byte Gate (All Languages, [#25](https://github.com/rashevskyv/DBIPatcher/issues/25))
-Comprehensive fix for installation status logging and signature verification across all 24 languages:
-- **Exhaustive Status Line Suffixes**: Resolved translation leakage where installation logs showed localized signatures (`[SIGNATURE: OK]`) but left transfer status in Russian (`[ПЕРЕДАЧА OK]`). Added 99 complete suffix combinations covering plain-text transfer status prefixes, single/double space separators, ANSI color resets (`\x1b[37;1m`), and yellow DBI signature color (`\x1b[33;1m`).
-- **Fixed Double Escape Artifact**: Removed redundant escape token in entry 1298, preventing raw ANSI escape codes (`[32;1m`) from printing on the console screen.
-- **256-Byte Line Length Gate**: Expanded assembly line gate in `patch_dbi.py` (`cmp x20, #0x100`) from 128 to 256 bytes in `DBI.nro`, allowing long log lines containing 24-bit RGB ANSI color sequences to be translated without truncation.
-- **Exact Color-Prefixed Status Entries**: Added exact color-prefixed entries with ANSI escape compensation for skipped control bytes (`Установка игры завершена`, `Тикет исправлен`, `[ПЕРЕДАЧА OK]`, `[ПЕРЕДАЧА ПРЕРВАНА]`, `[ПОДПИСЬ: ...]`).
 
 ### 📦 Supported Languages
 {langs_list}
@@ -1860,24 +1851,18 @@ Comprehensive fix for installation status logging and signature verification acr
 3. **Rename** the translation file to exactly `translation.bin`.
 4. Place both `DBI.nro` and `translation.bin` into the `/switch/DBI/` folder on your SD card.
 
-### ⚠️ Known Issues
-- ~~**Hardcoded Strings**: Some interface elements are hardcoded within the DBI binary and cannot be localized via `translation.bin`. Confirmation prompts may still display in Russian: **Да** (Yes) and **Нет** (No).~~ ✅ Fixed!
-- ~~**Shadok Fables**: Satirical blocks use intentional adapted parody localization (not literal DBI Shadok translation) via `python -m src.main shadok`.~~ ✅ Fixed!
-- ~~**System Language Names**: Names of languages in the DBI settings menu are hardcoded in the binary.~~ ✅ Fixed!
-- ~~**Launcher Compatibility**: Translations have been tested exclusively on [Kefir](https://github.com/rashevskyv/kefir). On Kefir, the translation works successfully regardless of whether DBI is launched via [Sphaira](https://github.com/ITotalJustice/sphaira) or [nx-hbmenu](https://github.com/switchbrew/nx-hbmenu/releases/). If you experience issues with translations not applying on other custom firmwares, please refer to [#12](https://github.com/rashevskyv/DBIPatcher/issues/12).~~ ✅ Fixed!
-
 ### 📝 Translation Coverage
 This community translation set is still evolving. Some strings may remain untranslated and appear in the original DBI language or use an English fallback. Please report missing or incorrect strings in the project issues.
 
 ### 🙏 Credits
 - [Bohdan Buinich](https://github.com/BohdanBuinich) — creator of the earlier `dbi-i18n` runtime-translation approach, compatible table format, and Cyrillic font-glyph repair approach.
-- [0xroast](https://github.com/0xroast) — author of `dbi-translate`, the pinned DBI 905 runtime patcher used for this release.
+- [0xroast](https://github.com/0xroast) — author of `dbi-translate`, the runtime patcher this project now includes and extends.
 - [aldokeita](https://github.com/aldokeita) — Indonesian translation ([#24](https://github.com/rashevskyv/DBIPatcher/pull/24)), missing DBI 905 source strings ([#26](https://github.com/rashevskyv/DBIPatcher/pull/26)), and colored status lines / gate research ([#25](https://github.com/rashevskyv/DBIPatcher/issues/25)).
 
 ***
 *Note: This NRO is a modified version of the [original DBI](https://github.com/rashevskyv/dbi/releases/tag/{dbi_ver}ru) optimized for these translations.*
 """
-    
+
     body_path = Path("scratch/release_body.md")
     body_path.parent.mkdir(exist_ok=True)
     body_path.write_text(release_body, encoding="utf-8")
@@ -1919,7 +1904,7 @@ This community translation set is still evolving. Some strings may remain untran
         kyiv_time = datetime.now(kyiv_tz).strftime("%Y-%m-%d %H:%M")
 
         update_notice = f"""> [!WARNING]
-> 🔄 **Release updated on {kyiv_time} (Kyiv time) (v{patcher_ver}).** Fixed installation log status line translation (Transfer & Signature, [#25](https://github.com/rashevskyv/DBIPatcher/issues/25)) with 99 comprehensive compound suffixes, expanded assembly line length gate to 256 bytes, and resolved double-ESC display artifacts. Please redownload both `DBI.nro` and `translation_<lang>.bin` for your language.
+> 🔄 **Release updated on {kyiv_time} (Kyiv time) (v{patcher_ver}).** Please redownload both `DBI.nro` and `translation_<lang>.bin` for your language.
 """
         # Insert update notice after the badge line
         badge_line = f"![GitHub release (tag)](https://img.shields.io/github/downloads/rashevskyv/DBIPatcher/{dbi_ver}/total)"
