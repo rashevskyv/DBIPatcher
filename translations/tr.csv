@@ -275,7 +275,7 @@ Daybreak.nro не найден,Daybreak.nro bulunamadı
 {} тикет,{} bilet
 {} тикета,{} bilet
 {} тикетов,{} bilet
-{}-{} FW:{}{} SDK:{},{} - {} Donanım Yazılımı: {} {} SDK: {}
+{}-{} FW:{}{} SDK:{},{}-tr{:.0} FW:{}{} SDK:{}
 "{}/{} MB (Ср: {:.1f} MB/sec, Тек: {:.1f} MB/sec) Ост. {:02d}:{:02d}      \r","{} / {} MB (Ort: {:.1f} MB/sn, Cur: {:.1f} MB/sn) Rem. {:02d} : {:02d} \r"
 "{}/{} МБ, {:.2f} МБ/сек","{} / {} MB, {:.2f} MB/sn"
 {}: {} потерянная запись,{} : {} yetim giriş

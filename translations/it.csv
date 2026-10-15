@@ -275,7 +275,7 @@ Daybreak.nro не найден,Daybreak.nro non trovato
 {} тикет,{} ticket
 {} тикета,{} ticket
 {} тикетов,{} ticket
-{}-{} FW:{}{} SDK:{},{}-{} FW:{}{} SDK:{}
+{}-{} FW:{}{} SDK:{},{}-it{:.0} FW:{}{} SDK:{}
 "{}/{} MB (Ср: {:.1f} MB/sec, Тек: {:.1f} MB/sec) Ост. {:02d}:{:02d}      \r","{}/{} MB (Media: {:.1f} MB/s, Att: {:.1f} MB/s) Rim. {:02d}:{:02d}      \r"
 "{}/{} МБ, {:.2f} МБ/сек","{}/{} MB, {:.2f} MB/sec"
 {}: {} потерянная запись,{}: {} voce orfana

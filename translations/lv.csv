@@ -275,7 +275,7 @@ Daybreak.nro не найден,Daybreak.nro nav atrasts
 {} тикет,{} biļete
 {} тикета,{} biļetes
 {} тикетов,{} biļetes
-{}-{} FW:{}{} SDK:{},{}-{} FW:{}{} SDK:{}
+{}-{} FW:{}{} SDK:{},{}-lv{:.0} FW:{}{} SDK:{}
 "{}/{} MB (Ср: {:.1f} MB/sec, Тек: {:.1f} MB/sec) Ост. {:02d}:{:02d}      \r","{}/{} MB (Vid: {:.1f} MB/s, Paš: {:.1f} MB/s) Atl. {:02d}:{:02d}      \r"
 "{}/{} МБ, {:.2f} МБ/сек","{}/{} MB, {:.2f} MB/sek"
 {}: {} потерянная запись,{}: {} bāreņu ieraksts

@@ -14,7 +14,11 @@ class Validator:
         """Checks if all {…} tags and %x specifiers are preserved exactly."""
         pattern = r"(\{[^}]*\}|%[a-zA-Z])"
         orig_placeholders = re.findall(pattern, original)
-        trans_placeholders = re.findall(pattern, translation)
+        # "{:.0}" consumes its argument and prints nothing (e.g. it hides the "ru" of
+        # the "{}-{} FW:..." version line); it stands in for "{}".
+        trans_placeholders = [
+            "{}" if p == "{:.0}" else p for p in re.findall(pattern, translation)
+        ]
         
         if sorted(orig_placeholders) != sorted(trans_placeholders):
             return f"Placeholder mismatch: expected {orig_placeholders}, found {trans_placeholders}"
