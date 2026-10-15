@@ -92,6 +92,8 @@ To patch a pristine `DBI.nro` (905 or 912 Russian release) to support external r
 python scripts/patch_dbi.py --nro /path/to/DBI.912.ru.nro --output DBI.912.ru_patched.nro
 ```
 
+Porting the patch to a new DBI release: see [docs/PORTING.md](docs/PORTING.md) (findings, pitfalls, `tools/porting/find_sites.py`).
+
 ### Quick Start Launcher (`run.bat` / `menu.py`)
 On Windows, double-click `run.bat` (or run `python menu.py`) in the repository root to launch an interactive terminal menu with checkbox selection:
 - `all` encompasses all build, localization, and test steps (`sync`, `translate`, `shadok`, `align`, `validate`, `export`, `build`, `dist`, `check`, `test`), visually indented under `all`.
