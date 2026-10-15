@@ -65,7 +65,7 @@ class TemperatureAliasesAndSyncTests(unittest.TestCase):
 
         meta_ws = self.wb["Metadata"]
         version = str(meta_ws["B1"].value or "")
-        self.assertEqual(version, "0.0.104", f"Expected version 0.0.105, got {version}")
+        self.assertEqual(version, "0.0.105", f"Expected version 0.0.105, got {version}")
 
         original_col = self.col_map["Original"]
         originals = []
