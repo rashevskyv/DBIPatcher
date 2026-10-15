@@ -31,7 +31,8 @@ Vendored into DBIPatcher as vendor/dbi_translate from upstream commit
   bss_end raised to the image end so crt0 zeroes them on boot, and a build
   check that rejects any state area inside __bss_end__.
 - make_pfxsfx line-length gate raised from 128 to 256 bytes.
-- Exact-match hooks on the 43 copies of std::string(const char*, size_t) in
-  DBI 912 (Version.ctors). The game info panel builds its labels (Контент,
-  Тикеты, Язык, ...) through these copies, which the single `ctor` hook does
-  not cover. 912 only: the 905 code cave has no room for them.
+- An exact-match hook on the std::string(const char*, size_t) copy that the
+  DBI 912 game info panel uses (Version.ctors). The panel builds its labels
+  (Контент, Тикеты, Язык, ...) through it, not through the `ctor` hook. DBI
+  has 43 such copies; hooking all of them hangs DBI at a black screen, so
+  copies are added one at a time after a console test. 912 only for now.
