@@ -49,7 +49,9 @@ class Version:
 
 V905 = Version(
     name="905",
-    cave=(0xB90B3C, 0xB91000),
+    # The .text zero tail (0xB90B3C..0xB91000, 0x4C4 bytes) is full; use the same unreferenced
+    # libde265 function as 912 (identical 1302-instruction body, no reference from outside).
+    cave=(0x90B4A4, 0x90B4A4 + 5208),
     state=0x11FE6E0,             # __bss_end__ = 0x11FE6D8, image end = 0x11FF000
     persist=0x11FE700,
     scratch=0x11FE760,
@@ -60,6 +62,8 @@ V905 = Version(
     ctor=Site(0x7E180, 0xA9BD7BFD, 0x7E184, "B"),       # STP X29,X30,[SP,#-0x30]!
     sink=Site(0x6771B0, 0xAA0103F6, 0x6771B4, "BL"),    # MOV X22,X1
     bss_end=(0xFC, 0x11FE5E8, 0x11FEF10),               # MOD0 @0xF0: bss_end 0x11FE6D8 -> 0x11FF000
+    clear_cave=True,
+    ctors=(0x435CA0,),                                  # = 912 0x43B6F0 (game info panel, 205 calls)
 )
 
 # 912: the .text zero tail is only 0x244 bytes and the runtime needs 0x4b8, so the runtime

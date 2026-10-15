@@ -3,7 +3,7 @@
 
   Header (0x20 bytes):
     [+0x00]  u64  magic       "DBITRNS\\0"
-    [+0x08]  u32  version     (= 2)
+    [+0x08]  u32  version     (3; 2 = no hash index)
     [+0x0C]  u32  entry_count
     [+0x10]  u32  entry_size
     [+0x14]  u32  ru_data_off (= 4)
@@ -15,6 +15,14 @@
     [+0x02]          u16   tr_len
     [+ru_data_off]   bytes ru_utf8  (null-padded)
     [+tr_data_off]   bytes tr_utf8  (null-padded)
+
+  Hash index (version 3 only), right after the entries:
+    u32 nbuckets                  power of 2, >= 2 * entry_count
+    u32 key_buckets[nbuckets]     entry index + 1 (0 = empty), by FNV-1a of ru_utf8
+    u32 value_buckets[nbuckets]   entry index + 1 (0 = empty), by FNV-1a of tr_utf8
+  Open addressing with linear probing; the first entry wins for a duplicate key or value,
+  as with a linear scan. The patched DBI runtime looks strings up in O(1) instead of
+  scanning every entry, which keeps menus from lagging.
 """
 
 from __future__ import annotations
@@ -28,7 +36,9 @@ from pathlib import Path
 
 
 TABLE_MAGIC = b"DBITRNS\x00"
-TABLE_VERSION = 2
+TABLE_VERSION = 3
+FNV_BASIS = 0x811C9DC5
+FNV_PRIME = 0x01000193
 TABLE_HEADER_SIZE = 0x20
 RU_DATA_OFF = 4
 
@@ -86,7 +96,34 @@ def load_pairs_csv(csv_path: Path) -> list[tuple[bytes, bytes]]:
     return pairs
 
 
-def build_table(pairs: list[tuple[bytes, bytes]]) -> tuple[bytes, int, int]:
+def fnv1a(data: bytes) -> int:
+    h = FNV_BASIS
+    for b in data:
+        h = ((h ^ b) * FNV_PRIME) & 0xFFFFFFFF
+    return h
+
+
+def build_index(pairs: list[tuple[bytes, bytes]]) -> bytes:
+    """Key and value hash indexes (see the module docstring)."""
+    n = 1
+    while n < 2 * len(pairs):
+        n <<= 1
+    key_buckets, val_buckets = [0] * n, [0] * n
+    for buckets, column in ((key_buckets, 0), (val_buckets, 1)):
+        seen = set()
+        for i, pair in enumerate(pairs):
+            s = pair[column]
+            if (column == 1 and not s) or s in seen:
+                continue
+            seen.add(s)
+            j = fnv1a(s) & (n - 1)
+            while buckets[j]:
+                j = (j + 1) & (n - 1)
+            buckets[j] = i + 1
+    return struct.pack(f"<I{n}I{n}I", n, *key_buckets, *val_buckets)
+
+
+def build_table(pairs: list[tuple[bytes, bytes]], version: int = TABLE_VERSION) -> tuple[bytes, int, int]:
     """Pack (ru, tr) pairs into translation.bin bytes.
 
     Returns (table_bytes, entry_size, tr_data_off).
@@ -116,7 +153,7 @@ def build_table(pairs: list[tuple[bytes, bytes]]) -> tuple[bytes, int, int]:
     struct.pack_into(
         "<IIIIII",
         header, 0x08,
-        TABLE_VERSION,
+        version,
         len(pairs),
         entry_size,
         ru_data_off,
@@ -131,6 +168,8 @@ def build_table(pairs: list[tuple[bytes, bytes]]) -> tuple[bytes, int, int]:
         entry[ru_data_off : ru_data_off + len(ru)] = ru
         entry[tr_data_off : tr_data_off + len(tr)] = tr
         buf.extend(entry)
+    if version >= 3:
+        buf.extend(build_index(pairs))
 
     return bytes(buf), entry_size, tr_data_off
 
@@ -144,6 +183,10 @@ def main() -> int:
         default=Path("translation.bin"),
         help="Output path for translation.bin (default: ./translation.bin)",
     )
+    parser.add_argument(
+        "--format", type=int, choices=(2, 3), default=TABLE_VERSION,
+        help="Table version: 3 adds the hash index (default); 2 for NROs patched before it existed",
+    )
     args = parser.parse_args()
 
     if not args.csv.exists():
@@ -153,7 +196,7 @@ def main() -> int:
     print(f"Source CSV : {args.csv}")
     pairs = load_pairs_csv(args.csv)
 
-    table_bytes, entry_size, tr_data_off = build_table(pairs)
+    table_bytes, entry_size, tr_data_off = build_table(pairs, args.format)
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_bytes(table_bytes)

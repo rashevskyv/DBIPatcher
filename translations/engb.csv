@@ -1434,3 +1434,5 @@ Android extensions: ,Android extensions:
 "\x1b[1m{} W: {:>{}}/\x1b[36;1m{:>{}}\x1b[37;1m МБ,\x1b[32;1m{:>3}%, \x1b[33;1mср. {:>4.1f} (тек. {:>5.2f})\x1b[37;1m МБ/сек, \x1b[35;1m{:02d}:{:02d} \x1b[37;1mсек\x1b[1m","\x1b[1m{} W: {:>{}}/\x1b[36;1m{:>{}}\x1b[37;1m MB,\x1b[32;1m{:>3}%, \x1b[33;1mavg {:>4.1f} (cur {:>5.2f})\x1b[37;1m MB/sec, \x1b[35;1m{:02d}:{:02d} \x1b[37;1msec\x1b[1m"
 Тема...,Theme...
 "2ая панель, (+) меню, L3 имя","2nd panel, (+) Menu, L3 Name"
+Общее время игры      : {},Total play time : {}
+Общее время игры      : {} ({}),Total play time : {} ({})

@@ -160,12 +160,16 @@ class Es419TranslationTests(unittest.TestCase):
             struct.unpack_from("<8sIIIIII", data)
         )
         self.assertEqual(magic, b"DBITRNS\x00")
-        self.assertEqual(version, 2)
+        self.assertEqual(version, 3)
         self.assertGreater(count, 0)
         self.assertGreater(entry_size, tr_offset)
         self.assertEqual(ru_offset, 4)
         self.assertEqual(reserved, 0)
-        self.assertEqual(len(data), 0x20 + count * entry_size)
+        index = 0x20 + count * entry_size
+        (nbuckets,) = struct.unpack_from("<I", data, index)
+        self.assertEqual(nbuckets & (nbuckets - 1), 0)
+        self.assertGreaterEqual(nbuckets, 2 * count)
+        self.assertEqual(len(data), index + 4 + 8 * nbuckets)
 
 
 if __name__ == "__main__":

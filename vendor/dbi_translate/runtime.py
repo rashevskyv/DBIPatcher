@@ -28,6 +28,14 @@ def shared_lookup(v: Version, pool_addr):
         ("I", "ldr w14, [x12, #0x10]"),  # stride
         ("I", "ldr w15, [x12, #0x14]"),  # ru_off
         ("I", "ldr w16, [x12, #0x18]"),  # tr_off
+        ("I", "ldr w9, [x12, #8]"), ("I", "cmp w9, #3"), ("I", "b.ne {sl_linear}"),
+    ] + _hash_probe("slh", False) + [
+        ("I", "ldrh w9, [x13, #2]"),     # trlen
+        ("I", "sub w10, w14, w16"), ("I", "cmp w9, w10"), ("I", "b.hi {sl_miss}"),
+        ("I", "add x0, x13, x16"), ("I", "mov x1, x9"), ("I", "ret"),
+        ("L", "slh_miss"),
+        ("I", "mov x0, #0"), ("I", "ret"),
+        ("L", "sl_linear"),
         ("I", "add x17, x12, #0x20"),    # entry ptr
         ("L", "sl_loop"),
         ("I", "cbz w13, {sl_miss}"),
@@ -46,6 +54,106 @@ def shared_lookup(v: Version, pool_addr):
         ("I", "add x17, x17, x14"), ("I", "sub w13, w13, #1"), ("I", "b {sl_loop}"),
         ("L", "sl_miss"),
         ("I", "mov x0, #0"), ("I", "ret"),
+    ]
+
+
+FNV_BASIS = 0x811C9DC5
+FNV_PRIME = 0x01000193
+
+
+def _hash_probe(t, by_value):
+    """Version-3 tables: probe the FNV-1a index that follows the entries. Expects x0=ptr,
+    x1=len, x12=table, w13=count, w14=stride, w15=ru_off, w16=tr_off. Uses only x6, x7, x9-x17
+    (the fmt hook relies on x2, x3 and x8 surviving). Index layout: u32 nbuckets (power of 2),
+    u32 key_buckets[n], u32 value_buckets[n]; a bucket holds entry index + 1, 0 = empty.
+    Jumps to {t}_hit with x13 = entry, or to {t}_miss."""
+    data_off, len_off = ("w16", 2) if by_value else ("w15", 0)
+    return [
+        ("I", "umull x17, w13, w14"), ("I", "add x17, x17, #0x20"), ("I", "add x17, x12, x17"),
+        ("I", "ldr w10, [x17], #4"),              # nbuckets; x17 -> key buckets
+        *([("I", "add x17, x17, x10, lsl #2")] if by_value else []),   # -> value buckets
+        ("I", "sub w10, w10, #1"),                # mask
+        ("I", f"mov w9, #{FNV_BASIS & 0xFFFF:#x}"), ("I", f"movk w9, #{FNV_BASIS >> 16:#x}, lsl #16"),
+        ("I", f"mov w11, #{FNV_PRIME & 0xFFFF:#x}"), ("I", f"movk w11, #{FNV_PRIME >> 16:#x}, lsl #16"),
+        ("I", "mov x6, #0"),
+        ("L", f"{t}_h"),
+        ("I", "cmp x6, x1"), ("I", f"b.hs {{{t}_hd}}"),
+        ("I", "ldrb w7, [x0, x6]"), ("I", "eor w9, w9, w7"), ("I", "mul w9, w9, w11"),
+        ("I", "add x6, x6, #1"), ("I", f"b {{{t}_h}}"),
+        ("L", f"{t}_hd"),
+        ("I", "and w9, w9, w10"),
+        ("L", f"{t}_p"),
+        ("I", "ldr w11, [x17, w9, uxtw #2]"), ("I", f"cbz w11, {{{t}_miss}}"),
+        ("I", "sub w11, w11, #1"),
+        ("I", "ldr w13, [x12, #0xc]"), ("I", "cmp w11, w13"), ("I", f"b.hs {{{t}_miss}}"),   # corrupt index
+        ("I", "umull x13, w11, w14"), ("I", "add x13, x13, x12"), ("I", "add x13, x13, #0x20"),
+        ("I", f"ldrh w6, [x13, #{len_off}]"), ("I", "cmp w6, w1"), ("I", f"b.ne {{{t}_pn}}"),
+        ("I", f"add x11, x13, {data_off.replace('w', 'x')}"), ("I", "mov x6, #0"),
+        ("L", f"{t}_c"),
+        ("I", "cmp x6, x1"), ("I", f"b.hs {{{t}_hit}}"),
+        ("I", "ldrb w7, [x11, x6]"), ("I", "ldrb w13, [x0, x6]"),
+        ("I", "cmp w7, w13"), ("I", f"b.ne {{{t}_pn2}}"),
+        ("I", "add x6, x6, #1"), ("I", f"b {{{t}_c}}"),
+        ("L", f"{t}_pn2"),
+        ("I", "ldr w13, [x12, #0xc]"),
+        ("L", f"{t}_pn"),
+        ("I", "add w9, w9, #1"), ("I", "and w9, w9, w10"), ("I", f"b {{{t}_p}}"),
+        ("L", f"{t}_hit"),
+        ("I", f"sub x13, x11, {data_off.replace('w', 'x')}"),     # entry
+    ]
+
+
+def value_lookup(v: Version, pool_addr):
+    """(X0=ptr, X1=len) -> X0=1 if (ptr, len) equals the translation of some entry, else 0.
+    Leaf; clobbers x0-x17. Lets the matchers leave already-translated text alone: for
+    Cyrillic targets (ua/be/kk) a translation can start with a Russian key ("Дампити"
+    starts with the key "Да")."""
+    return [
+        ("ADRP", 9, v.state), ("I", f"add x9, x9, #{v.state & 0xFFF:#x}"),
+        ("I", "ldr x10, [x9, #0x10]"),
+        ("LDRLIT", 11, pool_addr),
+        ("I", "cmp x10, x11"), ("I", "b.ne {vl_miss}"),
+        ("I", "ldr x12, [x9, #0x18]"), ("I", "cbz x12, {vl_miss}"),
+        ("I", "ldr w13, [x12, #0xc]"),   # count
+        ("I", "ldr w14, [x12, #0x10]"),  # stride
+        ("I", "ldr w15, [x12, #0x14]"),  # ru_off
+        ("I", "ldr w16, [x12, #0x18]"),  # tr_off
+        ("I", "ldr w9, [x12, #8]"), ("I", "cmp w9, #3"), ("I", "b.ne {vl_linear}"),
+    ] + _hash_probe("vlh", True) + [
+        ("I", "mov x0, #1"), ("I", "ret"),
+        ("L", "vlh_miss"),
+        ("I", "mov x0, #0"), ("I", "ret"),
+        ("L", "vl_linear"),
+        ("I", "add x17, x12, #0x20"),
+        ("L", "vl_loop"),
+        ("I", "cbz w13, {vl_miss}"),
+        ("I", "ldrh w9, [x17, #2]"),     # trlen
+        ("I", "sub w10, w14, w16"), ("I", "cmp w9, w10"), ("I", "b.hi {vl_miss}"),
+        ("I", "cmp w1, w9"), ("I", "b.ne {vl_next}"),
+        ("I", "cbz w9, {vl_next}"),
+        ("I", "add x10, x17, x16"), ("I", "mov x11, x0"), ("I", "mov w12, w9"),
+        ("L", "vl_cmp"),
+        ("I", "ldrb w6, [x10], #1"), ("I", "ldrb w7, [x11], #1"),
+        ("I", "cmp w6, w7"), ("I", "b.ne {vl_next}"),
+        ("I", "subs w12, w12, #1"), ("I", "b.ne {vl_cmp}"),
+        ("I", "mov x0, #1"), ("I", "ret"),
+        ("L", "vl_next"),
+        ("I", "add x17, x17, x14"), ("I", "sub w13, w13, #1"), ("I", "b {vl_loop}"),
+        ("L", "vl_miss"),
+        ("I", "mov x0, #0"), ("I", "ret"),
+    ]
+
+
+def _letter_or(reg, target, tag):
+    """Branch to `target` when the byte in `reg` is not a letter; fall through when it is.
+    Letter = ASCII alnum or any byte >= 0x80 (part of a multi-byte UTF-8 letter). Clobbers w12."""
+    return [
+        ("I", f"cmp {reg}, #0x80"), ("I", f"b.hs {{{tag}}}"),
+        ("I", f"sub w12, {reg}, #0x30"), ("I", "cmp w12, #10"), ("I", f"b.lo {{{tag}}}"),
+        ("I", f"orr w12, {reg}, #0x20"), ("I", "sub w12, w12, #0x61"), ("I", "cmp w12, #26"),
+        ("I", f"b.lo {{{tag}}}"),
+        ("I", f"b {{{target}}}"),
+        ("L", tag),
     ]
 
 
@@ -82,13 +190,23 @@ def loader(v: Version, path_addr, pool_addr):
         ("I", "cmp x11, #32"), ("I", "b.lo {ld_fail}"),
         ("I", "ldr x12, [x10]"), *movk_seq(13, FILE_MAGIC),
         ("I", "cmp x12, x13"), ("I", "b.ne {ld_fail}"),
-        ("I", "ldr w12, [x10, #8]"), ("I", "cmp w12, #2"), ("I", "b.ne {ld_fail}"),
+        ("I", "ldr w15, [x10, #8]"),     # version: 2 = plain, 3 = plain + hash index
+        ("I", "cmp w15, #2"), ("I", "b.eq {ld_ver}"),
+        ("I", "cmp w15, #3"), ("I", "b.ne {ld_fail}"),
+        ("L", "ld_ver"),
         # size check: reject a truncated/corrupt file whose header survived, else the
         # lookup would scan `count` entries past the short buffer -> OOB read -> crash.
         ("I", "ldr w12, [x10, #0xc]"),   # count
         ("I", "ldr w13, [x10, #0x10]"),  # stride
         ("I", "umull x12, w12, w13"),    # count*stride
         ("I", "add x12, x12, #0x20"),    # + 32-byte header
+        ("I", "cmp w15, #2"), ("I", "b.eq {ld_size}"),
+        # v3: u32 nbuckets (power of 2, non-zero) + 2*nbuckets u32 after the entries
+        ("I", "add x13, x12, #4"), ("I", "cmp x11, x13"), ("I", "b.lo {ld_fail}"),
+        ("I", "ldr w13, [x10, x12]"), ("I", "cbz w13, {ld_fail}"),
+        ("I", "sub w14, w13, #1"), ("I", "tst w13, w14"), ("I", "b.ne {ld_fail}"),
+        ("I", "add x12, x12, #4"), ("I", "add x12, x12, x13, lsl #3"),
+        ("L", "ld_size"),
         ("I", "cmp x11, x12"), ("I", "b.ne {ld_fail}"),   # must equal the file length
         ("I", "str x10, [x19, #0x18]"),  # tableptr = buf
         ("LDRLIT", 9, pool_addr), ("I", "str x9, [x19, #0x10]"),    # magic = SET
@@ -101,11 +219,15 @@ def loader(v: Version, path_addr, pool_addr):
     ]
 
 
-def ctor_exact(sl_addr):
+def ctor_exact(sl_addr, vl_addr):
     """(X0=dest, X1=data, X2=len) -> same registers, with X1/X2 replaced by the translation on
-    an exact hit. Called from the entry stub of each std::string(const char*, size_t) copy, so
+    an exact hit. Called from the entry stub of a std::string(const char*, size_t) copy, so
     only X0-X2 are live. Exact match only (no prefix/suffix rebuild): these constructors also
-    build paths and file names. Skips strings longer than 0x100 or without a byte >= 0x80."""
+    build paths and file names. Skips strings longer than 0x100 or without a byte >= 0x80.
+    Text that already is a translation is left alone. When the data continues past len and the
+    whole NUL-terminated string is a translation, the whole translation is copied: DBI copies
+    words with their Russian byte length (std::string w(tmp.data(), 14)) after translating tmp,
+    which would cut "Видалити" to "Видалит"."""
     return [
         ("I", "cbz x2, {ce_ret}"),
         ("I", "cmp x2, #0x100"), ("I", "b.hi {ce_ret}"),
@@ -119,11 +241,29 @@ def ctor_exact(sl_addr):
         ("I", "stp x29, x30, [sp, #-0x30]!"),
         ("I", "stp x0, x1, [sp, #0x10]"), ("I", "str x2, [sp, #0x20]"),
         ("I", "mov x0, x1"), ("I", "mov x1, x2"),
+        ("I", f"bl {vl_addr:#x}"),                  # already a translation -> unchanged
+        ("I", "cbnz x0, {ce_keep}"),
+        ("I", "ldp x0, x1, [sp, #0x10]"), ("I", "ldr x2, [sp, #0x20]"),
+        ("I", "ldrb w9, [x1, x2]"), ("I", "cbz w9, {ce_key}"),   # data ends at len
+        ("I", "mov x9, x2"),
+        ("L", "ce_len"),                            # bounded strlen
+        ("I", "ldrb w10, [x1, x9]"), ("I", "cbz w10, {ce_lend}"),
+        ("I", "add x9, x9, #1"), ("I", "cmp x9, #0x100"), ("I", "b.lo {ce_len}"),
+        ("I", "b {ce_key}"),
+        ("L", "ce_lend"),
+        ("I", "str x9, [sp, #0x28]"),
+        ("I", "mov x0, x1"), ("I", "mov x1, x9"),
+        ("I", f"bl {vl_addr:#x}"),                  # is the whole string a translation?
+        ("I", "cbz x0, {ce_key}"),
+        ("I", "ldp x0, x1, [sp, #0x10]"), ("I", "ldr x2, [sp, #0x28]"),
+        ("I", "ldp x29, x30, [sp], #0x30"), ("I", "ret"),
+        ("L", "ce_key"),
+        ("I", "ldr x0, [sp, #0x18]"), ("I", "ldr x1, [sp, #0x20]"),
         ("I", f"bl {sl_addr:#x}"),                  # (x0=key, x1=len) -> (x0=tr|0, x1=trlen)
-        ("I", "cbz x0, {ce_miss}"),
+        ("I", "cbz x0, {ce_keep}"),
         ("I", "mov x2, x1"), ("I", "mov x1, x0"), ("I", "ldr x0, [sp, #0x10]"),
         ("I", "ldp x29, x30, [sp], #0x30"), ("I", "ret"),
-        ("L", "ce_miss"),
+        ("L", "ce_keep"),
         ("I", "ldp x0, x1, [sp, #0x10]"), ("I", "ldr x2, [sp, #0x20]"),
         ("I", "ldp x29, x30, [sp], #0x30"), ("I", "ret"),
     ]
@@ -167,15 +307,17 @@ def make_fmt(v: Version, sl_addr):
     ]
 
 
-def make_pfxsfx(v: Version, sl_addr):
+def make_pfxsfx(v: Version, sl_addr, vl_addr):
     """_pfxsfx2(x0=data, x1=len) -> (x0=ptr, x1=len). Preserves x19-x28.
     0. Skip a leading run of control bytes (<0x20): in-place progress lines carry a leading
        \\r cursor-reset. x28 keeps the original ptr; a miss returns (x28, full len) so the \\r
        survives, a hit re-prepends the skipped bytes.
     1. exact lookup.
-    2. gate: bail to the original unless len<=128 and a byte is >=0x80 (Cyrillic), keeping
+    0b. text that already is a translation is returned unchanged (no second pass).
+    2. gate: bail to the original unless len<=256 and a byte is >=0x80 (Cyrillic), keeping
        ASCII byte-progress off the O(len) scan.
-    3. longest-prefix + longest-suffix rebuild in SCRATCH (lead bytes prepended)."""
+    3. longest-prefix + longest-suffix rebuild in SCRATCH (lead bytes prepended). A prefix or
+       suffix hit counts only on a word boundary, so the key "Да" cannot match "Дампити"."""
     return [
         ("I", "stp x29, x30, [sp, #-0x60]!"), ("I", "mov x29, sp"),
         ("I", "stp x19, x20, [sp, #0x10]"), ("I", "stp x21, x22, [sp, #0x20]"),
@@ -189,6 +331,9 @@ def make_pfxsfx(v: Version, sl_addr):
         ("I", "ldrb w9, [x19]"), ("I", "cmp w9, #0x20"), ("I", "b.hs {leadd}"),
         ("I", "add x19, x19, #1"), ("I", "sub x20, x20, #1"), ("I", "b {lead}"),
         ("L", "leadd"),
+        # (0b) already a translation (another hook ran first): leave it alone
+        ("I", "mov x0, x19"), ("I", "mov x1, x20"), ("I", f"bl {vl_addr:#x}"),
+        ("I", "cbnz x0, {miss}"),
         # (1) exact
         ("I", "mov x0, x19"), ("I", "mov x1, x20"), ("I", f"bl {sl_addr:#x}"),
         ("I", "cbnz x0, {out}"),
@@ -207,6 +352,11 @@ def make_pfxsfx(v: Version, sl_addr):
         ("I", "cmp x27, #2"), ("I", "b.lt {pfxd}"),
         ("I", "mov x0, x19"), ("I", "mov x1, x27"), ("I", f"bl {sl_addr:#x}"),
         ("I", "cbz x0, {pfxn}"),
+        # word boundary: the key's last byte or the byte after it must be a non-letter
+        ("I", "add x9, x19, x27"), ("I", "ldurb w10, [x9, #-1]"), ("I", "ldrb w11, [x9]"),
+    ] + _letter_or("w10", "pfxok", "pfx_l1") + _letter_or("w11", "pfxok", "pfx_l2") + [
+        ("I", "b {pfxn}"),
+        ("L", "pfxok"),
         ("I", "mov x21, x27"), ("I", "mov x22, x0"), ("I", "mov x23, x1"), ("I", "b {pfxd}"),
         ("L", "pfxn"), ("I", "sub x27, x27, #1"), ("I", "b {pfx}"),
         ("L", "pfxd"),
@@ -215,6 +365,12 @@ def make_pfxsfx(v: Version, sl_addr):
         ("I", "cmp x27, #2"), ("I", "b.lt {sfxd}"),
         ("I", "sub x9, x20, x27"), ("I", "add x0, x19, x9"), ("I", "mov x1, x27"), ("I", f"bl {sl_addr:#x}"),
         ("I", "cbz x0, {sfxn}"),
+        # word boundary: the key's first byte or the byte before it must be a non-letter
+        ("I", "sub x9, x20, x27"), ("I", "add x9, x19, x9"),
+        ("I", "ldrb w10, [x9]"), ("I", "ldurb w11, [x9, #-1]"),
+    ] + _letter_or("w10", "sfxok", "sfx_l1") + _letter_or("w11", "sfxok", "sfx_l2") + [
+        ("I", "b {sfxn}"),
+        ("L", "sfxok"),
         ("I", "mov x24, x27"), ("I", "mov x25, x0"), ("I", "mov x26, x1"), ("I", "b {sfxd}"),
         ("L", "sfxn"), ("I", "sub x27, x27, #1"), ("I", "b {sfx}"),
         ("L", "sfxd"),

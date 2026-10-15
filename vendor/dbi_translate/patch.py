@@ -9,7 +9,8 @@ from capstone import Cs, CS_ARCH_ARM64, CS_MODE_LITTLE_ENDIAN
 
 from .asm import assemble, enc_b, enc_bl
 from .hooks import ctor_hook, ctor_stub, glog_hook, reader_hook, sink_hook
-from .runtime import PATH_STR, STATE_MAGIC, ctor_exact, loader, make_fmt, make_pfxsfx, shared_lookup
+from .runtime import (PATH_STR, STATE_MAGIC, ctor_exact, loader, make_fmt, make_pfxsfx,
+                      shared_lookup, value_lookup)
 from .versions import BASE, CTOR_INSN, Site, Version
 
 
@@ -71,9 +72,10 @@ def patch_nro(v: Version, data: bytes):
     pool_addr = (cave_start + len(PATH_STR) + 7) & ~7
     addr = pool_addr + 8
     sl = assemble(shared_lookup(v, pool_addr), addr); sl_base = addr; addr += len(sl)
+    vl = assemble(value_lookup(v, pool_addr), addr); vl_base = addr; addr += len(vl)
     ld = assemble(loader(v, path_addr, pool_addr), addr); ld_base = addr; addr += len(ld)
     fmt = assemble(make_fmt(v, sl_base), addr); fmt_base = addr; addr += len(fmt)
-    px = assemble(make_pfxsfx(v, sl_base), addr); px_base = addr; addr += len(px)
+    px = assemble(make_pfxsfx(v, sl_base, vl_base), addr); px_base = addr; addr += len(px)
     lg = assemble(glog_hook(v, px_base), addr); lg_base = addr; addr += len(lg)
     ch = assemble(ctor_hook(v, px_base), addr); ch_base = addr; addr += len(ch)
     sk = assemble(sink_hook(v, px_base), addr); sk_base = addr; addr += len(sk)
@@ -81,7 +83,7 @@ def patch_nro(v: Version, data: bytes):
     # [ctor_exact][one stub per std::string(const char*, size_t) copy]
     stubs = []
     if ctor_sites:
-        ce = assemble(ctor_exact(sl_base), addr); ce_base = addr; addr += len(ce)
+        ce = assemble(ctor_exact(sl_base, vl_base), addr); ce_base = addr; addr += len(ce)
         stubs.append((ce_base, ce))
         for site in ctor_sites:
             st = assemble(ctor_stub(site.addr, ce_base), addr)
@@ -96,6 +98,7 @@ def patch_nro(v: Version, data: bytes):
     data[path_addr:path_addr + len(PATH_STR)] = PATH_STR
     struct.pack_into("<Q", data, pool_addr, STATE_MAGIC)
     data[sl_base:sl_base + len(sl)] = sl
+    data[vl_base:vl_base + len(vl)] = vl
     data[ld_base:ld_base + len(ld)] = ld
     data[fmt_base:fmt_base + len(fmt)] = fmt
     data[px_base:px_base + len(px)] = px
@@ -124,6 +127,9 @@ def patch_nro(v: Version, data: bytes):
         f"path @ {path_addr:#x}  pool @ {pool_addr:#x}  shared_lookup @ {sl_base:#x}({len(sl)}B)  "
         f"loader @ {ld_base:#x}({len(ld)}B)",
         f"cave used {total}/{cave_end - cave_start}  ({len(ctor_sites)} ctor copies hooked)",
+        "bases " + " ".join(f"{k}={b:#x}" for k, b in (
+            ("loader", ld_base), ("shared_lookup", sl_base), ("value_lookup", vl_base), ("pfxsfx", px_base),
+            ("fmt", fmt_base), ("ctor_exact", stubs[0][0] if stubs else 0))),
     ]
     return bytes(data), report
 

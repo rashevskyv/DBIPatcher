@@ -32,7 +32,15 @@ Vendored into DBIPatcher as vendor/dbi_translate from upstream commit
   check that rejects any state area inside __bss_end__.
 - make_pfxsfx line-length gate raised from 128 to 256 bytes.
 - An exact-match hook on the std::string(const char*, size_t) copy that the
-  DBI 912 game info panel uses (Version.ctors). The panel builds its labels
-  (Контент, Тикеты, Язык, ...) through it, not through the `ctor` hook. DBI
-  has 43 such copies; hooking all of them hangs DBI at a black screen, so
-  copies are added one at a time after a console test. 912 only for now.
+  game info panel uses (Version.ctors: 912 0x43B6F0, 905 0x435CA0). The panel
+  builds its labels (Контент, Тикеты, Язык, ...) through it, not through the
+  `ctor` hook. DBI has ~43 such copies; hooking all of them hangs DBI 912 at a
+  black screen, so copies are added one at a time after a console test.
+- 905 runtime moved to the same unreferenced libde265 function as 912
+  (0x90B4A4, 5208 bytes): its .text zero tail was full.
+- Matcher rules: text that already is a translation is never translated again
+  (value_lookup); prefix/suffix hits count only on a word boundary; when a
+  hooked copy takes a prefix of a whole translation, the whole translation is
+  copied. Without these, Cyrillic targets showed "Такмпити" / "Видалит".
+- DBITRNS version 3: an FNV-1a hash index after the entries makes every
+  lookup O(1). Version 2 tables still load (linear scan).
