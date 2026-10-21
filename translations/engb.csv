@@ -631,6 +631,7 @@ Daybreak.nro не найден,Daybreak.nro not found
 Общее время дампа {:d}:{:02d}:{:02d},Total dump time {:d}:{:02d}:{:02d}
 Общее время запущенных игр    : {} часов,Total playtime                : {} hours
 Общее время игры      : -,Total play time : -
+Общее время игры      : - (-),Total play time : - (-)
 Общее время игры      : {:d} часов {:02d} минут,Total play time : {:d} hours {:02d} minutes
 Общее время установки: {:d}:{:02d}:{:02d},Total installation time: {:d}:{:02d}:{:02d}
 Общее время: {:02}:{:02}:{:02},Total time: {:02}:{:02}:{:02}

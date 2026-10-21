@@ -631,6 +631,7 @@ Daybreak.nro не найден,Daybreak.nro bulunamadı
 Общее время дампа {:d}:{:02d}:{:02d},Toplam boşaltma süresi {:d} : {:02d} : {:02d}
 Общее время запущенных игр    : {} часов,Toplam oynatma süresi            : {} saat
 Общее время игры      : -,Toplam oyun süresi    : -
+Общее время игры      : - (-),Toplam oyun süresi    : - (-)
 Общее время игры      : {:d} часов {:02d} минут,Toplam oynatma süresi : {:d} saat {:02d} dakika
 Общее время установки: {:d}:{:02d}:{:02d},Toplam kurulum süresi: {:d} : {:02d} : {:02d}
 Общее время: {:02}:{:02}:{:02},Toplam süre: {:02} : {:02} : {:02}

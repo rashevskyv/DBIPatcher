@@ -631,6 +631,7 @@ Daybreak.nro не найден,Daybreak.nro nav atrasts
 Общее время дампа {:d}:{:02d}:{:02d},Kopējais izmešanas laiks {:d}:{:02d}:{:02d}
 Общее время запущенных игр    : {} часов,Kopējais spēles laiks         : {} stundas
 Общее время игры      : -,Kopējais spēles laiks    : -
+Общее время игры      : - (-),Kopējais spēles laiks    : - (-)
 Общее время игры      : {:d} часов {:02d} минут,Kopējais spēles laiks    : {:d} stundas {:02d} minūtes
 Общее время установки: {:d}:{:02d}:{:02d},Kopējais instalācijas laiks: {:d}:{:02d}:{:02d}
 Общее время: {:02}:{:02}:{:02},Kopējais laiks: {:02}:{:02}:{:02}

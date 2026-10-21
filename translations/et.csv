@@ -631,6 +631,7 @@ Daybreak.nro не найден,Daybreak.nro ei leitud
 Общее время дампа {:d}:{:02d}:{:02d},Tõmmise koguaeg {:d}:{:02d}:{:02d}
 Общее время запущенных игр    : {} часов,Kogu mänguaeg                    : {} tundi
 Общее время игры      : -,Kogu mänguaeg      : -
+Общее время игры      : - (-),Kogu mänguaeg      : - (-)
 Общее время игры      : {:d} часов {:02d} минут,Kogu mänguaeg      : {:d} tundi {:02d} minutit
 Общее время установки: {:d}:{:02d}:{:02d},Paigaldamise koguaeg: {:d}:{:02d}:{:02d}
 Общее время: {:02}:{:02}:{:02},Koguaeg: {:02}:{:02}:{:02}

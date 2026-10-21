@@ -631,6 +631,7 @@ Daybreak.nro не найден,Daybreak.nro nerastas
 Общее время дампа {:d}:{:02d}:{:02d},Bendra išklotinės trukmė {:d}:{:02d}:{:02d}
 Общее время запущенных игр    : {} часов,Bendras žaidimo laikas           : {} valandų
 Общее время игры      : -,Bendras žaidimo laikas : -
+Общее время игры      : - (-),Bendras žaidimo laikas : - (-)
 Общее время игры      : {:d} часов {:02d} минут,Bendras žaidimo laikas : {:d} val. {:02d} min.
 Общее время установки: {:d}:{:02d}:{:02d},Bendras diegimo laikas: {:d}:{:02d}:{:02d}
 Общее время: {:02}:{:02}:{:02},Bendras laikas: {:02}:{:02}:{:02}
