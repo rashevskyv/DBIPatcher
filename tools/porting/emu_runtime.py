@@ -63,7 +63,12 @@ def model_pfxsfx(K, V, b):
 
 def model_ctor(K, V, buf, n):
     s = buf[:n]
-    if n == 0 or n > 0x100 or not any(c >= 0x80 for c in s):
+    if n == 0 or n > 0x100:
+        return s
+    z = s.find(b"\0")
+    if z > 0:
+        return s[:z] if s[:z] in V else s
+    if not any(c >= 0x80 for c in s):
         return s
     if s in V:
         return s

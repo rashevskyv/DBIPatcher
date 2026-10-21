@@ -60,6 +60,10 @@ class RuntimeRulesTests(unittest.TestCase):
         # the console bugs this rule set fixes
         self.assertEqual(emu.pfxsfx(px, "Дампити на SD-карту".encode()), "Дампити на SD-карту".encode())
         self.assertEqual(emu.ctor(ce, "Видалити".encode() + b"\0", 14), "Видалити".encode())
+        # issue #29: a translation shorter than the Russian length, copied with its NUL and a
+        # stale UTF-8 continuation byte, is cut at the NUL
+        self.assertEqual(emu.ctor(ce, "Так".encode() + b"\0\x9f\x00", 8), "Так".encode())
+        self.assertEqual(emu.ctor(ce, b"ab\0\x9f", 4), b"ab\0\x9f")   # not a translation
 
     def test_912(self) -> None:
         self.check("912")

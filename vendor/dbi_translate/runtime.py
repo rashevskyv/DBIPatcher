@@ -227,10 +227,31 @@ def ctor_exact(sl_addr, vl_addr):
     Text that already is a translation is left alone. When the data continues past len and the
     whole NUL-terminated string is a translation, the whole translation is copied: DBI copies
     words with their Russian byte length (std::string w(tmp.data(), 14)) after translating tmp,
-    which would cut "Видалити" to "Видалит"."""
+    which would cut "Видалити" to "Видалит". The other way round, a translation shorter than
+    the Russian length (EN "LFS mode : -" for the 14-byte "LFS мод.: -") arrives with its NUL
+    and stale stack bytes inside len: copied whole, DBI draws a NUL glyph or throws
+    "Invalid UTF-8" (issue #29). When the bytes before a NUL inside len are a translation,
+    the copy is cut at that NUL."""
     return [
         ("I", "cbz x2, {ce_ret}"),
         ("I", "cmp x2, #0x100"), ("I", "b.hi {ce_ret}"),
+        ("I", "mov x9, #0"),
+        ("L", "ce_nscan"),                          # NUL inside len?
+        ("I", "ldrb w10, [x1, x9]"), ("I", "cbz w10, {ce_nul}"),
+        ("I", "add x9, x9, #1"), ("I", "cmp x9, x2"), ("I", "b.lo {ce_nscan}"),
+        ("I", "b {ce_start}"),
+        ("L", "ce_nul"),
+        ("I", "cbz x9, {ce_ret}"),
+        ("I", "stp x29, x30, [sp, #-0x30]!"),
+        ("I", "stp x0, x1, [sp, #0x10]"), ("I", "stp x2, x9, [sp, #0x20]"),
+        ("I", "mov x0, x1"), ("I", "mov x1, x9"),
+        ("I", f"bl {vl_addr:#x}"),                  # is the text before the NUL a translation?
+        ("I", "mov x10, x0"),
+        ("I", "ldp x0, x1, [sp, #0x10]"), ("I", "ldp x2, x9, [sp, #0x20]"),
+        ("I", "ldp x29, x30, [sp], #0x30"),
+        ("I", "cbz x10, {ce_ret}"),                 # no: leave the copy alone
+        ("I", "mov x2, x9"), ("I", "ret"),          # yes: copy up to the NUL
+        ("L", "ce_start"),
         ("I", "mov x9, #0"),
         ("L", "ce_scan"),
         ("I", "ldrb w10, [x1, x9]"), ("I", "cmp w10, #0x80"), ("I", "b.hs {ce_go}"),
