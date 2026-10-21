@@ -807,7 +807,7 @@ Get chargeInfoFields : {},Get chargeInfoFields : {}
 Посылается файл: {},Datei wird gesendet: {}
 Посылается файл: {}/\x1b[36;1m{}\x1b[37;1m МБ (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m МБ/сек),Datei wird gesendet: {}/\x1b[36;1m{}\x1b[37;1m MB (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m MB/s)
 Превышен размер командного буфера,Befehlspuffergröße überschritten
-LFS мод.: -,LFS-Modus : -
+LFS мод.: -,LFS Mod.: -
 Предоставить по FTP,Per FTP bereitstellen
 Прекращение прослушивания на {}:{},Beende Abhören auf {}:{}
 Прервано пользователем,Vom Benutzer abgebrochen
@@ -823,7 +823,7 @@ LFS мод.: -,LFS-Modus : -
 Проверка сохранений,Speicherdaten prüfen
 Проверка целостности ({}),Integritätsprüfung ({})
 Проверяется: {},Wird überprüft: {}
-"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","LFS-Mod   : Vorhanden, Größe: Berechnung in Einstellungen deaktiviert"
+"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","LFS-Mod : Vorhanden, Größe: Berechnung in Einstellungen deaktiviert"
 Проверяются бекапы...,Backups werden überprüft...
 Проверяются сохранения,Speicherdaten werden überprüft
 Программа {}. Control не найдена,Anwendung {}. Control nicht gefunden
@@ -1119,7 +1119,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
 Шифрование секции ,Verschlüsselung des Abschnitts 
 Ярлык   : ,Verknüpfung   : 
  {} минут, {} Minuten
-Язык    : ,Sprache   :
+Язык    : ,Sprache : 
 Путь    : ,Pfad    : 
   Жак Руксель. Великолепие навыворот., 
   Кодировка...,  Kodierung...
@@ -1131,14 +1131,14 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
      {:<10} Шифрование: {} Размер установки: {}{:>10},     {:<10} Verschlüsselung: {} Installationsgröße: {}{:>10}
  [НЕ МОГУ ОТКРЫТЬ ФАЙЛ], [KANN DATEI NICHT ÖFFNEN]
 Автозапуск FTP: ,FTP-Autostart: 
-Автор   : ,Autor     :
+Автор   : ,Autor   : 
  {:>5} часа, {:>5} Stunden
 Базовое хранилище: ,Basisspeicher: 
  {:>5} часов, {:>5} Stunden
 ВНИМАНИЕ ,ACHTUNG 
 ВНИМАНИЕ! ,ACHTUNG! 
  {} в чёрном списке., {} auf der schwarzen Liste.
-Версия  : ,Version   :
+Версия  : ,Version : 
 Внимание! ,Achtung! 
  {} минута, {} Minute
  {} минуты, {} Minuten
@@ -1160,7 +1160,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
 " и {} новое DLC,"," und {} neue DLC,"
 "    Великий колдун сказал, что ракеты","Durchbruchs. Bunker, Staatsverlag"
 " и {} новых DLC,"," und {} neue DLCs,"
-Имя     : ,Name      :
+Имя     : ,Name    : 
  сортировка по дате создания, Sortierung nach Erstellungsdatum
  сортировка по имени, Sortierung nach Name
  сортировка по имени игры, Sortierung nach Spielname
@@ -1190,7 +1190,7 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Ошибка чтения сохранённых параметров контроллера: ,Fehler beim Lesen der gespeicherten Controller-Parameter: 
    Получение списка бекапов...{}/{}    ,   Abrufen der Backup-Liste...{}/{}    
 Предупреждения: ,Warnungen: 
-"LFS мод.: Присутствует, Размер: ","LFS Mod.  : Vorhanden, Größe:"
+"LFS мод.: Присутствует, Размер: ","LFS Mod.: Vorhanden, Größe: "
 Пропускаем файл до начала secure раздела ,Überspringe Datei bis zum Beginn des secure-Bereichs 
 Размер  : ,Größe  : 
 Сброс требуемой версии к ,Zurücksetzen der erforderlichen Version auf 
@@ -1229,8 +1229,8 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Патчить требование NNID: ,NNID-Anforderung patchen   :
 Выполнить выбранные действия,Ausgewählte Aktionen ausführen
 CID: {:s},CID               : {:s}
-TitleId : {} BID: {},TitleId   : {} BID: {}
-"Meta SDK: {},  Program SDK: {}","Meta SDK  : {},  Program SDK: {}"
+TitleId : {} BID: {},TitleId : {} BID: {}
+"Meta SDK: {},  Program SDK: {}","Meta SDK: {},  Program SDK: {}"
 "Внимание!!! Включение следующих опций приведет к тому,","Achtung!!! Das Aktivieren der folgenden Optionen führt dazu,"
 что установленные NCA файлы будут отличаться от исходных:,dass die installierten NCA-Dateien von den Originaldateien abweichen:
 Включение синхронизации времени по сети...,Netzwerkzeitsynchronisierung wird aktiviert…

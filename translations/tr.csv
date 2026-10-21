@@ -807,7 +807,7 @@ Get chargeInfoFields : {},chargeInfoFields'ı alın: {}
 Посылается файл: {},Dosya gönderiliyor: {}
 Посылается файл: {}/\x1b[36;1m{}\x1b[37;1m МБ (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m МБ/сек),Dosya gönderiliyor: {} / \x1b[36;1m {} \x1b[37;1m MB (\x1b[32;1m {} \x1b[37;1m %) (\x1b[33;1m {:.2f} \x1b[37;1m MB/s)
 Превышен размер командного буфера,Komut arabellek boyutu aşıldı
-LFS мод.: -,LFS modu       : -
+LFS мод.: -,LFS modu: -
 Предоставить по FTP,FTP yoluyla sağlayın
 Прекращение прослушивания на {}:{},{} üzerinde dinleme durduruluyor: {}
 Прервано пользователем,Kullanıcı tarafından iptal edildi
@@ -823,7 +823,7 @@ LFS мод.: -,LFS modu       : -
 Проверка сохранений,Kayıt verileri kontrol ediliyor
 Проверка целостности ({}),Bütünlük kontrolü ({})
 Проверяется: {},Kontrol ediliyor: {}
-"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","LFS modu       : Mevcut, Boyut: ayarlarda hesaplama devre dışı bırakıldı"
+"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","LFS modu: Mevcut, Boyut: ayarlarda hesaplama devre dışı bırakıldı"
 Проверяются бекапы...,Yedeklemeler kontrol ediliyor...
 Проверяются сохранения,Kayıtlar kontrol ediliyor
 Программа {}. Control не найдена,Uygulama {} . Denetim bulunamadı
@@ -1119,7 +1119,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Kablosuz 
 Шифрование секции ,Bölüm şifreleme
 Ярлык   : ,Kısayol:
  {} минут,{} dakika
-Язык    : ,Dil            :
+Язык    : ,Dil     : 
 Путь    : ,Yol  :
   Жак Руксель. Великолепие навыворот.,"Sığınak, «Aynanın Ötesi» yay."
   Кодировка...,Kodlanıyor...
@@ -1131,14 +1131,14 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Kablosuz 
      {:<10} Шифрование: {} Размер установки: {}{:>10},{:<10} Şifreleme: {} Kurulum boyutu: {} {:>10}
  [НЕ МОГУ ОТКРЫТЬ ФАЙЛ],[DOSYA AÇILAMIYOR]
 Автозапуск FTP: ,FTP Otomatik Başlatma:
-Автор   : ,Yazar          :
+Автор   : ,Yazar   : 
  {:>5} часа,{:>5} saat
 Базовое хранилище: ,Temel depolama:
  {:>5} часов,{:>5} saat
 ВНИМАНИЕ ,UYARI
 ВНИМАНИЕ! ,UYARI!
  {} в чёрном списке.,{} kara listede.
-Версия  : ,Sürüm          :
+Версия  : ,Sürüm   : 
 Внимание! ,Uyarı!
  {} минута,{} dakika
  {} минуты,{} dakika
@@ -1160,7 +1160,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Kablosuz 
 " и {} новое DLC,","ve {} yeni DLC,"
 "    Великий колдун сказал, что ракеты","Baş stratejist füzelerin düştüğünü,"
 " и {} новых DLC,","ve {} yeni DLC'ler,"
-Имя     : ,İsim           :
+Имя     : ,İsim    : 
  сортировка по дате создания,oluşturulma tarihine göre sırala
  сортировка по имени,isme göre sırala
  сортировка по имени игры,oyun adına göre sırala
@@ -1190,7 +1190,7 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Ошибка чтения сохранённых параметров контроллера: ,Kaydedilen kontrol cihazı parametreleri okunurken hata oluştu:
    Получение списка бекапов...{}/{}    ,Yedekleme listesi alınıyor... {} / {}
 Предупреждения: ,Uyarılar:
-"LFS мод.: Присутствует, Размер: ","LFS modu.      : Mevcut, Boyut:"
+"LFS мод.: Присутствует, Размер: ","LFS modu: Mevcut, Boyut: "
 Пропускаем файл до начала secure раздела ,Dosya güvenli bölümün başlangıcına atlanıyor
 Размер  : ,Boyut :
 Сброс требуемой версии к ,Gerekli sürümü şuna sıfırla 
@@ -1229,8 +1229,8 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Патчить требование NNID: ,Yama NNID gereksinimi    :
 Выполнить выбранные действия,Seçilen eylemleri yürüt
 CID: {:s},Müşteri Kimliği : {:s}
-TitleId : {} BID: {},Başlık Kimliği : {} TEKLİF: {}
-"Meta SDK: {},  Program SDK: {}","Meta SDK       : {} , Program SDK'sı: {}"
+TitleId : {} BID: {},TitleId : {} BID: {}
+"Meta SDK: {},  Program SDK: {}","Meta SDK: {},  Program SDK: {}"
 "Внимание!!! Включение следующих опций приведет к тому,","Dikkat!!! Aşağıdaki seçeneklerin etkinleştirilmesi buna yol açacaktır,"
 что установленные NCA файлы будут отличаться от исходных:,yüklü NCA dosyalarının orijinallerinden farklı olacağı:
 Включение синхронизации времени по сети...,Ağ zaman senkronizasyonu etkinleştiriliyor…

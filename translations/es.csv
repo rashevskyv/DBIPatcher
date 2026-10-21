@@ -807,7 +807,7 @@ Get chargeInfoFields : {},Get chargeInfoFields : {}
 Посылается файл: {},Enviando archivo: {}
 Посылается файл: {}/\x1b[36;1m{}\x1b[37;1m МБ (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m МБ/сек),Enviando archivo: {}/\x1b[36;1m{}\x1b[37;1m MB (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m MB/s)
 Превышен размер командного буфера,Tamaño del búfer de comandos excedido
-LFS мод.: -,Modo LFS : -
+LFS мод.: -,Modo LFS: -
 Предоставить по FTP,Proporcionar por FTP
 Прекращение прослушивания на {}:{},Deteniendo escucha en {}:{}
 Прервано пользователем,Cancelado por el usuario
@@ -823,7 +823,7 @@ LFS мод.: -,Modo LFS : -
 Проверка сохранений,Comprobando datos de guardado
 Проверка целостности ({}),Verificación de integridad ({})
 Проверяется: {},Comprobando: {}
-"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","Mod LFS  : Presente, Tamaño: cálculo desactivado en ajustes"
+"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","Mod LFS : Presente, Tamaño: cálculo desactivado en ajustes"
 Проверяются бекапы...,Comprobando copias de seguridad...
 Проверяются сохранения,Comprobando partidas guardadas
 Программа {}. Control не найдена,Aplicación {}. Control no encontrado
@@ -1119,7 +1119,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Direccion
 Шифрование секции ,Cifrado de sección 
 Ярлык   : ,Acceso directo   : 
  {} минут, {} minutos
-Язык    : ,Idioma   :
+Язык    : ,Idioma  : 
 Путь    : ,Ruta    : 
   Жак Руксель. Великолепие навыворот.,I. I. Bocazas. Ritmos del avance.
   Кодировка...,  Codificando...
@@ -1131,14 +1131,14 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Direccion
      {:<10} Шифрование: {} Размер установки: {}{:>10},     {:<10} Cifrado: {} Tamaño de instalación: {}{:>10}
  [НЕ МОГУ ОТКРЫТЬ ФАЙЛ], [NO PUEDO ABRIR EL ARCHIVO]
 Автозапуск FTP: ,Inicio automático de FTP: 
-Автор   : ,Autor    :
+Автор   : ,Autor   : 
  {:>5} часа, {:>5} horas
 Базовое хранилище: ,Almacenamiento base: 
  {:>5} часов, {:>5} horas
 ВНИМАНИЕ ,ADVERTENCIA 
 ВНИМАНИЕ! ,ADVERTENCIA! 
  {} в чёрном списке., {} en la lista negra.
-Версия  : ,Versión  :
+Версия  : ,Versión : 
 Внимание! ,¡Atención! 
  {} минута, {} minuto
  {} минуты, {} minutos
@@ -1160,7 +1160,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Direccion
 " и {} новое DLC,"," y {} DLC nuevo,"
 "    Великий колдун сказал, что ракеты",espejo».
 " и {} новых DLC,"," y {} DLC nuevos,"
-Имя     : ,Nombre   :
+Имя     : ,Nombre  : 
  сортировка по дате создания, ordenar por fecha de creación
  сортировка по имени, ordenar por nombre
  сортировка по имени игры, ordenar por nombre del juego
@@ -1190,7 +1190,7 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Ошибка чтения сохранённых параметров контроллера: ,Error al leer los parámetros guardados del controlador: 
    Получение списка бекапов...{}/{}    ,   Obteniendo lista de copias de seguridad...{}/{}    
 Предупреждения: ,Advertencias: 
-"LFS мод.: Присутствует, Размер: ","Mod. LFS : Presente, Tamaño:"
+"LFS мод.: Присутствует, Размер: ","Mod. LFS: Presente, Tamaño: "
 Пропускаем файл до начала secure раздела ,Omitiendo archivo hasta el inicio de la sección secure 
 Размер  : ,Tamaño  : 
 Сброс требуемой версии к ,Restablecer versión requerida a 
@@ -1229,8 +1229,8 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Патчить требование NNID: ,Parchear requisito de NNID    :
 Выполнить выбранные действия,Ejecutar acciones seleccionadas
 CID: {:s},CID                   : {:s}
-TitleId : {} BID: {},TitleId  : {} BID: {}
-"Meta SDK: {},  Program SDK: {}","Meta SDK : {},  Program SDK: {}"
+TitleId : {} BID: {},TitleId : {} BID: {}
+"Meta SDK: {},  Program SDK: {}","Meta SDK: {},  Program SDK: {}"
 "Внимание!!! Включение следующих опций приведет к тому,",Advertencia!!! Habilitar las siguientes opciones resultara en
 что установленные NCA файлы будут отличаться от исходных:,que los archivos NCA instalados diferirán de los originales:
 Включение синхронизации времени по сети...,Habilitando sincronización de hora de red…

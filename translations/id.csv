@@ -807,7 +807,7 @@ Get chargeInfoFields : {},Ambil chargeInfoFields : {}
 Посылается файл: {},Mengirim file: {}
 Посылается файл: {}/\x1b[36;1m{}\x1b[37;1m МБ (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m МБ/сек),Mengirim file: {}/\x1b[36;1m{}\x1b[37;1m MB (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m MB/s)
 Превышен размер командного буфера,Ukuran buffer perintah terlampaui
-LFS мод.: -,Mode LFS : -
+LFS мод.: -,Mode LFS: -
 Предоставить по FTP,Sediakan via FTP
 Прекращение прослушивания на {}:{},Berhenti listening di {}:{}
 Прервано пользователем,Dibatalkan pengguna
@@ -823,7 +823,7 @@ LFS мод.: -,Mode LFS : -
 Проверка сохранений,Memeriksa data save
 Проверка целостности ({}),Cek integritas ({})
 Проверяется: {},Memeriksa: {}
-"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","Mod LFS  : Ada, Ukuran: perhitungan dimatikan di pengaturan"
+"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","Mod LFS : Ada, Ukuran: perhitungan dimatikan di pengaturan"
 Проверяются бекапы...,Memeriksa backup...
 Проверяются сохранения,Memeriksa save
 Программа {}. Control не найдена,Aplikasi {}. Control tidak ditemukan
@@ -1119,7 +1119,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Alamat MA
 Шифрование секции ,Enkripsi seksi 
 Ярлык   : ,Shortcut   : 
  {} минут, {} menit
-Язык    : ,Bahasa   :
+Язык    : ,Bahasa  : 
 Путь    : ,Path    : 
   Жак Руксель. Великолепие навыворот.,Penerbit Negara Bunker «Looking-Glass»
   Кодировка...,  Encoding...
@@ -1131,14 +1131,14 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Alamat MA
      {:<10} Шифрование: {} Размер установки: {}{:>10},     {:<10} Enkripsi: {} Ukuran pasang: {}{:>10}
  [НЕ МОГУ ОТКРЫТЬ ФАЙЛ], [FILE TIDAK BISA DIBUKA]
 Автозапуск FTP: ,Autostart FTP: 
-Автор   : ,Penulis  :
+Автор   : ,Penulis : 
  {:>5} часа, {:>5} jam
 Базовое хранилище: ,Penyimpanan dasar: 
  {:>5} часов, {:>5} jam
 ВНИМАНИЕ ,PERINGATAN 
 ВНИМАНИЕ! ,PERINGATAN! 
  {} в чёрном списке., {} di daftar hitam.
-Версия  : ,Versi    :
+Версия  : ,Versi   : 
 Внимание! ,Peringatan! 
  {} минута, {} menit
  {} минуты, {} menit
@@ -1160,7 +1160,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Alamat MA
 " и {} новое DLC,"," dan {} DLC baru,"
 "    Великий колдун сказал, что ракеты",Ahli strategi utama mereka menyatakan bahwa
 " и {} новых DLC,"," dan {} DLC baru,"
-Имя     : ,Nama     :
+Имя     : ,Nama    : 
  сортировка по дате создания, urut per tanggal dibuat
  сортировка по имени, urut per nama
  сортировка по имени игры, urut per nama game
@@ -1190,7 +1190,7 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Ошибка чтения сохранённых параметров контроллера: ,Error membaca parameter kontroler tersimpan: 
    Получение списка бекапов...{}/{}    ,   Mengambil daftar backup...{}/{}    
 Предупреждения: ,Peringatan: 
-"LFS мод.: Присутствует, Размер: ","Mod LFS  : Ada, Ukuran:"
+"LFS мод.: Присутствует, Размер: ","Mod LFS : Ada, Ukuran: "
 Пропускаем файл до начала secure раздела ,Melewati file ke awal seksi secure 
 Размер  : ,Ukuran: 
 Сброс требуемой версии к ,Reset versi yang dibutuhkan ke 
@@ -1229,8 +1229,8 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Патчить требование NNID: ,Patch syarat NNID       :
 Выполнить выбранные действия,Jalankan aksi yang dipilih
 CID: {:s},CID              : {:s}
-TitleId : {} BID: {},TitleId  : {} BID: {}
-"Meta SDK: {},  Program SDK: {}","Meta SDK : {},  SDK Program: {}"
+TitleId : {} BID: {},TitleId : {} BID: {}
+"Meta SDK: {},  Program SDK: {}","Meta SDK: {},  Program SDK: {}"
 "Внимание!!! Включение следующих опций приведет к тому,",Peringatan!!! Mengaktifkan opsi berikut akan membuat
 что установленные NCA файлы будут отличаться от исходных:,file NCA yang terpasang berbeda dari aslinya:
 Включение синхронизации времени по сети...,Mengaktifkan sinkronisasi waktu jaringan…

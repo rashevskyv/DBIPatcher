@@ -807,7 +807,7 @@ Get chargeInfoFields : {},Get chargeInfoFields : {}
 Посылается файл: {},Siunčiamas failas: {}
 Посылается файл: {}/\x1b[36;1m{}\x1b[37;1m МБ (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m МБ/сек),Siunčiamas failas: {}/\x1b[36;1m{}\x1b[37;1m MB (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m MB/s)
 Превышен размер командного буфера,Viršytas komandų buferio dydis
-LFS мод.: -,LFS režimas : -
+LFS мод.: -,LFS rež.: -
 Предоставить по FTP,Pateikti per FTP
 Прекращение прослушивания на {}:{},Sustabdomas klausymasis {}:{}
 Прервано пользователем,Nutraukta vartotojo
@@ -823,7 +823,7 @@ LFS мод.: -,LFS režimas : -
 Проверка сохранений,Tikrinami išsaugoti duomenys
 Проверка целостности ({}),Vientisumo patikra ({})
 Проверяется: {},Tikrinama: {}
-"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","LFS mod.    : Yra, Dydis: skaičiavimas išjungtas nustatymuose"
+"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","LFS mod.: Yra, Dydis: skaičiavimas išjungtas nustatymuose"
 Проверяются бекапы...,Tikrinamos atsarginės kopijos...
 Проверяются сохранения,Tikrinami išsaugojimai
 Программа {}. Control не найдена,Programa {}. Control nerasta
@@ -1119,7 +1119,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
 Шифрование секции ,Sekcijos šifravimas 
 Ярлык   : ,Nuoroda   : 
  {} минут, {} minutės
-Язык    : ,Kalba       :
+Язык    : ,Kalba   : 
 Путь    : ,Kelias  : 
   Жак Руксель. Великолепие навыворот., 
   Кодировка...,  Kodavimas...
@@ -1131,14 +1131,14 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
      {:<10} Шифрование: {} Размер установки: {}{:>10},     {:<10} Šifravimas: {} Diegimo dydis: {}{:>10}
  [НЕ МОГУ ОТКРЫТЬ ФАЙЛ], [NEGALIU ATIDARYTI FAILO]
 Автозапуск FTP: ,FTP automatinis paleidimas: 
-Автор   : ,Autorius    :
+Автор   : ,Autorius: 
  {:>5} часа, {:>5} valandos
 Базовое хранилище: ,Pagrindinė atmintis: 
  {:>5} часов, {:>5} valandų
 ВНИМАНИЕ ,ĮSPĖJIMAS 
 ВНИМАНИЕ! ,DĖMESIO! 
  {} в чёрном списке., {} juodajame sąraše.
-Версия  : ,Versija     :
+Версия  : ,Versija : 
 Внимание! ,Dėmesio! 
  {} минута, {} minutė
  {} минуты, {} minutės
@@ -1160,7 +1160,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
 " и {} новое DLC,"," ir {} naujas DLC,"
 "    Великий колдун сказал, что ракеты","Bunkeris, leidykla «Veidrodija»."
 " и {} новых DLC,"," ir {} nauji DLC,"
-Имя     : ,Vardas      :
+Имя     : ,Vardas  : 
  сортировка по дате создания, rūšiuoti pagal sukūrimo datą
  сортировка по имени, rūšiuoti pagal pavadinimą
  сортировка по имени игры, rūšiuoti pagal žaidimo pavadinimą
@@ -1190,7 +1190,7 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Ошибка чтения сохранённых параметров контроллера: ,Klaida skaitant išsaugotus valdiklio parametrus: 
    Получение списка бекапов...{}/{}    ,   Gaunamas atsarginių kopijų sąrašas...{}/{}    
 Предупреждения: ,Įspėjimai: 
-"LFS мод.: Присутствует, Размер: ","LFS mod.    : Yra, Dydis:"
+"LFS мод.: Присутствует, Размер: ","LFS mod.: Yra, Dydis: "
 Пропускаем файл до начала secure раздела ,Praleidžiamas failas iki secure skyriaus pradžios 
 Размер  : ,Dydis  : 
 Сброс требуемой версии к ,Atstatyti reikalaujamą versiją į 
@@ -1229,8 +1229,8 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Патчить требование NNID: ,Pataisyti NNID reikalavimą      :
 Выполнить выбранные действия,Vykdyti pasirinktus veiksmus
 CID: {:s},CID                  : {:s}
-TitleId : {} BID: {},TitleId     : {} BID: {}
-"Meta SDK: {},  Program SDK: {}","Meta SDK    : {},  Program SDK: {}"
+TitleId : {} BID: {},TitleId : {} BID: {}
+"Meta SDK: {},  Program SDK: {}","Meta SDK: {},  Program SDK: {}"
 "Внимание!!! Включение следующих опций приведет к тому,","Dėmesio!!! Įjungus šias parinktis,"
 что установленные NCA файлы будут отличаться от исходных:,kad įdiegti NCA failai skirsis nuo originalių:
 Включение синхронизации времени по сети...,Įjungiamas tinklo laiko sinchronizavimas…

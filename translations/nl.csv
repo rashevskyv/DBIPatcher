@@ -807,7 +807,7 @@ Get chargeInfoFields : {},Get chargeInfoFields : {}
 Посылается файл: {},Bestand verzenden: {}
 Посылается файл: {}/\x1b[36;1m{}\x1b[37;1m МБ (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m МБ/сек),Bestand verzenden: {}/\x1b[36;1m{}\x1b[37;1m MB (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m MB/s)
 Превышен размер командного буфера,Commandobuffergrootte overschreden
-LFS мод.: -,LFS-modus : -
+LFS мод.: -,LFS-mod.: -
 Предоставить по FTP,Verstrekken via FTP
 Прекращение прослушивания на {}:{},Stoppen met luisteren op {}:{}
 Прервано пользователем,Afgebroken door gebruiker
@@ -823,7 +823,7 @@ LFS мод.: -,LFS-modus : -
 Проверка сохранений,Opslaggegevens controleren
 Проверка целостности ({}),Integriteitscontrole ({})
 Проверяется: {},Controleren: {}
-"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","LFS-mod   : Aanwezig, Grootte: berekening uitgeschakeld in instellingen"
+"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","LFS-mod : Aanwezig, Grootte: berekening uitgeschakeld in instellingen"
 Проверяются бекапы...,Back-ups controleren...
 Проверяются сохранения,Saves controleren
 Программа {}. Control не найдена,Applicatie {}. Control niet gevonden
@@ -1119,7 +1119,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
 Шифрование секции ,Sectie-encryptie 
 Ярлык   : ,Snelkoppeling   : 
  {} минут, {} minuten
-Язык    : ,Taal      :
+Язык    : ,Taal    : 
 Путь    : ,Pad     : 
   Жак Руксель. Великолепие навыворот.,I. I. Luldebehanger. Ritmes van de
   Кодировка...,  Coderen...
@@ -1131,14 +1131,14 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
      {:<10} Шифрование: {} Размер установки: {}{:>10},     {:<10} Versleuteling: {} Installatiegrootte: {}{:>10}
  [НЕ МОГУ ОТКРЫТЬ ФАЙЛ], [KAN BESTAND NIET OPENEN]
 Автозапуск FTP: ,FTP automatisch starten: 
-Автор   : ,Auteur    :
+Автор   : ,Auteur  : 
  {:>5} часа, {:>5} uur
 Базовое хранилище: ,Basisopslag: 
  {:>5} часов, {:>5} uur
 ВНИМАНИЕ ,WAARSCHUWING 
 ВНИМАНИЕ! ,WAARSCHUWING! 
  {} в чёрном списке., {} op de zwarte lijst.
-Версия  : ,Versie    :
+Версия  : ,Versie  : 
 Внимание! ,Waarschuwing! 
  {} минута, {} minuut
  {} минуты, {} minuten
@@ -1160,7 +1160,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
 " и {} новое DLC,"," en {} nieuwe DLC,"
 "    Великий колдун сказал, что ракеты", 
 " и {} новых DLC,"," en {} nieuwe DLC's,"
-Имя     : ,Naam      :
+Имя     : ,Naam    : 
  сортировка по дате создания, sorteren op aanmaakdatum
  сортировка по имени, sorteren op naam
  сортировка по имени игры, sorteren op spelnaam
@@ -1190,7 +1190,7 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Ошибка чтения сохранённых параметров контроллера: ,Fout bij het lezen van opgeslagen controllerparameters: 
    Получение списка бекапов...{}/{}    ,   Back-uplijst ophalen...{}/{}    
 Предупреждения: ,Waarschuwingen: 
-"LFS мод.: Присутствует, Размер: ","LFS mod.  : Aanwezig, Grootte:"
+"LFS мод.: Присутствует, Размер: ","LFS mod.: Aanwezig, Grootte: "
 Пропускаем файл до начала secure раздела ,Bestand overslaan tot het begin van secure-sectie 
 Размер  : ,Grootte  : 
 Сброс требуемой версии к ,Vereiste versie resetten naar 
@@ -1229,8 +1229,8 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Патчить требование NNID: ,NNID-vereiste patchen      :
 Выполнить выбранные действия,Geselecteerde acties uitvoeren
 CID: {:s},CID            : {:s}
-TitleId : {} BID: {},TitleId   : {} BID: {}
-"Meta SDK: {},  Program SDK: {}","Meta SDK  : {},  Program SDK: {}"
+TitleId : {} BID: {},TitleId : {} BID: {}
+"Meta SDK: {},  Program SDK: {}","Meta SDK: {},  Program SDK: {}"
 "Внимание!!! Включение следующих опций приведет к тому,",Waarschuwing!!! Het inschakelen van de volgende opties zal resulteren in
 что установленные NCA файлы будут отличаться от исходных:,dat geïnstalleerde NCA-bestanden zullen verschillen van de originelen:
 Включение синхронизации времени по сети...,Netwerktijdsynchronisatie inschakelen…

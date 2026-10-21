@@ -807,7 +807,7 @@ Get chargeInfoFields : {},Get chargeInfoFields : {}
 Посылается файл: {},Invio file: {}
 Посылается файл: {}/\x1b[36;1m{}\x1b[37;1m МБ (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m МБ/сек),Invio file: {}/\x1b[36;1m{}\x1b[37;1m MB (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m MB/s)
 Превышен размер командного буфера,Dimensione buffer comandi superata
-LFS мод.: -,Modalità LFS : -
+LFS мод.: -,Mod. LFS: -
 Предоставить по FTP,Fornisci tramite FTP
 Прекращение прослушивания на {}:{},Interruzione ascolto su {}:{}
 Прервано пользователем,Interrotto dall'utente
@@ -823,7 +823,7 @@ LFS мод.: -,Modalità LFS : -
 Проверка сохранений,Controllo salvataggi
 Проверка целостности ({}),Verifica integrità ({})
 Проверяется: {},Verifica: {}
-"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","Mod LFS      : Presente, Dimensione: calcolo disabilitato nelle impostazioni"
+"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","Mod LFS : Presente, Dimensione: calcolo disabilitato nelle impostazioni"
 Проверяются бекапы...,Controllo dei backup...
 Проверяются сохранения,Controllo salvataggi
 Программа {}. Control не найдена,Applicazione {}. Control non trovato
@@ -1119,7 +1119,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Indirizzo
 Шифрование секции ,Crittografia della sezione 
 Ярлык   : ,Collegamento   : 
  {} минут, {} minuti
-Язык    : ,Lingua       :
+Язык    : ,Lingua  : 
 Путь    : ,Percorso: 
   Жак Руксель. Великолепие навыворот., I. I. Cazzabubbola.
   Кодировка...,  Codifica...
@@ -1131,14 +1131,14 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Indirizzo
      {:<10} Шифрование: {} Размер установки: {}{:>10},     {:<10} Crittografia: {} Dimensione installazione: {}{:>10}
  [НЕ МОГУ ОТКРЫТЬ ФАЙЛ], [IMPOSSIBILE APRIRE IL FILE]
 Автозапуск FTP: ,Avvio automatico FTP: 
-Автор   : ,Autore       :
+Автор   : ,Autore  : 
  {:>5} часа, {:>5} ore
 Базовое хранилище: ,Memoria base: 
  {:>5} часов, {:>5} ore
 ВНИМАНИЕ ,ATTENZIONE 
 ВНИМАНИЕ! ,ATTENZIONE! 
  {} в чёрном списке., {} nella lista nera.
-Версия  : ,Versione     :
+Версия  : ,Versione: 
 Внимание! ,Attenzione! 
  {} минута, {} minuto
  {} минуты, {} minuti
@@ -1160,7 +1160,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Indirizzo
 " и {} новое DLC,"," e {} nuovo DLC,"
 "    Великий колдун сказал, что ракеты"," Bunker, Edizioni «Oltre specchio»."
 " и {} новых DLC,"," e {} nuovi DLC,"
-Имя     : ,Nome         :
+Имя     : ,Nome    : 
  сортировка по дате создания, ordina per data di creazione
  сортировка по имени, ordina per nome
  сортировка по имени игры, ordina per nome del gioco
@@ -1190,7 +1190,7 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Ошибка чтения сохранённых параметров контроллера: ,Errore nella lettura dei parametri salvati del controller: 
    Получение списка бекапов...{}/{}    ,   Recupero elenco backup...{}/{}    
 Предупреждения: ,Avvisi: 
-"LFS мод.: Присутствует, Размер: ","Mod. LFS     : Presente, Dimensione:"
+"LFS мод.: Присутствует, Размер: ","Mod. LFS: Presente, Dimensione: "
 Пропускаем файл до начала secure раздела ,Salto del file all'inizio della sezione secure 
 Размер  : ,Dimensione  : 
 Сброс требуемой версии к ,Ripristina versione richiesta a 
@@ -1229,8 +1229,8 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Патчить требование NNID: ,Patch requisito NNID            :
 Выполнить выбранные действия,Esegui azioni selezionate
 CID: {:s},CID                : {:s}
-TitleId : {} BID: {},TitleId      : {} BID: {}
-"Meta SDK: {},  Program SDK: {}","Meta SDK     : {},  Program SDK: {}"
+TitleId : {} BID: {},TitleId : {} BID: {}
+"Meta SDK: {},  Program SDK: {}","Meta SDK: {},  Program SDK: {}"
 "Внимание!!! Включение следующих опций приведет к тому,",Attenzione!!! Abilitare le seguenti opzioni portera a
 что установленные NCA файлы будут отличаться от исходных:,che i file NCA installati differiranno dagli originali:
 Включение синхронизации времени по сети...,Abilitazione sincronizzazione ora di rete…

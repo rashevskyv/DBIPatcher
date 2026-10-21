@@ -1256,6 +1256,12 @@ def cmd_dist() -> None:
     print(f"\nOrganization in 'dist' folder complete using {source_nro.name}")
 
 
+# Block lines DBI never runs through the translator (the screen shows the Russian original).
+ALIGN_ANCHORS = {
+    "TITLE_INFO_HEADER": ("TitleId : {} BID: {}", "Meta SDK: {},  Program SDK: {}"),
+}
+
+
 def cmd_align() -> None:
     """Align colons in blocks by longest line per language per block."""
 
@@ -1352,6 +1358,32 @@ def cmd_align() -> None:
 
         # Special handling for TITLE_INFO block with double-colon strings
         is_title_info = (bid == "TITLE_INFO")
+
+        # Lines DBI never translates keep the Russian colon column: the block aligns to it.
+        anchor_rows = [r for r in matched_rows if originals[r] in ALIGN_ANCHORS.get(bid, ())]
+        if anchor_rows:
+            anchor_col = originals[anchor_rows[0]].index(":")
+            for lc, col_idx in lang_cols.items():
+                for row_idx in matched_rows:
+                    val = ws.cell(row_idx, col_idx).value
+                    orig = originals[row_idx]
+                    if row_idx in anchor_rows:
+                        new_val = orig
+                    elif not val or ":" not in str(val):
+                        continue
+                    else:
+                        prefix, suffix = str(val).strip().split(":", 1)
+                        label = prefix.rstrip()
+                        if len(label) > anchor_col:
+                            print(f"  [WARN] {bid} [{lc}] label longer than {anchor_col}: {label!r}")
+                        # a label that fills the column gets the colon right after it ("LFS мод.:");
+                        # the space after the colon comes from the original ("Имя     : ")
+                        new_val = (label + " " * max(anchor_col - len(label), 0) + ":" + suffix).rstrip()
+                        new_val += orig[len(orig.rstrip()):]
+                    if new_val != val:
+                        ws.cell(row_idx, col_idx, new_val)
+                        affected_count += 1
+            continue
 
         # For each language, find max length and align
         for lc, col_idx in lang_cols.items():

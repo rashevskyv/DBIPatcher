@@ -807,7 +807,7 @@ Get chargeInfoFields : {},Get chargeInfoFields : {}
 Посылается файл: {},Enviando ficheiro: {}
 Посылается файл: {}/\x1b[36;1m{}\x1b[37;1m МБ (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m МБ/сек),Enviando ficheiro: {}/\x1b[36;1m{}\x1b[37;1m MB (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m MB/s)
 Превышен размер командного буфера,Tamanho do buffer de comandos excedido
-LFS мод.: -,Modo LFS : -
+LFS мод.: -,Modo LFS: -
 Предоставить по FTP,Fornecer por FTP
 Прекращение прослушивания на {}:{},A parar escuta em {}:{}
 Прервано пользователем,Cancelado pelo utilizador
@@ -823,7 +823,7 @@ LFS мод.: -,Modo LFS : -
 Проверка сохранений,A verificar dados guardados
 Проверка целостности ({}),Verificação de integridade ({})
 Проверяется: {},A verificar: {}
-"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","Mod LFS  : Presente, Tamanho: cálculo desativado nas definições"
+"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","Mod LFS : Presente, Tamanho: cálculo desativado nas definições"
 Проверяются бекапы...,A verificar cópias de segurança...
 Проверяются сохранения,A verificar gravações
 Программа {}. Control не найдена,Aplicação {}. Control não encontrado
@@ -1119,7 +1119,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Endereco 
 Шифрование секции ,Encriptação de secção 
 Ярлык   : ,Atalho   : 
  {} минут, {} minutos
-Язык    : ,Idioma   :
+Язык    : ,Idioma  : 
 Путь    : ,Caminho : 
   Жак Руксель. Великолепие навыворот.,«O estrategista supremo declarou que
   Кодировка...,  Codificando...
@@ -1131,14 +1131,14 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Endereco 
      {:<10} Шифрование: {} Размер установки: {}{:>10},     {:<10} Encriptação: {} Tamanho da instalação: {}{:>10}
  [НЕ МОГУ ОТКРЫТЬ ФАЙЛ], [NÃO CONSIGO ABRIR O FICHEIRO]
 Автозапуск FTP: ,Início automático de FTP: 
-Автор   : ,Autor    :
+Автор   : ,Autor   : 
  {:>5} часа, {:>5} horas
 Базовое хранилище: ,Armazenamento base: 
  {:>5} часов, {:>5} horas
 ВНИМАНИЕ ,AVISO 
 ВНИМАНИЕ! ,AVISO! 
  {} в чёрном списке., {} na lista negra.
-Версия  : ,Versão   :
+Версия  : ,Versão  : 
 Внимание! ,Atenção! 
  {} минута, {} minuto
  {} минуты, {} minutos
@@ -1160,7 +1160,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Endereco 
 " и {} новое DLC,"," e {} novo DLC,"
 "    Великий колдун сказал, что ракеты",nos sistemas e nos vasos sanitários.
 " и {} новых DLC,"," e {} novos DLCs,"
-Имя     : ,Nome     :
+Имя     : ,Nome    : 
  сортировка по дате создания, ordenar por data de criação
  сортировка по имени, ordenar por nome
  сортировка по имени игры, ordenar por nome do jogo
@@ -1190,7 +1190,7 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Ошибка чтения сохранённых параметров контроллера: ,Erro ao ler os parâmetros guardados do controlador: 
    Получение списка бекапов...{}/{}    ,   A obter lista de cópias de segurança...{}/{}    
 Предупреждения: ,Avisos: 
-"LFS мод.: Присутствует, Размер: ","Mod. LFS : Presente, Tamanho:"
+"LFS мод.: Присутствует, Размер: ","Mod. LFS: Presente, Tamanho: "
 Пропускаем файл до начала secure раздела ,Ignorando ficheiro até ao início da secção secure 
 Размер  : ,Tamanho  : 
 Сброс требуемой версии к ,Redefinir versão necessária para 
@@ -1229,8 +1229,8 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Патчить требование NNID: ,Corrigir requisito de NNID     :
 Выполнить выбранные действия,Executar ações selecionadas
 CID: {:s},CID                : {:s}
-TitleId : {} BID: {},TitleId  : {} BID: {}
-"Meta SDK: {},  Program SDK: {}","Meta SDK : {},  Program SDK: {}"
+TitleId : {} BID: {},TitleId : {} BID: {}
+"Meta SDK: {},  Program SDK: {}","Meta SDK: {},  Program SDK: {}"
 "Внимание!!! Включение следующих опций приведет к тому,",Aviso!!! Ativar as seguintes opcoes resultara em
 что установленные NCA файлы будут отличаться от исходных:,que os ficheiros NCA instalados serão diferentes dos originais:
 Включение синхронизации времени по сети...,Ativando sincronização de hora de rede…

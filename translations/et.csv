@@ -807,7 +807,7 @@ Get chargeInfoFields : {},Get chargeInfoFields : {}
 Посылается файл: {},Faili saatmine: {}
 Посылается файл: {}/\x1b[36;1m{}\x1b[37;1m МБ (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m МБ/сек),Faili saatmine: {}/\x1b[36;1m{}\x1b[37;1m MB (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m MB/s)
 Превышен размер командного буфера,Käsupuhvri suurus ületatud
-LFS мод.: -,LFS režiim : -
+LFS мод.: -,LFS rež.: -
 Предоставить по FTP,Paku FTP kaudu
 Прекращение прослушивания на {}:{},Kuulamise peatamine aadressil {}:{}
 Прервано пользователем,Kasutaja katkestas
@@ -823,7 +823,7 @@ LFS мод.: -,LFS režiim : -
 Проверка сохранений,Salvestuste kontrollimine
 Проверка целостности ({}),Terviklikkuse kontroll ({})
 Проверяется: {},Kontrollimine: {}
-"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","LFS mod    : Olemas, Suurus: arvutamine seadetes keelatud"
+"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","LFS mod : Olemas, Suurus: arvutamine seadetes keelatud"
 Проверяются бекапы...,Varukoopiaid kontrollitakse...
 Проверяются сохранения,Salvestuste kontrollimine
 Программа {}. Control не найдена,Rakendus {}. Control ei leitud
@@ -1119,7 +1119,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
 Шифрование секции ,Sektsiooni krüpteerimine 
 Ярлык   : ,Otsetee   : 
  {} минут, {} minutit
-Язык    : ,Keel       :
+Язык    : ,Keel    : 
 Путь    : ,Tee     : 
   Жак Руксель. Великолепие навыворот.," Punker, riigikirjastus «Kõverpeegel»."
   Кодировка...,  Kodeerimine...
@@ -1131,14 +1131,14 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
      {:<10} Шифрование: {} Размер установки: {}{:>10},     {:<10} Krüpteerimine: {} Paigalduse suurus: {}{:>10}
  [НЕ МОГУ ОТКРЫТЬ ФАЙЛ], [EI SAA FAILI AVADA]
 Автозапуск FTP: ,FTP automaatkäivitus: 
-Автор   : ,Autor      :
+Автор   : ,Autor   : 
  {:>5} часа, {:>5} tundi
 Базовое хранилище: ,Põhimälu: 
  {:>5} часов, {:>5} tundi
 ВНИМАНИЕ ,HOIATUS 
 ВНИМАНИЕ! ,HOIATUS! 
  {} в чёрном списке., {} mustas nimekirjas.
-Версия  : ,Versioon   :
+Версия  : ,Versioon: 
 Внимание! ,Tähelepanu! 
  {} минута, {} minut
  {} минуты, {} minutit
@@ -1160,7 +1160,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
 " и {} новое DLC,"," ja {} uut DLC-d,"
 "    Великий колдун сказал, что ракеты","Peastrateeg kuulutas, et raketid"
 " и {} новых DLC,"," ja {} uut DLC-d,"
-Имя     : ,Nimi       :
+Имя     : ,Nimi    : 
  сортировка по дате создания, sorteeri loomiskuupäeva järgi
  сортировка по имени, sorteeri nime järgi
  сортировка по имени игры, sorteeri mängu nime järgi
@@ -1190,7 +1190,7 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Ошибка чтения сохранённых параметров контроллера: ,Viga salvestatud kontrolleri parameetrite lugemisel: 
    Получение списка бекапов...{}/{}    ,   Varukoopialoendi hankimine...{}/{}    
 Предупреждения: ,Hoiatused: 
-"LFS мод.: Присутствует, Размер: ","LFS mod.   : Olemas, Suurus:"
+"LFS мод.: Присутствует, Размер: ","LFS mod.: Olemas, Suurus: "
 Пропускаем файл до начала secure раздела ,Jätan faili vahele kuni secure sektsiooni alguseni 
 Размер  : ,Suurus  : 
 Сброс требуемой версии к ,Lähtesta nõutav versioon 
@@ -1229,8 +1229,8 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Патчить требование NNID: ,Parandage NNID nõue         :
 Выполнить выбранные действия,Käivita valitud tegevused
 CID: {:s},CID            : {:s}
-TitleId : {} BID: {},TitleId    : {} BID: {}
-"Meta SDK: {},  Program SDK: {}","Meta SDK   : {},  Program SDK: {}"
+TitleId : {} BID: {},TitleId : {} BID: {}
+"Meta SDK: {},  Program SDK: {}","Meta SDK: {},  Program SDK: {}"
 "Внимание!!! Включение следующих опций приведет к тому,","Hoiatus!!! Jargmiste valikute lubamine toob kaasa selle,"
 что установленные NCA файлы будут отличаться от исходных:,et paigaldatud NCA failid erinevad originaalidest:
 Включение синхронизации времени по сети...,Võrguaja sünkroniseerimise lubamine…

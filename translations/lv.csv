@@ -807,7 +807,7 @@ Get chargeInfoFields : {},Get chargeInfoFields : {}
 Посылается файл: {},Sūta failu: {}
 Посылается файл: {}/\x1b[36;1m{}\x1b[37;1m МБ (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m МБ/сек),Sūta failu: {}/\x1b[36;1m{}\x1b[37;1m MB (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m MB/s)
 Превышен размер командного буфера,Komandu bufera izmērs pārsniegts
-LFS мод.: -,LFS režīms : -
+LFS мод.: -,LFS rež.: -
 Предоставить по FTP,Nodrošināt caur FTP
 Прекращение прослушивания на {}:{},Aptur klausīšanos uz {}:{}
 Прервано пользователем,Lietotājs pārtrauca
@@ -823,7 +823,7 @@ LFS мод.: -,LFS režīms : -
 Проверка сохранений,Pārbauda saglabātos datus
 Проверка целостности ({}),Integritātes pārbaude ({})
 Проверяется: {},Pārbauda: {}
-"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","LFS mod.   : Ir, Izmērs: aprēķins atspējots iestatījumos"
+"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","LFS mod.: Ir, Izmērs: aprēķins atspējots iestatījumos"
 Проверяются бекапы...,Pārbauda dublējumus...
 Проверяются сохранения,Pārbauda saglabājumus
 Программа {}. Control не найдена,Programma {}. Control nav atrasts
@@ -1119,7 +1119,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
 Шифрование секции ,Sekcijas šifrēšana 
 Ярлык   : ,Saīsne   : 
  {} минут, {} minūtes
-Язык    : ,Valoda     :
+Язык    : ,Valoda  : 
 Путь    : ,Ceļš    : 
   Жак Руксель. Великолепие навыворот., 
   Кодировка...,  Kodēšana...
@@ -1131,14 +1131,14 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
      {:<10} Шифрование: {} Размер установки: {}{:>10},     {:<10} Šifrēšana: {} Instalācijas izmērs: {}{:>10}
  [НЕ МОГУ ОТКРЫТЬ ФАЙЛ], [NEVAR ATVĒRT FAILU]
 Автозапуск FTP: ,FTP automātiskā palaišana: 
-Автор   : ,Autors     :
+Автор   : ,Autors  : 
  {:>5} часа, {:>5} stundas
 Базовое хранилище: ,Pamatatmiņa: 
  {:>5} часов, {:>5} stundas
 ВНИМАНИЕ ,BRĪDINĀJUMS 
 ВНИМАНИЕ! ,UZMANĪBU! 
  {} в чёрном списке., {} melnajā sarakstā.
-Версия  : ,Versija    :
+Версия  : ,Versija : 
 Внимание! ,Uzmanību! 
  {} минута, {} minūte
  {} минуты, {} minūtes
@@ -1160,7 +1160,7 @@ Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Wireless 
 " и {} новое DLC,"," un {} jauns DLC,"
 "    Великий колдун сказал, что ракеты","Bunkurs, valsts apgāds “Aizspogulija”."
 " и {} новых DLC,"," un {} jauni DLC,"
-Имя     : ,Vārds      :
+Имя     : ,Vārds   : 
  сортировка по дате создания, kārtot pēc izveidošanas datuma
  сортировка по имени, kārtot pēc nosaukuma
  сортировка по имени игры, kārtot pēc spēles nosaukuma
@@ -1190,7 +1190,7 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Ошибка чтения сохранённых параметров контроллера: ,Kļūda nolasot saglabātos kontroliera parametrus: 
    Получение списка бекапов...{}/{}    ,   Iegūst dublējumu sarakstu...{}/{}    
 Предупреждения: ,Brīdinājumi: 
-"LFS мод.: Присутствует, Размер: ","LFS mod.   : Ir, Izmērs:"
+"LFS мод.: Присутствует, Размер: ","LFS mod.: Ir, Izmērs: "
 Пропускаем файл до начала secure раздела ,Izlaiž failu līdz secure sadaļas sākumam 
 Размер  : ,Izmērs  : 
 Сброс требуемой версии к ,Atiestatīt nepieciešamo versiju uz 
@@ -1229,8 +1229,8 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Патчить требование NNID: ,Ielāpīt NNID prasību         :
 Выполнить выбранные действия,Izpildīt izvēlētās darbības
 CID: {:s},CID                : {:s}
-TitleId : {} BID: {},TitleId    : {} BID: {}
-"Meta SDK: {},  Program SDK: {}","Meta SDK   : {},  Program SDK: {}"
+TitleId : {} BID: {},TitleId : {} BID: {}
+"Meta SDK: {},  Program SDK: {}","Meta SDK: {},  Program SDK: {}"
 "Внимание!!! Включение следующих опций приведет к тому,","Uzmanību!!! Iespējojot šādas opcijas,"
 что установленные NCA файлы будут отличаться от исходных:,ka instalētie NCA faili atšķirsies no oriģinālajiem:
 Включение синхронизации времени по сети...,Ieslēdz tīkla laika sinhronizāciju…
