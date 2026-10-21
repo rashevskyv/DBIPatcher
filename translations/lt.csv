@@ -668,6 +668,7 @@ Daybreak.nro не найден,Daybreak.nro nerastas
 Открыть как hex,Atidaryti kaip hex
 Открыть как текст,Atidaryti kaip tekstą
 Открыть контент по MTP,Atidaryti turinį per MTP
+контент по MTP,turinį per MTP
 Открыть папку LFS,Atidaryti LFS aplanką
 Content meta не найден. Установка прервана,Content meta nerastas. Diegimas nutrauktas
 Отослано {}/{} байт,Išsiųsta {}/{} baitų
@@ -747,7 +748,9 @@ DBI Просмотр альбома,DBI Albumo peržiūra
 Перейти к странице...,Eiti į puslapį...
 Переместить,Perkelti
 Переместить в NAND,Perkelti į NAND
+в NAND,į NAND
 Переместить на SD карту,Perkelti į SD kortelę
+на SD карту,į SD kortelę
 "Перемещение {} ({}, {}) в {}","Perkeliama {} ({}, {}) į {}"
 Перемещение {} записей,Perkeliama {} įrašų
 Перемещение {} записи,Perkeliamas {} įrašas

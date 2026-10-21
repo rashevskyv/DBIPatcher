@@ -668,6 +668,7 @@ Daybreak.nro не найден,Daybreak.nro tidak ditemukan
 Открыть как hex,Buka sebagai hex
 Открыть как текст,Buka sebagai teks
 Открыть контент по MTP,Buka konten via MTP
+контент по MTP,konten via MTP
 Открыть папку LFS,Buka folder LFS
 Content meta не найден. Установка прервана,Meta konten tidak ditemukan. Pemasangan dibatalkan
 Отослано {}/{} байт,Terkirim {}/{} byte
@@ -747,7 +748,9 @@ DBI Просмотр альбома,Tampilan Album DBI
 Перейти к странице...,Ke halaman...
 Переместить,Pindah
 Переместить в NAND,Pindah ke NAND
+в NAND,ke NAND
 Переместить на SD карту,Pindah ke kartu SD
+на SD карту,ke kartu SD
 "Перемещение {} ({}, {}) в {}","Memindahkan {} ({}, {}) ke {}"
 Перемещение {} записей,Memindahkan {} entri
 Перемещение {} записи,Memindahkan {} entri

@@ -668,6 +668,7 @@ Daybreak.nro не найден,Daybreak.nro bulunamadı
 Открыть как hex,Onaltılı olarak aç
 Открыть как текст,Metin olarak aç
 Открыть контент по MTP,İçeriği MTP aracılığıyla aç
+контент по MTP,içeriği MTP ile
 Открыть папку LFS,LFS klasörünü aç
 Content meta не найден. Установка прервана,İçerik metası bulunamadı. Kurulum iptal edildi
 Отослано {}/{} байт,{} / {} bayt gönderildi
@@ -747,7 +748,9 @@ DBI Просмотр альбома,DBI Albüm Görünümü
 Перейти к странице...,Sayfaya git...
 Переместить,Taşınmak
 Переместить в NAND,NAND'a taşın
+в NAND,NAND'a
 Переместить на SD карту,SD karta taşı
+на SD карту,SD karta
 "Перемещение {} ({}, {}) в {}","{} ({} , {}) {}'e taşınıyor"
 Перемещение {} записей,{} girişini taşıma
 Перемещение {} записи,{} girişi taşınıyor

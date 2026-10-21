@@ -668,6 +668,7 @@ Daybreak.nro не найден,Daybreak.nro nav atrasts
 Открыть как hex,Atvērt kā hex
 Открыть как текст,Atvērt kā tekstu
 Открыть контент по MTP,Atvērt saturu caur MTP
+контент по MTP,saturu caur MTP
 Открыть папку LFS,Atvērt LFS mapi
 Content meta не найден. Установка прервана,Content meta nav atrasts. Instalēšana pārtraukta
 Отослано {}/{} байт,Nosūtīti {}/{} baiti
@@ -747,7 +748,9 @@ DBI Просмотр альбома,DBI Albuma skats
 Перейти к странице...,Doties uz lapu...
 Переместить,Pārvietot
 Переместить в NAND,Pārvietot uz NAND
+в NAND,uz NAND
 Переместить на SD карту,Pārvietot uz SD karti
+на SD карту,uz SD karti
 "Перемещение {} ({}, {}) в {}","Pārvieto {} ({}, {}) uz {}"
 Перемещение {} записей,Pārvieto {} ierakstus
 Перемещение {} записи,Pārvieto {} ierakstu

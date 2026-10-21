@@ -1828,7 +1828,8 @@ This release provides translations for **DBI version {dbi_ver}**.
 > [!IMPORTANT]
 > Use the `DBI.nro` and the `translation_XX.bin` files **from this release together**. The translation tables now carry a lookup index that older patched `DBI.nro` builds do not read.
 
-### 🩹 Fixes in v0.0.106
+### 🩹 Fixes in v0.0.106–v0.0.107
+- **Whole context-menu items.** `Open content via MTP`, `Move to NAND` and `Move to SD card` in the `(+)` menu are no longer half Russian.
 - **No more "Invalid UTF-8" error** when you open the `(+)` menu on a game, update or DLC with English, German and other translations that are shorter than the Russian text ([#29](https://github.com/rashevskyv/DBIPatcher/issues/29)). The game info panel also no longer shows a stray `NUL` character after short values such as `LFS mode : -`.
 - **Translated "Total play time : - (-)"** on the game info panel of titles without play data.
 - **Ukrainian:** the USB backend connection prompt now fits the screen.

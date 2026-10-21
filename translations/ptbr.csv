@@ -668,6 +668,7 @@ Daybreak.nro не найден,Daybreak.nro não encontrado
 Открыть как hex,Abrir como hex
 Открыть как текст,Abrir como texto
 Открыть контент по MTP,Abrir conteúdo via MTP
+контент по MTP,conteúdo via MTP
 Открыть папку LFS,Abrir pasta LFS
 Content meta не найден. Установка прервана,Meta de conteúdo não encontrado. Instalação abortada
 Отослано {}/{} байт,Enviados {}/{} bytes
@@ -747,7 +748,9 @@ DBI Просмотр альбома,DBI Visualização de álbum
 Перейти к странице...,Ir para a página...
 Переместить,Mover
 Переместить в NAND,Mover para NAND
+в NAND,para NAND
 Переместить на SD карту,Mover para cartão SD
+на SD карту,para cartão SD
 "Перемещение {} ({}, {}) в {}","Movendo {} ({}, {}) para {}"
 Перемещение {} записей,Movendo {} entradas
 Перемещение {} записи,Movendo {} entrada

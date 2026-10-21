@@ -668,6 +668,7 @@ Daybreak.nro не найден,Daybreak.nro ei leitud
 Открыть как hex,Ava hex-vormingus
 Открыть как текст,Ava tekstina
 Открыть контент по MTP,Ava sisu MTP kaudu
+контент по MTP,sisu MTP kaudu
 Открыть папку LFS,Ava LFS-kaust
 Content meta не найден. Установка прервана,Sisu meta ei leitud. Installimine katkestatud
 Отослано {}/{} байт,Saadetud {}/{} baiti
@@ -747,7 +748,9 @@ DBI Просмотр альбома,DBI Albumi vaade
 Перейти к странице...,Mine lehele...
 Переместить,Liiguta
 Переместить в NAND,Teisalda NAND-i
+в NAND,NAND-i
 Переместить на SD карту,Teisalda SD-kaardile
+на SD карту,SD-kaardile
 "Перемещение {} ({}, {}) в {}","Liigutan {} ({}, {}) asukohta {}"
 Перемещение {} записей,Liigutamine {} kirjeid
 Перемещение {} записи,Liigutan {} kirjet
