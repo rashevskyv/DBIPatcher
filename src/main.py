@@ -1828,6 +1828,11 @@ This release provides translations for **DBI version {dbi_ver}**.
 > [!IMPORTANT]
 > Use the `DBI.nro` and the `translation_XX.bin` files **from this release together**. The translation tables now carry a lookup index that older patched `DBI.nro` builds do not read.
 
+### 🩹 Fixes in v0.0.106
+- **No more "Invalid UTF-8" error** when you open the `(+)` menu on a game, update or DLC with English, German and other translations that are shorter than the Russian text ([#29](https://github.com/rashevskyv/DBIPatcher/issues/29)). The game info panel also no longer shows a stray `NUL` character after short values such as `LFS mode : -`.
+- **Translated "Total play time : - (-)"** on the game info panel of titles without play data.
+- **Ukrainian:** the USB backend connection prompt now fits the screen.
+
 ### ✨ What's new
 - **DBI 912 support.** The runtime-translation engine is now part of this repository (`vendor/dbi_translate`, originally [0xroast/dbi-translate](https://github.com/0xroast/dbi-translate)) and supports DBI 905 and 912.
 - **Smooth menus.** Translation lookups use a hash index instead of scanning the whole table for every line. Menus, context menus and settings no longer lag ([#28](https://github.com/rashevskyv/DBIPatcher/issues/28)).

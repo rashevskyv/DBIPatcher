@@ -59,13 +59,13 @@ class TemperatureAliasesAndSyncTests(unittest.TestCase):
         )
 
     def test_workbook_structure_and_version(self) -> None:
-        """Verify workbook contains 1,438 unique Original keys, 'tr' and 'id' columns, and version 0.0.105."""
+        """Verify workbook contains 1,438 unique Original keys, 'tr' and 'id' columns, and version 0.0.106."""
         self.assertIn("tr", self.headers, "Translations sheet missing 'tr' column")
         self.assertIn("id", self.headers, "Translations sheet missing 'id' column")
 
         meta_ws = self.wb["Metadata"]
         version = str(meta_ws["B1"].value or "")
-        self.assertEqual(version, "0.0.105", f"Expected version 0.0.105, got {version}")
+        self.assertEqual(version, "0.0.106", f"Expected version 0.0.106, got {version}")
 
         original_col = self.col_map["Original"]
         originals = []
