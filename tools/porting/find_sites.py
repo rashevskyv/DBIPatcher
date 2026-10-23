@@ -136,7 +136,7 @@ def main() -> int:
     image_end = data_off + data_size + bss_size
     state = (bss_end + 0xF) & ~0xF
     print(f"bss    __bss_end__ {bss_end:#x}, image end {image_end:#x}, "
-          f"free {image_end - bss_end:#x} bytes (need 0x280)")
+          f"free {image_end - bss_end:#x} bytes (need 0x240 = state 0x20 + persist 0x20 + scratch 0x200)")
 
     ref = norm(old, v.ctors[0], 40) if v.ctors else None
     ctors = []
@@ -167,7 +167,7 @@ V{name} = Version(
     cave=({h(cave or 0)}, {h(cave or 0)} + {size}),
     state={h(state)},
     persist={h(state + 0x20)},
-    scratch={h(state + 0x80)},
+    scratch={h(state + 0x40)},
     reader_fn={h(out['reader'][0] or 0)},
     reader={site('reader')},
     fmt={site('fmt')},

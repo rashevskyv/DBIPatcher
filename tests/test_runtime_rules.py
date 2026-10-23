@@ -23,7 +23,8 @@ try:
 except ImportError:
     emu_runtime = None
 
-NRO = {"905": os.environ.get("DBI_905_NRO"), "912": os.environ.get("DBI_912_NRO")}
+NRO = {"905": os.environ.get("DBI_905_NRO"), "912": os.environ.get("DBI_912_NRO"),
+       "920": os.environ.get("DBI_920_NRO")}
 
 
 def build_table(td: str, fmt: int) -> bytes:
@@ -67,6 +68,9 @@ class RuntimeRulesTests(unittest.TestCase):
 
     def test_912(self) -> None:
         self.check("912")
+
+    def test_920(self) -> None:
+        self.check("920")
 
     def test_912_plain_table(self) -> None:
         # version-2 tables (no hash index) still load and match the same way

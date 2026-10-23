@@ -28,6 +28,7 @@ from dbi_translate import VERSIONS, patch_nro  # noqa: E402
 DBI_SHA256 = {
     "f4360db14ea7ed1043a5a0c7d076d4861cc3383f3b254b9b38d2eec6d175686f": "905",
     "e77da77f95a24f94fb39df23513961846a75d07aa2f970f39846ed7bbbd22bd2": "912",
+    "47ab5f89032a158054b21ddd31b6faac9e8e5e0f10e4d949356e66e2750593dc": "920",
 }
 
 ZSTD_MAGIC = b"\x28\xb5\x2f\xfd"

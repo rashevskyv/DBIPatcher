@@ -11,7 +11,7 @@ This document collects everything learned while porting the runtime-translation 
    python tools/porting/find_sites.py 912 /path/DBI.912.ru.nro /path/DBI.NEW.ru.nro NEW
    ```
 
-   It prints a proposed `Version` entry. Every line must say `OK`, the cave must have `outside references: none`, and the free bytes past `__bss_end__` must be ≥ 0x280.
+   It prints a proposed `Version` entry. Every line must say `OK`, the cave must have `outside references: none`, and the free bytes past `__bss_end__` must be ≥ 0x240 (state 0x20, persist 0x20, scratch 0x200; 905/912 also left a 0x40 gap, 920 has only 0x248 free).
 3. Add the entry to `vendor/dbi_translate/versions.py` (pick `ctors` from the candidates: the copy with the same call count as the old panel copy) and the SHA-256 to `DBI_SHA256` in `scripts/patch_dbi.py`.
 4. Run the tests with the release NROs:
 

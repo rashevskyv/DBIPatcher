@@ -90,4 +90,24 @@ V912 = Version(
     ctors=(0x43B6F0,),
 )
 
-VERSIONS = {v.name: v for v in (V905, V912)}
+# 920: sites matched to 912 by instruction sequence (all five words identical). Only 0x248
+# bytes are free past __bss_end__, so the state area is packed without 912's 0x40 gap after
+# persist: scratch ends exactly at the image end (pfxsfx writes at most 0x200 bytes, no NUL).
+V920 = Version(
+    name="920",
+    cave=(0x95120C, 0x95120C + 5208),
+    state=0x1274DC0,             # __bss_end__ = 0x1274DB8, image end = 0x1275000
+    persist=0x1274DE0,
+    scratch=0x1274E00,
+    reader_fn=0x147A70,
+    reader=Site(0x147A70, 0xA9B87BFD, 0x147A74, "B"),   # STP X29,X30,[SP,#-0x80]!
+    fmt=Site(0x705EB0, 0xD10983FF, 0x705EB4, "B"),      # SUB SP,SP,#0x260
+    glog=Site(0x1B41D0, 0xA9B77BFD, 0x1B41D4, "B"),     # STP X29,X30,[SP,#-0x90]!
+    ctor=Site(0x7EC60, 0xA9BD7BFD, 0x7EC64, "B"),       # STP X29,X30,[SP,#-0x30]!
+    sink=Site(0x6869A0, 0xAA0103F6, 0x6869A4, "BL"),    # MOV X22,X1
+    clear_cave=True,
+    bss_end=(0xFC, 0x1274CC8, 0x1274F10),               # MOD0 @0xF0: bss_end 0x1274DB8 -> 0x1275000
+    ctors=(0x442A60,),                                  # = 912 0x43B6F0 (game info panel, 205 calls)
+)
+
+VERSIONS = {v.name: v for v in (V905, V912, V920)}
