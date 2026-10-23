@@ -1449,3 +1449,6 @@ Android extensions: ,Android extensions:
               Общее время игры      : -,              Całkowity czas gry   : -
               Начало игры           : -,              Początek gry         : -
               Конец игры            : -,              Koniec gry           : -
+[ОШИБКА]\x1b[37;1m,[BŁĄD]\x1b[37;1m
+\x1b[31;1m[ОШИБКА]\x1b[37;1m,\x1b[31;1m[BŁĄD]\x1b[37;1m
+\x1b[31;1m[ОШИБКА],\x1b[31;1m[BŁĄD]

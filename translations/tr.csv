@@ -774,7 +774,7 @@ FTP сервер (нажмите B для остановки),FTP sunucusu (durd
 Подсчёт метаданных...,Meta veriler sayılıyor...
 Подсчёт основного хэша,Ana karma hesaplanıyor
 Подсчёт хэша секции,Bölüm karması hesaplanıyor
-"Пожалуйста, подключите вашу консоль к ПК кабелем USB Type-C или нажмите B",Lütfen konsolunuzu bir USB Type-C kablosuyla PC'ye bağlayın veya B tuşuna basın
+"Пожалуйста, подключите вашу консоль к ПК кабелем USB Type-C или нажмите B",Konsolu USB Type-C kablosuyla PC'ye bağlayın veya B tuşuna basın
 "Пожалуйста, подождите...",Lütfen bekleyin...
 Поиск записей об ошибках,Hata günlüklerini arama
 Поиск неиспользуемых тикетов,Kullanılmayan biletlerin aranması
@@ -1449,3 +1449,6 @@ Android extensions: ,Android extensions:
               Общее время игры      : -,              Toplam oyun süresi    : -
               Начало игры           : -,              Oyunun başlangıcı     : -
               Конец игры            : -,              Oyunun sonu           : -
+[ОШИБКА]\x1b[37;1m,[HATA]\x1b[37;1m
+\x1b[31;1m[ОШИБКА]\x1b[37;1m,\x1b[31;1m[HATA]\x1b[37;1m
+\x1b[31;1m[ОШИБКА],\x1b[31;1m[HATA]

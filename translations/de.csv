@@ -774,7 +774,7 @@ FTP сервер (нажмите B для остановки),FTP-Server (drück
 Подсчёт метаданных...,Metadaten werden gezählt...
 Подсчёт основного хэша,Berechnung des Haupt-Hashs
 Подсчёт хэша секции,Berechnung des Abschnitts-Hash
-"Пожалуйста, подключите вашу консоль к ПК кабелем USB Type-C или нажмите B",Bitte verbinden Sie Ihre Konsole per USB Type-C-Kabel mit dem PC oder drücken Sie B
+"Пожалуйста, подключите вашу консоль к ПК кабелем USB Type-C или нажмите B",Konsole per USB Type-C-Kabel mit dem PC verbinden oder B drücken
 "Пожалуйста, подождите...",Bitte warten...
 Поиск записей об ошибках,Suche nach Fehlerprotokollen
 Поиск неиспользуемых тикетов,Suche nach ungenutzten Tickets
@@ -1449,3 +1449,6 @@ Android extensions: ,Android extensions:
               Общее время игры      : -,              Gesamte Spielzeit          : -
               Начало игры           : -,              Spielstart                 : -
               Конец игры            : -,              Spielende                  : -
+[ОШИБКА]\x1b[37;1m,[FEHLER]\x1b[37;1m
+\x1b[31;1m[ОШИБКА]\x1b[37;1m,\x1b[31;1m[FEHLER]\x1b[37;1m
+\x1b[31;1m[ОШИБКА],\x1b[31;1m[FEHLER]

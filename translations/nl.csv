@@ -1449,3 +1449,6 @@ Android extensions: ,Android extensions:
               Общее время игры      : -,              Totale speeltijd           : -
               Начало игры           : -,              Start van het spel         : -
               Конец игры            : -,              Einde van het spel         : -
+[ОШИБКА]\x1b[37;1m,[FOUT]\x1b[37;1m
+\x1b[31;1m[ОШИБКА]\x1b[37;1m,\x1b[31;1m[FOUT]\x1b[37;1m
+\x1b[31;1m[ОШИБКА],\x1b[31;1m[FOUT]

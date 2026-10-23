@@ -1449,3 +1449,6 @@ Android extensions: ,Android extensions:
               Общее время игры      : -,              Kogu mänguaeg      : -
               Начало игры           : -,              Mängu algus        : -
               Конец игры            : -,              Mängu lõpp         : -
+[ОШИБКА]\x1b[37;1m,[VIGA]\x1b[37;1m
+\x1b[31;1m[ОШИБКА]\x1b[37;1m,\x1b[31;1m[VIGA]\x1b[37;1m
+\x1b[31;1m[ОШИБКА],\x1b[31;1m[VIGA]

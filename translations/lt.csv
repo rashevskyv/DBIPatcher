@@ -774,7 +774,7 @@ FTP сервер (нажмите B для остановки),FTP serveris (sust
 Подсчёт метаданных...,Skaičiuojami metaduomenys...
 Подсчёт основного хэша,Skaičiuojama pagrindinė maiša
 Подсчёт хэша секции,Skaičiuojama sekcijos maiša
-"Пожалуйста, подключите вашу консоль к ПК кабелем USB Type-C или нажмите B",Prašome prijungti konsolę prie kompiuterio USB Type-C kabeliu arba paspauskite B
+"Пожалуйста, подключите вашу консоль к ПК кабелем USB Type-C или нажмите B",Prijunkite konsolę prie kompiuterio USB Type-C kabeliu arba paspauskite B
 "Пожалуйста, подождите...",Prašome palaukti...
 Поиск записей об ошибках,Ieškoma klaidų įrašų
 Поиск неиспользуемых тикетов,Ieškoma nenaudotų bilietų
@@ -1449,3 +1449,6 @@ Android extensions: ,Android extensions:
               Общее время игры      : -,              Bendras žaidimo laikas : -
               Начало игры           : -,              Žaidimo pradžia        : -
               Конец игры            : -,              Žaidimo pabaiga        : -
+[ОШИБКА]\x1b[37;1m,[KLAIDA]\x1b[37;1m
+\x1b[31;1m[ОШИБКА]\x1b[37;1m,\x1b[31;1m[KLAIDA]\x1b[37;1m
+\x1b[31;1m[ОШИБКА],\x1b[31;1m[KLAIDA]
