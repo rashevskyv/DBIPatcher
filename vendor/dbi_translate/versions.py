@@ -110,4 +110,25 @@ V920 = Version(
     ctors=(0x442A60,),                                  # = 912 0x43B6F0 (game info panel, 205 calls)
 )
 
-VERSIONS = {v.name: v for v in (V905, V912, V920)}
+# 921 (FTP fix release): sites matched to 920 (all five words identical), same packed state
+# area. find_sites reports two "pointers" into the cave (ro 0xc14d10 = 0x9500b4 inside a byte
+# table, ro 0xd64b38 = 0x9502f9 = 5**10 in a powers-of-5 table): data constants, not
+# references. No branch or ADRP+ADD reaches it.
+V921 = Version(
+    name="921",
+    cave=(0x94FD5C, 0x94FD5C + 5208),
+    state=0x1273DC0,             # __bss_end__ = 0x1273DB8, image end = 0x1274000
+    persist=0x1273DE0,
+    scratch=0x1273E00,
+    reader_fn=0x147AE0,
+    reader=Site(0x147AE0, 0xA9B87BFD, 0x147AE4, "B"),   # STP X29,X30,[SP,#-0x80]!
+    fmt=Site(0x704A00, 0xD10983FF, 0x704A04, "B"),      # SUB SP,SP,#0x260
+    glog=Site(0x1B4180, 0xA9B77BFD, 0x1B4184, "B"),     # STP X29,X30,[SP,#-0x90]!
+    ctor=Site(0x7F800, 0xA9BD7BFD, 0x7F804, "B"),       # STP X29,X30,[SP,#-0x30]!
+    sink=Site(0x6857C0, 0xAA0103F6, 0x6857C4, "BL"),    # MOV X22,X1
+    clear_cave=True,
+    bss_end=(0xFC, 0x1273CC8, 0x1273F10),               # MOD0 @0xF0: bss_end 0x1273DB8 -> 0x1274000
+    ctors=(0x440970,),                                  # = 920 0x442A60 (game info panel, 205 calls)
+)
+
+VERSIONS = {v.name: v for v in (V905, V912, V920, V921)}

@@ -35,7 +35,7 @@ from dbi_translate.patch import PatchError
 
 # Pristine release NROs for the integration tests (skipped when unset).
 NRO = {"905": os.environ.get("DBI_905_NRO"), "912": os.environ.get("DBI_912_NRO"),
-       "920": os.environ.get("DBI_920_NRO")}
+       "920": os.environ.get("DBI_920_NRO"), "921": os.environ.get("DBI_921_NRO")}
 
 
 def make_synthetic_font() -> bytearray:
@@ -88,7 +88,7 @@ class PatchDbiWrapperTests(unittest.TestCase):
     """Offline focused tests for scripts/patch_dbi.py."""
 
     def test_every_known_release_has_an_engine_version(self) -> None:
-        self.assertEqual(set(DBI_SHA256.values()), {"905", "912", "920"})
+        self.assertEqual(set(DBI_SHA256.values()), {"905", "912", "920", "921"})
         self.assertTrue(set(DBI_SHA256.values()) <= set(VERSIONS))
 
     def test_signature(self) -> None:
@@ -152,6 +152,9 @@ class PatchDbiWrapperTests(unittest.TestCase):
 
     def test_patch_920_release(self) -> None:
         self._check_release("920")
+
+    def test_patch_921_release(self) -> None:
+        self._check_release("921")
 
     def test_state_inside_bss_is_rejected(self) -> None:
         # The first 912 layout put the patcher state on page 0x1278000: inside
