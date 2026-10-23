@@ -1860,6 +1860,10 @@ This release provides translations for **DBI version {dbi_ver}**.
 > [!IMPORTANT]
 > Use the `DBI.nro` and the `translation_XX.bin` files **from this release together**. The translation tables now carry a lookup index that older patched `DBI.nro` builds do not read.
 
+### 🆕 What changed in DBI 921 (compared with 920)
+- **FTP:** a serious bug in the FTP server is fixed (from the DBI author). No other user-visible changes were found in the 921 binary.
+- **Translations:** the same tables as in the 920 release (v0.0.109); the patch now supports DBI 921.
+
 ### 🆕 What changed in DBI 920 (compared with 912)
 DBI does not publish a changelog. This list comes from the strings and settings of the 920 binary.
 - **Forwarder settings** (new `[Forwarder]` section in `dbi.config`): address space (`32 Bit`, `32 Bit No alias`, `36 Bit`, `39 Bit`, `42 Bit`), four CPU cores, video capture and screenshots. DBI now reads and checks the forwarder's `main.npdm` (`META`, `ACI0`, `ACID`).
@@ -1869,7 +1873,7 @@ DBI does not publish a changelog. This list comes from the strings and settings 
 - **On-screen keyboard:** `L+⬅` / `L+➡` jump to the start / end of the line.
 - **FTP server** replies were reworked; the old confirmation prompt for deleting lost content is gone.
 
-### 🩹 Translation changes since v0.0.108
+### 🩹 Translation changes in the 920 release (since v0.0.108)
 - **DBI 920 support.** The patch and all 24 translation tables work with DBI 920.
 - **Game info panel:** "Total play time", "Game start" and "Game end" are translated also for titles without play data, including lines such as `Total play time : - (2)` (the number is put into the translation).
 - **New strings translated:** the forwarder "Address space" setting; "Searching for old placeholders on SD / in NAND" in the cleanup log; the red "Title not installed" message.
