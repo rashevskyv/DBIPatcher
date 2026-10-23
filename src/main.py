@@ -1860,21 +1860,22 @@ This release provides translations for **DBI version {dbi_ver}**.
 > [!IMPORTANT]
 > Use the `DBI.nro` and the `translation_XX.bin` files **from this release together**. The translation tables now carry a lookup index that older patched `DBI.nro` builds do not read.
 
-### 🩹 Fixes in v0.0.106–v0.0.108
-- **Aligned game info panel.** The labels line up with `TitleId` and `Meta SDK` again, with a space after the colon (`Name    : Celeste`).
-- **Whole context-menu items.** `Open content via MTP`, `Move to NAND` and `Move to SD card` in the `(+)` menu are no longer half Russian.
-- **No more "Invalid UTF-8" error** when you open the `(+)` menu on a game, update or DLC with English, German and other translations that are shorter than the Russian text ([#29](https://github.com/rashevskyv/DBIPatcher/issues/29)). The game info panel also no longer shows a stray `NUL` character after short values such as `LFS mode : -`.
-- **Translated "Total play time : - (-)"** on the game info panel of titles without play data.
-- **Ukrainian:** the USB backend connection prompt now fits the screen.
+### 🆕 What changed in DBI 920 (compared with 912)
+DBI does not publish a changelog. This list comes from the strings and settings of the 920 binary.
+- **Forwarder settings** (new `[Forwarder]` section in `dbi.config`): address space (`32 Bit`, `32 Bit No alias`, `36 Bit`, `39 Bit`, `42 Bit`), four CPU cores, video capture and screenshots. DBI now reads and checks the forwarder's `main.npdm` (`META`, `ACI0`, `ACID`).
+- **`PatchDistributionBit`** install option ("Patch XCI originated nca"): NCAs taken from a game card image can be patched.
+- **Saves:** new "Increase size (in MB)" action; new "Save data information" and "Ticket information" views.
+- **NACP viewer:** new fields `Accessible program index flags` and `Album file export`. **NSO viewer:** module name (`.module_name`) and the `.embedded` part of `.rodata`.
+- **On-screen keyboard:** `L+⬅` / `L+➡` jump to the start / end of the line.
+- **FTP server** replies were reworked; the old confirmation prompt for deleting lost content is gone.
 
-### ✨ What's new
-- **DBI 912 support.** The runtime-translation engine is now part of this repository (`vendor/dbi_translate`, originally [0xroast/dbi-translate](https://github.com/0xroast/dbi-translate)) and supports DBI 905 and 912.
-- **Smooth menus.** Translation lookups use a hash index instead of scanning the whole table for every line. Menus, context menus and settings no longer lag ([#28](https://github.com/rashevskyv/DBIPatcher/issues/28)).
-- **More stable patch.** The patcher no longer keeps its state on top of DBI's own text buffers, which could corrupt some lines and reload the table.
-- **Game info panel translated** — tabs (Content / Tickets / Saves) and the Name / Author / Version / Language rows ([#25](https://github.com/rashevskyv/DBIPatcher/issues/25)).
-- **Clean Cyrillic translations.** Ukrainian, Belarusian and Kazakh no longer get mixed words such as "Такмпити" or cut words such as "Видалит" in context menus.
-- **Version line** at the top shows the translation language, e.g. `{dbi_ver}-ua`.
-- **New DBI {dbi_ver} strings** translated for all languages: transfer progress lines, theme menu, panel hints, total play time.
+### 🩹 Translation changes since v0.0.108
+- **DBI 920 support.** The patch and all 24 translation tables work with DBI 920.
+- **Game info panel:** "Total play time", "Game start" and "Game end" are translated also for titles without play data, including lines such as `Total play time : - (2)` (the number is put into the translation).
+- **New strings translated:** the forwarder "Address space" setting; "Searching for old placeholders on SD / in NAND" in the cleanup log; the red "Title not installed" message.
+
+### ✨ Earlier in the 912 line (still included)
+- Translation engine in this repository (`vendor/dbi_translate`, originally [0xroast/dbi-translate](https://github.com/0xroast/dbi-translate)); hash-index lookups, no menu lag ([#28](https://github.com/rashevskyv/DBIPatcher/issues/28)); translated game info panel ([#25](https://github.com/rashevskyv/DBIPatcher/issues/25)); no "Invalid UTF-8" in the `(+)` menu ([#29](https://github.com/rashevskyv/DBIPatcher/issues/29)); whole `(+)` menu items; aligned game info panel; version line shows the language, e.g. `{dbi_ver}-ua`.
 
 ### ✨ Cyrillic glyph repair
 The bundled `DBI.nro` repairs the embedded glyphs `Є/є`, `І/і`, and `Ї/ї` used by Ukrainian, Belarusian, and Kazakh translations.
