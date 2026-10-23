@@ -1446,3 +1446,6 @@ Android extensions: ,Android extensions:
 \x1b[31;1mТайтл не установлен\x1b[37;1m,\x1b[31;1mTítulo no instalado\x1b[37;1m
 \x1b[31;1mТайтл не установлен,\x1b[31;1mTítulo no instalado
 Общее время игры      : - ({}),Tiempo total de juego       : - ({})
+              Общее время игры      : -,              Tiempo total de juego       : -
+              Начало игры           : -,              Inicio del juego            : -
+              Конец игры            : -,              Fin del juego               : -

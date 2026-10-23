@@ -1446,3 +1446,6 @@ Android extensions: ,Android extensions:
 \x1b[31;1mТайтл не установлен\x1b[37;1m,\x1b[31;1mPavadinimas neįdiegtas\x1b[37;1m
 \x1b[31;1mТайтл не установлен,\x1b[31;1mPavadinimas neįdiegtas
 Общее время игры      : - ({}),Bendras žaidimo laikas : - ({})
+              Общее время игры      : -,              Bendras žaidimo laikas : -
+              Начало игры           : -,              Žaidimo pradžia        : -
+              Конец игры            : -,              Žaidimo pabaiga        : -
