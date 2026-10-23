@@ -1853,7 +1853,7 @@ def cmd_deploy() -> None:
 *   **TR** — Turkish"""
 
     release_body = f"""### 🌍 DBI Multilingual Localization (v{patcher_ver})
-![GitHub release (tag)](https://img.shields.io/github/downloads/rashevskyv/DBIPatcher/{dbi_ver}/total)
+![DBI.nro downloads](https://img.shields.io/github/downloads/rashevskyv/DBIPatcher/{dbi_ver}/DBI.nro)
 
 This release provides translations for **DBI version {dbi_ver}**.
 
@@ -1947,7 +1947,7 @@ This community translation set is still evolving. Some strings may remain untran
 > 🔄 **Release updated on {kyiv_time} (Kyiv time) (v{patcher_ver}).** Please redownload both `DBI.nro` and `translation_<lang>.bin` for your language.
 """
         # Insert update notice after the badge line
-        badge_line = f"![GitHub release (tag)](https://img.shields.io/github/downloads/rashevskyv/DBIPatcher/{dbi_ver}/total)"
+        badge_line = f"![DBI.nro downloads](https://img.shields.io/github/downloads/rashevskyv/DBIPatcher/{dbi_ver}/DBI.nro)"
         release_body = release_body.replace(
             badge_line,
             badge_line + "\n\n" + update_notice
