@@ -219,7 +219,68 @@ def loader(v: Version, path_addr, pool_addr):
     ]
 
 
-def ctor_exact(sl_addr, vl_addr):
+def _ctor_number(v: Version, sl_addr):
+    """ctor_exact miss on a line ending in "(N)" (N = 1..9 digits): look up the line with "({})"
+    in place of the number and put N into the first "{}" of the translation, built in SCRATCH.
+    The panel line "Общее время игры      : - (2)" carries a session count the exact lookup
+    cannot hold. Frame and slots as in ctor_exact: [sp+0x10] dest, +0x18 data, +0x20 len."""
+    return [
+        ("L", "ce_num"),
+        ("I", "ldr x1, [sp, #0x18]"), ("I", "ldr x2, [sp, #0x20]"),
+        ("I", "cmp x2, #4"), ("I", "b.lo {ce_keep}"),
+        ("I", "sub x9, x2, #1"),                    # x9 = index of ')'
+        ("I", "ldrb w10, [x1, x9]"), ("I", "cmp w10, #0x29"), ("I", "b.ne {ce_keep}"),
+        ("I", "mov x11, x9"),
+        ("L", "ce_dig"),                            # walk back over the digits
+        ("I", "cbz x11, {ce_keep}"),
+        ("I", "sub x11, x11, #1"),
+        ("I", "ldrb w10, [x1, x11]"),
+        ("I", "sub w12, w10, #0x30"), ("I", "cmp w12, #9"), ("I", "b.ls {ce_dig}"),
+        ("I", "cmp w10, #0x28"), ("I", "b.ne {ce_keep}"),          # x11 = index of '('
+        ("I", "sub x13, x9, x11"), ("I", "sub x13, x13, #1"),      # digit count
+        ("I", "cbz x13, {ce_keep}"), ("I", "cmp x13, #9"), ("I", "b.hi {ce_keep}"),
+        ("ADRP", 12, v.scratch), ("I", f"add x12, x12, #{v.scratch & 0xFFF:#x}"),
+        ("I", "mov x14, #0"),
+        ("L", "ce_kc"),                             # key = data[0..'('] + "{})"
+        ("I", "ldrb w10, [x1, x14]"), ("I", "strb w10, [x12, x14]"),
+        ("I", "add x14, x14, #1"), ("I", "cmp x14, x11"), ("I", "b.ls {ce_kc}"),
+        ("I", "mov w10, #0x7b"), ("I", "strb w10, [x12, x14]"), ("I", "add x14, x14, #1"),
+        ("I", "mov w10, #0x7d"), ("I", "strb w10, [x12, x14]"), ("I", "add x14, x14, #1"),
+        ("I", "mov w10, #0x29"), ("I", "strb w10, [x12, x14]"), ("I", "add x14, x14, #1"),
+        ("I", "str x11, [sp, #0x28]"),
+        ("I", "mov x0, x12"), ("I", "mov x1, x14"),
+        ("I", f"bl {sl_addr:#x}"),
+        ("I", "cbz x0, {ce_keep}"),
+        ("I", "ldr x11, [sp, #0x28]"), ("I", "ldr x2, [sp, #0x20]"), ("I", "ldr x3, [sp, #0x18]"),
+        ("I", "add x4, x3, x11"), ("I", "add x4, x4, #1"),         # digits
+        ("I", "sub x5, x2, x11"), ("I", "sub x5, x5, #2"),         # digit count
+        ("ADRP", 12, v.scratch), ("I", f"add x12, x12, #{v.scratch & 0xFFF:#x}"),
+        ("I", "mov x6, #0"), ("I", "mov x7, #0"), ("I", "mov x8, #0"),   # in, out, replaced
+        ("L", "ce_oc"),
+        ("I", "cmp x6, x1"), ("I", "b.hs {ce_od}"),
+        ("I", "ldrb w10, [x0, x6]"),
+        ("I", "cbnz x8, {ce_ocp}"),
+        ("I", "cmp w10, #0x7b"), ("I", "b.ne {ce_ocp}"),
+        ("I", "add x9, x6, #1"), ("I", "cmp x9, x1"), ("I", "b.hs {ce_ocp}"),
+        ("I", "ldrb w9, [x0, x9]"), ("I", "cmp w9, #0x7d"), ("I", "b.ne {ce_ocp}"),
+        ("I", "cmp x7, #0x1f0"), ("I", "b.hs {ce_keep}"),
+        ("I", "mov x9, #0"),
+        ("L", "ce_dc"),
+        ("I", "ldrb w10, [x4, x9]"), ("I", "strb w10, [x12, x7]"),
+        ("I", "add x7, x7, #1"), ("I", "add x9, x9, #1"), ("I", "cmp x9, x5"), ("I", "b.lo {ce_dc}"),
+        ("I", "add x6, x6, #2"), ("I", "mov x8, #1"), ("I", "b {ce_oc}"),
+        ("L", "ce_ocp"),
+        ("I", "cmp x7, #0x200"), ("I", "b.hs {ce_keep}"),
+        ("I", "strb w10, [x12, x7]"), ("I", "add x7, x7, #1"), ("I", "add x6, x6, #1"),
+        ("I", "b {ce_oc}"),
+        ("L", "ce_od"),
+        ("I", "cbz x8, {ce_keep}"),                 # no "{}" in the translation
+        ("I", "mov x1, x12"), ("I", "mov x2, x7"), ("I", "ldr x0, [sp, #0x10]"),
+        ("I", "ldp x29, x30, [sp], #0x30"), ("I", "ret"),
+    ]
+
+
+def ctor_exact(v: Version, sl_addr, vl_addr):
     """(X0=dest, X1=data, X2=len) -> same registers, with X1/X2 replaced by the translation on
     an exact hit. Called from the entry stub of a std::string(const char*, size_t) copy, so
     only X0-X2 are live. Exact match only (no prefix/suffix rebuild): these constructors also
@@ -281,9 +342,10 @@ def ctor_exact(sl_addr, vl_addr):
         ("L", "ce_key"),
         ("I", "ldr x0, [sp, #0x18]"), ("I", "ldr x1, [sp, #0x20]"),
         ("I", f"bl {sl_addr:#x}"),                  # (x0=key, x1=len) -> (x0=tr|0, x1=trlen)
-        ("I", "cbz x0, {ce_keep}"),
+        ("I", "cbz x0, {ce_num}"),
         ("I", "mov x2, x1"), ("I", "mov x1, x0"), ("I", "ldr x0, [sp, #0x10]"),
         ("I", "ldp x29, x30, [sp], #0x30"), ("I", "ret"),
+    ] + _ctor_number(v, sl_addr) + [
         ("L", "ce_keep"),
         ("I", "ldp x0, x1, [sp, #0x10]"), ("I", "ldr x2, [sp, #0x20]"),
         ("I", "ldp x29, x30, [sp], #0x30"), ("I", "ret"),

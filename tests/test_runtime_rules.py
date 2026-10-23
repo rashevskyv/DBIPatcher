@@ -65,6 +65,9 @@ class RuntimeRulesTests(unittest.TestCase):
         # stale UTF-8 continuation byte, is cut at the NUL
         self.assertEqual(emu.ctor(ce, "Так".encode() + b"\0\x9f\x00", 8), "Так".encode())
         self.assertEqual(emu.ctor(ce, b"ab\0\x9f", 4), b"ab\0\x9f")   # not a translation
+        # a panel line ending in a number: "... ({})" key, the number goes into the translation
+        line = "Общее время игры      : - (2)".encode()
+        self.assertEqual(emu.ctor(ce, line, len(line)), "Загальний час гри : - (2)".encode())
 
     def test_912(self) -> None:
         self.check("912")

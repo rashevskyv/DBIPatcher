@@ -2,6 +2,7 @@
 Python model of the intended rules; also count instructions per call.
 
 usage: emu_runtime.py PATCHED.nro translation.bin pfxsfx_addr ctor_exact_addr state_addr"""
+import re
 import struct
 import sys
 
@@ -77,7 +78,17 @@ def model_ctor(K, V, buf, n):
         L = z if z >= 0 else len(buf)
         if L < 0x100 and buf[:L] in V:
             return buf[:L]
-    return K.get(s, s)
+    if s in K:
+        return K[s]
+    # "... (N)": look up "... ({})" and put N into the first "{}" of the translation
+    m = re.fullmatch(rb"(.*\()(\d{1,9})\)", s, re.S)
+    if m and m.group(1) + b"{})" in K:
+        tr = K[m.group(1) + b"{})"]
+        if b"{}" in tr:
+            out = tr.replace(b"{}", m.group(2), 1)
+            if len(out) <= 0x200:
+                return out
+    return s
 
 
 class Emu:
@@ -164,6 +175,9 @@ def ctor_corpus(K, V, step=5):
     out += [(v + b"\0", n) for v in sorted(V)[::step * 2] for n in (len(v) - 2, len(v) // 2) if n > 0]
     out += [("Видалити".encode() + b"\0", 14), ("Відкрити".encode() + b"\0", 14),
             ("C:/Сохранения/x".encode(), 20)]
+    # "... ({})" keys hit with a number in place of {} (and a few that must not)
+    out += [(k[:-3] + n + b")", len(k) - 3 + len(n) + 1) for k in sorted(K) if k.endswith(b"({})")
+            for n in (b"2", b"12345", b"x2")]
     return out
 
 

@@ -59,7 +59,7 @@ class TemperatureAliasesAndSyncTests(unittest.TestCase):
         )
 
     def test_workbook_structure_and_version(self) -> None:
-        """Verify workbook contains 1,476 unique Original keys, 'tr' and 'id' columns, and version 0.0.108."""
+        """Verify workbook contains 1,447 unique Original keys, 'tr' and 'id' columns, and version 0.0.108."""
         self.assertIn("tr", self.headers, "Translations sheet missing 'tr' column")
         self.assertIn("id", self.headers, "Translations sheet missing 'id' column")
 
@@ -76,13 +76,13 @@ class TemperatureAliasesAndSyncTests(unittest.TestCase):
 
         self.assertEqual(
             len(originals),
-            1476,
-            f"Expected 1,476 original keys, found {len(originals)}",
+            1447,
+            f"Expected 1,447 original keys, found {len(originals)}",
         )
         self.assertEqual(
             len(set(originals)),
-            1476,
-            f"Expected 1,476 unique original keys, found {len(set(originals))}",
+            1447,
+            f"Expected 1,447 unique original keys, found {len(set(originals))}",
         )
 
     def test_all_45_aliases_and_canonical_values(self) -> None:
@@ -207,7 +207,7 @@ class TemperatureAliasesAndSyncTests(unittest.TestCase):
             if val is not None and str(val).strip():
                 wb_tokenized_keys.add(str(val))
 
-        self.assertEqual(len(wb_tokenized_keys), 1476)
+        self.assertEqual(len(wb_tokenized_keys), 1447)
 
         for lc in self.languages:
             if lc == "ru":

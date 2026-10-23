@@ -83,7 +83,7 @@ def patch_nro(v: Version, data: bytes):
     # [ctor_exact][one stub per std::string(const char*, size_t) copy]
     stubs = []
     if ctor_sites:
-        ce = assemble(ctor_exact(sl_base, vl_base), addr); ce_base = addr; addr += len(ce)
+        ce = assemble(ctor_exact(v, sl_base, vl_base), addr); ce_base = addr; addr += len(ce)
         stubs.append((ce_base, ce))
         for site in ctor_sites:
             st = assemble(ctor_stub(site.addr, ce_base), addr)

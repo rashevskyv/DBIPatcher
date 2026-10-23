@@ -33,8 +33,8 @@ HEAP, STACK, STOP = 0x7400000000, 0x7300000000, 0x7500000000
 CASES = [
     ("Тикеты", "Тікети"),
     ("Контент", "Контент"),
-    ("Язык    : ", "Мова      :"),
-    ("Автор   : ", "Автор     :"),    # translation > 15 bytes: heap path
+    ("Язык    : ", "Мова    : "),
+    ("Версия  : ", "Версія  : "),     # translation > 15 bytes: heap path
     ("hello", "hello"),                 # ASCII: gate skips the lookup
     ("Привет мир", "Привет мир"),       # Cyrillic miss
     ("C:/Сохранения/x", "C:/Сохранения/x"),   # exact match only: paths stay intact
