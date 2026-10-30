@@ -135,6 +135,7 @@ class PatchDbiWrapperTests(unittest.TestCase):
         font_slot = range(font.offset, font.offset + font.compressed_size)
         sites = {v.reader.addr, v.fmt.addr, v.glog.addr, v.ctor.addr, v.sink.addr, v.bss_end[0]}
         sites.update(v.ctors)
+        sites.update(call.addr for call in v.string_calls)
         cave = range(*v.cave)
         changed = [i for i in range(len(data)) if data[i] != patched[i]]
         self.assertTrue(all(i in cave or i in font_slot or any(s <= i < s + 4 for s in sites)

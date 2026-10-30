@@ -3,7 +3,29 @@ the instruction displaced from the site, and branches back to resume."""
 
 from __future__ import annotations
 
-from .versions import Version
+from .versions import StringCall, Version
+
+
+def string_call_stub(call: StringCall, translator):
+    """Translate one UI argument, then tail-call the original function.
+
+    Keep all volatile GPRs, SIMD registers and NZCV: the caller may use a more
+    specific clobber set for a known internal function than the general ABI.
+    x19-x29 are preserved by translate_string and DBI's append.
+    """
+    program = [("I", "sub sp, sp, #0x2b0")]
+    program += [("I", f"stp x{i}, x{i+1}, [sp, #{i * 8:#x}]") for i in range(0, 18, 2)]
+    program += [("I", "stp x18, x30, [sp, #0x90]"), ("I", "mrs x9, nzcv"),
+                ("I", "str x9, [sp, #0xa0]")]
+    program += [("I", f"stp q{i}, q{i+1}, [sp, #{0xB0 + i * 16:#x}]") for i in range(0, 32, 2)]
+    if call.argument:
+        program += [("I", f"mov x0, x{call.argument}")]
+    program += [("I", f"bl {translator:#x}")]
+    program += [("I", f"ldp q{i}, q{i+1}, [sp, #{0xB0 + i * 16:#x}]") for i in range(0, 32, 2)]
+    program += [("I", "ldr x9, [sp, #0xa0]"), ("I", "msr nzcv, x9")]
+    program += [("I", f"ldp x{i}, x{i+1}, [sp, #{i * 8:#x}]") for i in range(0, 18, 2)]
+    return program + [("I", "ldp x18, x30, [sp, #0x90]"), ("I", "add sp, sp, #0x2b0"),
+                      ("I", f"b {call.target:#x}")]
 
 
 def glog_hook(v: Version, pfxsfx_addr):   # x0=glog, x1=len, x2=data, x3=a4

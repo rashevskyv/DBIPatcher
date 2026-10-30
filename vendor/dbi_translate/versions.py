@@ -22,6 +22,15 @@ class Site:
 
 
 @dataclass(frozen=True)
+class StringCall:
+    """Translate a std::string argument before a specific UI BL call."""
+
+    addr: int
+    target: int
+    argument: int = 0
+
+
+@dataclass(frozen=True)
 class Version:
     """Everything the builder needs to target one DBI release."""
 
@@ -45,6 +54,10 @@ class Version:
     # first instruction CTOR_INSN). Each gets an exact-match hook; the game info panel builds
     # its labels (Контент, Тикеты, Язык, ...) through them, not through `ctor`.
     ctors: tuple[int, ...] = ()
+    # Selected UI calls that bypass the string constructors above. Translation
+    # happens before width measurement or menu construction, using DBI's append.
+    string_calls: tuple[StringCall, ...] = ()
+    string_append: int = 0
 
 
 V905 = Version(
@@ -129,6 +142,16 @@ V921 = Version(
     clear_cave=True,
     bss_end=(0xFC, 0x1273CC8, 0x1273F10),               # MOD0 @0xF0: bss_end 0x1273DB8 -> 0x1274000
     ctors=(0x440970,),                                  # = 920 0x442A60 (game info panel, 205 calls)
+    string_append=0x785708,
+    string_calls=(
+        StringCall(0x3E28D0, 0x135290),  # activity header: Игрок, before measuring its width
+        StringCall(0x3E2B48, 0x135290),  # Сессии
+        StringCall(0x3E2D9C, 0x135290),  # Время
+        StringCall(0x49BB20, 0x3E07E0),  # Настроки создания ярлыков (typo is in DBI)
+        StringCall(0x49C388, 0x481500, 3),  # Использовать 4 ядра CPU
+        StringCall(0x49C74C, 0x481500, 3),  # Захват видео
+        StringCall(0x49C9A0, 0x481500, 3),  # Скриншоты
+    ),
 )
 
 VERSIONS = {v.name: v for v in (V905, V912, V920, V921)}

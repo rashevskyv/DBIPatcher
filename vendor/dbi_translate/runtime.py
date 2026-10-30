@@ -15,6 +15,27 @@ PATH_STR = b"sdmc:/switch/DBI/translation.bin"   # 32 bytes (reader strips "sdmc
 assert len(PATH_STR) == 32
 
 
+def translate_string(v: Version, sl_addr):
+    """Translate a std::string in place through DBI's own append, retaining ownership.
+
+    x0 points to the string object. A miss, including a table not loaded yet,
+    leaves it unchanged. Unlike constructor hooks this also reaches inlined
+    copies and labels assembled from separately decrypted word fragments.
+    """
+    return [
+        ("I", "stp x29, x30, [sp, #-0x20]!"), ("I", "str x19, [sp, #0x10]"),
+        ("I", "mov x19, x0"), ("I", "ldp x0, x1, [x19]"),
+        ("I", f"bl {sl_addr:#x}"), ("I", "cbz x0, {ts_done}"),
+        ("I", "mov x2, x1"), ("I", "mov x1, x0"),
+        ("I", "str xzr, [x19, #8]"), ("I", "ldr x9, [x19]"),
+        ("I", "strb wzr, [x9]"), ("I", "mov x0, x19"),
+        ("I", f"bl {v.string_append:#x}"),
+        ("L", "ts_done"),
+        ("I", "ldr x19, [sp, #0x10]"), ("I", "ldp x29, x30, [sp], #0x20"),
+        ("I", "ret"),
+    ]
+
+
 def shared_lookup(v: Version, pool_addr):
     """(X0=key_ptr, X1=key_len) -> (X0=tr_ptr|0, X1=tr_len). Leaf; clobbers x0-x17.
     Exact scan of the DBITRNS table at state.tableptr."""

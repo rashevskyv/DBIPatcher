@@ -1,5 +1,5 @@
 """Patch a DBI NRO: inject the runtime and hooks into the code cave and redirect the
-hook sites into it. Modifies only the cave and the five hook-site instructions."""
+hook sites into it. Modifies only the cave and the configured hook-site instructions."""
 
 from __future__ import annotations
 
@@ -8,9 +8,9 @@ import struct
 from capstone import Cs, CS_ARCH_ARM64, CS_MODE_LITTLE_ENDIAN
 
 from .asm import assemble, enc_b, enc_bl
-from .hooks import ctor_hook, ctor_stub, glog_hook, reader_hook, sink_hook
+from .hooks import ctor_hook, ctor_stub, glog_hook, reader_hook, sink_hook, string_call_stub
 from .runtime import (PATH_STR, STATE_MAGIC, ctor_exact, loader, make_fmt, make_pfxsfx,
-                      shared_lookup, value_lookup)
+                      shared_lookup, translate_string, value_lookup)
 from .versions import BASE, CTOR_INSN, Site, Version
 
 
@@ -64,6 +64,10 @@ def patch_nro(v: Version, data: bytes):
     ctor_sites = [Site(a, CTOR_INSN, a + 4, "B") for a in v.ctors]
     for site in ctor_sites:
         _check_site(data, site, "ctor copy")
+    for call in v.string_calls:
+        if not v.string_append or not 0 <= call.argument <= 7:
+            raise PatchError("UI string calls require an append function and an argument register x0..x7")
+        _check_site(data, Site(call.addr, enc_bl(call.addr, call.target), 0, "BL"), "UI string call")
     _check_state_area(v, data)
 
     # cave layout: [path][pool][shared_lookup][loader][fmt][pfxsfx][glog][ctor][sink][reader]
@@ -89,6 +93,21 @@ def patch_nro(v: Version, data: bytes):
             st = assemble(ctor_stub(site.addr, ce_base), addr)
             stubs.append((addr, st)); addr += len(st)
 
+    # Share one translator and one trampoline per (target, argument), rather
+    # than hooking every std::string constructor in the binary.
+    ui_code, ui_stubs, ui_wrappers = [], [], {}
+    if v.string_calls:
+        translator = addr
+        code = assemble(translate_string(v, sl_base), addr)
+        ui_code.append((addr, code)); addr += len(code)
+        for target, argument in sorted({(c.target, c.argument) for c in v.string_calls}):
+            call = next(c for c in v.string_calls if (c.target, c.argument) == (target, argument))
+            ui_wrappers[(target, argument)] = addr
+            code = assemble(string_call_stub(call, translator), addr)
+            ui_code.append((addr, code)); addr += len(code)
+        ui_stubs = [(Site(c.addr, enc_bl(c.addr, c.target), 0, "BL"), ui_wrappers[(c.target, c.argument)])
+                    for c in v.string_calls]
+
     total = addr - cave_start
     if total > cave_end - cave_start:
         raise PatchError(f"cave too small: need {total}, have {cave_end - cave_start}")
@@ -108,6 +127,8 @@ def patch_nro(v: Version, data: bytes):
     data[rh_base:rh_base + len(rh)] = rh
     for base, code in stubs:
         data[base:base + len(code)] = code
+    for base, code in ui_code:
+        data[base:base + len(code)] = code
     struct.pack_into("<I", data, v.fmt.addr, enc_b(v.fmt.addr, fmt_base))
     struct.pack_into("<I", data, v.glog.addr, enc_b(v.glog.addr, lg_base))
     struct.pack_into("<I", data, v.ctor.addr, enc_b(v.ctor.addr, ch_base))
@@ -116,12 +137,14 @@ def patch_nro(v: Version, data: bytes):
     stub_bases = [base for base, _ in stubs[1:]]
     for site, base in zip(ctor_sites, stub_bases):
         struct.pack_into("<I", data, site.addr, enc_b(site.addr, base))
+    for site, base in ui_stubs:
+        struct.pack_into("<I", data, site.addr, enc_bl(site.addr, base))
     if v.bss_end:
         struct.pack_into("<I", data, v.bss_end[0], v.bss_end[2])
 
     _self_check(v, orig, data, addr,
                 {"fmt": fmt_base, "glog": lg_base, "ctor": ch_base, "sink": sk_base, "reader": rh_base},
-                list(zip(ctor_sites, stub_bases)))
+                list(zip(ctor_sites, stub_bases)), ui_stubs)
 
     report = [
         f"path @ {path_addr:#x}  pool @ {pool_addr:#x}  shared_lookup @ {sl_base:#x}({len(sl)}B)  "
@@ -134,7 +157,7 @@ def patch_nro(v: Version, data: bytes):
     return bytes(data), report
 
 
-def _self_check(v, orig, data, cave_top, bases, ctor_stubs=()):
+def _self_check(v, orig, data, cave_top, bases, ctor_stubs=(), ui_stubs=()):
     md = Cs(CS_ARCH_ARM64, CS_MODE_LITTLE_ENDIAN)
 
     def expect(site, base, mnem):
@@ -152,9 +175,12 @@ def _self_check(v, orig, data, cave_top, bases, ctor_stubs=()):
     expect(v.reader, bases["reader"], "b")
     for site, base in ctor_stubs:
         expect(site, base, "b")
+    for site, base in ui_stubs:
+        expect(site, base, "bl")
 
     sites = {v.reader.addr, v.fmt.addr, v.glog.addr, v.ctor.addr, v.sink.addr}
     sites.update(site.addr for site, _ in ctor_stubs)
+    sites.update(site.addr for site, _ in ui_stubs)
     if v.bss_end:
         sites.add(v.bss_end[0])
     cave_start = v.cave[0]

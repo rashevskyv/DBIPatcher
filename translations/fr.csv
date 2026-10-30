@@ -1208,7 +1208,7 @@ DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - П�
 Проверять хеш-сумму NCA: ,Vérifier le hash NCA           :
 Патчить имена (HOS 21+): ,Patcher les noms (HOS 21+)     :
 Занулять мастерключ    : ,Réinitialiser la clé maîtresse :
-Патчить запись видео   : ,Patcher capture video          :
+Патчить запись видео   : ,Patcher capture vidéo          :
 Патчить скриншоты      : ,Patcher les captures           :
 Игра использует SDK {},Le jeu utilise le SDK {}
 Удалить старые обновления игр,Supprimer les anciennes mises à jour de jeux
@@ -1452,3 +1452,7 @@ Android extensions: ,Android extensions:
 [ОШИБКА]\x1b[37;1m,[ERREUR]\x1b[37;1m
 \x1b[31;1m[ОШИБКА]\x1b[37;1m,\x1b[31;1m[ERREUR]\x1b[37;1m
 \x1b[31;1m[ОШИБКА],\x1b[31;1m[ERREUR]
+Настроки создания ярлыков,Paramètres des raccourcis
+Использовать 4 ядра CPU,Utiliser les 4 cœurs CPU
+Захват видео,Capture vidéo
+Скриншоты,Captures d'écran
