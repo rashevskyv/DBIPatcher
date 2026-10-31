@@ -18,14 +18,35 @@ def string_call_stub(call: StringCall, translator):
     program += [("I", "stp x18, x30, [sp, #0x90]"), ("I", "mrs x9, nzcv"),
                 ("I", "str x9, [sp, #0xa0]")]
     program += [("I", f"stp q{i}, q{i+1}, [sp, #{0xB0 + i * 16:#x}]") for i in range(0, 32, 2)]
-    if call.argument:
-        program += [("I", f"mov x0, x{call.argument}")]
-    program += [("I", f"bl {translator:#x}")]
+    for i in range(call.count):
+        program += [("I", f"ldr x0, [sp, #{call.argument * 8:#x}]")]
+        if i:
+            program += [("I", f"add x0, x0, #{i * 0x20:#x}")]
+        program += [("I", f"bl {translator:#x}")]
     program += [("I", f"ldp q{i}, q{i+1}, [sp, #{0xB0 + i * 16:#x}]") for i in range(0, 32, 2)]
     program += [("I", "ldr x9, [sp, #0xa0]"), ("I", "msr nzcv, x9")]
     program += [("I", f"ldp x{i}, x{i+1}, [sp, #{i * 8:#x}]") for i in range(0, 18, 2)]
     return program + [("I", "ldp x18, x30, [sp, #0x90]"), ("I", "add sp, sp, #0x2b0"),
                       ("I", f"b {call.target:#x}")]
+
+
+def string_wrap_stub(site, translator):
+    """Entry hook (B) of a join helper that returns a std::string in x0: run the helper, then
+    translate its result. The helper is a normal call (full AAPCS clobbers, it calls DBI's
+    append), so only x0 and the frame are kept."""
+    return [
+        ("I", "stp x29, x30, [sp, #-0x20]!"),
+        ("I", "str x0, [sp, #0x10]"),
+        ("I", "bl {sw_body}"),
+        ("I", "ldr x0, [sp, #0x10]"),
+        ("I", f"bl {translator:#x}"),
+        ("I", "ldr x0, [sp, #0x10]"),
+        ("I", "ldp x29, x30, [sp], #0x20"),
+        ("I", "ret"),
+        ("L", "sw_body"),
+        ("I", "stp x29, x30, [sp, #-0x30]!"),   # displaced WRAP_INSN; returns to the wrapper
+        ("I", f"b {site + 4:#x}"),
+    ]
 
 
 def glog_hook(v: Version, pfxsfx_addr):   # x0=glog, x1=len, x2=data, x3=a4

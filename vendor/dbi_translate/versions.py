@@ -6,6 +6,7 @@ from dataclasses import dataclass
 
 BASE = 0x7100000000   # NRO load address; the offsets below are file offsets
 CTOR_INSN = 0x91004005   # ADD X5,X0,#0x10: first insn of std::string(const char*, size_t)
+WRAP_INSN = 0xA9BD7BFD   # STP X29,X30,[SP,#-0x30]!: first insn of the word-join helpers
 
 
 @dataclass(frozen=True)
@@ -28,6 +29,7 @@ class StringCall:
     addr: int
     target: int
     argument: int = 0
+    count: int = 1               # consecutive 0x20-byte strings at the argument (a tab array)
 
 
 @dataclass(frozen=True)
@@ -58,6 +60,11 @@ class Version:
     # happens before width measurement or menu construction, using DBI's append.
     string_calls: tuple[StringCall, ...] = ()
     string_append: int = 0
+    # Entry points of TU-local "join" helpers (dst = lhs + " " + word, first instruction
+    # WRAP_INSN). DBI 921 assembles activity-log labels from separately decrypted words; the
+    # returned std::string (x0) is translated after the helper returns, so the full phrase
+    # ("Закрытие игры") matches although no single word does.
+    string_wraps: tuple[int, ...] = ()
 
 
 V905 = Version(
@@ -141,7 +148,8 @@ V921 = Version(
     sink=Site(0x6857C0, 0xAA0103F6, 0x6857C4, "BL"),    # MOV X22,X1
     clear_cave=True,
     bss_end=(0xFC, 0x1273CC8, 0x1273F10),               # MOD0 @0xF0: bss_end 0x1273DB8 -> 0x1274000
-    ctors=(0x440970,),                                  # = 920 0x442A60 (game info panel, 205 calls)
+    # + the activity-log copy (199 calls: month names, single-word labels; checked on console)
+    ctors=(0x440970, 0x3CA440),                         # = 920 0x442A60 (game info panel, 205 calls)
     string_append=0x785708,
     string_calls=(
         StringCall(0x3E28D0, 0x135290),  # activity header: Игрок, before measuring its width
@@ -151,6 +159,14 @@ V921 = Version(
         StringCall(0x49C388, 0x481500, 3),  # Использовать 4 ядра CPU
         StringCall(0x49C74C, 0x481500, 3),  # Захват видео
         StringCall(0x49C9A0, 0x481500, 3),  # Скриншоты
+        # activity-log tab bar: x1 = 3 titles (Запускавшиеся игры, Диаграмма активности, Сессии)
+        StringCall(0x3E78E4, 0x513410, 1, 3),
+        StringCall(0x3E7934, 0x513410, 1, 3),
+        StringCall(0x3E7954, 0x513410, 1, 3),
+    ),
+    string_wraps=(
+        0x3C9620,   # activity log: header "Все игроки", sort labels
+        0x2E9B00,   # session events: "Запуск игры", "Сворачивание игры", "Закрытие игры", ...
     ),
 )
 

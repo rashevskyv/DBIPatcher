@@ -8,10 +8,11 @@ import struct
 from capstone import Cs, CS_ARCH_ARM64, CS_MODE_LITTLE_ENDIAN
 
 from .asm import assemble, enc_b, enc_bl
-from .hooks import ctor_hook, ctor_stub, glog_hook, reader_hook, sink_hook, string_call_stub
+from .hooks import (ctor_hook, ctor_stub, glog_hook, reader_hook, sink_hook, string_call_stub,
+                    string_wrap_stub)
 from .runtime import (PATH_STR, STATE_MAGIC, ctor_exact, loader, make_fmt, make_pfxsfx,
                       shared_lookup, translate_string, value_lookup)
-from .versions import BASE, CTOR_INSN, Site, Version
+from .versions import BASE, CTOR_INSN, WRAP_INSN, Site, Version
 
 
 class PatchError(Exception):
@@ -65,9 +66,14 @@ def patch_nro(v: Version, data: bytes):
     for site in ctor_sites:
         _check_site(data, site, "ctor copy")
     for call in v.string_calls:
-        if not v.string_append or not 0 <= call.argument <= 7:
+        if not v.string_append or not 0 <= call.argument <= 7 or not 1 <= call.count <= 8:
             raise PatchError("UI string calls require an append function and an argument register x0..x7")
         _check_site(data, Site(call.addr, enc_bl(call.addr, call.target), 0, "BL"), "UI string call")
+    wrap_sites = [Site(a, WRAP_INSN, a + 4, "B") for a in v.string_wraps]
+    if wrap_sites and not v.string_append:
+        raise PatchError("string wraps require an append function")
+    for site in wrap_sites:
+        _check_site(data, site, "string wrap")
     _check_state_area(v, data)
 
     # cave layout: [path][pool][shared_lookup][loader][fmt][pfxsfx][glog][ctor][sink][reader]
@@ -93,20 +99,23 @@ def patch_nro(v: Version, data: bytes):
             st = assemble(ctor_stub(site.addr, ce_base), addr)
             stubs.append((addr, st)); addr += len(st)
 
-    # Share one translator and one trampoline per (target, argument), rather
+    # Share one translator and one trampoline per (target, argument, count), rather
     # than hooking every std::string constructor in the binary.
-    ui_code, ui_stubs, ui_wrappers = [], [], {}
-    if v.string_calls:
+    ui_code, ui_stubs, ui_wrappers, wrap_stubs = [], [], {}, []
+    if v.string_calls or wrap_sites:
         translator = addr
         code = assemble(translate_string(v, sl_base), addr)
         ui_code.append((addr, code)); addr += len(code)
-        for target, argument in sorted({(c.target, c.argument) for c in v.string_calls}):
-            call = next(c for c in v.string_calls if (c.target, c.argument) == (target, argument))
-            ui_wrappers[(target, argument)] = addr
+        for key in sorted({(c.target, c.argument, c.count) for c in v.string_calls}):
+            call = next(c for c in v.string_calls if (c.target, c.argument, c.count) == key)
+            ui_wrappers[key] = addr
             code = assemble(string_call_stub(call, translator), addr)
             ui_code.append((addr, code)); addr += len(code)
-        ui_stubs = [(Site(c.addr, enc_bl(c.addr, c.target), 0, "BL"), ui_wrappers[(c.target, c.argument)])
+        ui_stubs = [(Site(c.addr, enc_bl(c.addr, c.target), 0, "BL"), ui_wrappers[(c.target, c.argument, c.count)])
                     for c in v.string_calls]
+        for site in wrap_sites:
+            code = assemble(string_wrap_stub(site.addr, translator), addr)
+            ui_code.append((addr, code)); wrap_stubs.append((site, addr)); addr += len(code)
 
     total = addr - cave_start
     if total > cave_end - cave_start:
@@ -139,12 +148,14 @@ def patch_nro(v: Version, data: bytes):
         struct.pack_into("<I", data, site.addr, enc_b(site.addr, base))
     for site, base in ui_stubs:
         struct.pack_into("<I", data, site.addr, enc_bl(site.addr, base))
+    for site, base in wrap_stubs:
+        struct.pack_into("<I", data, site.addr, enc_b(site.addr, base))
     if v.bss_end:
         struct.pack_into("<I", data, v.bss_end[0], v.bss_end[2])
 
     _self_check(v, orig, data, addr,
                 {"fmt": fmt_base, "glog": lg_base, "ctor": ch_base, "sink": sk_base, "reader": rh_base},
-                list(zip(ctor_sites, stub_bases)), ui_stubs)
+                list(zip(ctor_sites, stub_bases)) + wrap_stubs, ui_stubs)
 
     report = [
         f"path @ {path_addr:#x}  pool @ {pool_addr:#x}  shared_lookup @ {sl_base:#x}({len(sl)}B)  "
