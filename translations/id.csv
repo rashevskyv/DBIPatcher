@@ -1452,7 +1452,7 @@ Android extensions: ,Android extensions:
 [ОШИБКА]\x1b[37;1m,[ERROR]\x1b[37;1m
 \x1b[31;1m[ОШИБКА]\x1b[37;1m,\x1b[31;1m[ERROR]\x1b[37;1m
 \x1b[31;1m[ОШИБКА],\x1b[31;1m[ERROR]
-Настроки создания ярлыков,Forwarder settings
-Использовать 4 ядра CPU,Use all 4 CPU cores
-Захват видео,Video capture
-Скриншоты,Screenshots
+Настроки создания ярлыков,Pengaturan pintasan
+Использовать 4 ядра CPU,Gunakan 4 inti CPU
+Захват видео,Rekam video
+Скриншоты,Tangkapan layar
