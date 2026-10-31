@@ -54,9 +54,11 @@ def synthetic_nro():
     for call in V.string_calls:
         struct.pack_into("<I", data, call.addr, enc_bl(call.addr, call.target))
     for addr in V.string_wraps:
-        # entry insn + a body that returns the already joined string (like the real helper)
-        body = [("I", "stp x29, x30, [sp, #-0x30]!"), ("I", "ldp x29, x30, [sp], #0x30"), ("I", "ret")]
-        data[addr:addr + 12] = assemble(body, addr)
+        # entry insn + a body that returns the already joined string in x8 (like the real
+        # helper: x0 is the moved-from left part, the result is written through x8)
+        body = [("I", "stp x29, x30, [sp, #-0x30]!"), ("I", "mov x0, x8"),
+                ("I", "ldp x29, x30, [sp], #0x30"), ("I", "ret")]
+        data[addr:addr + 16] = assemble(body, addr)
     return bytes(data)
 
 
@@ -108,7 +110,7 @@ class UiStringEmulationTests(unittest.TestCase):
             mu.reg_write(register, 0x123456780000 + i * 0x101)
         for i, register in enumerate(simd):
             mu.reg_write(register, (0xFEDCBA9876543210 << 64) | i)
-        mu.reg_write(registers[call.argument if call else 0], obj)
+        mu.reg_write(registers[call.argument if call else 8], obj)
         mu.reg_write(reg.UC_ARM64_REG_SP, STACK + 0x10000)
         mu.reg_write(reg.UC_ARM64_REG_LR, STOP)
         mu.reg_write(reg.UC_ARM64_REG_NZCV, 0xA0000000)
@@ -144,7 +146,7 @@ class UiStringEmulationTests(unittest.TestCase):
             self.assertEqual(seen, [BASE + call.target])
             self.assertEqual([mu.reg_read(r) for r in checked], before)
         else:   # a normal call: x0 (the joined string), callee-saved registers and SP survive
-            self.assertEqual(mu.reg_read(reg.UC_ARM64_REG_X0), obj)
+            self.assertEqual(mu.reg_read(reg.UC_ARM64_REG_X0), obj)   # helper returns x8
             for r in [*registers[19:30], reg.UC_ARM64_REG_SP]:
                 self.assertEqual(mu.reg_read(r), before[checked.index(r)])
         for i, want in enumerate(expected):

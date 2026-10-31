@@ -31,12 +31,13 @@ def string_call_stub(call: StringCall, translator):
 
 
 def string_wrap_stub(site, translator):
-    """Entry hook (B) of a join helper that returns a std::string in x0: run the helper, then
-    translate its result. The helper is a normal call (full AAPCS clobbers, it calls DBI's
-    append), so only x0 and the frame are kept."""
+    """Entry hook (B) of a join helper that returns a std::string through x8 (AAPCS64
+    indirect result; x0 is the moved-from left part): run the helper, then translate the
+    result. The helper is a normal call (full AAPCS clobbers, it calls DBI's append), so only
+    the frame is kept; the helper's own return value (x0 = x8) is restored."""
     return [
         ("I", "stp x29, x30, [sp, #-0x20]!"),
-        ("I", "str x0, [sp, #0x10]"),
+        ("I", "str x8, [sp, #0x10]"),
         ("I", "bl {sw_body}"),
         ("I", "ldr x0, [sp, #0x10]"),
         ("I", f"bl {translator:#x}"),

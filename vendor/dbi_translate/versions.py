@@ -62,7 +62,7 @@ class Version:
     string_append: int = 0
     # Entry points of TU-local "join" helpers (dst = lhs + " " + word, first instruction
     # WRAP_INSN). DBI 921 assembles activity-log labels from separately decrypted words; the
-    # returned std::string (x0) is translated after the helper returns, so the full phrase
+    # returned std::string (x8, AAPCS64 indirect result) is translated after the helper returns, so the full phrase
     # ("Закрытие игры") matches although no single word does.
     string_wraps: tuple[int, ...] = ()
 
