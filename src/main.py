@@ -1863,6 +1863,8 @@ This release provides translations for **DBI version {dbi_ver}**.
 ### 🆕 What changed in DBI 921 (compared with 920)
 - **FTP:** a serious bug in the FTP server is fixed (from the DBI author). No other user-visible changes were found in the 921 binary.
 - **Translations:** the patch now supports DBI 921; the red `[ERROR]` status (e.g. after "Waiting for interface to come up:" in MTP) is translated; the USB "connect your console to the PC" prompt fits on one line in Ukrainian, Belarusian, German, French, Lithuanian and Turkish; Ukrainian "Запустити HTTP сервер..." matches the FTP item.
+- **Activity log:** the column headers (Player / Sessions / Time), the tabs, the month names, the "[All players]" header and the session events (Launch, Minimize, Switching to, Closing game) are translated.
+- **Forwarder settings:** the new shortcut settings (4 CPU cores, video capture, screenshots) are translated for all languages (thanks to @sffinx, PR #30).
 
 ### 🆕 What changed in DBI 920 (compared with 912)
 DBI does not publish a changelog. This list comes from the strings and settings of the 920 binary.
