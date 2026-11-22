@@ -17,7 +17,8 @@ sys.path.insert(0, str(ROOT))
 
 from dbi_translate import PatchError, VERSIONS, patch_nro
 from dbi_translate.asm import assemble, enc_bl
-from dbi_translate.runtime import STATE_MAGIC
+from dbi_translate.runtime import STATE_MAGIC, clamp_pad
+from dbi_translate.versions import PAD_CLAMP_INSN
 from scripts.build_translation_bin import build_table, load_pairs_csv
 
 try:
@@ -60,6 +61,8 @@ def synthetic_nro():
         body = [("I", "stp x29, x30, [sp, #-0x30]!"), ("I", "mov x0, x8"),
                 ("I", "ldp x29, x30, [sp], #0x30"), ("I", "ret")]
         data[addr:addr + 16] = assemble(body, addr)
+    for addr in V.pad_clamps:
+        struct.pack_into("<I", data, addr, PAD_CLAMP_INSN)
     return bytes(data)
 
 
@@ -73,6 +76,32 @@ class UiStringBuildTests(unittest.TestCase):
     def test_older_versions_have_no_ui_string_calls(self):
         for version in ("905", "912", "920"):
             self.assertEqual(VERSIONS[version].string_calls, ())
+
+    def test_pad_clamps_redirect_to_a_shared_clamp_helper(self):
+        """issue #35: every activity-log column-padding SUB X1,X1,X0 is redirected to a bl
+        into one clamp helper (subs; csel ..., pl; ret), so an over-wide translated header
+        pads by 0 instead of a huge count that throws basic_string::_M_create."""
+        data = synthetic_nro()
+        patched, _ = patch_nro(V, data)
+        self.assertEqual(len(V.pad_clamps), 4)
+        want = assemble(clamp_pad(), 0)   # subs/csel/ret are not PC-relative
+        targets = set()
+        for site in V.pad_clamps:
+            self.assertEqual(struct.unpack_from("<I", data, site)[0], PAD_CLAMP_INSN)
+            word = struct.unpack_from("<I", patched, site)[0]
+            self.assertEqual(word & 0xFC000000, 0x94000000, f"site {site:#x} is not a BL")
+            target = site + ((((word & 0x3FFFFFF) ^ 0x2000000) - 0x2000000) << 2)
+            self.assertTrue(V.cave[0] <= target < V.cave[1])
+            targets.add(target)
+        self.assertEqual(len(targets), 1, "sites should share one helper")
+        helper = targets.pop()
+        self.assertEqual(patched[helper:helper + len(want)], want)
+
+    def test_rejects_wrong_pad_clamp_site(self):
+        data = bytearray(synthetic_nro())
+        struct.pack_into("<I", data, V.pad_clamps[0], 0xD503201F)   # NOP, not SUB X1,X1,X0
+        with self.assertRaisesRegex(PatchError, "pad clamp"):
+            patch_nro(V, data)
 
     def test_invalid_configuration_and_small_cave(self):
         for version in (replace(V, string_append=0),
@@ -185,9 +214,28 @@ class UiStringEmulationTests(unittest.TestCase):
         table, _, _ = build_table(load_pairs_csv(ROOT / "translations/en.csv"))
         self.emulate(V.string_calls[3], "Настроки создания ярлыков", "Forwarder settings", table=table)
 
+    def test_clamp_helper_floors_the_gap_at_zero(self):
+        """issue #35: the clamp helper returns max(field - text, 0). A header wider than its
+        column yields 0 padding, not a wrapped huge count that throws basic_string::_M_create."""
+        site = V.pad_clamps[0]
+        word = struct.unpack_from("<I", self.nro, site)[0]
+        helper = site + ((((word & 0x3FFFFFF) ^ 0x2000000) - 0x2000000) << 2)
+        for field, text, gap in [(10, 6, 4), (10, 8, 2), (10, 10, 0), (10, 12, 0), (20, 25, 0)]:
+            with self.subTest(field=field, text=text):
+                mu = Uc(UC_ARCH_ARM64, UC_MODE_ARM)
+                mu.mem_map(BASE, 0x1280000)
+                mu.mem_map(STOP, 0x1000)
+                mu.mem_write(BASE, self.nro)
+                mu.reg_write(reg.UC_ARM64_REG_X1, field)   # column width
+                mu.reg_write(reg.UC_ARM64_REG_X0, text)    # header width
+                mu.reg_write(reg.UC_ARM64_REG_LR, STOP)
+                mu.emu_start(BASE + helper, STOP, count=10)
+                self.assertEqual(mu.reg_read(reg.UC_ARM64_REG_X1), gap)
+
     def test_changes_stay_in_cave_and_configured_sites(self):
         allowed = [s.addr for s in (V.reader, V.fmt, V.glog, V.ctor, V.sink)]
-        allowed += [*V.ctors, V.bss_end[0], *(c.addr for c in V.string_calls), *V.string_wraps]
+        allowed += [*V.ctors, V.bss_end[0], *(c.addr for c in V.string_calls),
+                    *V.string_wraps, *V.pad_clamps]
         for i, (before, after) in enumerate(zip(self.input, self.nro)):
             if before != after:
                 self.assertTrue(V.cave[0] <= i < V.cave[1] or (i & ~3) in allowed)

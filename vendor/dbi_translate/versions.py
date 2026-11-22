@@ -7,6 +7,7 @@ from dataclasses import dataclass
 BASE = 0x7100000000   # NRO load address; the offsets below are file offsets
 CTOR_INSN = 0x91004005   # ADD X5,X0,#0x10: first insn of std::string(const char*, size_t)
 WRAP_INSN = 0xA9BD7BFD   # STP X29,X30,[SP,#-0x30]!: first insn of the word-join helpers
+PAD_CLAMP_INSN = 0xCB000021   # SUB X1,X1,X0: the column-padding subtract redirected to clamp_pad
 
 
 @dataclass(frozen=True)
@@ -65,6 +66,10 @@ class Version:
     # returned std::string (x8, AAPCS64 indirect result) is translated after the helper returns, so the full phrase
     # ("Закрытие игры") matches although no single word does.
     string_wraps: tuple[int, ...] = ()
+    # File offsets of DBI's `SUB X1,X1,X0` activity-log column-padding subtracts (PAD_CLAMP_INSN).
+    # Each is redirected to clamp_pad so an over-wide translated header pads by 0 instead of
+    # wrapping to a huge count and throwing basic_string::_M_create (issue #35).
+    pad_clamps: tuple[int, ...] = ()
 
 
 V905 = Version(
@@ -174,6 +179,12 @@ V921 = Version(
     string_wraps=(
         0x3C9620,   # activity log: header "Все игроки", sort labels
         0x2E9B00,   # session events: "Запуск игры", "Сворачивание игры", "Закрытие игры", ...
+    ),
+    pad_clamps=(
+        0x3E28E0,   # activity header "Игрок"  column width 20
+        0x3E2B58,   # activity header "Сессии" column width 10 (issue #35)
+        0x3E2DAC,   # activity header "Время"  column width 10
+        0x5135A0,   # tab-bar title centring (activity + save-data tabs), width = cell-2
     ),
 )
 

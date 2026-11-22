@@ -10,9 +10,9 @@ from capstone import Cs, CS_ARCH_ARM64, CS_MODE_LITTLE_ENDIAN
 from .asm import assemble, enc_b, enc_bl
 from .hooks import (ctor_hook, ctor_stub, glog_hook, reader_hook, sink_hook, string_call_stub,
                     string_wrap_stub)
-from .runtime import (PATH_STR, STATE_MAGIC, ctor_exact, loader, make_fmt, make_pfxsfx,
+from .runtime import (PATH_STR, STATE_MAGIC, clamp_pad, ctor_exact, loader, make_fmt, make_pfxsfx,
                       shared_lookup, translate_string, value_lookup)
-from .versions import BASE, CTOR_INSN, WRAP_INSN, Site, Version
+from .versions import BASE, CTOR_INSN, PAD_CLAMP_INSN, WRAP_INSN, Site, Version
 
 
 class PatchError(Exception):
@@ -74,6 +74,9 @@ def patch_nro(v: Version, data: bytes):
         raise PatchError("string wraps require an append function")
     for site in wrap_sites:
         _check_site(data, site, "string wrap")
+    clamp_site_addrs = [Site(a, PAD_CLAMP_INSN, a + 4, "BL") for a in v.pad_clamps]
+    for site in clamp_site_addrs:
+        _check_site(data, site, "pad clamp")
     _check_state_area(v, data)
 
     # cave layout: [path][pool][shared_lookup][loader][fmt][pfxsfx][glog][ctor][sink][reader]
@@ -90,6 +93,9 @@ def patch_nro(v: Version, data: bytes):
     ch = assemble(ctor_hook(v, px_base), addr); ch_base = addr; addr += len(ch)
     sk = assemble(sink_hook(v, px_base), addr); sk_base = addr; addr += len(sk)
     rh = assemble(reader_hook(v, ld_base), addr); rh_base = addr; addr += len(rh)
+    cl, cl_base = b"", 0
+    if clamp_site_addrs:
+        cl = assemble(clamp_pad(), addr); cl_base = addr; addr += len(cl)
     # [ctor_exact][one stub per std::string(const char*, size_t) copy]
     stubs = []
     if ctor_sites:
@@ -134,6 +140,8 @@ def patch_nro(v: Version, data: bytes):
     data[ch_base:ch_base + len(ch)] = ch
     data[sk_base:sk_base + len(sk)] = sk
     data[rh_base:rh_base + len(rh)] = rh
+    if cl:
+        data[cl_base:cl_base + len(cl)] = cl
     for base, code in stubs:
         data[base:base + len(code)] = code
     for base, code in ui_code:
@@ -150,12 +158,15 @@ def patch_nro(v: Version, data: bytes):
         struct.pack_into("<I", data, site.addr, enc_bl(site.addr, base))
     for site, base in wrap_stubs:
         struct.pack_into("<I", data, site.addr, enc_b(site.addr, base))
+    clamp_stubs = [(site, cl_base) for site in clamp_site_addrs]
+    for site, base in clamp_stubs:
+        struct.pack_into("<I", data, site.addr, enc_bl(site.addr, base))
     if v.bss_end:
         struct.pack_into("<I", data, v.bss_end[0], v.bss_end[2])
 
     _self_check(v, orig, data, addr,
                 {"fmt": fmt_base, "glog": lg_base, "ctor": ch_base, "sink": sk_base, "reader": rh_base},
-                list(zip(ctor_sites, stub_bases)) + wrap_stubs, ui_stubs)
+                list(zip(ctor_sites, stub_bases)) + wrap_stubs, ui_stubs, clamp_stubs)
 
     report = [
         f"path @ {path_addr:#x}  pool @ {pool_addr:#x}  shared_lookup @ {sl_base:#x}({len(sl)}B)  "
@@ -168,7 +179,7 @@ def patch_nro(v: Version, data: bytes):
     return bytes(data), report
 
 
-def _self_check(v, orig, data, cave_top, bases, ctor_stubs=(), ui_stubs=()):
+def _self_check(v, orig, data, cave_top, bases, ctor_stubs=(), ui_stubs=(), clamp_stubs=()):
     md = Cs(CS_ARCH_ARM64, CS_MODE_LITTLE_ENDIAN)
 
     def expect(site, base, mnem):
@@ -188,10 +199,13 @@ def _self_check(v, orig, data, cave_top, bases, ctor_stubs=(), ui_stubs=()):
         expect(site, base, "b")
     for site, base in ui_stubs:
         expect(site, base, "bl")
+    for site, base in clamp_stubs:
+        expect(site, base, "bl")
 
     sites = {v.reader.addr, v.fmt.addr, v.glog.addr, v.ctor.addr, v.sink.addr}
     sites.update(site.addr for site, _ in ctor_stubs)
     sites.update(site.addr for site, _ in ui_stubs)
+    sites.update(site.addr for site, _ in clamp_stubs)
     if v.bss_end:
         sites.add(v.bss_end[0])
     cave_start = v.cave[0]

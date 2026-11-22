@@ -36,6 +36,19 @@ def translate_string(v: Version, sl_addr):
     ]
 
 
+def clamp_pad():
+    """(x1=field_width, x0=text_width) -> x1 = max(field_width - text_width, 0). Leaf; clobbers
+    only x1, NZCV and x30 (all dead at the sites). DBI centres an activity-log label by padding
+    (field - text)/2 spaces; a translation wider than the field makes the original `sub x1,x1,x0`
+    wrap and the following std::string(gap, ' ') throw basic_string::_M_create (issue #35). This
+    does that subtract with a floor of 0; the site's own `lsr x1,x1,#1` still halves the result."""
+    return [
+        ("I", "subs x1, x1, x0"),
+        ("I", "csel x1, x1, xzr, pl"),   # pl = non-negative: keep the gap, else 0
+        ("I", "ret"),
+    ]
+
+
 def shared_lookup(v: Version, pool_addr):
     """(X0=key_ptr, X1=key_len) -> (X0=tr_ptr|0, X1=tr_len). Leaf; clobbers x0-x17.
     Exact scan of the DBITRNS table at state.tableptr."""
