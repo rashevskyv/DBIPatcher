@@ -36,6 +36,82 @@ def translate_string(v: Version, sl_addr):
     ]
 
 
+def clamp_pad():
+    """(x1=field_width, x0=text_width) -> x1 = max(field_width - text_width, 0). Leaf; clobbers
+    only x1, NZCV and x30 (all dead at the sites). DBI centres an activity-log label by padding
+    (field - text)/2 spaces; a translation wider than the field makes the original `sub x1,x1,x0`
+    wrap and the following std::string(gap, ' ') throw basic_string::_M_create (issue #35). This
+    does that subtract with a floor of 0; the site's own `lsr x1,x1,#1` still halves the result."""
+    return [
+        ("I", "subs x1, x1, x0"),
+        ("I", "csel x1, x1, xzr, pl"),   # pl = non-negative: keep the gap, else 0
+        ("I", "ret"),
+    ]
+
+
+def shift_pad(v: Version):
+    """clamp_pad for the Sessions header, which also centres an over-wide label. If the label is
+    wider than the 10-char field by d, move it d/2 columns left by dropping that many trailing
+    spaces from the header built so far (a std::string at [sp, #v.pad_shift_sp]: ptr, size);
+    the previous cell is padded with spaces, so a 12-char "Munkamenetek" then ends exactly at
+    its cell edge and the next header stays above its own column (issue #35). Returns gap 0.
+    Leaf; clobbers x1, x3-x6, NZCV, x30. x0 (text width) and x2 (fill) are left alone."""
+    size_off = v.pad_shift_sp + 8
+    return [
+        ("I", "subs x1, x1, x0"),
+        ("I", "b.pl {sp_ret}"),                          # fits: the plain non-negative gap
+        ("I", "neg x1, x1"),
+        ("I", "lsr x1, x1, #1"),                         # columns to move left
+        ("I", f"ldr x3, [sp, #{v.pad_shift_sp:#x}]"),
+        ("I", f"ldr x4, [sp, #{size_off:#x}]"),
+        ("L", "sp_loop"),
+        ("I", "cbz x1, {sp_done}"),
+        ("I", "cbz x4, {sp_done}"),
+        ("I", "add x5, x3, x4"),
+        ("I", "ldurb w6, [x5, #-1]"),
+        ("I", "cmp w6, #0x20"),
+        ("I", "b.ne {sp_done}"),                         # only ever drop padding spaces
+        ("I", "sub x4, x4, #1"),
+        ("I", "sub x1, x1, #1"),
+        ("I", "b {sp_loop}"),
+        ("L", "sp_done"),
+        ("I", f"str x4, [sp, #{size_off:#x}]"),
+        ("I", "strb wzr, [x3, x4]"),
+        ("I", "mov x1, #0"),
+        ("L", "sp_ret"),
+        ("I", "ret"),
+    ]
+
+
+def fit_pad(v: Version):
+    """(x0=std::string*, x1=width in codepoints, w2=fill) -> pad like DBI's resize-with-fill at
+    v.pad_fn, but never cut. That function pads a string to `width` codepoints and TRUNCATES a
+    longer one; the activity-log header line is built column by column with cumulative widths
+    (21, 32, 42), so a translated header one character too wide lost its last letter
+    ("Munkamenete", issue #35). A string already at least `width` long is left whole, so
+    the text overflows into the gap instead of being cut. Shorter strings tail-call the original.
+    Counts codepoints (bytes that are not 10xxxxxx), so Cyrillic and accents are measured right.
+    Clobbers x3-x6 and NZCV like any call; x0-x2 reach the original unchanged."""
+    return [
+        ("I", "ldp x3, x4, [x0]"),                       # data ptr, byte size
+        ("I", "mov x5, #0"),
+        ("I", "cbz x4, {fp_pad}"),
+        ("L", "fp_cnt"),
+        ("I", "ldrb w6, [x3], #1"),
+        ("I", "and w6, w6, #0xc0"),
+        ("I", "cmp w6, #0x80"),
+        ("I", "cinc x5, x5, ne"),                        # count non-continuation bytes
+        ("I", "subs x4, x4, #1"),
+        ("I", "b.ne {fp_cnt}"),
+        ("I", "cmp x5, x1"),
+        ("I", "b.hs {fp_ret}"),                          # already wide enough: keep it whole
+        ("L", "fp_pad"),
+        ("I", f"b {v.pad_fn:#x}"),
+        ("L", "fp_ret"),
+        ("I", "ret"),
+    ]
+
+
 def shared_lookup(v: Version, pool_addr):
     """(X0=key_ptr, X1=key_len) -> (X0=tr_ptr|0, X1=tr_len). Leaf; clobbers x0-x17.
     Exact scan of the DBITRNS table at state.tableptr."""

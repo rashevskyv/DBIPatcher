@@ -17,7 +17,8 @@ sys.path.insert(0, str(ROOT))
 
 from dbi_translate import PatchError, VERSIONS, patch_nro
 from dbi_translate.asm import assemble, enc_bl
-from dbi_translate.runtime import STATE_MAGIC
+from dbi_translate.runtime import STATE_MAGIC, clamp_pad, shift_pad
+from dbi_translate.versions import PAD_CLAMP_INSN
 from scripts.build_translation_bin import build_table, load_pairs_csv
 
 try:
@@ -60,6 +61,10 @@ def synthetic_nro():
         body = [("I", "stp x29, x30, [sp, #-0x30]!"), ("I", "mov x0, x8"),
                 ("I", "ldp x29, x30, [sp], #0x30"), ("I", "ret")]
         data[addr:addr + 16] = assemble(body, addr)
+    for addr in (*V.pad_clamps, *V.pad_shifts):
+        struct.pack_into("<I", data, addr, PAD_CLAMP_INSN)
+    for addr in V.pad_fits:
+        struct.pack_into("<I", data, addr, enc_bl(addr, V.pad_fn))
     return bytes(data)
 
 
@@ -73,6 +78,70 @@ class UiStringBuildTests(unittest.TestCase):
     def test_older_versions_have_no_ui_string_calls(self):
         for version in ("905", "912", "920"):
             self.assertEqual(VERSIONS[version].string_calls, ())
+
+    def test_pad_clamps_redirect_to_a_shared_clamp_helper(self):
+        """issue #35: every activity-log column-padding SUB X1,X1,X0 is redirected to a bl
+        into one clamp helper (subs; csel ..., pl; ret), so an over-wide translated header
+        pads by 0 instead of a huge count that throws basic_string::_M_create."""
+        data = synthetic_nro()
+        patched, _ = patch_nro(V, data)
+        self.assertEqual(len(V.pad_clamps), 3)
+        want = assemble(clamp_pad(), 0)   # subs/csel/ret are not PC-relative
+        targets = set()
+        for site in V.pad_clamps:
+            self.assertEqual(struct.unpack_from("<I", data, site)[0], PAD_CLAMP_INSN)
+            word = struct.unpack_from("<I", patched, site)[0]
+            self.assertEqual(word & 0xFC000000, 0x94000000, f"site {site:#x} is not a BL")
+            target = site + ((((word & 0x3FFFFFF) ^ 0x2000000) - 0x2000000) << 2)
+            self.assertTrue(V.cave[0] <= target < V.cave[1])
+            targets.add(target)
+        self.assertEqual(len(targets), 1, "sites should share one helper")
+        helper = targets.pop()
+        self.assertEqual(patched[helper:helper + len(want)], want)
+
+    def test_fit_pad_sites_redirect_to_one_helper(self):
+        """issue #35: the three header-line pad calls (which also truncate) go through fit_pad."""
+        patched, _ = patch_nro(V, synthetic_nro())
+        self.assertEqual(len(V.pad_fits), 3)
+        targets = set()
+        for site in V.pad_fits:
+            word = struct.unpack_from("<I", patched, site)[0]
+            self.assertEqual(word & 0xFC000000, 0x94000000)
+            target = site + ((((word & 0x3FFFFFF) ^ 0x2000000) - 0x2000000) << 2)
+            self.assertTrue(V.cave[0] <= target < V.cave[1])
+            targets.add(target)
+        self.assertEqual(len(targets), 1)
+
+    def test_rejects_wrong_pad_fit_site(self):
+        data = bytearray(synthetic_nro())
+        struct.pack_into("<I", data, V.pad_fits[0], 0xD503201F)
+        with self.assertRaisesRegex(PatchError, "pad fit"):
+            patch_nro(V, data)
+
+    def test_sessions_header_pad_redirects_to_shift_helper(self):
+        """issue #35: the Sessions header SUB goes to its own helper that also moves an
+        over-wide label left."""
+        patched, _ = patch_nro(V, synthetic_nro())
+        self.assertEqual(len(V.pad_shifts), 1)
+        site = V.pad_shifts[0]
+        word = struct.unpack_from("<I", patched, site)[0]
+        self.assertEqual(word & 0xFC000000, 0x94000000)
+        helper = site + ((((word & 0x3FFFFFF) ^ 0x2000000) - 0x2000000) << 2)
+        self.assertTrue(V.cave[0] <= helper < V.cave[1])
+        want = assemble(shift_pad(V), helper)
+        self.assertEqual(patched[helper:helper + len(want)], want)
+
+    def test_rejects_wrong_pad_shift_site(self):
+        data = bytearray(synthetic_nro())
+        struct.pack_into("<I", data, V.pad_shifts[0], 0xD503201F)
+        with self.assertRaisesRegex(PatchError, "pad shift"):
+            patch_nro(V, data)
+
+    def test_rejects_wrong_pad_clamp_site(self):
+        data = bytearray(synthetic_nro())
+        struct.pack_into("<I", data, V.pad_clamps[0], 0xD503201F)   # NOP, not SUB X1,X1,X0
+        with self.assertRaisesRegex(PatchError, "pad clamp"):
+            patch_nro(V, data)
 
     def test_invalid_configuration_and_small_cave(self):
         for version in (replace(V, string_append=0),
@@ -185,9 +254,108 @@ class UiStringEmulationTests(unittest.TestCase):
         table, _, _ = build_table(load_pairs_csv(ROOT / "translations/en.csv"))
         self.emulate(V.string_calls[3], "Настроки создания ярлыков", "Forwarder settings", table=table)
 
+    def test_clamp_helper_floors_the_gap_at_zero(self):
+        """issue #35: the clamp helper returns max(field - text, 0). A header wider than its
+        column yields 0 padding, not a wrapped huge count that throws basic_string::_M_create."""
+        site = V.pad_clamps[0]
+        word = struct.unpack_from("<I", self.nro, site)[0]
+        helper = site + ((((word & 0x3FFFFFF) ^ 0x2000000) - 0x2000000) << 2)
+        for field, text, gap in [(10, 6, 4), (10, 8, 2), (10, 10, 0), (10, 12, 0), (20, 25, 0)]:
+            with self.subTest(field=field, text=text):
+                mu = Uc(UC_ARCH_ARM64, UC_MODE_ARM)
+                mu.mem_map(BASE, 0x1280000)
+                mu.mem_map(STOP, 0x1000)
+                mu.mem_write(BASE, self.nro)
+                mu.reg_write(reg.UC_ARM64_REG_X1, field)   # column width
+                mu.reg_write(reg.UC_ARM64_REG_X0, text)    # header width
+                mu.reg_write(reg.UC_ARM64_REG_LR, STOP)
+                mu.emu_start(BASE + helper, STOP, count=10)
+                self.assertEqual(mu.reg_read(reg.UC_ARM64_REG_X1), gap)
+
+    def test_shift_pad_moves_a_wide_label_left_by_half_the_overflow(self):
+        """issue #35: the Sessions field is 10 wide. A label d wider moves d/2 columns left by
+        dropping trailing spaces of the header so far; the gap returned is always 0 then. Only
+        spaces are dropped, and a label that fits keeps the plain (field - text) gap."""
+        site = V.pad_shifts[0]
+        word = struct.unpack_from("<I", self.nro, site)[0]
+        helper = site + ((((word & 0x3FFFFFF) ^ 0x2000000) - 0x2000000) << 2)
+        sp = 0x800000
+        cases = [  # header so far, text width, expected header, expected gap
+            ("   Jatekos        ", 12, "   Jatekos       ", 0),   # 12 chars: 1 left
+            ("   Jatekos        ", 13, "   Jatekos       ", 0),   # 13 chars: still 1
+            ("   Jatekos        ", 14, "   Jatekos      ", 0),    # 14 chars: 2
+            ("   Jatekos        ", 11, "   Jatekos        ", 0),  # d=1 -> 0
+            ("   Jatekos        ", 8, "   Jatekos        ", 2),   # fits: gap 10-8 (the site halves it)
+            ("   Jatekos        ", 10, "   Jatekos        ", 0),
+            ("abc", 14, "abc", 0),                                   # no spaces: nothing dropped
+            ("ab  ", 20, "ab", 0),                                   # never past the spaces
+            ("", 14, "", 0),
+        ]
+        for header, width, want, gap in cases:
+            with self.subTest(header=header, width=width):
+                mu = Uc(UC_ARCH_ARM64, UC_MODE_ARM)
+                mu.mem_map(BASE, 0x1280000)
+                mu.mem_map(sp - 0x1000, 0x2000)
+                mu.mem_map(STOP, 0x1000)
+                mu.mem_write(BASE, self.nro)
+                raw = header.encode()
+                buf = sp + 0x400
+                mu.mem_write(buf, raw + b"\0")
+                mu.mem_write(sp + V.pad_shift_sp, struct.pack("<QQ", buf, len(raw)))
+                mu.reg_write(reg.UC_ARM64_REG_SP, sp)
+                mu.reg_write(reg.UC_ARM64_REG_X1, 10)
+                mu.reg_write(reg.UC_ARM64_REG_X0, width)
+                mu.reg_write(reg.UC_ARM64_REG_X2, 0x20)
+                mu.reg_write(reg.UC_ARM64_REG_LR, STOP)
+                mu.emu_start(BASE + helper, STOP, count=500)
+                self.assertEqual(mu.reg_read(reg.UC_ARM64_REG_X1), gap)
+                self.assertEqual(mu.reg_read(reg.UC_ARM64_REG_X2), 0x20)
+                ptr, size = struct.unpack("<QQ", bytes(mu.mem_read(sp + V.pad_shift_sp, 16)))
+                self.assertEqual(bytes(mu.mem_read(ptr, size + 1)), want.encode() + b"\0")
+
+    def test_fit_pad_never_cuts_and_counts_codepoints(self):
+        """issue #35: DBI's pad-to-N function also truncates; the header line is built with
+        cumulative widths, so a 12-char header in an 11-char cell lost its last letter. fit_pad
+        calls the original only for a string shorter than N codepoints, and leaves a string
+        that is already N or longer whole. Cyrillic is 2 bytes per codepoint: a byte count would
+        wrongly skip "Сессии" (12 bytes, 6 chars) for N=11."""
+        site = V.pad_fits[1]
+        word = struct.unpack_from("<I", self.nro, site)[0]
+        helper = site + ((((word & 0x3FFFFFF) ^ 0x2000000) - 0x2000000) << 2)
+        cases = [("Munkamenetek", 11, False), ("Munkamenete", 11, False), ("Munkamenet", 11, True),
+                 ("Сессии", 11, True), ("Сесії", 11, True), ("", 11, True), ("x" * 40, 32, False)]
+        for text, width, calls in cases:
+            with self.subTest(text=text, width=width):
+                mu = Uc(UC_ARCH_ARM64, UC_MODE_ARM)
+                mu.mem_map(BASE, 0x1280000)
+                mu.mem_map(HEAP, 0x10000)
+                mu.mem_map(STOP, 0x1000)
+                mu.mem_write(BASE, self.nro)
+                raw = text.encode()
+                mu.mem_write(HEAP + 0x100, raw + b"\0")
+                mu.mem_write(HEAP, struct.pack("<QQ", HEAP + 0x100, len(raw)))
+                mu.reg_write(reg.UC_ARM64_REG_X0, HEAP)
+                mu.reg_write(reg.UC_ARM64_REG_X1, width)
+                mu.reg_write(reg.UC_ARM64_REG_X2, 0x20)
+                mu.reg_write(reg.UC_ARM64_REG_LR, STOP)
+                seen = []
+
+                def hook(uc, address, size, _):
+                    if address == BASE + V.pad_fn:
+                        seen.append([uc.reg_read(getattr(reg, f"UC_ARM64_REG_X{i}")) for i in range(3)])
+                        uc.emu_stop()
+
+                mu.hook_add(UC_HOOK_CODE, hook)
+                mu.emu_start(BASE + helper, STOP, count=2000)
+                self.assertEqual(bool(seen), calls)
+                if calls:   # the original sees its arguments untouched
+                    self.assertEqual(seen[0], [HEAP, width, 0x20])
+                self.assertEqual(bytes(mu.mem_read(HEAP + 0x100, len(raw))), raw)
+
     def test_changes_stay_in_cave_and_configured_sites(self):
         allowed = [s.addr for s in (V.reader, V.fmt, V.glog, V.ctor, V.sink)]
-        allowed += [*V.ctors, V.bss_end[0], *(c.addr for c in V.string_calls), *V.string_wraps]
+        allowed += [*V.ctors, V.bss_end[0], *(c.addr for c in V.string_calls),
+                    *V.string_wraps, *V.pad_clamps, *V.pad_shifts, *V.pad_fits]
         for i, (before, after) in enumerate(zip(self.input, self.nro)):
             if before != after:
                 self.assertTrue(V.cave[0] <= i < V.cave[1] or (i & ~3) in allowed)
