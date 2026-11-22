@@ -63,6 +63,8 @@ def synthetic_nro():
         data[addr:addr + 16] = assemble(body, addr)
     for addr in V.pad_clamps:
         struct.pack_into("<I", data, addr, PAD_CLAMP_INSN)
+    for addr in V.pad_fits:
+        struct.pack_into("<I", data, addr, enc_bl(addr, V.pad_fn))
     return bytes(data)
 
 
@@ -96,6 +98,25 @@ class UiStringBuildTests(unittest.TestCase):
         self.assertEqual(len(targets), 1, "sites should share one helper")
         helper = targets.pop()
         self.assertEqual(patched[helper:helper + len(want)], want)
+
+    def test_fit_pad_sites_redirect_to_one_helper(self):
+        """issue #35: the three header-line pad calls (which also truncate) go through fit_pad."""
+        patched, _ = patch_nro(V, synthetic_nro())
+        self.assertEqual(len(V.pad_fits), 3)
+        targets = set()
+        for site in V.pad_fits:
+            word = struct.unpack_from("<I", patched, site)[0]
+            self.assertEqual(word & 0xFC000000, 0x94000000)
+            target = site + ((((word & 0x3FFFFFF) ^ 0x2000000) - 0x2000000) << 2)
+            self.assertTrue(V.cave[0] <= target < V.cave[1])
+            targets.add(target)
+        self.assertEqual(len(targets), 1)
+
+    def test_rejects_wrong_pad_fit_site(self):
+        data = bytearray(synthetic_nro())
+        struct.pack_into("<I", data, V.pad_fits[0], 0xD503201F)
+        with self.assertRaisesRegex(PatchError, "pad fit"):
+            patch_nro(V, data)
 
     def test_rejects_wrong_pad_clamp_site(self):
         data = bytearray(synthetic_nro())
@@ -232,10 +253,49 @@ class UiStringEmulationTests(unittest.TestCase):
                 mu.emu_start(BASE + helper, STOP, count=10)
                 self.assertEqual(mu.reg_read(reg.UC_ARM64_REG_X1), gap)
 
+    def test_fit_pad_never_cuts_and_counts_codepoints(self):
+        """issue #35: DBI's pad-to-N function also truncates; the header line is built with
+        cumulative widths, so a 12-char header in an 11-char cell lost its last letter. fit_pad
+        calls the original only for a string shorter than N codepoints, and leaves a string
+        that is already N or longer whole. Cyrillic is 2 bytes per codepoint: a byte count would
+        wrongly skip "Сессии" (12 bytes, 6 chars) for N=11."""
+        site = V.pad_fits[1]
+        word = struct.unpack_from("<I", self.nro, site)[0]
+        helper = site + ((((word & 0x3FFFFFF) ^ 0x2000000) - 0x2000000) << 2)
+        cases = [("Munkamenetek", 11, False), ("Munkamenete", 11, False), ("Munkamenet", 11, True),
+                 ("Сессии", 11, True), ("Сесії", 11, True), ("", 11, True), ("x" * 40, 32, False)]
+        for text, width, calls in cases:
+            with self.subTest(text=text, width=width):
+                mu = Uc(UC_ARCH_ARM64, UC_MODE_ARM)
+                mu.mem_map(BASE, 0x1280000)
+                mu.mem_map(HEAP, 0x10000)
+                mu.mem_map(STOP, 0x1000)
+                mu.mem_write(BASE, self.nro)
+                raw = text.encode()
+                mu.mem_write(HEAP + 0x100, raw + b"\0")
+                mu.mem_write(HEAP, struct.pack("<QQ", HEAP + 0x100, len(raw)))
+                mu.reg_write(reg.UC_ARM64_REG_X0, HEAP)
+                mu.reg_write(reg.UC_ARM64_REG_X1, width)
+                mu.reg_write(reg.UC_ARM64_REG_X2, 0x20)
+                mu.reg_write(reg.UC_ARM64_REG_LR, STOP)
+                seen = []
+
+                def hook(uc, address, size, _):
+                    if address == BASE + V.pad_fn:
+                        seen.append([uc.reg_read(getattr(reg, f"UC_ARM64_REG_X{i}")) for i in range(3)])
+                        uc.emu_stop()
+
+                mu.hook_add(UC_HOOK_CODE, hook)
+                mu.emu_start(BASE + helper, STOP, count=2000)
+                self.assertEqual(bool(seen), calls)
+                if calls:   # the original sees its arguments untouched
+                    self.assertEqual(seen[0], [HEAP, width, 0x20])
+                self.assertEqual(bytes(mu.mem_read(HEAP + 0x100, len(raw))), raw)
+
     def test_changes_stay_in_cave_and_configured_sites(self):
         allowed = [s.addr for s in (V.reader, V.fmt, V.glog, V.ctor, V.sink)]
         allowed += [*V.ctors, V.bss_end[0], *(c.addr for c in V.string_calls),
-                    *V.string_wraps, *V.pad_clamps]
+                    *V.string_wraps, *V.pad_clamps, *V.pad_fits]
         for i, (before, after) in enumerate(zip(self.input, self.nro)):
             if before != after:
                 self.assertTrue(V.cave[0] <= i < V.cave[1] or (i & ~3) in allowed)

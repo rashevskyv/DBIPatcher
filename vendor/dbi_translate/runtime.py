@@ -49,6 +49,35 @@ def clamp_pad():
     ]
 
 
+def fit_pad(v: Version):
+    """(x0=std::string*, x1=width in codepoints, w2=fill) -> pad like DBI's resize-with-fill at
+    v.pad_fn, but never cut. That function pads a string to `width` codepoints and TRUNCATES a
+    longer one; the activity-log header line is built column by column with cumulative widths
+    (21, 32, 42), so a translated header one character too wide lost its last letter
+    ("Munkamenete", issue #35). A string already at least `width` long is left whole, so
+    the text overflows into the gap instead of being cut. Shorter strings tail-call the original.
+    Counts codepoints (bytes that are not 10xxxxxx), so Cyrillic and accents are measured right.
+    Clobbers x3-x6 and NZCV like any call; x0-x2 reach the original unchanged."""
+    return [
+        ("I", "ldp x3, x4, [x0]"),                       # data ptr, byte size
+        ("I", "mov x5, #0"),
+        ("I", "cbz x4, {fp_pad}"),
+        ("L", "fp_cnt"),
+        ("I", "ldrb w6, [x3], #1"),
+        ("I", "and w6, w6, #0xc0"),
+        ("I", "cmp w6, #0x80"),
+        ("I", "cinc x5, x5, ne"),                        # count non-continuation bytes
+        ("I", "subs x4, x4, #1"),
+        ("I", "b.ne {fp_cnt}"),
+        ("I", "cmp x5, x1"),
+        ("I", "b.hs {fp_ret}"),                          # already wide enough: keep it whole
+        ("L", "fp_pad"),
+        ("I", f"b {v.pad_fn:#x}"),
+        ("L", "fp_ret"),
+        ("I", "ret"),
+    ]
+
+
 def shared_lookup(v: Version, pool_addr):
     """(X0=key_ptr, X1=key_len) -> (X0=tr_ptr|0, X1=tr_len). Leaf; clobbers x0-x17.
     Exact scan of the DBITRNS table at state.tableptr."""
