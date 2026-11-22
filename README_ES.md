@@ -36,6 +36,7 @@ Motor avanzado de localización asistida por IA para [DBI](https://github.com/ra
 | **KK** | Kazajo | **ET** | Estonio |
 | **LT** | Lituano | **LV** | Letón |
 | **TR** | Turco | **ID** | Indonesio |
+| **HU** | Húngaro | | |
 
 ---
 
@@ -152,7 +153,7 @@ Las contribuciones para español latinoamericano deben seguir la [guía de estil
 - **Creador de DBI**: [duckbill](https://github.com/rashevskyv/dbi).
 - **Motor de localización**: [tg:@buinich_bohdan](https://github.com/rashevskyv).
 - **Parcheador de ensamblador**: [0xroast/dbi-translate](https://github.com/0xroast/dbi-translate) (incluido en `vendor/dbi_translate/`).
-- **Colaboradores**: [aldokeita](https://github.com/aldokeita) (localización al indonesio en [#24](https://github.com/rashevskyv/DBIPatcher/pull/24), cadenas de origen faltantes de DBI 905 en [#26](https://github.com/rashevskyv/DBIPatcher/pull/26), investigación de líneas de estado con color y límite de tamaño en [#25](https://github.com/rashevskyv/DBIPatcher/issues/25)).
+- **Colaboradores**: [oldman63](https://github.com/oldman63) (localización al húngaro en [#36](https://github.com/rashevskyv/DBIPatcher/pull/36), informe del registro de actividad en [#35](https://github.com/rashevskyv/DBIPatcher/issues/35)), [aldokeita](https://github.com/aldokeita) (localización al indonesio en [#24](https://github.com/rashevskyv/DBIPatcher/pull/24), cadenas de origen faltantes de DBI 905 en [#26](https://github.com/rashevskyv/DBIPatcher/pull/26), investigación de líneas de estado con color y límite de tamaño en [#25](https://github.com/rashevskyv/DBIPatcher/issues/25)).
 - **Agradecimiento especial**: Claude 3.5 Sonnet por asistir en las traducciones.
 
 > *Creado con ❤️ para la comunidad de Nintendo Switch.*

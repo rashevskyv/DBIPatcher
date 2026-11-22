@@ -36,6 +36,7 @@ An advanced, AI-powered localization engine for [DBI](https://github.com/rashevs
 | **KK** | Kazakh | **ET** | Estonian |
 | **LT** | Lithuanian | **LV** | Latvian |
 | **TR** | Turkish | **ID** | Indonesian |
+| **HU** | Hungarian | | |
 
 ---
 
@@ -162,7 +163,7 @@ Spanish (Latin America) contributions should follow the
 - **DBI Creator**: [duckbill](https://github.com/rashevskyv/dbi)
 - **Localization Engine**: [tg:@buinich_bohdan](https://github.com/rashevskyv)
 - **Assembly Patcher**: [0xroast/dbi-translate](https://github.com/0xroast/dbi-translate) (vendored in `vendor/dbi_translate/`)
-- **Contributors**: [aldokeita](https://github.com/aldokeita) (Indonesian localization in [#24](https://github.com/rashevskyv/DBIPatcher/pull/24), missing DBI 905 source strings in [#26](https://github.com/rashevskyv/DBIPatcher/pull/26), colored status lines & gate research in [#25](https://github.com/rashevskyv/DBIPatcher/issues/25))
+- **Contributors**: [oldman63](https://github.com/oldman63) (Hungarian localization in [#36](https://github.com/rashevskyv/DBIPatcher/pull/36), activity log report in [#35](https://github.com/rashevskyv/DBIPatcher/issues/35)), [aldokeita](https://github.com/aldokeita) (Indonesian localization in [#24](https://github.com/rashevskyv/DBIPatcher/pull/24), missing DBI 905 source strings in [#26](https://github.com/rashevskyv/DBIPatcher/pull/26), colored status lines & gate research in [#25](https://github.com/rashevskyv/DBIPatcher/issues/25))
 - **Special Thanks**: Claude 3.5 Sonnet for the heavy lifting.
 
 > *Created with ❤️ for the Switch community.*
