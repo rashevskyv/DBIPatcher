@@ -48,7 +48,18 @@ COPIED_GLYPHS = (
     (0x00CF, 0x0407),  # Latin capital I with diaeresis (Ï) -> Ukrainian capital Yi (Ї)
     (0x00EF, 0x0457),  # Latin small i with diaeresis (ï) -> Ukrainian small yi (ї)
 )
-REPAIRED_GLYPH_CODEPOINTS = frozenset(dst for _, dst in MIRRORED_GLYPHS + COPIED_GLYPHS)
+# DBI draws the Hungarian double-acute letters in a thin outline style that stands out from the
+# bold font. Rebuild each from the bold single-acute letter: keep rows 3..15, redraw rows 0..2.
+DOUBLE_ACUTE_GLYPHS = (
+    (0x00F3, 0x0151),  # ó -> ő
+    (0x00D3, 0x0150),  # Ó -> Ő
+    (0x00FA, 0x0171),  # ú -> ű
+    (0x00DA, 0x0170),  # Ú -> Ű
+)
+DOUBLE_ACUTE_ROWS = (".....###.###....", "....###.###.....", "...###.###......")
+REPAIRED_GLYPH_CODEPOINTS = frozenset(
+    dst for _, dst in MIRRORED_GLYPHS + COPIED_GLYPHS + DOUBLE_ACUTE_GLYPHS
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -119,6 +130,12 @@ def patch_cyrillic_glyphs(font_bytes: bytes) -> bytes:
         copy_mirrored_glyph(font, src, dst)
     for src, dst in COPIED_GLYPHS:
         copy_glyph(font, src, dst)
+    for src, dst in DOUBLE_ACUTE_GLYPHS:
+        copy_glyph(font, src, dst)
+        for row, bits in enumerate(DOUBLE_ACUTE_ROWS):
+            val = int(bits.replace("#", "1").replace(".", "0"), 2)
+            offset = dst * GLYPH_SIZE + row * 2
+            font[offset : offset + 2] = val.to_bytes(2, "little")
     return bytes(font)
 
 

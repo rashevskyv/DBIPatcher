@@ -70,6 +70,11 @@ class Version:
     # Each is redirected to clamp_pad so an over-wide translated header pads by 0 instead of
     # wrapping to a huge count and throwing basic_string::_M_create (issue #35).
     pad_clamps: tuple[int, ...] = ()
+    # The same SUB at the Sessions header, redirected to shift_pad: an over-wide label also moves
+    # left by half the overflow, taking the room from the previous cell's trailing spaces. The
+    # header string built so far lives at [sp, #pad_shift_sp] (ptr, size) in that function.
+    pad_shifts: tuple[int, ...] = ()
+    pad_shift_sp: int = 0
     # DBI's pad-to-N-codepoints function (it also truncates) and the calls to it (file offsets
     # of the BL) that build the activity-log header line. Each is redirected to fit_pad so a
     # translated header one character wider than its cell keeps its last letter (issue #35).
@@ -187,10 +192,11 @@ V921 = Version(
     ),
     pad_clamps=(
         0x3E28E0,   # activity header "Игрок"  column width 20
-        0x3E2B58,   # activity header "Сессии" column width 10 (issue #35)
         0x3E2DAC,   # activity header "Время"  column width 10
         0x5135A0,   # tab-bar title centring (activity + save-data tabs), width = cell-2
     ),
+    pad_shifts=(0x3E2B58,),   # activity header "Сессии" column width 10 (issue #35)
+    pad_shift_sp=0xE0,
     pad_fn=0x135650,
     pad_fits=(
         0x3E2968,   # header line after "Игрок":  pad to 21 chars

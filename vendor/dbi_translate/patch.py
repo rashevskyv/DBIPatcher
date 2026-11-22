@@ -10,7 +10,7 @@ from capstone import Cs, CS_ARCH_ARM64, CS_MODE_LITTLE_ENDIAN
 from .asm import assemble, enc_b, enc_bl
 from .hooks import (ctor_hook, ctor_stub, glog_hook, reader_hook, sink_hook, string_call_stub,
                     string_wrap_stub)
-from .runtime import (PATH_STR, STATE_MAGIC, clamp_pad, ctor_exact, fit_pad, loader, make_fmt,
+from .runtime import (PATH_STR, STATE_MAGIC, clamp_pad, ctor_exact, fit_pad, shift_pad, loader, make_fmt,
                       make_pfxsfx, shared_lookup, translate_string, value_lookup)
 from .versions import BASE, CTOR_INSN, PAD_CLAMP_INSN, WRAP_INSN, Site, Version
 
@@ -77,6 +77,11 @@ def patch_nro(v: Version, data: bytes):
     clamp_site_addrs = [Site(a, PAD_CLAMP_INSN, a + 4, "BL") for a in v.pad_clamps]
     for site in clamp_site_addrs:
         _check_site(data, site, "pad clamp")
+    shift_site_addrs = [Site(a, PAD_CLAMP_INSN, a + 4, "BL") for a in v.pad_shifts]
+    for site in shift_site_addrs:
+        _check_site(data, site, "pad shift")
+    if v.pad_shifts and not v.pad_shift_sp:
+        raise PatchError("pad shifts require the header string stack offset")
     if v.pad_fits and not v.pad_fn:
         raise PatchError("pad fits require the pad function address")
     fit_site_addrs = [Site(a, enc_bl(a, v.pad_fn), a + 4, "BL") for a in v.pad_fits]
@@ -101,6 +106,9 @@ def patch_nro(v: Version, data: bytes):
     cl, cl_base = b"", 0
     if clamp_site_addrs:
         cl = assemble(clamp_pad(), addr); cl_base = addr; addr += len(cl)
+    sh, sh_base = b"", 0
+    if shift_site_addrs:
+        sh = assemble(shift_pad(v), addr); sh_base = addr; addr += len(sh)
     pf, pf_base = b"", 0
     if fit_site_addrs:
         pf = assemble(fit_pad(v), addr); pf_base = addr; addr += len(pf)
@@ -150,6 +158,8 @@ def patch_nro(v: Version, data: bytes):
     data[rh_base:rh_base + len(rh)] = rh
     if cl:
         data[cl_base:cl_base + len(cl)] = cl
+    if sh:
+        data[sh_base:sh_base + len(sh)] = sh
     if pf:
         data[pf_base:pf_base + len(pf)] = pf
     for base, code in stubs:
@@ -168,7 +178,9 @@ def patch_nro(v: Version, data: bytes):
         struct.pack_into("<I", data, site.addr, enc_bl(site.addr, base))
     for site, base in wrap_stubs:
         struct.pack_into("<I", data, site.addr, enc_b(site.addr, base))
-    clamp_stubs = [(site, cl_base) for site in clamp_site_addrs] + [(site, pf_base) for site in fit_site_addrs]
+    clamp_stubs = ([(site, cl_base) for site in clamp_site_addrs]
+                   + [(site, sh_base) for site in shift_site_addrs]
+                   + [(site, pf_base) for site in fit_site_addrs])
     for site, base in clamp_stubs:
         struct.pack_into("<I", data, site.addr, enc_bl(site.addr, base))
     if v.bss_end:

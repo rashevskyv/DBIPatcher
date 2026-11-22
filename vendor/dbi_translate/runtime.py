@@ -49,6 +49,40 @@ def clamp_pad():
     ]
 
 
+def shift_pad(v: Version):
+    """clamp_pad for the Sessions header, which also centres an over-wide label. If the label is
+    wider than the 10-char field by d, move it d/2 columns left by dropping that many trailing
+    spaces from the header built so far (a std::string at [sp, #v.pad_shift_sp]: ptr, size);
+    the previous cell is padded with spaces, so a 12-char "Munkamenetek" then ends exactly at
+    its cell edge and the next header stays above its own column (issue #35). Returns gap 0.
+    Leaf; clobbers x1, x3-x6, NZCV, x30. x0 (text width) and x2 (fill) are left alone."""
+    size_off = v.pad_shift_sp + 8
+    return [
+        ("I", "subs x1, x1, x0"),
+        ("I", "b.pl {sp_ret}"),                          # fits: the plain non-negative gap
+        ("I", "neg x1, x1"),
+        ("I", "lsr x1, x1, #1"),                         # columns to move left
+        ("I", f"ldr x3, [sp, #{v.pad_shift_sp:#x}]"),
+        ("I", f"ldr x4, [sp, #{size_off:#x}]"),
+        ("L", "sp_loop"),
+        ("I", "cbz x1, {sp_done}"),
+        ("I", "cbz x4, {sp_done}"),
+        ("I", "add x5, x3, x4"),
+        ("I", "ldurb w6, [x5, #-1]"),
+        ("I", "cmp w6, #0x20"),
+        ("I", "b.ne {sp_done}"),                         # only ever drop padding spaces
+        ("I", "sub x4, x4, #1"),
+        ("I", "sub x1, x1, #1"),
+        ("I", "b {sp_loop}"),
+        ("L", "sp_done"),
+        ("I", f"str x4, [sp, #{size_off:#x}]"),
+        ("I", "strb wzr, [x3, x4]"),
+        ("I", "mov x1, #0"),
+        ("L", "sp_ret"),
+        ("I", "ret"),
+    ]
+
+
 def fit_pad(v: Version):
     """(x0=std::string*, x1=width in codepoints, w2=fill) -> pad like DBI's resize-with-fill at
     v.pad_fn, but never cut. That function pads a string to `width` codepoints and TRUNCATES a

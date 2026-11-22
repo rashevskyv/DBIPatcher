@@ -17,6 +17,7 @@ sys.path.insert(0, str(ROOT))
 
 from scripts.patch_dbi import (
     COPIED_GLYPHS,
+    DOUBLE_ACUTE_GLYPHS,
     DBI_SHA256,
     FONT_SIZE,
     GLYPH_COUNT,
@@ -138,6 +139,7 @@ class PatchDbiWrapperTests(unittest.TestCase):
         sites.update(call.addr for call in v.string_calls)
         sites.update(v.string_wraps)
         sites.update(v.pad_clamps)
+        sites.update(v.pad_shifts)
         sites.update(v.pad_fits)
         cave = range(*v.cave)
         changed = [i for i in range(len(data)) if data[i] != patched[i]]
@@ -174,7 +176,7 @@ class PatchDbiWrapperTests(unittest.TestCase):
         raw_font = make_synthetic_font()
         patched_font = patch_cyrillic_glyphs(bytes(raw_font))
 
-        # 1. Exactly the six destination glyphs change
+        # 1. Exactly the destination glyphs change
         changed_codepoints = [
             cp
             for cp in range(GLYPH_COUNT)
@@ -182,7 +184,7 @@ class PatchDbiWrapperTests(unittest.TestCase):
             != patched_font[cp * GLYPH_SIZE : (cp + 1) * GLYPH_SIZE]
         ]
         self.assertEqual(set(changed_codepoints), REPAIRED_GLYPH_CODEPOINTS)
-        self.assertEqual(len(changed_codepoints), 6)
+        self.assertEqual(len(changed_codepoints), 10)
 
         # 2. Copied glyph bytes match sources
         for src_cp, dst_cp in COPIED_GLYPHS:
@@ -198,6 +200,13 @@ class PatchDbiWrapperTests(unittest.TestCase):
                 src_val = int.from_bytes(raw_font[src_offset + row * 2 : src_offset + row * 2 + 2], "little")
                 dst_val = int.from_bytes(patched_font[dst_offset + row * 2 : dst_offset + row * 2 + 2], "little")
                 self.assertEqual(dst_val, reverse_16_bits(src_val))
+
+        # 3b. Double-acute glyphs keep the source body (rows 3..15) under a redrawn accent
+        for src_cp, dst_cp in DOUBLE_ACUTE_GLYPHS:
+            src = raw_font[src_cp * GLYPH_SIZE : (src_cp + 1) * GLYPH_SIZE]
+            dst = patched_font[dst_cp * GLYPH_SIZE : (dst_cp + 1) * GLYPH_SIZE]
+            self.assertEqual(dst[6:], src[6:])
+            self.assertNotEqual(dst[:6], src[:6])
 
         # 4. Embedded frame discovery and round-trip recompression in NRO
         synthetic_nro = make_synthetic_nro(raw_font)

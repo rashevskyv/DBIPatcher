@@ -17,7 +17,7 @@ sys.path.insert(0, str(ROOT))
 
 from dbi_translate import PatchError, VERSIONS, patch_nro
 from dbi_translate.asm import assemble, enc_bl
-from dbi_translate.runtime import STATE_MAGIC, clamp_pad
+from dbi_translate.runtime import STATE_MAGIC, clamp_pad, shift_pad
 from dbi_translate.versions import PAD_CLAMP_INSN
 from scripts.build_translation_bin import build_table, load_pairs_csv
 
@@ -61,7 +61,7 @@ def synthetic_nro():
         body = [("I", "stp x29, x30, [sp, #-0x30]!"), ("I", "mov x0, x8"),
                 ("I", "ldp x29, x30, [sp], #0x30"), ("I", "ret")]
         data[addr:addr + 16] = assemble(body, addr)
-    for addr in V.pad_clamps:
+    for addr in (*V.pad_clamps, *V.pad_shifts):
         struct.pack_into("<I", data, addr, PAD_CLAMP_INSN)
     for addr in V.pad_fits:
         struct.pack_into("<I", data, addr, enc_bl(addr, V.pad_fn))
@@ -85,7 +85,7 @@ class UiStringBuildTests(unittest.TestCase):
         pads by 0 instead of a huge count that throws basic_string::_M_create."""
         data = synthetic_nro()
         patched, _ = patch_nro(V, data)
-        self.assertEqual(len(V.pad_clamps), 4)
+        self.assertEqual(len(V.pad_clamps), 3)
         want = assemble(clamp_pad(), 0)   # subs/csel/ret are not PC-relative
         targets = set()
         for site in V.pad_clamps:
@@ -116,6 +116,25 @@ class UiStringBuildTests(unittest.TestCase):
         data = bytearray(synthetic_nro())
         struct.pack_into("<I", data, V.pad_fits[0], 0xD503201F)
         with self.assertRaisesRegex(PatchError, "pad fit"):
+            patch_nro(V, data)
+
+    def test_sessions_header_pad_redirects_to_shift_helper(self):
+        """issue #35: the Sessions header SUB goes to its own helper that also moves an
+        over-wide label left."""
+        patched, _ = patch_nro(V, synthetic_nro())
+        self.assertEqual(len(V.pad_shifts), 1)
+        site = V.pad_shifts[0]
+        word = struct.unpack_from("<I", patched, site)[0]
+        self.assertEqual(word & 0xFC000000, 0x94000000)
+        helper = site + ((((word & 0x3FFFFFF) ^ 0x2000000) - 0x2000000) << 2)
+        self.assertTrue(V.cave[0] <= helper < V.cave[1])
+        want = assemble(shift_pad(V), helper)
+        self.assertEqual(patched[helper:helper + len(want)], want)
+
+    def test_rejects_wrong_pad_shift_site(self):
+        data = bytearray(synthetic_nro())
+        struct.pack_into("<I", data, V.pad_shifts[0], 0xD503201F)
+        with self.assertRaisesRegex(PatchError, "pad shift"):
             patch_nro(V, data)
 
     def test_rejects_wrong_pad_clamp_site(self):
@@ -253,6 +272,47 @@ class UiStringEmulationTests(unittest.TestCase):
                 mu.emu_start(BASE + helper, STOP, count=10)
                 self.assertEqual(mu.reg_read(reg.UC_ARM64_REG_X1), gap)
 
+    def test_shift_pad_moves_a_wide_label_left_by_half_the_overflow(self):
+        """issue #35: the Sessions field is 10 wide. A label d wider moves d/2 columns left by
+        dropping trailing spaces of the header so far; the gap returned is always 0 then. Only
+        spaces are dropped, and a label that fits keeps the plain (field - text) gap."""
+        site = V.pad_shifts[0]
+        word = struct.unpack_from("<I", self.nro, site)[0]
+        helper = site + ((((word & 0x3FFFFFF) ^ 0x2000000) - 0x2000000) << 2)
+        sp = 0x800000
+        cases = [  # header so far, text width, expected header, expected gap
+            ("   Jatekos        ", 12, "   Jatekos       ", 0),   # 12 chars: 1 left
+            ("   Jatekos        ", 13, "   Jatekos       ", 0),   # 13 chars: still 1
+            ("   Jatekos        ", 14, "   Jatekos      ", 0),    # 14 chars: 2
+            ("   Jatekos        ", 11, "   Jatekos        ", 0),  # d=1 -> 0
+            ("   Jatekos        ", 8, "   Jatekos        ", 2),   # fits: gap 10-8 (the site halves it)
+            ("   Jatekos        ", 10, "   Jatekos        ", 0),
+            ("abc", 14, "abc", 0),                                   # no spaces: nothing dropped
+            ("ab  ", 20, "ab", 0),                                   # never past the spaces
+            ("", 14, "", 0),
+        ]
+        for header, width, want, gap in cases:
+            with self.subTest(header=header, width=width):
+                mu = Uc(UC_ARCH_ARM64, UC_MODE_ARM)
+                mu.mem_map(BASE, 0x1280000)
+                mu.mem_map(sp - 0x1000, 0x2000)
+                mu.mem_map(STOP, 0x1000)
+                mu.mem_write(BASE, self.nro)
+                raw = header.encode()
+                buf = sp + 0x400
+                mu.mem_write(buf, raw + b"\0")
+                mu.mem_write(sp + V.pad_shift_sp, struct.pack("<QQ", buf, len(raw)))
+                mu.reg_write(reg.UC_ARM64_REG_SP, sp)
+                mu.reg_write(reg.UC_ARM64_REG_X1, 10)
+                mu.reg_write(reg.UC_ARM64_REG_X0, width)
+                mu.reg_write(reg.UC_ARM64_REG_X2, 0x20)
+                mu.reg_write(reg.UC_ARM64_REG_LR, STOP)
+                mu.emu_start(BASE + helper, STOP, count=500)
+                self.assertEqual(mu.reg_read(reg.UC_ARM64_REG_X1), gap)
+                self.assertEqual(mu.reg_read(reg.UC_ARM64_REG_X2), 0x20)
+                ptr, size = struct.unpack("<QQ", bytes(mu.mem_read(sp + V.pad_shift_sp, 16)))
+                self.assertEqual(bytes(mu.mem_read(ptr, size + 1)), want.encode() + b"\0")
+
     def test_fit_pad_never_cuts_and_counts_codepoints(self):
         """issue #35: DBI's pad-to-N function also truncates; the header line is built with
         cumulative widths, so a 12-char header in an 11-char cell lost its last letter. fit_pad
@@ -295,7 +355,7 @@ class UiStringEmulationTests(unittest.TestCase):
     def test_changes_stay_in_cave_and_configured_sites(self):
         allowed = [s.addr for s in (V.reader, V.fmt, V.glog, V.ctor, V.sink)]
         allowed += [*V.ctors, V.bss_end[0], *(c.addr for c in V.string_calls),
-                    *V.string_wraps, *V.pad_clamps, *V.pad_fits]
+                    *V.string_wraps, *V.pad_clamps, *V.pad_shifts, *V.pad_fits]
         for i, (before, after) in enumerate(zip(self.input, self.nro)):
             if before != after:
                 self.assertTrue(V.cave[0] <= i < V.cave[1] or (i & ~3) in allowed)
