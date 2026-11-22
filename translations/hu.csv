@@ -1,0 +1,1467 @@
+original,translation
+"X - выбор, Y - инверсия выбора, (+) - меню","X - Kijelölés, Y - Kijelölés megfordítása, (+) - Menü"
+"X - выбор, Y - инверсия выбора, (+) - меню, L3 - запуск","X - Kijelölés, Y - Kijelölés megfordítása, (+) - Menü, L3 - Indítás"
+"X - выбор, Y - инверсия выбора, (+) - меню, R3 - сортировка","X - Kijelölés, Y - Kijelölés megfordítása, (+) - Menü, R3 - Rendezés"
+"X - выбор, Y - инверсия выбора, (+) - меню, R3 - сортировка, L3 - запуск","X - Kijelölés, Y - Kijelölés megfordítása, (+) - Menü, R3 - Rendezés, L3 - Indítás"
+"X - выбор, Y - инвертирование выбора, A - открыть, (-) - 2ая панель","X - Kijelölés, Y - Kijelölés megfordítása, A - Megnyitás, (-) - 2. panel"
+"X - выбор, Y - инвертирование выбора, ⬅/➡ - смена панели, (-) - закрыть","X - Kijelölés, Y - Kijelölés megfordítása, ⬅/➡ - Panelváltás, (-) - Bezárás"
+"ZL/ZR - смена даты, Y - период, X - сортировка, (+) - выбрать пользователя","ZL/ZR - Dátumváltás, Y - Időszak, X - Rendezés, (+) - Felhasználó választása"
+. Время игры \x1b[32;1m{:02}:{:02}:{:02}\x1b[37;1m,. Játékidő \x1b[32;1m{:02}:{:02}:{:02}\x1b[37;1m
+Невозможно смонтировать системный раздел,A rendszerpartíció nem csatolható
+"DPAD или стики для перемещения, (+) - Настройки","Mozgás az iránygombokkal vagy a karokkal, (+) - Beállítások"
+Ошибка создания файла: {},Hiba a fájl létrehozásakor: {}
+Подключение к серверу...,Kapcsolódás a szerverhez...
+   Это действие будет нельзя отменить   ,   Ez a művelet nem vonható vissza   
+SDK подменён,SDK lecserélve
+Точка доступа,Hozzáférési pont
+Традиционный китайский,Hagyományos kínai
+Транзисторов:      {:>3},Tranzisztorok:    {:>3}
+Требуется вручную разрешить синхронизацию времени через Интернет в настройках,Az internetes időszinkronizálást kézzel kell bekapcsolni a beállításokban
+Тёмная комната,Sötét szoba
+Убрать из любимых,Eltávolítás a kedvencekből
+Увеличить размер (в МБ),Méret növelése (MB)
+"Уверены, что хотите продолжить?",Biztosan folytatod?
+Удаление Wi-Fi профиля,Wi-Fi-profil törlése
+Удаление Wi-Fi профиля...,Wi-Fi-profil törlése...
+Удаление {} бекапа,{} biztonsági mentés törlése
+Удаление {} бекапов,{} biztonsági mentés törlése
+Удаление {} сохранений,{} játékmentés törlése
+Удаление {} сохранения,{} játékmentés törlése
+Удаление бекапов,Biztonsági mentések törlése
+Удаление записи об игре...,Játékbejegyzés törlése...
+Удаление игр,Játékok törlése
+Удаление игры целиком: [{}],Teljes játék törlése: [{}]
+Удаление каталога LFS,LFS-mappa törlése
+Удаление контента,Tartalom törlése
+Удаление настроек родительского контроля...,Szülői felügyelet beállításainak törlése...
+Удаление не удалось.\n\nНажмите любую кнопку для продолжения,A törlés sikertelen.\n\nA folytatáshoz nyomj meg egy gombot
+Удаление неиспользуемого {}...,Nem használt {} törlése...
+Удаление плейсхолдера...,Helyfoglaló törlése...
+Удаление пользователя,Felhasználó törlése
+Удаление пользователя...,Felhasználó törlése...
+Удаление ранее установленных файлов...,Korábban telepített fájlok törlése...
+Удаление родительского контроля,Szülői felügyelet törlése
+SaveFS очищена,SaveFS kiürítve
+Удаление связи с Nintendo account...,Nintendo-fiók társításának törlése...
+Удаление сохранений,Játékmentések törlése
+Удаление сохранения целиком,Teljes játékmentés törlése
+Удаление старого     {}...,Régi     {} törlése...
+Удаление старого файла {}...,Régi fájl törlése: {}...
+Удаление старой записи об игре...,Régi játékbejegyzés törlése...
+Удаление старой папки {}...,Régi mappa törlése: {}...
+Удаление тайтла: [{}],Cím törlése: [{}]
+Удаление тикетов ({}),Licencjegyek törlése ({})
+Удаление...,Törlés...
+Удалить,Törlés
+Удалить LFS,LFS törlése
+Удалить сохранения,Játékmentések törlése
+Удалить старые бекапы,Régi biztonsági mentések törlése
+Удаляется {} из {}...,Törlés: {} / {}...
+Удаляется {}...,Törlés: {}...
+Удаляется запись о контенте...,Tartalombejegyzés törlése...
+Удаляется запись об игре...,Játékbejegyzés törlése...
+Удаляется игра и весь связанный контент,A játék és minden hozzá tartozó tartalom törlése
+Titlekey не может быть инициализирован,A címkulcs nem inicializálható
+Удаляется папка LFS...,LFS-mappa törlése...
+Удаляется пустая папка,Üres mappa törlése
+Удаляется сохранение {}...,Játékmentés törlése: {}...
+Удаляется старая запись о контенте...,Régi tartalombejegyzés törlése...
+Удаляется старый cnmt.nca...,Régi cnmt.nca törlése...
+Удаляется тикет: {}...,Licencjegy törlése: {}...
+Удаляются все объекты из альбома для игры,A játék albumának kiürítése
+Удаляются все сохранения для игры,A játék összes mentésének törlése
+Удаляются сохранения...,Mentési adatok törlése...
+"UID: {}, Ник: {}","UID: {}, Becenév: {}"
+Удалённые,Törölve
+Удачный экспорт,Sikeres exportálás
+Уделение старого тикета...,Régi licencjegy törlése...
+Упаковка каталога в RomFS,Mappa csomagolása RomFS-be
+Упрощенный китайский,Egyszerűsített kínai
+Успешно разобран как PFS0 файл,Sikeres feldolgozás PFS0-fájlként
+Устанавливается {},Telepítés: {}
+Установить как аватар...,Beállítás avatarként...
+Установка,Telepítés
+Установка анлокера...,Feloldó telepítése...
+Установка завершена,Telepítés kész
+Установка игр (NAND),Játékok telepítése (NAND)
+Установка игр (SD Card),Játékok telepítése (SD-kártya)
+Установка игры завершена,A játék telepítése befejeződött
+Установка обновлений игр,Játékfrissítések telepítése
+Установка прервана,A telepítés megszakadt
+Установка тайтлов ({}/{}),Címek telepítése ({}/{})
+USB Соединение,USB-kapcsolat
+Установка ярлыка...,Parancsikon telepítése...
+Установлен,Telepítve
+Установленные,Telepítve
+Установленные homebrew,Telepített homebrew alkalmazások
+Установленные homebrew ({}),Telepített homebrew alkalmazások ({})
+Установленные игры,Telepített játékok
+Установленные тикеты,Telepített licencjegyek
+Установленные тикеты ({}),Telepített licencjegyek ({})
+Файл повреждён и не может быть установлен. Не найдена сигнатура HEAD,"A fájl sérült, nem telepíthető. A HEAD-jelölő hiányzik"
+Файл повреждён и не может быть установлен. Не найдена сигнатура HFS0 в разделе root,"A fájl sérült, nem telepíthető. A HFS0-jelölő hiányzik a gyökérpartícióról"
+Файл повреждён и не может быть установлен. Не найдена сигнатура HFS0 в разделе secure,"A fájl sérült, nem telepíthető. A HFS0-jelölő hiányzik a biztonságos partícióról"
+Файл повреждён и не может быть установлен. Не найдена сигнатура PFS0,"A fájl sérült, nem telepíthető. A PFS0-jelölő hiányzik"
+Файл слишком большой для хранилища,A fájl túl nagy a tárhelyhez
+Файл: {},Fájl: {}
+Фиксация ФС...,Fájlrendszer módosításainak mentése...
+Финальный размер: {},Végső méret: {}
+Формирование списка...,Lista összeállítása...
+Форсированный язык    : {},Kényszerített nyelv : {}
+Форсированный язык    : {} ({}),Kényszerített nyelv : {} ({})
+Форсировать язык,Nyelv kényszerítése
+Французский,Francia
+"Х:{}, Т:{}, РЦ:{}","H:{}, T:{}, R:{}"
+Хранилища MTP,MTP-tárhely
+Хранилище только для чтения,Írásvédett tárhely
+Целевая запись о контенте не найдена,A cél tartalombejegyzése nem található
+ЧАСТЬ КОНТЕНТА ОТСУТСТВУЕТ. ИГРА НЕ БУДЕТ РАБОТАТЬ,A TARTALOM EGY RÉSZE HIÁNYZIK. A JÁTÉK NEM FOG MŰKÖDNI
+Число транзисторов: {:>3},Tranzisztorok száma: {:>3}
+Число уникальных сыграных игр : {},Játszott különböző játékok száma : {}
+Число ходов:        {:>3},Lépések száma:          {:>3}
+Чтение каталога...,Mappa olvasása...
+Чтение списка файлов...,Fájllista olvasása...
+Что-то плохое грядёт,Valami rossz közeleg
+Что-то пошло не так. Пропускаем оставшийся файл,Hiba történt. A fájl hátralévő része kimarad
+"Чтобы вернуться, нажмите B",B - Vissza
+Шадок у Гиби,Mocsárlakók a szomszédban
+Экспорт SDK,SDK exportálása
+Экспортировать,Exportálás
+Экспортировать SDK,SDK exportálása
+Январь,január
+Японский,Japán
+Ярлык для DBI,DBI-parancsikon
+да,igen
+не является LFS папкой,nem LFS-mappa
+не является LFS папкой игры,nem játékhoz tartozó LFS-mappa
+нет,nem
+"ZL/ZR - смена даты, Y - период","ZL/ZR - dátumváltás, Y - időszak"
+"Получено: {}, (скорость не определена)","Fogadva: {}, (ismeretlen sebesség)"
+Игры добавлены в список исключений,Játékok hozzáadva a kizárási listához
+Новых игр в список исключений добавлено не было,Nem került új játék a kizárási listára
+Просмотр МТР устройства [{}],MTP-eszköz böngészése [{}]
+Просмотр USB диска [{}],USB-meghajtó böngészése [{}]
+Заряд батареи (сырое значение) : {},Akkumulátor töltöttsége (nyers adat) : {}
+ru,hu
+[CRC ОШИБКА ФАЙЛА],[FÁJL CRC-HIBA]
+Будет скачана и установлена прошивка системы из файла {}.\n\nНажимте (+) для продолжения\nЛюбую другую кнопку для отмены,A rendszer firmware-ének letöltése és telepítése a következő fájlból történik: {}.\n\n(+) - Folytatás\nBármely más gomb - Mégse
+Распаковка архива не удалась,Az archívum kibontása sikertelen
+Сканирование архива не удалось,Az archívum vizsgálata sikertelen
+Установить все обновления из этой папки,A mappában lévő összes frissítés telepítése
+Япония,Japán
+Русский,Orosz
+Февраль,február
+Октябрь,október
+[HASH MISMATCH: GC ➡ eShop],[ELTÉRŐ HASH: GC ➡ eShop]
+Ноябрь,november
+Игрок,Játékos
+Время,Idő
+Контент,Tartalom
+[HASH: OK],[HASH: RENDBEN]
+Красная,Piros
+[HASH MISMATCH: Неисправимо],[ELTÉRŐ HASH: Nem javítható]
+[ПРЕД],[ELŐZŐ]
+Альбом,Album
+Выход,Kilépés
+и т.д...,stb...
+{} бекап,{} biztonsági mentés
+874,874
+Пишется тело: {}/{}MB \r,Fájltörzs írása: {}/{}MB \r
+Пишется скриншот\n,Képernyőkép írása\n
+Пишется таблица хешей\n,Hash-tábla írása\n
+Пишется подпись видео\n,Videóaláírás írása\n
+Операция завершена\n,A művelet befejeződött\n
+"Будет скачана и установлена прошивка системы из файла {}.\n\nВНИМАНИЕ!!! Похоже, эта версия не поддерживается текущей атмосферой.\n\nНажимте (+) для продолжения\nЛюбую другую кнопку для отмены","A rendszer firmware-ének letöltése és telepítése a következő fájlból történik: {}.\n\nFIGYELEM!!! Úgy tűnik, a jelenlegi Atmosphere nem támogatja ezt a verziót.\n\n(+) - Folytatás\nBármely más gomb - Mégse"
+Копирование файла не удалось,A fájl másolása sikertelen
+Daybreak.nro не найден,A Daybreak.nro nem található
+Изображение добавлено в альбом,A kép bekerült az albumba
+Ошибка добавления изобржения в альбом: {},Hiba a kép albumhoz adásakor: {}
+Добавить в альбом,Hozzáadás az albumhoz
+Анализ mp4 файла,MP4-fájl elemzése
+Длительность: {},Időtartam: {}
+ОШИБКА! Файл не содержит один видео трек,HIBA! A fájlban nem pontosan egy videósáv van
+ОШИБКА! Файл не содержит один аудио трек,HIBA! A fájlban nem pontosan egy hangsáv van
+ОШИБКА! У видео трека неподдерживаемый кодек,HIBA! A videósáv kodekje nem támogatott
+ОШИБКА! У аудио трека неподдерживаемый кодек,HIBA! A hangsáv kodekje nem támogatott
+ОШИБКА! Аудио трек не стерео,HIBA! A hangsáv nem sztereó
+[{}] Общий тикет для {},[{}] Általános licencjegy ehhez: {}
+ОШИБКА! У аудио трека неподходящая частота дискретизации,HIBA! A hangsáv mintavételezési frekvenciája nem megfelelő
+ОШИБКА! У видео трека неподходящая ширина,HIBA! A videósáv szélessége nem megfelelő
+ОШИБКА! У видео трека неподходящая высота,HIBA! A videósáv magassága nem megfelelő
+ВНИМАНИЕ! Возможно видео поток содержит B-Frames. Файл может не воспроизводиться,"FIGYELEM! A videó B-képkockákat tartalmazhat. Előfordulhat, hogy a fájl nem játszható le"
+"Похоже, это не MP4 файл","Úgy tűnik, ez nem MP4-fájl"
+Открыть как RomFS,Megnyitás RomFS-ként
+\x1b[31;1mГ\x1b[37;1m,\x1b[31;1mГ\x1b[37;1m
+\x1b[32;1mШ\x1b[37;1m,\x1b[32;1mШ\x1b[37;1m
+Ваша SD карта является подделкой. Рекомендуется заменить SD карту на проверенную.,Az SD-kártya hamisítvány. Érdemes ellenőrzött kártyára cserélni.
+[{}] Персональный тикет для {},[{}] Személyes licencjegy ehhez: {}
+Кажется ваша SD карта является подделкой.\n\nВозможны проблемы с установкой игр.\nВ этом случае рекомендуется заменить SD карту на проверенную.,"Úgy tűnik, az SD-kártya hamisítvány.\n\nA játékok telepítésekor hibák jelentkezhetnek.\nÉrdemes ellenőrzött kártyára cserélni."
+Информация о SD карте,SD-kártya adatai
+[ПОДПИСЬ: DBI],[ALÁÍRÁS: DBI]
+.    Время игры    \x1b[32;1m{:02}:{:02}:{:02}\x1b[37;1m,.    Játékidő     \x1b[32;1m{:02}:{:02}:{:02}\x1b[37;1m
+"ZL/ZR смена даты, Y период, X сортировка, (+) выбрать пользователя","ZL/ZR dátumváltás, Y időszak, X rendezés, (+) felhasználó választása"
+[{}МБ] {}МБ из {}МБ ({:.2f} МБ/сек)\x1b[0K\r,[{}MB] {}MB / {}MB ({:.2f} MB/s)\x1b[0K\r
+"X выбор, Y обратить выбор, (+) меню, R3 сортировка, L3 запуск","X kijelölés, Y kijelölés megfordítása, (+) menü, R3 rendezés, L3 indítás"
+Создать все известные ({}),Minden ismert elem létrehozása ({})
+"X выбор, Y обратить выбор, (+) меню, L3 запуск","X kijelölés, Y kijelölés megfordítása, (+) menü, L3 indítás"
+"DPAD или стики для перемещения, (+) Настройки","Mozgás az iránygombokkal vagy a karokkal, (+) Beállítások"
+Просмотр HTTP/FTP/Github сервера...,"HTTP-, FTP- vagy GitHub-szerver böngészése..."
+"X выбор, Y обратить выбор, (+) меню, R3 сортировка","X kijelölés, Y kijelölés megfordítása, (+) menü, R3 rendezés"
+"X выбор, Y обр. выбор, (+) меню","X kijelölés, Y kijelölés megfordítása, (+) menü"
+"X выбор, Y обратить выбор, A открыть, (-) 2ая панель, (+) меню","X kijelölés, Y kijelölés megfordítása, A megnyitás, (-) 2. panel, (+) menü"
+"X выбор, Y обр. выбор, ⬅/➡ смена панели, (-) закрыть, (+) меню","X kijelölés, Y kijelölés törlése, ⬅/➡ panelváltás, (-) bezárás, (+) menü"
+[ДЕЛЬТА ФРАГМЕНТ НЕ НУЖЕН],[A DELTATÖREDÉK FELESLEGES]
+[КОНТЕНТ ОТСУТСТВУЕТ],[HIÁNYZÓ TARTALOM]
+[НЕ СОЗДАТЬ ПЛЕЙСХОЛДЕР],[NE KÉSZÜLJÖN HELYFOGLALÓ]
+[НЕДОСТАТОЧНО МЕСТА],[NINCS ELÉG HELY]
+[НЕИЗВЕСТНОЕ СЖАТИЕ],[ISMERETLEN TÖMÖRÍTÉS]
+[ОТСУТСТВУЕТ],[HIÁNYZIK]
+[ОШБК],[HIBA]
+[ОШИБКА NCA MAGIC],[HIBÁS NCA-AZONOSÍTÓ]
+[ОШИБКА ЗАПИСИ В ПЛЕЙСХОЛДЕР],[HELYFOGLALÓ ÍRÁSI HIBÁJA]
+[ОШИБКА РАСПАКОВКИ ZSTD: {}],[ZSTD-KIBONTÁSI HIBA: {}]
+[ОШИБКА РАСПАКОВКИ],[KIBONTÁSI HIBA]
+[ОШИБКА],[HIBA]
+[ОШИБКА] Отсутствует URL списка обновлений,[HIBA] Hiányzik a frissítési lista URL-je
+[ПЕРЕДАЧА OK],[SIKERES ÁTVITEL]
+[ПЕРЕДАЧА ПРЕРВАНА],[AZ ÁTVITEL MEGSZAKADT]
+[ПОВРЕЖДЁННЫЙ NCA],[SÉRÜLT NCA]
+[ПОДПИСЬ: OK],[ALÁÍRÁS: RENDBEN]
+[ПОДПИСЬ: XCI➡NSP],[ALÁÍRÁS: XCI➡NSP]
+[ПОДПИСЬ: Поддельная],[ALÁÍRÁS: Hamis]
+[СТАРАЯ ПРОШИВКА],[RÉGI FIRMWARE]
+[ТРЕБУЕТСЯ РЕЖИМ ТАЙТЛА],[CÍMMÓD SZÜKSÉGES]
+[ФАЙЛ ПОВРЕЖДЁН],[SÉRÜLT FÁJL]
+[ХЕШ ИСПРАВЛЕН],[HASH JAVÍTVA]
+[ХЕШ НЕ СОВПАДАЕТ],[ELTÉRŐ HASH]
+\nНачало обработки dlc {}: {:016X},\nDLC feldolgozása indul {}: {:016X}
+\nНачало обработки программы {},\nAlkalmazás feldolgozása elindult: {}
+\nНачало создания Data.nca,\nData.nca létrehozása indul
+\nНачало создания Meta.nca,\nMeta.nca létrehozása indul
+\nОшибка USB обмена,\nUSB-átviteli hiba
+\nСборка PFS0,\nPFS0 összeállítása
+\nСборка RomFS,\nRomFS összeállítása
+\nСекция 0,\n0. szakasz
+\nСекция 1,\n1. szakasz
+\nСекция 2,\n2. szakasz
+\nСоздан NSP: {},\nNSP elkészült: {}
+\nШифрование NCA,\nNCA titkosítása
+{:04d} {} {:02d}. Всего: {} час,{:04d}. {} {:02d}. Összesen: {} óra
+{:04d} {} {:02d}. Всего: {} часа,{:04d}. {} {:02d}. Összesen: {} óra
+{:04d} {} {:02d}. Всего: {} часов,{:04d}. {} {:02d}. Összesen: {} óra
+{:4d} {}. Всего: {} час,{:4d}. {}. Összesen: {} óra
+{:4d} {}. Всего: {} часа,{:4d}. {}. Összesen: {} óra
+{:4d} {}. Всего: {} часов,{:4d}. {}. Összesen: {} óra
+{:4d}. Всего: {} час,{:4d}. Összesen: {} óra
+{:4d}. Всего: {} часа,{:4d}. Összesen: {} óra
+{:4d}. Всего: {} часов,{:4d}. Összesen: {} óra
+{:>3} {}{:<50}\x1b[37;1m {:>10},{:>3} {}{:<50}\x1b[37;1m {:>10}
+{:>6} объектов обработано. {:>5} записей найдено...\r,{:>6} objektum feldolgozva. {:>5} bejegyzés található...\r
+{:>6}/{}kB уже скачано...\r,{:>6}/{} kB már letöltve...\r
+{} cохранение,{} játékmentés
+{} cохранений,{} mentve
+{} cохранения,{} mentési adat
+{} бекапа,{} biztonsági mentés
+{} бекапов,{} biztonsági mentés
+{} записей ({}),{} bejegyzés ({})
+{} записи ({}),{} bejegyzés ({})
+{} запись ({}),{} bejegyzés ({})
+{} игр ({}),{} játék ({})
+{} игра ({}),{} játék ({})
+{} игры ({}),{} játék ({})
+{} сохранение,{} játékmentés
+{} сохранений,{} játékmentés
+{} сохранения,{} mentési adat
+{} тикет,{} licencjegy
+{} тикета,{} licencjegy
+{} тикетов,{} licencjegy
+{}-{} FW:{}{} SDK:{},{}-hu{:.0} FW:{}{} SDK:{}
+"{}/{} MB (Ср: {:.1f} MB/sec, Тек: {:.1f} MB/sec) Ост. {:02d}:{:02d}      \r","{}/{} MB (Átlag: {:.1f} MB/s, Most: {:.1f} MB/s) Hátra: {:02d}:{:02d}      \r"
+"{}/{} МБ, {:.2f} МБ/сек","{}/{} MB, {:.2f} MB/s"
+{}: {} потерянная запись,{}: {} árva bejegyzés
+{}: {} потерянных записей,{}: {} elveszett bejegyzés
+{}: {} потерянных записи,{}: {} elveszett bejegyzés
+{}: {}/{} ({:.2f} МБ/сек),{}: {}/{} ({:.2f} MB/s)
+{}: {}/{} ({}%) ({:.2f} МБ/сек),{}: {}/{} ({}%) ({:.2f} MB/s)
+{}: пропускается {}/{} ({:.2f} МБ/сек),{}: kihagyás {}/{} ({:.2f} MB/s)
+"{}\n\nВосстановление бекапа не удалось\n\nНажмите A - прервать, другая кнопка - продолжить","{}\n\nA biztonsági mentés visszaállítása sikertelen\n\nA - Megszakítás, bármely más gomb - Folytatás"
+{}МБ из {}МБ ({:.2f} МБ/сек)\x1b[0K\r,{}MB / {}MB ({:.2f} MB/s)\x1b[0K\r
+АВТО,AUTO
+Аватар установлен,Avatar beállítva
+Август,augusztus
+Австралия,Ausztrália
+Автозапуск MTP,MTP automatikus indítása
+Автозапуск списка homebrew,Homebrew lista automatikus megnyitása
+Агрументы для ярлыка,Parancsikon argumentumai
+Адрес FTP сервера: {},FTP-szerver címe: {}
+Адрес HTTP сервера: {},HTTP-szerver címe: {}
+Альбом (0°),Album (0°)
+Американский английский,Amerikai angol
+Апрель,április
+База этой игры не самодостаточна. Не забудьте установить обновление,A játék alapverziója önmagában nem működik. Telepítsd a frissítést is
+Бекапы,Biztonsági mentések
+Бекапы сохранений ({}),A mentési adatok biztonsági mentései ({})
+Британский английский,Brit angol
+В альбоме найден {} объект,{} objektum található az albumban
+В альбоме найдено {} объекта,{} objektum található az albumban
+В альбоме найдено {} объектов,{} objektum található az albumban
+В альбоме отсутствуют объекты,Az album üres
+В файле /switch/prod.keys отсутствуют необходимые ключи.\n\nЧасть функций программы будет недоступна.\n\nПерегрузитесь в Hekate и используйте Lockpick_RCM.bin пейлоад\nдля дампа ключей из SysNAND.,"A /switch/prod.keys fájlból hiányoznak a szükséges kulcsok.\n\nAz alkalmazás egyes funkciói nem érhetők el.\n\nIndítsd újra a konzolt Hekatéba, és a Lockpick_RCM.bin payload segítségével\nmentsd ki a SysNAND kulcsait."
+ВНИМАНИЕ! Тайтл {:016X} не установлен,FIGYELEM! A(z) {:016X} cím nincs telepítve
+ВНИМАНИЕ! Установленная версия ({}) не совпадает с желаемой ({}),FIGYELEM! A telepített verzió ({}) eltér a kívánttól ({})
+ВО ВРЕМЯ ПЕРЕДАЧИ ФАЙЛА НАЙДЕНЫ ОШИБКИ. УСТАНОВКА ПРЕРВАНА,HIBA TÖRTÉNT A FÁJLÁTVITEL SORÁN. A TELEPÍTÉS MEGSZAKADT
+Введите URL сервера (HTTP или (S)FTP),Add meg a szerver URL-jét (HTTP vagy (S)FTP)
+Введите агрументы для ярлыка или оставьте пустым,"Add meg a parancsikon argumentumait, vagy hagyd üresen a mezőt"
+Введите желаемый номер страницы,Add meg a kívánt oldalszámot
+Введите новое имя,Add meg az új nevet
+Введите новое имя каталога,Add meg az új mappanevet
+Введите новое имя файла,Add meg az új fájlnevet
+Введите номер DLC,Add meg a DLC számát
+Версия {} [v{}],{} verzió [v{}]
+Вместо пользователя {} использовать:,A(z) {} felhasználó helyett:
+Внимание!\nНекоторые файлы были заблокированы и поэтому пропущены.,"Figyelem!\nNéhány fájl zárolva volt, ezért kimaradt."
+Во время разбора\n\n{}\n\nвозникла следующая ошибка:\n\n{},A következő elem feldolgozásakor:\n\n{}\n\nhiba történt:\n\n{}
+Во время установки тикетов были ошибки. Проверьте наличие ES сигпатчей,Hiba a licencjegy telepítésekor. Ellenőrizd az ES-aláírásjavításokat
+Во время экспорта были ошибки,Hibák történtek az exportálás során
+Возраст батареи                : {},Akkumulátor kora                     : {}
+Возрастной рейтинг,Korhatár-besorolás
+Восстановить,Visszaállítás
+Восстановить бекап...,Biztonsági mentés visszaállítása...
+Восстановить для...,Visszaállítás ehhez...
+Восстановить как бекап сохранения,Visszaállítás játékmentésként
+Восстановление бекапа,Biztonsági mentés visszaállítása
+Восстановление не удалось,A helyreállítás sikertelen
+Восстановление успешно,Sikeres visszaállítás
+Восстановление: {},Visszaállítás: {}
+Время игры: {:02}:{:02}:{:02},Játékidő: {:02}:{:02}:{:02}
+Время передачи {:d}:{:02d}:{:02d},Átviteli idő {:d}:{:02d}:{:02d}
+Все игровые сессии,Minden játékmenet
+Все игроки,Minden játékos
+Все объекты,Minden objektum
+Все файлы в порядке,Minden fájl rendben
+Всего {} байт получен,{} bájt érkezett
+Всего {} байт послан,{} bájt elküldve
+Всего {} байта получено,Összesen {} bájt érkezett
+ Да, Igen
+Всего {} байта послано,{} bájt elküldve
+Всего {} байтов получено,Összesen {} bájt érkezett
+Всего {} байтов послано,{} bájt elküldve
+Всего записей: {},Összes bejegyzés: {}
+Всего отослано: {} ({}/сек),Összesen elküldve: {} ({}/s)
+Всего программ: {},Összes cím: {}
+Вставить,Beillesztés
+Вставка...,Beillesztés...
+Всё время. Всего: {} час,Teljes időszak. Összesen: {} óra
+Всё время. Всего: {} часа,Teljes időszak. Összesen: {} óra
+Всё время. Всего: {} часов,Teljes időszak. Összesen: {} óra
+Вы собираетесь удалить следующие бекапы:,A következő biztonsági mentések törlődnek:
+Вы собираетесь удалить следующие игры:,A következő játékok törlődnek:
+Вы собираетесь удалить следующие сохранения:,A következő játékmentések törlődnek:
+Вы собираетесь удалить следующие тикеты:,A következő licencjegyek törlődnek:
+Вы уверены в удалении {} записей?\n\n(+) - ДА   B - Отмена,Biztosan törlöd a kijelölt {} bejegyzést?\n\n(+) - IGEN   B - Mégse
+Вы уверены в удалении {} записи?\n\n(+) - ДА   B - Отмена,Biztosan törlöd a kijelölt {} bejegyzést?\n\n(+) - IGEN   B - Mégse
+Вы уверены в удалении {} объекта?\n\n(+) - ДА   B - Отмена,Biztosan törlöd a kijelölt {} objektumot?\n\n(+) - IGEN   B - Mégse
+Вы уверены в удалении {} объектов?\n\n(+) - ДА   B - Отмена,Biztosan törlöd a kijelölt {} objektumot?\n\n(+) - IGEN   B - Mégse
+"Вы уверены, что хотите удалить {}?\n\n(+) - ДА, другая кнопка - НЕТ","Biztosan törlöd ezt: {}?\n\n(+) - IGEN, más gomb - NEM"
+"Вы уверены, что хотите удалить\n{}?\n\n(+) - ДА  В - Отмена",Biztosan törlöd ezt?\n{}\n\n(+) - IGEN  B - Mégse
+Выберите пользователя,Felhasználó választása
+Выберите тип сохранения,Mentéstípus választása
+Выбрать все файлы игры,Az összes játékfájl kijelölése
+Выбрать того же пользователя,Azonos felhasználó kijelölése
+Выбрать ту же игру,Azonos játék kijelölése
+Вырезать,Kivágás
+Вычисление хэша,Hash számítása
+Вычисленное время конца : {},Számított befejezési idő : {}
+Вычисленное время начала: {},Számított kezdési idő: {}
+Генерация DLC [{:016X}][v{}],DLC létrehozása [{:016X}][v{}]
+Генерация DLC анлокера...,DLC-feloldó létrehozása...
+Генерируется анлокер для {:016X} с номером {} и версией {}...,"Feloldó létrehozása ehhez: {:016X}, szám: {}, verzió: {}..."
+Генерируется ярлык для пути '{}' и аргументов '{}'...,"Parancsikon létrehozása a(z) '{}' útvonalhoz, '{}' argumentumokkal..."
+Главное меню,Főmenü
+Голландский,Holland
+"Да, я уверен","Igen, biztos vagyok benne"
+Дамп анлокера в '{}'...,Feloldó mentése ide: '{}'...
+Дамп текущей прошивки,Jelenlegi firmware kimentése
+Дамп ярлыка в '{}'...,Parancsikon mentése ide: '{}'...
+Действия с файлами,Fájlműveletek
+Действия с файлами ({}),Fájlműveletek ({})
+Декабрь,december
+День,Nap
+Диаграмма активности,Aktivitási diagram
+Для бекапов,Biztonsági mentésekhez
+Для выхода нажмите любую кнопку,A kilépéshez nyomj meg egy gombot
+Для дампов,Kimentésekhez
+Для логов,Naplókhoz
+Добавить в любимые,Hozzáadás a kedvencekhez
+Европа,Európa
+"Есть несохранёные изменения.\nВы хотите их сохранить?\n\n(+) - Да, сохранить\n\n(-) - Выйти без сохранения\n\nДругая кнопка - Отмена","Mentetlen módosítások vannak.\nMented őket?\n\n(+) - Igen, mentés\n\n(-) - Kilépés mentés nélkül\n\nMás gomb - Mégse"
+Желаемая версия: {},Kívánt verzió: {}
+Журнал активности,Aktivitási napló
+Завершено,Befejezve
+Загружается список обновлений...,Frissítési lista betöltése...
+Загрузка изображения...,Kép betöltése...
+Загрузка текста...{}%,Szöveg betöltése...{}%
+Загрузка файла... {}%,Fájl betöltése... {}%
+Задать размер файла {} не удалось: {},Nem sikerült beállítani a fájlméretet {}: {}
+Закончено за {:02d}:{:02d}:{:02d},Eltelt idő: {:02d}:{:02d}:{:02d}
+Закончилась память при посылке ответа,Elfogyott a memória a válasz küldésekor
+Закончились дополнительные буферы. Скорость записи на носитель слишком низка,Elfogytak a további pufferek. A tárhely írási sebessége túl alacsony
+Закрытие соединения,Kapcsolat lezárása
+Закрытие соединения к {}:{},Kapcsolat lezárása: {}:{}
+Запаковать LFS в romfs.bin,LFS csomagolása romfs.bin fájlba
+Запаковать в romfs.bin,Csomagolás romfs.bin fájlba
+Запаковка папки в RomFS,Mappa csomagolása RomFS-be
+Записанное время конца  : {},Rögzített befejezési idő  : {}
+Записанное время начала : {},Rögzített kezdési idő : {}
+Запись в файл...,Írás fájlba...
+Запись за пределами файла,Írás a fájl végén túl
+Заполнение нулями,Feltöltés nullákkal
+Заполнить свободное место на SD нулями,Az SD-kártya szabad területének feltöltése nullákkal
+Запрет захвата видео,Videórögzítés tiltása
+Запрет скриншотов,Képernyőképek tiltása
+Запрещено,Tiltva
+Запускавшиеся игры,Elindított játékok
+Запустить FTP сервер...,FTP-szerver indítása...
+Запустить HTTP сервер...,HTTP-szerver indítása...
+Запустить МТР соединение,MTP-kapcsolat indítása
+Запустить случайную игру,Véletlenszerű játék indítása
+Заряд батареи                  : {},Akkumulátor töltöttsége              : {}
+Здесь пусто,Itt nincs semmi
+Игра анонсирует SDK {},A játék által megadott SDK: {}
+"Игра анонсирует более новый SDK ({}), чем текущая прошивка ({})","A játék újabb SDK-t ad meg ({}), mint a jelenlegi firmware ({})"
+Игра использует titleId от дополнения,A játék a DLC titleId-ját használja
+Игра использует titleId от обновления,A játék a frissítés titleId-ját használja
+Извлечь в LFS,Kibontás LFS-be
+Изменение размера сохранения на {} [{}]...,Játékmentés átméretezése: {} [{}]...
+Изменить версию DLC (десятичную),DLC-verzió módosítása (decimális)
+Изменить номер DLC (десятичный),DLC-szám módosítása (decimális)
+Изменить номер DLC (шестнадцатеричный),DLC-szám módosítása (hexadecimális)
+Изменён размер SaveFS,A SaveFS mérete megváltozott
+Импорт исправленного тикета...,Javított licencjegy importálása...
+Импорт тикета...,Licencjegy importálása...
+"Имя каталога\n'{}'\nсодержит недопустимые символы.\nОн не может быть создан.\n\nНажмите A - прервать, B - пропустить, X - переименовать","A mappanév\n'{}'\nérvénytelen karaktereket tartalmaz.\nA mappa nem hozható létre.\n\nA - Megszakítás, B - Kihagyás, X - Átnevezés"
+"Имя файла\n'{}'\nсодержит недопустимые символы.\nОн не может быть создан.\n\nНажмите A - прервать, B - пропустить, X - переименовать","A fájlnév\n'{}'\nérvénytelen karaktereket tartalmaz.\nA fájl nem hozható létre.\n\nA - Megszakítás, B - Kihagyás, X - Átnevezés"
+Инсталлируется romfs.bin,romfs.bin telepítése
+Информация о зарядке батареи,Akkumulátortöltési adatok
+Информация о контенте,Tartalom adatai
+Информация о контенте ({}),Tartalom adatai ({})
+Информация о прошивке,Firmware-adatok
+Информация о системе,Rendszerinformációk
+Информация о сохранении,Mentési adatok
+Информация о сохранении...,Mentési adatok...
+Информация о тикете,Licencjegy adatai
+Информация о тикете...,Licencjegy adatai...
+Информация об NSP,NSP-adatok
+Информация об атмосфере,Atmosphere adatai
+Информация об игровой активности,Játékaktivitás adatai
+Информация об источние питания,Áramforrás adatai
+Информация об оборудовании,Hardveradatok
+Информация...,Információk...
+Испанский,Spanyol
+Использовано дополнительной памяти: {}. Создано буферов: {},Felhasznált többletmemória: {}. Létrehozott pufferek: {}
+Использовать папку для...,Mappa használata erre...
+Используется USB{},USB{} használata
+Итальянский,Olasz
+Ищется control для ProgramId {},Control keresése ehhez a ProgramId-hoz: {}
+Ищется exefs/romfs для ProgramId {},exefs/romfs keresése ehhez a ProgramId-hoz: {}
+Ищется exefs/romfs/logo для ProgramId {},exefs/romfs/logo keresése ehhez a ProgramId-hoz: {}
+Ищется {},Keresés: {}
+Июль,július
+Июнь,június
+Канадский французский,Kanadai francia
+"Когда ваше устройство подключится, нажмите любую кнопку",Az eszköz csatlakozása után nyomj meg egy gombot
+Код партии батареи    : {} ({}),Akkumulátor tételkódja           : {} ({})
+Кодировка,Kódolás
+Конец игры            : -,Játék vége      : -
+Конец игры            : {},Játék vége      : {}
+Контент уже на месте,A tartalom már a helyén van
+Копирование IVFC слой {} в nca: {},{}. IVFC-réteg másolása az NCA-ba: {}
+Копирование PFS0 в nca,PFS0 másolása az NCA-ba
+Копирование PFS0 хэш таблицы в nca,PFS0 hash-tábla másolása az NCA-ba
+Копирование SDK {} в файл: {}...,SDK {} másolása a fájlba: {}...
+Копировать,Másolás
+Корейский,Koreai
+Корень не найден,A gyökér nem található
+Корень сохранения не существует,A játékmentés gyökérmappája nem létezik
+Корея,Korea
+Латиноамериканский испанский,Latin-amerikai spanyol
+Май,május
+Март,március
+Масштаб: По ширине,Méret: igazítás a szélességhez
+Масштаб: По экрану,Méret: igazítás a képernyőhöz
+Масштаб: Точка в точку,Méret: eredeti képpontméret
+Масштаб: Увеличение x2,Méret: kétszeres nagyítás
+Место в  NAND         : {},Hely a NAND-on       : {}
+Место на SD карте     : {},Hely az SD-kártyán : {}
+Место на приставке не занято,A konzolon nem foglal helyet
+Мета контент отсутствует,A metatartalom hiányzik
+Миссия провалена\n\nНажмите А для выхода,Sikertelen küldetés\n\nA - Kilépés
+Миссия успешна\n\nОсталось ходов: {}\n\nНажмите А для выхода,Sikeres küldetés\n\nHátralévő lépések: {}\n\nA - Kilépés
+Модификация файла не удалась,A fájl módosítása sikertelen
+На выбранном устройстве нет достаточного свободного места для установки,A kiválasztott eszközön nincs elég szabad hely a telepítéshez
+На месте нет достаточно свободного места,Nincs elég szabad hely
+Нажмите (+) для перезаписи конфига обновлённым\n\nЛюбую другую кнопку для пропуска,(+) - A konfiguráció felülírása az új verzióval\n\nMás gomb - Kihagyás
+"Нажмите (+) для удаления, любую другую кнопку для пропуска...\n (-) Удалять все, больше не спрашивая","(+) - Törlés, más gomb - Kihagyás...\n (-) Összes törlése további kérdés nélkül"
+"Нажмите A, чтобы продолжить, другую кнопку, чтобы выйти","A - Folytatás, más gomb - Kilépés"
+"Нажмите B, чтобы вернуться",B - Vissza
+Нажмите любую кнопку,Nyomj meg egy gombot
+Найден SDK: {},Talált SDK: {}
+Найден {} зарегистрированный контент-файл,{} regisztrált tartalomfájl található
+Найден {} контент-файл,{} tartalomfájl található
+Найден {} пользователь,{} felhasználó található
+Найден {} потерянный контент-файл,{} árva tartalomfájl található
+Найден {} файл,{} fájl található
+Найден {} файл с ошибками,{} hibás fájl található
+Найден и удалён {} неиспользуемый тикет,{} használaton kívüli licencjegy törölve
+Найдена {} запись об игре,{} játékbejegyzés található
+Найдена {} запись об ошибках,{} hibabejegyzés található
+Найдена {} установленная игра,{} telepített játék található
+Найдено {} записей об играх,{} játékbejegyzés található
+Найдено {} записей об ошибках,{} hibajelentés található
+Найдено {} записи об играх,{} játékbejegyzés található
+({}/{}) Устанавливается {},({}/{}) Telepítés: {}
+Найдено {} записи об ошибках,{} hibajelentés található
+Найдено {} зарегистрированных контент-файла,{} regisztrált tartalomfájl található
+Найдено {} зарегистрированных контент-файлов,{} regisztrált tartalomfájl található
+Найдено {} контент-файла,{} tartalomfájl található
+Найдено {} контент-файлов,{} tartalomfájl található
+Найдено {} обновление,{} frissítés található
+Найдено {} обновлений,{} frissítés található
+Найдено {} обновления,{} frissítés található
+Найдено {} пользователей,{} felhasználó található
+Найдено {} пользователя,{} felhasználó található
+Найдено {} потерянных контент-файла,{} elveszett tartalomfájl található
+Найдено {} потерянных контент-файлов,{} árva tartalomfájl található
+Найдено {} сохранение,{} játékmentés található
+Найдено {} сохранение...,{} játékmentés található...
+Найдено {} сохранений,{} játékmentés található
+Найдено {} сохранений...,{} játékmentés található...
+Найдено {} сохранения,{} játékmentés található
+Найдено {} сохранения...,{} játékmentés található...
+Найдено {} установленные игры,{} telepített játék található
+Найдено {} установленных игр,{} telepített játék található
+Найдено {} файла,{} fájl található
+Найдено {} файла с ошибками,{} hibás fájl található
+Найдено {} файлов,{} fájl található
+Найдено {} файлов с ошибками,{} hibás fájl található
+Найдено и удалено {} неиспользуемых тикета,{} használaton kívüli licencjegy eltávolítva
+Найдено и удалено {} неиспользуемых тикетов,{} használaton kívüli licencjegy eltávolítva
+Найдено существующее сохранение. Восстанавливаю бекап в него...,Meglévő játékmentés található. Biztonsági mentés visszaállítása ebbe...
+Настройки,Beállítások
+Настройки DBI,DBI-beállítások
+Настройки FB2,FB2-beállítások
+Начало игры           : -,Játék kezdete   : -
+Начало игры           : {},Játék kezdete   : {}
+Начало создания Control.nca,Control.nca létrehozása indul
+Начало создания Program.nca,Program.nca létrehozása indul
+Начать установку,Telepítés indítása
+Не доступно,Nem érhető el
+Не известно,Ismeretlen
+"Не найден USB диск, который смог бы вместить получившийся дамп. Убедитесь, что он отформатирован в ExFAT.","Nincs olyan USB-meghajtó, amelyen elférne a kimentett adat. Ellenőrizd, hogy a meghajtó exFAT formátumú-e."
+Не найдены требуемые тикеты,A szükséges licencjegyek nem találhatók
+. Время простоя \x1b[33;1m{:02}:{:02}:{:02}\x1b[37;1m,. Tétlen idő \x1b[33;1m{:02}:{:02}:{:02}\x1b[37;1m
+Не получилось создать NSP,Az NSP létrehozása sikertelen
+Не удалось получить список,A lista lekérése sikertelen
+Не удалось установить аватар\n{},Az avatar beállítása sikertelen\n{}
+Не установлен,Nincs telepítve
+Невозможно найти путь,Az útvonal nem található
+Невозможно открыть папку журналов ошибок,A hibanaplók mappája nem nyitható meg
+Невозможно переименовать '{}' в '{}':,Nem sikerült átnevezni: '{}' ➡ '{}':
+Невозможно получить список LFS,Az LFS-lista lekérése sikertelen
+Невозможно получить список пользователей,A felhasználólista lekérése sikertelen
+Невозможно получить статус связи с Nintendo Account,A Nintendo-fiók társítási állapota nem kérhető le
+...готово,...kész
+Невозможно получить число записей об ошибках,A hibabejegyzések száma nem kérhető le
+Невозможно прочитать общие тикеты,Az általános licencjegyek nem olvashatók
+Невозможно прочитать персонализированные тикеты,A személyes licencjegyek nem olvashatók
+Невозможно разобрать content meta,A tartalom metaadatai nem dolgozhatók fel
+Невозможно разобрать content meta. Неожиданная ошибка,A tartalom metaadatai nem dolgozhatók fel. Váratlan hiba
+Невозможно разобрать content meta. УСТАРЕВШАЯ ПРОШИВКА. Требуется обновление HOS,A tartalom metaadatai nem dolgozhatók fel. ELAVULT FIRMWARE. HOS-frissítés szükséges
+Невозможно разобрать nca. УСТАРЕВШАЯ ПРОШИВКА. Требуется обновление HOS,Az NCA nem dolgozható fel. ELAVULT FIRMWARE. HOS-frissítés szükséges
+Невозможно разобрать индекс кеша,A gyorsítótár indexe nem dolgozható fel
+Невозможно распаковать '{}':,Nem sikerült kibontani: '{}':
+Невозможно скопировать файл\n   '{}'\n➡ '{}'\n,Nem sikerült másolni a fájlt\n   '{}'\n➡ '{}'\n
+Невозможно смонтировать сохранение,A játékmentés nem csatolható
+Невозможно смонтировать устройство сохраниения,A mentési eszköz nem csatolható
+Невозможно создать каталог,A mappa nem hozható létre
+Невозможно создать каталог '{}':,A(z) '{}' mappa nem hozható létre:
+Невозможно создать файл,A fájl nem hozható létre
+Невозможно создать файл '{}':,A(z) '{}' fájl nem hozható létre:
+Недопустимый идентификатор,Érvénytelen azonosító
+Неизвестная игра [{:016x}],Ismeretlen játék [{:016x}]
+: {:>4} сохранение,: {:>4} játékmentés
+Неизвестно,Ismeretlen
+Неизвестный тайтл,Ismeretlen cím
+Немецкий,Német
+Неправильное хранилище,Érvénytelen tárhely
+Неправильный родительский объект,Érvénytelen szülőobjektum
+Нет,Nem
+Нет VFS. Прекращение работы,Nincs VFS. Leállítás
+Нет exefs VFS. Прекращение работы,Nincs exefs VFS. Leállítás
+: {:>4} сохранений,: {:>4} játékmentés
+Нет logo VFS. Прекращение работы,Nincs logo VFS. Leállítás
+Нет romfs VFS. Прекращение работы,Nincs romfs VFS. Leállítás
+Нет лого,Nincs logó
+Нечего устанавливать,Nincs telepíthető elem
+Новое имя для '{}',A(z) '{}' új neve
+Новый каталог,Új mappa
+Новый размер сохранения в МБ,A játékmentés új mérete MB-ban
+Новый рейтинг (-1 для удаления),Új értékelés (-1 a törléshez)
+: {:>4} сохранения,: {:>4} játékmentés
+Номер страницы,Oldalszám
+Ночь,Éjszaka
+Нужен связанный аккаунт,Társított fiók szükséges
+ОШИБКА ПОЛУЧЕНИЯ ЭКСТРА ДАННЫХ,HIBA A TOVÁBBI ADATOK LEKÉRÉSEKOR
+Обнаружены недопустимые символы,Érvénytelen karakterek
+Обновить DBI,DBI frissítése
+Обновить DBI из этого файла,DBI frissítése ebből a fájlból
+Обновить TitleDB,TitleDB frissítése
+Обновление TitleDB,TitleDB frissítése
+Обновление базы данных...,Adatbázis frissítése...
+Обновление версии до {} {}\n\nНажмите (+) для продолжения\nЛюбую другую кнопку для отмены,Frissítés erre a verzióra: {} {}\n\n(+) - Folytatás\nMás gomb - Mégse
+Обновление времени...,Idő frissítése...
+Обновление закончено\n\nНажмите любую кнопку\nдля перезапуска DBI,A frissítés kész\n\nNyomj meg egy gombot\na DBI újraindításához
+Обновление фейковой записи {} ➡ [v{}],Hamis bejegyzés frissítése: {} ➡ [v{}]
+Обновление. Пожалуйста подождите...,Frissítés folyamatban. Kis türelmet...
+Обновляется запись об игре...,Játékbejegyzés frissítése...
+Обрабатывается запись {:016X},Bejegyzés feldolgozása: {:016X}
+Обратный альбом (180°),Fordított fekvő (180°)
+Обратный портрет (270°),Fordított álló (270°)
+Общее время активной игры     : {} часов,Összes aktív játékidő            : {} óra
+Общее время дампа {:d}:{:02d}:{:02d},Teljes kimentési idő {:d}:{:02d}:{:02d}
+Общее время запущенных игр    : {} часов,Összes játékidő                  : {} óra
+Общее время игры      : -,Összes játékidő : -
+Общее время игры      : - (-),Összes játékidő : - (-)
+Общее время игры      : {:d} часов {:02d} минут,Összes játékidő : {:d} óra {:02d} perc
+Общее время установки: {:d}:{:02d}:{:02d},Teljes telepítési idő: {:d}:{:02d}:{:02d}
+Общее время: {:02}:{:02}:{:02},Teljes idő: {:02}:{:02}:{:02}
+Общее занимаемое место: N:{} + S:{} = {},Összes foglalt hely: N:{} + S:{} = {}
+Общее число запусков  : -,Indítások száma összesen : -
+Общие,Általános
+Общий размер установки: {},Teljes telepítési méret: {}
+Объединение списков,Listák egyesítése
+Объект {} не допустим,A(z) {} objektum nem engedélyezett
+Объект {} не может быть создан,A(z) {} objektum nem hozható létre
+Объект не открыт для редактирования,Az objektum nincs megnyitva szerkesztésre
+Объект удалён,Objektum törölve
+Объект уже открыт для редактирования,Az objektum már meg van nyitva szerkesztésre
+Огибка получения адреса сокета: {} {},Hiba a socket címének lekérésekor: {} {}
+Ожидаемый размер: {},Várt méret: {}
+Ожидается большой (>4GB) файл,Nagy (>4 GB-os) fájl szükséges
+Ожидается запуск dbibackend на стороне ПК...,Várakozás a dbibackend indítására a számítógépen...
+Ожидание: {} секунд,Várakozás: {} másodperc
+Ожидание: {} секунда,Várakozás: {} másodperc
+Ожидание: {} секунды,Várakozás: {} másodperc
+Ориентация,Tájolás   
+Ориентация...,Tájolás...
+Основной SDK не найден. Пробуем мультипрограмный вариант,A fő SDK nem található. Próba a többprogramos változattal
+Оставить сохранения,Mentési adatok megtartása
+Осталось ходов:    {:>3},Hátralévő lépések: {:>3}
+Остаток файла пропускается,A fájl hátralévő része kimarad
+Отключение связи с мобильным приложением...,Leválasztás a mobilalkalmazásról...
+Открываем папку прошивки...,Firmware-mappa megnyitása...
+Открыть,Megnyitás
+Открыть вторую панель,Második panel megnyitása
+Открыть как 7Z,Megnyitás 7Z-ként
+Открыть как RAR,Megnyitás RAR-ként
+Открыть как ZIP,Megnyitás ZIP-ként
+Открыть как hex,Megnyitás hexanézetben
+Открыть как текст,Megnyitás szövegként
+Открыть контент по MTP,Tartalom megnyitása MTP-n
+контент по MTP,tartalom MTP-n keresztül
+Открыть папку LFS,LFS-mappa megnyitása
+Content meta не найден. Установка прервана,A tartalom metaadatai nem találhatók. A telepítés megszakadt
+Отослано {}/{} байт,Elküldve: {}/{} bájt
+Отсутствуют ES сигпатчи!,Hiányoznak az ES-aláírásjavítások!
+Очистка /atmosphere/contents,/atmosphere/contents tisztítása
+Очистка кеша rightsId...,rightsId-gyorsítótár ürítése...
+Очистка папки...,Mappa tisztítása...
+Очистка плейсхолдеров...,Helyfoglalók törlése...
+Очистка системы от мусора,Felesleges rendszeradatok törlése
+Очистка сохранений,Mentési adatok törlése
+Очистка...,Tisztítás...
+Ошибка FTP сервера,FTP-szerverhiba
+DBI Просмотр альбома,DBI albumnézet
+Ошибка во время копирования файла,Hiba a fájl másolásakor
+Ошибка во время обновления тайтла,Hiba a cím frissítésekor
+Ошибка выделения сокета: {},Socket lefoglalási hibája: {}
+Ошибка завершения соединения: {},Hiba a kapcsolat lezárásakor: {}
+Ошибка загрузки картинки,Hiba a kép betöltésekor
+Ошибка загрузки файла из альбома: {},Hiba az albumból való betöltéskor: {}
+Ошибка закрытия сокета: {},Socket lezárási hibája: {}
+Ошибка записи файла: {},Fájlírási hiba: {}
+Ошибка изменения размера файла,Hiba a fájl átméretezésekor
+Ошибка инициализации {}: {},Inicializálási hiba {}: {}
+"DPAD и стики - прокрутка, L - стр. вверх, R - стр. вниз","Iránygombok és karok - Görgetés, L - Lapozás fel, R - Lapozás le"
+Ошибка опроса сокета: {},Socket lekérdezési hibája: {}
+Ошибка открытия каталога: {},Hiba a mappa megnyitásakor: {}
+Ошибка открытия сокета: {},Socket megnyitási hibája: {}
+Ошибка открытия файла,Hiba a fájl megnyitásakor
+Ошибка открытия файла '{}': {},Hiba a(z) '{}' fájl megnyitásakor: {}
+Ошибка открытия файла: {},Hiba a fájl megnyitásakor: {}
+Ошибка отсылки: {},Küldési hiba: {}
+Ошибка переименования: {},Átnevezési hiba: {}
+Ошибка подключения: {},Kapcsolódási hiba: {}
+Ошибка подмены SDK: {},SDK-csere hibája: {}
+"DPAD и стики - прокрутка, L - стр. вверх, R - стр. вниз, R3 - Текст/Hex","Iránygombok és karok - Görgetés, L - Lapozás fel, R - Lapozás le, R3 - Szöveg/Hex"
+Ошибка получения адреса узла: {},Hiba a csomópont címének lekérésekor: {}
+Ошибка получения внеочередных данных: {},Hiba a sávon kívüli adatok lekérésekor: {}
+Ошибка получения имени сокета: {} {},Hiba a socket nevének lekérésekor: {} {}
+Ошибка получения информаци о файле: {},Hiba a fájladatok lekérésekor: {}
+Ошибка получения размера файла: {},Hiba a fájlméret lekérésekor: {}
+Ошибка получения флагов сокета: {},Hiba a socket jelzőinek lekérésekor: {}
+Ошибка получения хранилища {},Hiba a(z) {} tárhely lekérésekor
+Ошибка получения: {},Lekérési hiba: {}
+Ошибка получения: {} {},Lekérési hiba: {} {}
+Ошибка посылки файла: {},Fájlküldési hiba: {}
+Ошибка привязки сокета к порту {}: {},Hiba a socket {} porthoz kötésekor: {}
+Ошибка привязки: {},Kötési hiba: {}
+Ошибка принятия соединения: {} {},Hiba a kapcsolat elfogadásakor: {} {}
+Ошибка приёма соединения: {},Hiba a kapcsolaton át történő fogadáskor: {}
+Ошибка проверси метки сокета: {},Socket címkéjének ellenőrzési hibája: {}
+Ошибка прослушивания: {},Figyelési hiba: {}
+Ошибка прослушки сокета: {},Socket figyelési hibája: {}
+Ошибка сжатия,Tömörítési hiba
+Ошибка создания каталога: {},Hiba a mappa létrehozásakor: {}
+Ошибка создания сокета: {},Socket létrehozási hibája: {}
+Ошибка создания сохранения,Hiba a játékmentés létrehozásakor
+Ошибка удаления каталога: {},Hiba a mappa törlésekor: {}
+Ошибка удаления файла: {},Fájltörlési hiba: {}
+Ошибка установки флагов сокета: {},Hiba a socket jelzőinek beállításakor: {}
+Ошибка чтения записи об игре: {},Hiba a játékbejegyzés olvasásakor: {}
+Ошибка чтения каталога: {},Mappaolvasási hiba: {}
+Ошибка чтения файла: {},Fájlolvasási hiba: {}
+Ошибок не найдено,Nem található hiba
+Ошибочный номер DLC (Должен быть в диапазоне 0x001-0x7FF),Érvénytelen DLC-szám (megengedett tartomány: 0x001–0x7FF)
+Ошибочный номер DLC (Должен быть в диапазоне 1-2047),Érvénytelen DLC-szám (megengedett tartomány: 1–2047)
+"Ошибочный тикет {0}: kg {1:02X}, pm {2:02X}","Érvénytelen licencjegy {0}: kg {1:02X}, pm {2:02X}"
+Папка LFS не найдена,Az LFS-mappa nem található
+Папка обновления очищена,Frissítési mappa kiürítve
+Параметры FTP,FTP-beállítások
+Параметры MTP,MTP-beállítások
+Параметры установки,Telepítési beállítások
+Передача окончена,Átvitel kész
+Переименование объекта,Objektum átnevezése
+Переименовать,Átnevezés
+Перейти к первой странице,Ugrás az első oldalra
+Перейти к последней странице,Ugrás az utolsó oldalra
+Перейти к странице...,Ugrás oldalra...
+Переместить,Áthelyezés
+Переместить в NAND,Áthelyezés a NAND-ra
+в NAND,a NAND-ra
+Переместить на SD карту,Áthelyezés az SD-kártyára
+на SD карту,az SD-kártyára
+"Перемещение {} ({}, {}) в {}","Áthelyezés: {} ({}, {}) ➡ {}"
+Перемещение {} записей,{} bejegyzés áthelyezése
+Перемещение {} записи,{} bejegyzés áthelyezése
+Перемещение {} игр,{} játék áthelyezése
+Перемещение {} игры,{} játék áthelyezése
+FTP сервер (нажмите B для остановки),FTP-szerver (B - Leállítás)
+Перемещение контента,Tartalom áthelyezése
+Перенос строк,Sortörés
+Переоткрытие ФС сохранения: {},Mentési fájlrendszer újranyitása: {}
+Пишется новая запись о контенте...,Új tartalombejegyzés írása...
+Пишется новый cnmt.nca...,Új cnmt.nca írása...
+Подготовка...,Előkészítés...
+Подключаемся к {}...,Kapcsolódás: {}...
+Подключено к {}:{},Kapcsolódva: {}:{}
+Подмена SDK,SDK-csere
+Подменить SDK,SDK lecserélése
+Подсчитывается размер установки...,Telepítési méret számítása...
+Подсчитывается размер установки...{}%,Telepítési méret számítása...{}%
+Подсчитываются объекты в альбоме в NAND,Albumobjektumok számlálása a NAND-on
+Подсчитываются объекты в альбоме на SD карте,Albumobjektumok számlálása az SD-kártyán
+Подсчёт метаданных...,Metaadatok számlálása...
+Подсчёт основного хэша,Fő hash számítása
+Подсчёт хэша секции,Szakasz hashének számítása
+"Пожалуйста, подключите вашу консоль к ПК кабелем USB Type-C или нажмите B","Csatlakoztasd a konzolt a PC-re egy USB-C-kábellel, vagy nyomd meg a B gombot"
+"Пожалуйста, подождите...",Kis türelmet...
+Поиск записей об ошибках,Hibanaplók keresése
+Поиск неиспользуемых тикетов,Nem használt licencjegyek keresése
+Поиск подготовленного системного обновления,Előkészített rendszerfrissítés keresése
+Поиск потерянных тайтлов,Elveszett címek keresése
+Поиск потерянных файлов в NAND,Elveszett fájlok keresése a NAND-on
+Поиск потерянных файлов на SD,Elveszett fájlok keresése az SD-kártyán
+Поиск сохранений удалённых пользователей...,Törölt felhasználók mentési adatainak keresése...
+Get chargeInfoFields : {},chargeInfoFields lekérése : {}
+Получен список из {} записей,{} bejegyzésből álló lista érkezett
+Получен список из {} записи,{} bejegyzésből álló lista érkezett
+Получение версий установленных игр,A telepített játékok verzióinak lekérése
+Получение информации из hac_versionlist...,Adatok lekérése a hac_versionlist listából...
+Получение информации из системы...,Rendszeradatok lekérése...
+Получение информации об играх...,Játékadatok lekérése...
+Получение списка тикетов...,Licencjegyek listájának lekérése...
+Получение файла: {} МБ ({:.2f} МБ/сек),Fájl fogadása: {} MB ({:.2f} MB/s)
+Получение файла: {}/\x1b[36;1m{}\x1b[37;1m МБ (\x1b[32;1m{}%\x1b[37;1m) (\x1b[33;1m{:.2f}\x1b[37;1m МБ/сек),Fájl fogadása: {}/\x1b[36;1m{}\x1b[37;1m MB (\x1b[32;1m{}%\x1b[37;1m) (\x1b[33;1m{:.2f}\x1b[37;1m MB/s)
+Полученное время: {},Kapott idő: {}
+Полученный размер: {},Kapott méret: {}
+"Получено: {}, ({:.2f} МБ/сек)","Fogadva: {}, ({:.2f} MB/s)"
+Пользователь {} не найден. Создание сохранения невозможно,A(z) {} felhasználó nem található. Nem hozható létre játékmentés
+Пользователь не найден,A felhasználó nem található
+Попытаться разобрать,Feldolgozás megkísérlése
+Попытка исправить,Javítási kísérlet
+Портрет (90°),Álló (90°)
+Португальский,Portugál
+"L+⬅-Начало, L+➡-Конец, ZL-Регистр, ZR-Ввод, Y-Пробел, X-Забой, R3-Язык","L+⬅-Eleje, L+➡-Vége, ZL-Kis-/nagybetű, ZR-Enter, Y-Szóköz, X-Visszatörlés, R3-Nyelv"
+После удаления игры не будут запускаться,A játékok törlés után nem indíthatók el
+Посылается файл: {},Fájl küldése: {}
+Посылается файл: {}/\x1b[36;1m{}\x1b[37;1m МБ (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m МБ/сек),Fájl küldése: {}/\x1b[36;1m{}\x1b[37;1m MB (\x1b[32;1m{}\x1b[37;1m%) (\x1b[33;1m{:.2f}\x1b[37;1m MB/s)
+Превышен размер командного буфера,A parancspuffer mérete túllépve
+LFS мод.: -,LFS-mod : -
+Предоставить по FTP,Megosztás FTP-n
+Прекращение прослушивания на {}:{},Figyelés leállítása itt: {}:{}
+Прервано пользователем,A felhasználó megszakította
+Привязка к {}:{},Kötés ehhez: {}:{}
+Принято соединение от {}:{},Kapcsolat elfogadva innen: {}:{}
+Проверить целостность,Épség ellenőrzése
+Проверка magic...,Fájlazonosító ellenőrzése...
+"Проверка {} ({}, {}), {}","Ellenőrzés: {} ({}, {}), {}"
+Проверка картриджа...,Játékkártya ellenőrzése...
+Проверка на наличие  {}...,Ellenőrzés: {}...
+Проверка обновлений,Frissítések keresése
+Проверка обновлений игр,Játékfrissítések keresése
+Проверка сохранений,Mentési adatok ellenőrzése
+Проверка целостности ({}),Épségellenőrzés ({})
+Проверяется: {},Ellenőrzés: {}
+"LFS мод.: Присутствует, Размер: подсчёт отключен в настройках","LFS-mod : Van, méret: a számítás ki van kapcsolva"
+Проверяются бекапы...,Biztonsági mentések ellenőrzése...
+Проверяются сохранения,Játékmentések ellenőrzése
+Программа {}. Control не найдена,Alkalmazás: {}. A Control nem található
+Программа {}. Exefs не найдена,Program: {}. Az ExeFS nem található
+Программа {}. Romfs не найдена,Alkalmazás: {}. A RomFS nem található
+Произошла неизвестная ошибка,Ismeretlen hiba történt
+Произошла ошибка:,Hiba történt:
+Произошла ошибка: {},Hiba történt: {}
+LFS папка игры,Játék LFS-mappája
+Пропускается: {}          \r,Kihagyás: {}          \r
+Прослушивание на {}:{},Figyelés: {}:{}
+Просмотр альбома по HTTP,Album megtekintése HTTP-n
+MTP Респондер (нажмите B для остановки),MTP-kiszolgáló (B - Leállítás)
+Просмотреть игры,Játékok megtekintése
+Просто запуск,Csak indítás
+Разбор,Feldolgozás
+Раздел secure не найден,A biztonságos szakasz nem található
+"Размер  : {}, {} файл","Méret : {}, {} fájl"
+"Размер  : {}, {} файла","Méret : {}, {} fájl"
+"Размер  : {}, {} файлов","Méret : {}, {} fájl"
+Размер посылаемого файла   : {},A küldött fájl mérete: {}
+Размер сохранений     : {},Mentési adatok mérete : {}
+Размер: {},Méret: {}
+Разрешено,Engedélyezve
+Распаковать в подкаталог,Kibontás almappába
+Распаковать сюда,Kibontás ide
+Распаковка файла,Fájl kibontása
+Растущие цветы:     {},Növekvő virágok:     {}
+Nintendo Account задан и связан,Nintendo-fiók beállítva és társítva
+Регистрация контента {}...,Tartalom regisztrálása: {}...
+Регистрация файла {}...,Fájl regisztrálása: {}...
+Регистры котроллера MAX17050,A MAX17050 vezérlő regiszterei
+Редактирование возрастного рейтинга...,Korhatár-besorolás szerkesztése...
+Редактирование запретов,Korlátozások szerkesztése
+Рендеринг FB2,FB2 megjelenítése
+"Nintendo Account задан, но не связан","Nintendo-fiók beállítva, társítás nélkül"
+Сброс требуемой версии,Előírt verzió alaphelyzetbe állítása
+Сбросить требуемую версию,Előírt verzió alaphelyzetbe állítása
+Сведения,Információk
+Сведения...,Információk...
+Свободное место в хранилище: {},Szabad tárhely: {}
+Свободное место: {},Szabad hely: {}
+Сгенерировать и установить,Létrehozás és telepítés
+Nintendo Account не задан,Nincs beállítva Nintendo-fiók
+Сдампить на SD карту,Kimentés SD-kártyára
+Сдампить на внешний USB,Kimentés külső USB-meghajtóra
+Сдампить текущую прошивку,Jelenlegi firmware kimentése
+Сдамплено: {}/{} ({}%) ({:.2f} МБ/сек),Kimentve: {}/{} ({}%) ({:.2f} MB/s)
+Сделать бекап,Biztonsági mentés készítése
+"Сделать бекап, если новее","Biztonsági mentés, ha újabb"
+Северная Америка,Észak-Amerika
+Сентябрь,szeptember
+Сепия,Szépia
+Сервер запущен,A szerver elindult
+Сервер предлагает выполнить обновление DBI\n\nНажите (+) для согласия\nЛюбую другую кнопку для отмены,A szerver DBI-frissítést ajánl fel\n\n(+) - Megerősítés\nMás gomb - Mégse
+Сессии,Menetek
+Сессия закрыта,Munkamenet lezárva
+Сессия открыта,Munkamenet megnyitva
+Синхронизация времени по NTP,NTP-időszinkronizálás
+Системные приложения,Rendszeralkalmazások
+Системный по умолчанию,Rendszer alapértelmezése
+Сканирование директорий...,Mappák vizsgálata...
+Сканирование игр...,Játékok vizsgálata...
+Скачано {}/{},Letöltve: {}/{}
+Скачивание файла не удалось,A fájl letöltése sikertelen
+Скорость передачи: {:.2f} МБ/сек,Átviteli sebesség: {:.2f} MB/s
+Собираются сведения...,Adatok gyűjtése...
+Соединение сброшено,A kapcsolat megszakadt
+Создание DLC анлокера,DLC-feloldó létrehozása
+Создание NSP,NSP létrehozása
+Создание sdmc:/versions.txt,sdmc:/versions.txt létrehozása
+Создание дампа ({}),Kimentés készítése ({})
+Создание дампа: {},Kimentés készítése: {}
+Создание единого репака,Egyesített csomag létrehozása
+Создание записи об игре...,Játékbejegyzés létrehozása...
+Создание новой записи об игре...,Új játékbejegyzés létrehozása...
+Создание плейсхолдера: {}...,Helyfoglaló létrehozása: {}...
+"Создание репака Id: {:016X}, Версия: {}, Тип: {}","Újracsomagolás. Azonosító: {:016X}, verzió: {}, típus: {}"
+Создание строк... {}%,Szövegek létrehozása... {}%
+Создание таблицы имён,Névtábla létrehozása
+Создание тела файла,Fájltörzs létrehozása
+Создание точки доступа...,Hozzáférési pont létrehozása...
+Создание хэш таблицы,Hash-tábla létrehozása
+Создание ярлыка,Parancsikon létrehozása
+Создано новое сохранение. Восстанавливаю бекап в него...,Új játékmentés készült. Biztonsági mentés visszaállítása ebbe...
+Создать sdmc:/versions.txt,sdmc:/versions.txt létrehozása
+Создать единый репак,Egyesített csomag létrehozása
+Создать новое сохранение...,Új játékmentés létrehozása...
+Создать новый каталог...,Új mappa létrehozása...
+Создать новый файл...,Új fájl létrehozása...
+Создать ярлык,Parancsikon létrehozása
+Создать ярлык для hbmenu,Parancsikon létrehozása a hbmenuhöz
+Создать ярлык на рабочий стол для DBI...,DBI-parancsikon létrehozása a főmenüben...
+Создать ярлык с аргументами...,Parancsikon létrehozása argumentumokkal...
+Создаётся обновлённая запись об игре...,Frissített játékbejegyzés létrehozása...
+Сохранение для {} уже существует,Már van mentési adat ehhez: {}
+Сохранения,Mentési adatok
+Сохранения будут удалены!,A mentési adatok törlődnek!
+Сохранения удалённых игр ({}),Törölt játékok mentései ({})
+Сохранения установленных игр ({}),Telepített játékok mentései ({})
+Сохранёные в системе параметры котроллера батареи,Az akkumulátorvezérlő paraméterei mentve a rendszerben
+Существующая запись об игре не найдена,A meglévő játékbejegyzés nem található
+Существующее сохранение не найдено и новое не может быть создано,"A meglévő játékmentés nem található, és új sem hozható létre"
+SDK {} уже был экспортирован: {},Az SDK {} már exportálva van: {}
+Тайтл не установлен,A cím nincs telepítve
+Тайтл установлен,A cím telepítve van
+Тайтлы с ошибками:,Hibás címek:
+Текущее время: {},Pontos idő: {}
+SDK на подмену не найдены,Nem található csere-SDK
+Тема,Téma
+Тикет исправлен,Licencjegy javítva
+Тикеты,Licencjegyek
+Тикеты не найдены,Nem található licencjegy
+864,864
+881,881
+"больше шансов, что оно заработает». Их","végül beválik.” Úgy taktikáznak,"
+быстро проникли в планы шадоков и,a neten kiművelődött szomszédok
+"всякий раз, когда растение расцветает","a szerszámoskamrákból, körbevették, és"
+"выражениях: «Чем больше неудач, тем","veszteség, annál nagyobb az esély, hogy"
+"вычислили, что у них есть по крайней",egymillióból egyszer minden
+заработает… И они торопятся поскорее,az első 999 999 végzetes melléfogást
+"и дает транзистор, они мчатся, чтобы","most, valahányszor meglát egy lapkát,"
+"и не кончилось успехом». Или, в других",Más szóval: „Minél nagyobb a
+"мере один шанс из миллиона, что она",végre összejön… így sietve elkövetik
+миллионная заработает».,"I. I. Nagydumás, Az áttörés ritmusai"
+"ничего, что бы непрерывно продолжалось",átmeneti előleg a dicsőségre.”
+"но окружили его со всех сторон, и","hagyták, hogy a vendég bemásszon az egyik"
+"опытов, чтобы быть уверенными, что", 
+осуществить 999999 первых неудачных,hogy aztán eljöjjön a győzelem.»
+"очень умные благодаря своим шляпам,",a szomszédokhoz alkatrészért. A
+"планету гиби искать транзисторы. Гиби,",egyenesen a mocsárból küldték
+постоянно кончаясь неудачами.,és rendületlenül hozzák a negatív növekedést.
+принципов шадокской логики: «Нет,„Minden katasztrófa csak
+"ракета еще несовершенна, но они","megfeneklenek, de görcsösen bíznak abban, hogy"
+"растений, произрастающих на огородах.",állítólag egyenesen a kerti
+решили позабавиться. Они позволили,"hamar átláttak a ravasz terven,"
+собрать урожай прежде шадока.,egyből visszaveszik tőle.”
+"терпят неудачу потому, что не хватает","a rakéták lezuhannak, mert kevés a mikrochip"
+транзисторов в системах безопасности.,az irányítórendszerekben és a
+"шадоку забраться в один из их огородов,","úgy döntöttek, szórakoznak egy kicsit. Így"
+«У шадоков ситуация удовлетворительна.,«Az orkoknál minden a terv szerint halad:
+"Испытания ракет продолжаются,","a lenullázás folytatódik,"
+Но у гиби транзисторы собирают с,vécékben is. A szomszédok közben
+Решено послать одного из шадоков на,gépeikből szedik ki a chipeket. Egy önkéntest
+original,eredeti
+"SSID: {}, Пароль: {}","SSID: {}, Jelszó: {}"
+Тип оборудования        : {},Eszköztípus            : {}
+TempC0               : {:04x},TempC0                   : {:04x}
+Уровень заряда батареи         : {},Akkumulátor töltöttsége              : {}
+URL для проверки обновлений,Frissítéskeresés URL-je
+Установка с картриджа,Telepítés játékkártyáról
+Установка через DBIbackend,Telepítés DBIbackenddel
+Форсировать UTF-8,UTF-8 kényszerítése
+Хэш версии              : {},Verzió hash-e          : {}
+Читать дату файлов,Fájl dátumának beolvasása
+Экзосфера очищает CAL0      : {},Az Exosphere törli a CAL0-t : {}
+Экран                 : ({:08X}) {},Kijelző                          : ({:08X}) {}
+Язык                    : {},Nyelv                  : {}
+"Интервал автобекапа сейвов, дни",Automatikus mentés (nap)
+Конфигурация зарядки            : {},Töltési konfiguráció                 : {}
+Режим Hi-Z включён              : {},Hi-Z mód engedélyezve                : {}
+Зарядка батареи включена        : {},Akkumulátortöltés engedélyezve       : {}
+Маршрут электропитания          : {},Tápellátás útvonala                  : {}
+Напряжение источника            : {} mV,Forrás feszültsége                   : {} mV
+Ток источника                   : {} mA,Forrás áramerőssége                  : {} mA
+Быстрая зарядка разрешена       : {},Gyorstöltés engedélyezve             : {}
+Целевая прошивка            : {}.{}.{},Célfirmware                 : {}.{}.{}
+Поддерживаемая версия HOS   : {},Támogatott HOS-verzió       : {}
+Предел входного тока (буст)     : {} mA,Bemeneti áramkorlát (boost)          : {} mA
+Предел тока быстрой зарядки     : {} mA,Gyorstöltési áramkorlát              : {} mA
+Напряжение батареи              : {} mV,Akkumulátor feszültsége              : {} mV
+Контроллер источника получен    : {},Forrásvezérlő lekérve                : {}
+OTG Запрошен                    : {},OTG igényelve                        : {}
+Производитель    : {:s} ({:02X}),Gyártó         : {:s} ({:02X})
+OEM ID           : {:s} ({:s}),OEM-azonosító  : {:s} ({:s})
+Имя продукта     : {:s},Terméknév      : {:s}
+Ревизия продукта : {:s},Termékváltozat : {:s}
+Серийный номер   : {:s},Sorozatszám    : {:s}
+Ёмкость с завода   : {} mAh,Gyári kapacitás      : {} mAh
+Автоповтор кнопок при удержании,Nyomva tartott gomb ismétlése
+Версия атмосферы            : {}.{}.{},Atmosphere-verzió           : {}.{}.{}
+Версия прошивки         : {}.{}.{}-{}.{},Firmware-verzió        : {}.{}.{}-{}.{}
+Возраст батареи                : {}%,Akkumulátor kora                     : {}%
+Время гашения экрана в секундах,Kijelző elsötétítése (mp)
+Выключать экран,Kijelző kikapcsolása
+Выход на рабочий стол,Vissza a HOME menübe
+Дата первого игрового события : {},Első játéktevékenység dátuma     : {}
+Добавлять суффикс к имени файла,Utótag hozzáadása a fájlnévhez
+Достаточное питание            : {},Elegendő tápellátás                  : {}
+Есть исправление RCM бага   : {},RCM-hiba javítva            : {}
+Журналирование действий,Műveletek naplózása
+Закладки на SD,SD-könyvjelzők
+Запись в CAL0 разрешена     : {},CAL0 írása engedélyezve     : {}
+Запускать точку доступа,Hozzáférési pont indítása
+Запустить FTP сервер,FTP-szerver indítása
+Запустить HTTP сервер,HTTP-szerver indítása
+Заряд батареи                  : {}%,Akkumulátor töltöttsége              : {}%
+Заряд батареи (сырое значение) : {}%,Akkumulátor töltöttsége (nyers adat) : {}%
+Зарядка батареи                : {},Akkumulátor töltöttsége              : {}
+Инструменты,Eszközök
+Использовать 5 GHz,5 GHz használata
+Использовать MSG_WAITALL в recv,MSG_WAITALL a recv hívásban
+Использовать для неё TitleID,TitleID használata ehhez
+Использовать разгон,Órajel-emelés használata
+Использовать скрытый SSID,Rejtett SSID használata
+Источник питания                : {},Áramforrás                           : {}
+Курсор на обеих панелях,Kurzor mindkét panelen
+%% заряд-разряд    : {},%% töltés–merítés    : {}
+Никнейм консоли         : {},Konzol beceneve        : {}
+Общее число игровых сессий    : {},Játékmenetek száma összesen      : {}
+Bluetooth MAC адрес   : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Bluetooth MAC-cím                : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X}
+CDIR в листинге,CDIR a listában
+Configuration Id1     : {},Konfigurációs azonosító 1        : {}
+DeviceId                : {0:} ({0:016X}),Eszközazonosító        : {0:} ({0:016X})
+Папка для бекапа сохранений,Mentési biztonsági mappa
+Папка для дампа игр,Játékkimentések mappája
+Папка журналов,Naplómappa
+DramId                  : {} ({}),DramId                 : {} ({})
+Пароль,Jelszó
+Перевернуть джойконы,Joy-Conok megfordítása
+Перевернуть экран,Kijelző elforgatása
+Emummc включён              : {},EmuMMC engedélyezve         : {}
+Переносить слова,Sortörés szóhatáron
+Платформа               : {},Platform               : {}
+FullCap              : {:04x} ({} mAh),FullCap                  : {:04x} ({} mAh)
+Подсвечивать файлы обновлений,Frissítési fájlok kiemelése
+FullCapNom           : {:04x} ({} mAh),FullCapNom               : {:04x} ({} mAh)
+Показываемая версия     : {},Megjelenített verzió   : {}
+Показываемое название   : {},Megjelenített név      : {}
+Показывать 'Обновить отсюда',„Frissítés innen” kijelzése
+Показывать объединённый NSP,Egyesített NSP megjelenítése
+Показывать папку 'Mods&Cheats',„Mods&Cheats” mappa mutatása
+Показывать прогрев кеша,Gyorsítótár-előtöltés jelzése
+Показывать размер LFS (долго),LFS-méret kijelzése (lassú)
+Показывать секунды,Másodpercek megjelenítése
+Показывать часы в статусе,Óra az állapotsávban
+Поколение ключа             : {},Kulcsgeneráció              : {}
+Git commit hash             : {:016X},Git-commit hash-e           : {:016X}
+Полная ёмкость     : {} mAh,Teljes kapacitás     : {} mAh
+IavgEmpty            : {:04x},IavgEmpty                : {:04x}
+Пользовательские хранилища,Felhasználói tárhelyek
+Предел входного тока            : {} mA,Bemeneti áramkorlát                  : {} mA
+Предназначение          : {},Rendeltetés            : {}
+Проверять хэш при установке,Hash ellenőrzése telepítéskor
+Просмотр SD карты,SD-kártya böngészése
+Просмотр USB носителей,USB-meghajtók böngészése
+Просмотр раздела SYSTEM,SYSTEM partíció böngészése
+Просмотр раздела USER,USER partíció böngészése
+Просмотр сети,Hálózat böngészése
+Просмотр сохранений,Játékmentések megtekintése
+Просмотр тикетов,Licencjegyek megtekintése
+Просмотр установленных игр,Telepített játékok listája
+Регион                  : {},Régió                  : {}
+Режим HiZ зарядки       : {},Hi-Z töltési mód       : {}
+Режим киоска            : {},Kioszkmód              : {}
+Родительский PIN        : {},Szülői PIN-kód         : {}
+Серийный # прочитанный  : {},Beolvasott sorozatszám : {}
+Серийный # угаданный    : {},Becsült sorozatszám    : {}
+Серийный номер        : {},Sorozatszám                      : {}
+Силовая роль                    : {},Tápellátási szerep                   : {}
+QrTable00            : {:04x},QrTable00                : {:04x}
+Смещать курсор после выделения,Kurzor mozgatása kijelölés után
+QrTable10            : {:04x},QrTable10                : {:04x}
+Сожжено предохранителей : {},Kiégett biztosítékok   : {}
+Создавать LFS папку,LFS-mappa létrehozása
+QrTable20            : {:04x},QrTable20                : {:04x}
+QrTable30            : {:04x},QrTable30                : {:04x}
+RCOMP0               : {:04x},RCOMP0                   : {:04x}
+Сохранения только в RO режиме,Játékmentések csak olvasásra
+RTC запущены (приблизительно) : {},RTC indulása (hozzávetőleg)      : {}
+Текущая ёмкость                 : {}%,Jelenlegi kapacitás                  : {}%
+Текущая ёмкость    : {} mAh,Jelenlegi kapacitás  : {} mAh
+Текущее напряжение : {} mV,Jelenlegi feszültség : {} mV
+Текущий заряд      : {}%,Jelenlegi töltöttség : {}%
+Текущий ток        : {} mA,Áramfelvétel         : {} mA
+Тема отображения,Megjelenítési téma  
+Температура        : {}°C,Hőmérséklet          : {}°C
+Температура батареи             : {}°C,Akkumulátor hőmérséklete             : {}°C
+Тип SoC                 : {},SoC típusa             : {}
+Тип источника питания          : {},Áramforrás típusa                    : {}
+Wireless LAN MAC адрес: {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X},Vezeték nélküli hálózat MAC-címe : {:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X}
+Форсировано вклчение USB 3.0: {},USB 3.0 kényszerítve        : {}
+Возраст батареи                 : {}%,Akkumulátor kora                     : {}%
+Предел напряжения заряда батареи: {} mV,Akkumulátor töltési feszültséghatára : {} mV
+Средняя температура: {}°C,Átlaghőmérséklet     : {}°C
+Сумма %% заряд-разряд: {} (~{} 0-100 циклов),"Összes %% töltés–merítés : {} (~{} teljes ciklus, 0–100)"
+"          Париж, издательство Грассе.", 
+      Название: {}\n      Издатель: {}\n      Версия: ,      Név: {}\n      Kiadó: {}\n      Verzió: 
+Удаление игры ,Játék törlése 
+Удаляется бекап ,Biztonsági mentés törlése 
+Удалять после установки: ,Törlés telepítés után   :
+  Автоопределение,  Automatikus felismerés
+Шифрование секции ,Szakasz titkosítása 
+Ярлык   : ,Parancsikon : 
+ {} минут, {} perc
+Язык    : ,Nyelv: 
+Путь    : ,Útvonal : 
+  Жак Руксель. Великолепие навыворот.,Bunkerállami Kiadó «Görbe tükör»
+  Кодировка...,  Kódolás...
+  Применить,  Alkalmazás
+  Редактирование,  Szerkesztés
+ (по времени игры), (játékidő szerint)
+ (по названию игры), (játék címe szerint)
+ (по числу запусков), (indítások száma szerint)
+     {:<10} Шифрование: {} Размер установки: {}{:>10},     {:<10} Titkosítás: {} Telepítési méret: {}{:>10}
+ [НЕ МОГУ ОТКРЫТЬ ФАЙЛ], [A FÁJL NEM NYITHATÓ MEG]
+Автозапуск FTP: ,FTP automatikus indítása: 
+Автор   : ,Szerző  : 
+ {:>5} часа, {:>5} óra
+Базовое хранилище: ,Alapverzió tárhelye: 
+ {:>5} часов, {:>5} óra
+ВНИМАНИЕ ,FIGYELEM 
+ВНИМАНИЕ! ,FIGYELEM! 
+ {} в чёрном списке., {} szerepel a tiltólistán.
+Версия  : ,Verzió  : 
+Внимание! ,Figyelem! 
+ {} минута, {} perc
+ {} минуты, {} perc
+Всего освобождено места : ,Összes felszabadított hely : 
+    {:>2} сек,    {:>2} mp
+ Закрытие игры, Játék bezárása
+Выйти из DBI           : ,Kilépés a DBI-ből       :
+Выключить экран        : ,Kijelző kikapcsolása    :
+ Запуск игры, Játék indítása
+ Логаут пользователя \x1b[36;1m{}\x1b[37;1m, Felhasználó kijelentkeztetése: \x1b[36;1m{}\x1b[37;1m
+ Логин пользователя \x1b[36;1m{}\x1b[37;1m, Felhasználónév: \x1b[36;1m{}\x1b[37;1m
+ Переключение на игру, Váltás a játékra
+Загружено ,Betöltve 
+ Режим работы изменился: {}, Működési mód megváltozott: {}
+ Сброс системных часов, Rendszeróra alaphelyzetbe állítása
+ Сворачивание игры, Játék háttérbe helyezése
+Запрос на удаление ,Törlési kérelem 
+ Состояние электропитания изменилось: {}, Tápellátási állapot megváltozott: {}
+" и {} новое DLC,"," és {} új DLC,"
+"    Великий колдун сказал, что ракеты","A fő stratégájuk kijelentette, hogy"
+" и {} новых DLC,"," és {} új DLC,"
+Имя     : ,Név     : 
+ сортировка по дате создания, rendezés a létrehozás dátuma szerint
+ сортировка по имени, rendezés név szerint
+ сортировка по имени игры, rendezés a játék neve szerint
+Используется ,Felhasználva 
+ сортировка по месту установки, rendezés a telepítési hely szerint
+Конвертация в фейковые ,Átalakítás hamissá 
+ сортировка по общему размеру, rendezés a teljes méret szerint
+ сортировка по пользователю, rendezés felhasználó szerint
+ сортировка по порядку игры, rendezés a játék sorrendje szerint
+Место установки        : ,Telepítés helye        :
+ сортировка по размеру, rendezés méret szerint
+Название: ,Név: 
+    Дело здесь в одном из основных,A titok az elmélyült logikájukban rejlik:
+Начало установки. Место установки: ,A telepítés elindult. Telepítés helye: 
+Невозможно создать выходной zip-файл: ,A kimeneti ZIP-fájl nem hozható létre: 
+Неиспользуемый тикет: ,Nem használt licencjegy: 
+   {:>3} мин,   {:>3} perc
+Общий размер передачи  : ,Teljes átviteli méret   :
+Общий размер установки : ,Teljes telepítési méret :
+Ожидается ,Várt érték: 
+Ожидание включения интерфейса: ,Várakozás az interfész elindulására: 
+Освобождено места в NAND: ,Felszabadított hely a NAND-on: 
+Освобождено места на SD : ,Felszabadított hely az SD-n : 
+   Получение списка бекапов...   ,   Biztonsági mentések listájának lekérése...   
+DPAD/Стики - Навигация по страницам\n\n     ZR+ZL - Переход к странице... \n\n       L/R - Навигация по главам   \n\n       (-) - Эта подсказка         \n\n       (+) - Меню                  ,Iránygombok/karok - Lapozás\n\n     ZR+ZL - Ugrás oldalra... \n\n       L/R - Fejezetváltás         \n\n       (-) - Ez a súgó          \n\n       (+) - Menü                  
+Ошибка чтения регистров max17050: ,Hiba a MAX17050 regisztereinek olvasásakor: 
+Ошибка чтения сохранённых параметров контроллера: ,Hiba a mentett vezérlőparaméterek olvasásakor: 
+   Получение списка бекапов...{}/{}    ,   Biztonsági mentések listájának lekérése...{}/{}    
+Предупреждения: ,Figyelmeztetések: 
+"LFS мод.: Присутствует, Размер: ","LFS-mod: van, méret: "
+Пропускаем файл до начала secure раздела ,Ugrás a fájl biztonságos szakaszának elejére 
+Размер  : ,Méret : 
+Сброс требуемой версии к ,Előírt verzió beállítása erre: 
+   Получение списка сохранений...   ,   Játékmentések listájának lekérése...   
+Скорость USB интерфейса: ,USB-interfész sebessége: 
+Создан zip-файл: ,ZIP-fájl létrehozva: 
+Создание бекапа сохранения ,Játékmentés biztonsági mentése 
+Создание каталога: ,Mappa létrehozása: 
+Создание объекта: ,Objektum létrehozása: 
+Создание фейковой записи... ,Hamis bejegyzés létrehozása... 
+Создаётся MTP хранилище: ,MTP-tárhely létrehozása: 
+Статистика игры ,Játékstatisztika 
+Строка поиска: ,Keresőkifejezés: 
+Не проверять место     : ,Hely ellenőrzésének kihagyása :
+Проверять хеш-сумму NCA: ,NCA hash ellenőrzése    :
+Патчить имена (HOS 21+): ,Nevek javítása (HOS 21+):
+Занулять мастерключ    : ,Főkulcs alaphelyzetbe állítása :
+Патчить запись видео   : ,Videórögzítés javítása  :
+Патчить скриншоты      : ,Képernyőképek javítása  :
+Игра использует SDK {},A játék ezt az SDK-t használja: {}
+Удалить старые обновления игр,Régi játékfrissítések törlése
+Удалить потерянный контент с SD,Árva tartalom törlése az SD-kártyáról
+Удалить потерянный контент из NAND,Árva tartalom törlése a NAND-ról
+Удалить плейсхолдеры с SD,Helyfoglalók törlése az SD-kártyáról
+Удалить плейсхолдеры из NAND,Helyfoglalók törlése a NAND-ról
+Удалить неиспользуемые тикеты,Használaton kívüli licencjegyek törlése
+Починить тикеты с ошибками дампа,Kimentési hibás licencjegyek javítása
+Удалить скачанное обновление системы,Letöltött rendszerfrissítés törlése
+Очистить папку erpt_reports,Az erpt_reports mappa ürítése
+Очистить кеш тикетов,Licencjegy-gyorsítótár ürítése
+Очистить /atmosphere/contents,/atmosphere/contents tisztítása
+Удалить сохранения удалённых пользователей,Törölt felhasználók mentéseinek törlése
+Дата производства: {:s},Gyártási dátum : {:s}
+Ник: {},Becenév: {}
+Установить обновления из текущей папки,Frissítések telepítése ebből a mappából
+Патчить требование NNID: ,NNID-követelmény módosítása :
+Выполнить выбранные действия,Kijelölt műveletek végrehajtása
+CID: {:s},CID                : {:s}
+TitleId : {} BID: {},TitleId : {} BID: {}
+"Meta SDK: {},  Program SDK: {}","Meta SDK: {},  Program SDK: {}"
+"Внимание!!! Включение следующих опций приведет к тому,",Figyelem!!! A következő beállítások bekapcsolása esetén
+что установленные NCA файлы будут отличаться от исходных:,a telepített NCA-fájlok eltérnek az eredetiektől:
+Включение синхронизации времени по сети...,Hálózati időszinkronizálás bekapcsolása…
+ Да ,Igen 
+Нет , Nem 
+Это действие будет нельзя отменить,Ez a művelet nem vonható vissza
+Да,Igen
+Произошла ошибка: ,Hiba történt: 
+В файле /switch/prod.keys отсутствуют необходимые ключи.,A /switch/prod.keys fájlból hiányoznak a szükséges kulcsok.
+Часть функций программы будет недоступна.,Az alkalmazás egyes funkciói nem érhetők el.
+Перегрузитесь в Hekate и используйте Lockpick_RCM.bin пейлоад,"Indítsd újra a konzolt Hekatéba, és a Lockpick_RCM.bin payload segítségével"
+для дампа ключей из SysNAND.,mentsd ki a SysNAND kulcsait.
+Проверять хэш при установке    : ,Hash ellenőrzése telepítéskor : 
+Просмотр раздела USER          : ,USER partíció böngészése      : 
+Тема отображения               : ,Megjelenítési téma             : 
+Температура    : {}$°$C,Hőmérséklet         : {}°C
+Температура     : {}$°$C,Hőmérséklet         : {}°C
+Температура      : {}$°$C,Hőmérséklet         : {}°C
+Температура       : {}$°$C,Hőmérséklet         : {}°C
+Температура        : {}$°$C,Hőmérséklet         : {}°C
+Температура         : {}$°$C,Hőmérséklet         : {}°C
+Температура          : {}$°$C,Hőmérséklet         : {}°C
+Температура           : {}$°$C,Hőmérséklet         : {}°C
+Температура            : {}$°$C,Hőmérséklet         : {}°C
+Температура             : {}$°$C,Hőmérséklet         : {}°C
+Температура              : {}$°$C,Hőmérséklet         : {}°C
+Срепняя температура: {}$°$C,Átlaghőmérséklet    : {}°C
+Средняя температура: {}$°$C,Átlaghőmérséklet    : {}°C
+Температура батареи        : {}$°$C,Akkumulátor hőmérséklete             : {}°C
+Температура батареи         : {}$°$C,Akkumulátor hőmérséklete             : {}°C
+Температура батареи          : {}$°$C,Akkumulátor hőmérséklete             : {}°C
+Температура батареи           : {}$°$C,Akkumulátor hőmérséklete             : {}°C
+Температура батареи            : {}$°$C,Akkumulátor hőmérséklete             : {}°C
+Температура батареи             : {}$°$C,Akkumulátor hőmérséklete             : {}°C
+Температура батареи              : {}$°$C,Akkumulátor hőmérséklete             : {}°C
+Температура батареи               : {}$°$C,Akkumulátor hőmérséklete             : {}°C
+Температура батареи                : {}$°$C,Akkumulátor hőmérséklete             : {}°C
+Температура батареи                 : {}$°$C,Akkumulátor hőmérséklete             : {}°C
+Температура батареи                  : {}$°$C,Akkumulátor hőmérséklete             : {}°C
+Температура    : {}°C,Hőmérséklet         : {}°C
+Температура     : {}°C,Hőmérséklet         : {}°C
+Температура      : {}°C,Hőmérséklet         : {}°C
+Температура       : {}°C,Hőmérséklet         : {}°C
+Температура         : {}°C,Hőmérséklet         : {}°C
+Температура          : {}°C,Hőmérséklet         : {}°C
+Температура           : {}°C,Hőmérséklet         : {}°C
+Температура            : {}°C,Hőmérséklet         : {}°C
+Температура             : {}°C,Hőmérséklet         : {}°C
+Температура              : {}°C,Hőmérséklet         : {}°C
+Температура батареи        : {}°C,Akkumulátor hőmérséklete             : {}°C
+Температура батареи         : {}°C,Akkumulátor hőmérséklete             : {}°C
+Температура батареи          : {}°C,Akkumulátor hőmérséklete             : {}°C
+Температура батареи           : {}°C,Akkumulátor hőmérséklete             : {}°C
+Температура батареи            : {}°C,Akkumulátor hőmérséklete             : {}°C
+Температура батареи              : {}°C,Akkumulátor hőmérséklete             : {}°C
+Температура батареи               : {}°C,Akkumulátor hőmérséklete             : {}°C
+Температура батареи                : {}°C,Akkumulátor hőmérséklete             : {}°C
+Температура батареи                 : {}°C,Akkumulátor hőmérséklete             : {}°C
+Температура батареи                  : {}°C,Akkumulátor hőmérséklete             : {}°C
+Срепняя температура: {}°C,Átlaghőmérséklet    : {}°C
+ Новый DLC , Új DLC 
+Записано: ,Kiírva: 
+Игра использует мастер-ключ ,A játék által használt főkulcs: 
+Android extensions: ,Android-bővítmények: 
+ в чёрном списке., a tiltólistán szerepel.
+МБ/сек),MB/s)
+[32;1mУстановка игры завершена\x1b[37;1m,\x1b[32;1mA játék telepítése befejeződött\x1b[37;1m
+[32;1mТикет исправлен\x1b[37;1m,\x1b[32;1mLicencjegy javítva\x1b[37;1m
+[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m,[32;1m[SIKERES ÁTVITEL]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m
+\x1b[31;1m[ПЕРЕДАЧА ПРЕРВАНА]\x1b[37;1m,\x1b[31;1m[AZ ÁTVITEL MEGSZAKADT]\x1b[37;1m
+[ПОДПИСЬ: Поддельная]\x1b[37;1m,[ALÁÍRÁS: Hamis]\x1b[37;1m
+[ПОДПИСЬ: OK]\x1b[37;1m,[ALÁÍRÁS: RENDBEN]\x1b[37;1m
+[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[32;1m[ALÁÍRÁS: RENDBEN]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[38;2;255;128;0m[ALÁÍRÁS: Hamis]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[32;1m[ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: OK],[SIKERES ÁTVITEL] [ALÁÍRÁS: RENDBEN]
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: Поддельная],[SIKERES ÁTVITEL] [ALÁÍRÁS: Hamis]
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: XCI➡NSP],[SIKERES ÁTVITEL] [ALÁÍRÁS: XCI➡NSP]
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: DBI],[SIKERES ÁTVITEL] [ALÁÍRÁS: DBI]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: OK],[SIKERES ÁTVITEL][ALÁÍRÁS: RENDBEN]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: Поддельная],[SIKERES ÁTVITEL][ALÁÍRÁS: Hamis]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: XCI➡NSP],[SIKERES ÁTVITEL][ALÁÍRÁS: XCI➡NSP]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: DBI],[SIKERES ÁTVITEL][ALÁÍRÁS: DBI]
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL] \x1b[32;1m[ALÁÍRÁS: RENDBEN]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL] \x1b[38;2;255;128;0m[ALÁÍRÁS: Hamis]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL] \x1b[32;1m[ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL] \x1b[32;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m \x1b[32;1m[ALÁÍRÁS: RENDBEN]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m \x1b[38;2;255;128;0m[ALÁÍRÁS: Hamis]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m \x1b[32;1m[ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m \x1b[32;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m\x1b[32;1m[ALÁÍRÁS: RENDBEN]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m\x1b[38;2;255;128;0m[ALÁÍRÁS: Hamis]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m\x1b[32;1m[ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m\x1b[32;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[32;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[ALÁÍRÁS: RENDBEN]\x1b[37;1m
+\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[38;2;255;128;0m[ALÁÍRÁS: Hamis]\x1b[37;1m
+\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+[ПОДПИСЬ: DBI]\x1b[37;1m,[ALÁÍRÁS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m  \x1b[32;1m[ALÁÍRÁS: RENDBEN]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]  \x1b[32;1m[ALÁÍRÁS: RENDBEN]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m \x1b[32;1m[ALÁÍRÁS: RENDBEN]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m  \x1b[32;1m[ALÁÍRÁS: RENDBEN]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m\x1b[32;1m[ALÁÍRÁS: RENDBEN]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[SIKERES ÁTVITEL] \x1b[32;1m[ALÁÍRÁS: RENDBEN]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[SIKERES ÁTVITEL]  \x1b[32;1m[ALÁÍRÁS: RENDBEN]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: OK]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[32;1m[ALÁÍRÁS: RENDBEN]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m [ALÁÍRÁS: RENDBEN]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m  [ALÁÍRÁS: RENDBEN]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m[ALÁÍRÁS: RENDBEN]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL] [ALÁÍRÁS: RENDBEN]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]  [ALÁÍRÁS: RENDBEN]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: OK]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL][ALÁÍRÁS: RENDBEN]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: OK]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m [ALÁÍRÁS: RENDBEN]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: OK]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m  [ALÁÍRÁS: RENDBEN]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: OK]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m[ALÁÍRÁS: RENDBEN]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: OK]\x1b[37;1m,[SIKERES ÁTVITEL] [ALÁÍRÁS: RENDBEN]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: OK]\x1b[37;1m,[SIKERES ÁTVITEL]  [ALÁÍRÁS: RENDBEN]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: OK],[SIKERES ÁTVITEL]  [ALÁÍRÁS: RENDBEN]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: OK]\x1b[37;1m,[SIKERES ÁTVITEL][ALÁÍRÁS: RENDBEN]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m  \x1b[38;2;255;128;0m[ALÁÍRÁS: Hamis]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]  \x1b[38;2;255;128;0m[ALÁÍRÁS: Hamis]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m \x1b[38;2;255;128;0m[ALÁÍRÁS: Hamis]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m  \x1b[38;2;255;128;0m[ALÁÍRÁS: Hamis]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m\x1b[38;2;255;128;0m[ALÁÍRÁS: Hamis]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[SIKERES ÁTVITEL] \x1b[38;2;255;128;0m[ALÁÍRÁS: Hamis]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[SIKERES ÁTVITEL]  \x1b[38;2;255;128;0m[ALÁÍRÁS: Hamis]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[38;2;255;128;0m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[38;2;255;128;0m[ALÁÍRÁS: Hamis]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m [ALÁÍRÁS: Hamis]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m  [ALÁÍRÁS: Hamis]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m[ALÁÍRÁS: Hamis]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL] [ALÁÍRÁS: Hamis]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]  [ALÁÍRÁS: Hamis]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: Поддельная]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL][ALÁÍRÁS: Hamis]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: Поддельная]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m [ALÁÍRÁS: Hamis]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: Поддельная]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m  [ALÁÍRÁS: Hamis]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: Поддельная]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m[ALÁÍRÁS: Hamis]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: Поддельная]\x1b[37;1m,[SIKERES ÁTVITEL] [ALÁÍRÁS: Hamis]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: Поддельная]\x1b[37;1m,[SIKERES ÁTVITEL]  [ALÁÍRÁS: Hamis]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: Поддельная],[SIKERES ÁTVITEL]  [ALÁÍRÁS: Hamis]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: Поддельная]\x1b[37;1m,[SIKERES ÁTVITEL][ALÁÍRÁS: Hamis]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m  \x1b[32;1m[ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]  \x1b[32;1m[ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m \x1b[32;1m[ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m  \x1b[32;1m[ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m\x1b[32;1m[ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[SIKERES ÁTVITEL] \x1b[32;1m[ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[SIKERES ÁTVITEL]  \x1b[32;1m[ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[32;1m[ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m [ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m  [ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m[ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL] [ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]  [ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL][ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m [ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m  [ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m[ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[SIKERES ÁTVITEL] [ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[SIKERES ÁTVITEL]  [ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: XCI➡NSP],[SIKERES ÁTVITEL]  [ALÁÍRÁS: XCI➡NSP]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: XCI➡NSP]\x1b[37;1m,[SIKERES ÁTVITEL][ALÁÍRÁS: XCI➡NSP]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m \x1b[33;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m  \x1b[33;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m\x1b[33;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL] \x1b[33;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]  \x1b[33;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[33;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m \x1b[33;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m  \x1b[33;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m\x1b[33;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[SIKERES ÁTVITEL] \x1b[33;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[SIKERES ÁTVITEL]  \x1b[33;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[33;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m  \x1b[32;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]  \x1b[32;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m \x1b[32;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m  \x1b[32;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m\x1b[32;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK] \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[SIKERES ÁTVITEL] \x1b[32;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  \x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[SIKERES ÁTVITEL]  \x1b[32;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[32;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[32;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m [ALÁÍRÁS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m  [ALÁÍRÁS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]\x1b[37;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK] [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL] [ALÁÍRÁS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK]  [ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL]  [ALÁÍRÁS: DBI]\x1b[37;1m
+\x1b[32;1m[ПЕРЕДАЧА OK][ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[32;1m[SIKERES ÁTVITEL][ALÁÍRÁS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m [ПОДПИСЬ: DBI]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m [ALÁÍRÁS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m  [ПОДПИСЬ: DBI]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m  [ALÁÍRÁS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m[ПОДПИСЬ: DBI]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK] [ПОДПИСЬ: DBI]\x1b[37;1m,[SIKERES ÁTVITEL] [ALÁÍRÁS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: DBI]\x1b[37;1m,[SIKERES ÁTVITEL]  [ALÁÍRÁS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]  [ПОДПИСЬ: DBI],[SIKERES ÁTVITEL]  [ALÁÍRÁS: DBI]
+[ПЕРЕДАЧА OK][ПОДПИСЬ: DBI]\x1b[37;1m,[SIKERES ÁTVITEL][ALÁÍRÁS: DBI]\x1b[37;1m
+[ПЕРЕДАЧА OK]\x1b[37;1m,[SIKERES ÁTVITEL]\x1b[37;1m
+[ПЕРЕДАЧА ПРЕРВАНА]\x1b[37;1m,[AZ ÁTVITEL MEGSZAKADT]\x1b[37;1m
+\x1b[33;1m[ПОДПИСЬ: DBI]\x1b[37;1m,\x1b[33;1m[ALÁÍRÁS: DBI]\x1b[37;1m
+"\x1b[1m{} R: {:>{}}/\x1b[36;1m{:>{}}\x1b[37;1m МБ,\x1b[32;1m{:>3}%, \x1b[33;1mср. {:>4.1f} (тек. {:>5.2f})\x1b[37;1m МБ/сек, \x1b[35;1m{:02d}:{:02d} \x1b[37;1mсек\x1b[1m","\x1b[1m{} R: {:>{}}/\x1b[36;1m{:>{}}\x1b[37;1m MB,\x1b[32;1m{:>3}%, \x1b[33;1mátl {:>4.1f} (most {:>5.2f})\x1b[37;1m MB/s, \x1b[35;1m{:02d}:{:02d} \x1b[37;1mmp\x1b[1m"
+"\x1b[22m{} R: {:>{}}/\x1b[36;1m\x1b[22m{:>{}}\x1b[37;1m\x1b[22m МБ,\x1b[32;1m\x1b[22m{:>3}%, \x1b[33;1m\x1b[22mср. {:>4.1f} (тек. {:>5.2f})\x1b[37;1m\x1b[22m МБ/сек, \x1b[35;1m\x1b[22m{:02d}:{:02d} \x1b[37;1m\x1b[22mсек\x1b[1m","\x1b[22m{} R: {:>{}}/\x1b[36;1m\x1b[22m{:>{}}\x1b[37;1m\x1b[22m MB,\x1b[32;1m\x1b[22m{:>3}%, \x1b[33;1m\x1b[22mátl {:>4.1f} (most {:>5.2f})\x1b[37;1m\x1b[22m MB/s, \x1b[35;1m\x1b[22m{:02d}:{:02d} \x1b[37;1m\x1b[22mmp\x1b[1m"
+"\x1b[1m{} W: {:>{}}/\x1b[36;1m{:>{}}\x1b[37;1m МБ,\x1b[32;1m{:>3}%, \x1b[33;1mср. {:>4.1f} (тек. {:>5.2f})\x1b[37;1m МБ/сек, \x1b[35;1m{:02d}:{:02d} \x1b[37;1mсек\x1b[1m","\x1b[1m{} W: {:>{}}/\x1b[36;1m{:>{}}\x1b[37;1m MB,\x1b[32;1m{:>3}%, \x1b[33;1mátl {:>4.1f} (most {:>5.2f})\x1b[37;1m MB/s, \x1b[35;1m{:02d}:{:02d} \x1b[37;1mmp\x1b[1m"
+Тема...,Téma...
+"2ая панель, (+) меню, L3 имя","2. panel, (+) Menü, L3 Név"
+Общее время игры      : {},Összes játékidő : {}
+Общее время игры      : {} ({}),Összes játékidő : {} ({})
+Адресное пространство,Címtér
+Поиск старых плейсхолдеров на SD,Régi helyfoglalók keresése az SD-kártyán
+Поиск старых плейсхолдеров в NAND,Régi helyfoglalók keresése a NAND-on
+\x1b[31;1mТайтл не установлен\x1b[37;1m,\x1b[31;1mA cím nincs telepítve\x1b[37;1m
+\x1b[31;1mТайтл не установлен,\x1b[31;1mA cím nincs telepítve
+Общее время игры      : - ({}),Összes játékidő : - ({})
+              Общее время игры      : -,              Összes játékidő : -
+              Начало игры           : -,              Játék kezdete   : -
+              Конец игры            : -,              Játék vége      : -
+[ОШИБКА]\x1b[37;1m,[HIBA]\x1b[37;1m
+\x1b[31;1m[ОШИБКА]\x1b[37;1m,\x1b[31;1m[HIBA]\x1b[37;1m
+\x1b[31;1m[ОШИБКА],\x1b[31;1m[HIBA]
+Настроки создания ярлыков,Indítóparancsikon beállításai
+Использовать 4 ядра CPU,Mind a 4 CPU-mag használata
+Захват видео,Videórögzítés
+Скриншоты,Képernyőképek
+Запуск игры,Játék indítása
+Закрытие игры,Játék bezárása
+Сворачивание игры,Játék háttérbe helyezése
+Переключение на игру,Váltás a játékra
+Добавить в исключения SaltyNX,Hozzáadás a SaltyNX kizárási listájához
+"X выбор, Y обратить выбор, A открыть, (-) 2ая панель, (+) меню, L3 имя","X kijelölés, Y kijelölés megfordítása, A megnyitás, (-) 2. panel, (+) menü, L3 név"
+\x1b[32;1mТайтл установлен\x1b[37;1m,\x1b[32;1mA cím telepítve van\x1b[37;1m
+\x1b[32;1mТайтл установлен,\x1b[32;1mA cím telepítve van
+Патчить версию в meta  : ,Verzió módosítása a metaadatokban :
