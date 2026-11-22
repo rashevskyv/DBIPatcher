@@ -1914,7 +1914,7 @@ This community translation set is still evolving. Some strings may remain untran
 - [aldokeita](https://github.com/aldokeita) — Indonesian translation ([#24](https://github.com/rashevskyv/DBIPatcher/pull/24)), missing DBI 905 source strings ([#26](https://github.com/rashevskyv/DBIPatcher/pull/26)), and colored status lines / gate research ([#25](https://github.com/rashevskyv/DBIPatcher/issues/25)).
 
 ***
-*Note: This NRO is a modified version of the [original DBI](https://github.com/rashevskyv/dbi/releases/tag/{dbi_ver}ru) optimized for these translations.*
+*Note: This NRO is a modified version of the original DBI optimized for these translations.*
 """
 
     body_path = Path("scratch/release_body.md")
