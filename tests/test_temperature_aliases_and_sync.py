@@ -59,13 +59,13 @@ class TemperatureAliasesAndSyncTests(unittest.TestCase):
         )
 
     def test_workbook_structure_and_version(self) -> None:
-        """Verify workbook contains 1,466 unique Original keys, 'tr' and 'id' columns, and version 0.0.117."""
+        """Verify workbook contains 1,466 unique Original keys, 'tr' and 'id' columns, and version 0.0.119."""
         self.assertIn("tr", self.headers, "Translations sheet missing 'tr' column")
         self.assertIn("id", self.headers, "Translations sheet missing 'id' column")
 
         meta_ws = self.wb["Metadata"]
         version = str(meta_ws["B1"].value or "")
-        self.assertEqual(version, "0.0.117", f"Expected version 0.0.117, got {version}")
+        self.assertEqual(version, "0.0.119", f"Expected version 0.0.119, got {version}")
 
         original_col = self.col_map["Original"]
         originals = []
@@ -184,8 +184,8 @@ class TemperatureAliasesAndSyncTests(unittest.TestCase):
                 col_idx = self.col_map[lc]
                 actual_val = self.ws.cell(alias_row, col_idx).value
                 expected_val = self.ws.cell(expected_src_row, col_idx).value
-                if lc in ("tr", "id"):
-                    # tr and id canonical rows received UI alignment spaces while unaligned aliases retained tokens
+                if lc in ("tr", "id", "hu"):
+                    # tr, id and hu canonical rows received UI alignment spaces while unaligned aliases retained tokens
                     self.assertEqual(
                         str(actual_val).split(),
                         str(expected_val).split(),

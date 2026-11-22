@@ -1836,6 +1836,7 @@ def cmd_deploy() -> None:
 *   **ET** — Estonian
 *   **FR** — French
 *   **FRCA** — French (Canada)
+*   **HU** — Hungarian
 *   **ID** — Indonesian
 *   **IT** — Italian
 *   **JP** — Japanese
@@ -1859,6 +1860,11 @@ This release provides translations for **DBI version {dbi_ver}**.
 
 > [!IMPORTANT]
 > Use the `DBI.nro` and the `translation_XX.bin` files **from this release together**. The translation tables now carry a lookup index that older patched `DBI.nro` builds do not read.
+
+### 🩹 What is new in this update
+- **Hungarian (HU)** translation added (thanks to @oldman63, PR #36).
+- **Activity log:** a translated column header wider than its column (for example the Hungarian `Munkamenetek`) no longer fails with `basic_string::_M_create`. The header keeps all its letters and is centred over its column (issue #35).
+- **Font:** the Hungarian letters `ő Ő ű Ű` are redrawn bold, like the rest of the font.
 
 ### 🆕 What changed in DBI 921 (compared with 920)
 - **FTP:** a serious bug in the FTP server is fixed (from the DBI author). No other user-visible changes were found in the 921 binary.
@@ -1904,6 +1910,7 @@ This community translation set is still evolving. Some strings may remain untran
 ### 🙏 Credits
 - [Bohdan Buinich](https://github.com/BohdanBuinich) — creator of the earlier `dbi-i18n` runtime-translation approach, compatible table format, and Cyrillic font-glyph repair approach.
 - [0xroast](https://github.com/0xroast) — author of `dbi-translate`, the runtime patcher this project now includes and extends.
+- [oldman63](https://github.com/oldman63) — Hungarian translation ([#36](https://github.com/rashevskyv/DBIPatcher/pull/36)) and the activity log report ([#35](https://github.com/rashevskyv/DBIPatcher/issues/35)).
 - [aldokeita](https://github.com/aldokeita) — Indonesian translation ([#24](https://github.com/rashevskyv/DBIPatcher/pull/24)), missing DBI 905 source strings ([#26](https://github.com/rashevskyv/DBIPatcher/pull/26)), and colored status lines / gate research ([#25](https://github.com/rashevskyv/DBIPatcher/issues/25)).
 
 ***
